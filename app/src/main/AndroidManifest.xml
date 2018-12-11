@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.kit.nfcrypto">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".activities.ActivityWelcome">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.ActivityAlice" />
+        <activity android:name=".activities.ActivityBob" />
+        <activity android:name=".activities.ActivityCryptotools" />
+        <activity android:name=".activities.ActivityDecryptDetails" />
+        <activity android:name=".activities.ActivityEncryptDetails" />
+        <activity android:name=".activities.ActivityEve" />
+        <activity android:name=".activities.ActivityInfo" />
+        <activity android:name=".activities.ActivityPersons" />
+        <activity android:name=".activities.ActivityBase"></activity>
+    </application>
+
+</manifest>

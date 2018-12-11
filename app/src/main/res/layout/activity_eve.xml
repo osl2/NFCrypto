@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ActivityEve">
+    <TextView
+        android:id="@+id/activity_eve_text_plainmessage"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/activity_eve_text_messagecrypted"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="top"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        android:elevation="3dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/activity_eve_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/activity_eve_button_readMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:text="Nachricht einlesen" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_eve_button_readMessage_button_decrypt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="30dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_lock_idle_lock"
+        app:backgroundTint="@color/design_default_color_primary" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_eve_button_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:layout_marginRight="30dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_menu_help"
+        app:backgroundTint="@color/design_default_color_primary" />
+
+</android.support.design.widget.CoordinatorLayout>
