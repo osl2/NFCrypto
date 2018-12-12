@@ -45,7 +45,7 @@
         android:text="Nachricht einlesen" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/activity_eve_button_readMessage_button_decrypt"
+        android:id="@+id/activity_eve_button_cryptotools"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"

@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ActivityAlice" />
+        <activity android:name=".activities.ActivityAlice"
+            android:label="Alice"/>
         <activity android:name=".activities.ActivityBob" />
         <activity android:name=".activities.ActivityCryptotools" />
         <activity android:name=".activities.ActivityDecryptDetails" />
