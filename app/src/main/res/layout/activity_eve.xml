@@ -54,14 +54,4 @@
         android:src="@android:drawable/ic_lock_idle_lock"
         app:backgroundTint="@color/design_default_color_primary" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/activity_eve_button_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|center_vertical"
-        android:layout_marginRight="30dp"
-        android:clickable="true"
-        android:src="@android:drawable/ic_menu_help"
-        app:backgroundTint="@color/design_default_color_primary" />
-
 </android.support.design.widget.CoordinatorLayout>

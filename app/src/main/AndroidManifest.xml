@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.kit.nfcrypto">
 
+    <uses-permission android:name="android.permission.NFC" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,8 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ActivityAlice"
-            android:label="Alice"/>
+        <activity
+            android:name=".activities.ActivityAlice"
+            android:label="Alice" />
         <activity android:name=".activities.ActivityBob" />
         <activity android:name=".activities.ActivityCryptotools" />
         <activity android:name=".activities.ActivityDecryptDetails" />
@@ -25,7 +28,8 @@
         <activity android:name=".activities.ActivityEve" />
         <activity android:name=".activities.ActivityInfo" />
         <activity android:name=".activities.ActivityPersons" />
-        <activity android:name=".activities.ActivityBase"></activity>
+        <activity android:name=".activities.ActivityBase" />
+        <activity android:name=".activities.ActivityCode"></activity>
     </application>
 
 </manifest>

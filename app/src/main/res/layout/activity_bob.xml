@@ -40,10 +40,20 @@
 
     <Button
         android:id="@+id/activity_bob_button_readMessage"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:text="Nachricht einlesen" />
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="80dp"
+        android:text=" Nachricht einlesen" />
+
+    <Button
+        android:id="@+id/activity_bob_button_readKey"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="40dp"
+        android:text="Schlüssel einlesen" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/activity_bob_button_decrypt"
@@ -53,15 +63,6 @@
         android:layout_marginLeft="30dp"
         android:clickable="true"
         android:src="@android:drawable/ic_lock_idle_lock" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/activity_bob_button_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|center_vertical"
-        android:layout_marginRight="30dp"
-        android:clickable="true"
-        android:src="@android:drawable/ic_menu_help" />
 
 
 </android.support.design.widget.CoordinatorLayout>
