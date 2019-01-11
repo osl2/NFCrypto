@@ -5,6 +5,9 @@ import edu.kit.nfcrypto.keys.Key;
 
 public class VigenereKey extends Key {
 
+    public VigenereKey(String keyDataString) {
+        //TODO Konstruktor
+    }
     @Override
     public String encrypt(String text) {
         return null;
@@ -20,9 +23,9 @@ public class VigenereKey extends Key {
         return null;
     }
 
-    @Override
+    /*@Override
     public String decodeKey(String keyString) {
         return null;
-    }
+    }*/
 
 }

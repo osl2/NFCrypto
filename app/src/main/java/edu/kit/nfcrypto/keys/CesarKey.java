@@ -6,8 +6,9 @@ import edu.kit.nfcrypto.keys.Key;
 public class CesarKey extends Key {
     int keyData;
 
-
-
+    public CesarKey(String keyDataString){
+        //TODO Konstruktor
+    }
 
     @Override
     public String encrypt(String text) {
@@ -24,8 +25,8 @@ public class CesarKey extends Key {
         return null;
     }
 
-    @Override
+    /*@Override
     public String decodeKey() {
         return null;
-    }
+    }*/
 }

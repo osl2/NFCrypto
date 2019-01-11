@@ -24,7 +24,20 @@ public abstract class Key {
      * @return die Key Daten :O
      * Der Datentyp
      */
-    public abstract Key decodeKey(String keyString);
+    public static Key decodeKey(String keyString)
+    {
+        String[] splitKeyString = {keyString.substring(0,2), keyString.substring(3,5), keyString.substring(6)};
+        if(!splitKeyString[0].equals("KEY")){
+            //TODO Fehlermeldung? Weil kein Schlüssel?
+        }
+        switch(splitKeyString[1]) {
+            case "PLA": return new PlainKey();
+            case "CES": return new CesarKey(splitKeyString[2]);
+            case "VIG": return new VigenereKey(splitKeyString[2]);
+            case "AES": return new AESKey(splitKeyString[2]);
+            default: return null; //TODO Fehlermeldung? Weil kein gültiger Modus?
+        }
+    }
 
     public Mode getMode() {
         return mode;

@@ -12,12 +12,12 @@ public class PlainKey extends Key {
 
     @Override
     public String encrypt(String text) {
-        return null;
+        return text;
     }
 
     @Override
     public String decrypt(String text) {
-        return null;
+        return text;
     }
 
     @Override
@@ -26,9 +26,10 @@ public class PlainKey extends Key {
 
     }
 
-    @Override
-    public String decodeKey() {
+    /*@Override // Methode wird nicht benötigt, da statisch in Superklasse
+    public static Key decodeKey(String keyString) {
         //TODO REGEX invers zu encode
+
         return null;
-    }
+    }*/
 }
