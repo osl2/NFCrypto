@@ -1,15 +1,14 @@
 package edu.kit.nfcrypto.keys;
 
-import edu.kit.nfcrypto.data.Message;
 import edu.kit.nfcrypto.data.Mode;
 
 public abstract class Key {
     private Mode mode;
 
 
-    public abstract String encrypt(String text);
+    public abstract String encrypt(String text) throws Exception;
 
-    public abstract String decrypt(String text);
+    public abstract String decrypt(String text) throws Exception;
 
     /**
      * encode,decodeKey sind bijektiv
