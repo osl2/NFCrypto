@@ -18,6 +18,7 @@ public abstract class Key {
      */
     public abstract String encodeKey();
 
+<<<<<<< HEAD
     /**
      * nimmt den Key Daten String und
      * @return die Key Daten :O
@@ -38,6 +39,8 @@ public abstract class Key {
         }
     }
 
+=======
+>>>>>>> general changes
     public Mode getMode() {
         return mode;
     }

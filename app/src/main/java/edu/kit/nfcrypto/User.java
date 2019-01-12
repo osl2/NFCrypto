@@ -8,20 +8,33 @@ import edu.kit.nfcrypto.data.Mode;
 import edu.kit.nfcrypto.keys.PlainKey;
 import edu.kit.nfcrypto.keys.VigenereKey;
 
+
 public final class User {
+    //Speichert die Daten im Hintergrund für alle Activities
     private Key lastKey;
     private Mode[] permission;
+    private static User instance;
 
+    private User(){}
+
+    public static User getInstance() {
+        if(instance == null){
+            instance = new User();
+        }
+        return instance;
+    }
 
     //Preview Funktionen
 
+
+    //Auslagern in 3 Vers. Klassen
     /**
      *
      * @param text der Eingelesen wird
      * @param mode wie Cesar etc.
      * @param cesarDetails wenn Cesardetails != 0, sonst 0
      */
-    public void alicePreview(String text, Mode mode, int cesarDetails){
+    public static void alicePreview(String text, Mode mode, int cesarDetails){
         Key key = null;
         switch (mode){
             case PLA:

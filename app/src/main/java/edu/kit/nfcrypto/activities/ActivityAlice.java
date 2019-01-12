@@ -14,6 +14,7 @@ public class ActivityAlice extends ActivityBase {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alice);
+
         final FloatingActionButton buttonInfo = findViewById(R.id.activity_alice_button_info);
         buttonInfo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

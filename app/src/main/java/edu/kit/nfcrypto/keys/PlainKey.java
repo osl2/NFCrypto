@@ -22,14 +22,20 @@ public class PlainKey extends Key {
 
     @Override
     public String encodeKey() {
-        return "KEY" + this.getMode().toString() + this.keyData;
+        return "";
 
     }
 
+<<<<<<< HEAD
     /*@Override // Methode wird nicht benötigt, da statisch in Superklasse
     public static Key decodeKey(String keyString) {
         //TODO REGEX invers zu encode
 
         return null;
     }*/
+=======
+    public String decodeKey() {
+        return "";
+    }
+>>>>>>> general changes
 }
