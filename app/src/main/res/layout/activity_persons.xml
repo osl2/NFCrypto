@@ -1,81 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activities.ActivityPersons">
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/activity_person_text_info"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_gravity="bottom"
-        android:layout_margin="15dp"
-        android:text="TextView" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <Button
-        android:id="@+id/activity_persons_button_eve"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_gravity="top|left"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="340dp"
-        android:backgroundTint="@color/design_default_color_primary"
-        android:text="Eve"
-        android:textColor="@android:color/background_light" />
+        <TextView
+            android:id="@+id/activity_person_text_intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:layout_height="180dp" />
 
-    <Button
-        android:id="@+id/activity_persons_button_alice"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_gravity="top|left"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="200dp"
-        android:backgroundTint="@color/colorAccent"
-        android:text="Alice" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/activity_persons_button_bob"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_gravity="top|left"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="270dp"
-        android:text="Bob" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/activity_person_text_intro"
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_margin="15dp"
-        android:text="TextView" />
+                <Button
+                    android:id="@+id/activity_persons_button_alice"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:text="Alice"
+                    android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/activity_persons_text_alice"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="200dp"
-        android:text="TextView" />
+                <Button
+                    android:id="@+id/activity_persons_button_bob"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Bob"
+                    android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/activity_persons_text_eve"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="340dp"
-        android:text="TextView" />
+                <Button
+                    android:id="@+id/activity_persons_button_eve"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:backgroundTint="@color/design_default_color_primary"
+                    android:text="Eve"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/activity_persons_text_bob"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="270dp"
-        android:text="TextView" />
+            </LinearLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activity_persons_text_alice"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/activity_persons_text_bob"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/activity_persons_text_eve"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="TextView" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/activity_person_text_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:text="TextView" />
+
+    </LinearLayout>
+
+</RelativeLayout>

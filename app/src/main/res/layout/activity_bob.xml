@@ -1,68 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activities.ActivityBob">
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/activity_bob_text_plainmessage"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="230dp"
-        android:layout_gravity="bottom"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="TextView" />
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <TextView
-        android:id="@+id/activity_bob_text_messagecrypted"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_gravity="top"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="20dp"
-        android:elevation="3dp"
-        android:text="TextView" />
+        <TextView
+            android:id="@+id/activity_bob_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bob - der Entschlüsseler"
+            android:textAlignment="center"
+            android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/activity_bob_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textSize="24sp" />
+        <TextView
+            android:id="@+id/activity_bob_text_plainmessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            tools:layout_height="200dp" />
 
-    <Button
-        android:id="@+id/activity_bob_button_readMessage"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="80dp"
-        android:text=" Nachricht einlesen" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            tools:layout_height="60dp">
 
-    <Button
-        android:id="@+id/activity_bob_button_readKey"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|center_vertical"
-        android:layout_marginLeft="80dp"
-        android:layout_marginRight="40dp"
-        android:text="Schlüssel einlesen" />
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/activity_bob_button_decrypt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:clickable="true"
+                android:src="@android:drawable/ic_lock_idle_lock" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/activity_bob_button_decrypt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="30dp"
-        android:clickable="true"
-        android:src="@android:drawable/ic_lock_idle_lock" />
+            <Button
+                android:id="@+id/activity_bob_button_readMessage"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:text=" Nachricht einlesen" />
+
+            <Button
+                android:id="@+id/activity_bob_button_readKey"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:text="Schlüssel einlesen" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/activity_bob_text_messagecrypted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:elevation="3dp"
+            android:text="TextView"
+            tools:layout_height="200dp" />
 
 
-</android.support.design.widget.CoordinatorLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ActivityWelcome">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/Activity_welcome_button_unguided"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:fabCustomSize="60dp"
+        app:srcCompat="@android:drawable/ic_media_play" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_welcome_button_guided"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:fabCustomSize="60dp"
+        app:srcCompat="@android:drawable/ic_media_play" />
+
+    <TextView
+        android:id="@+id/Activity_welcome_text_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Willkommen!"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Activity_welcome_text_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:text="Infotext"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"></LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
