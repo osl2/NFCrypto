@@ -39,20 +39,6 @@ public final class NFCWriter {
 
     }
 
-    /**
-     *
-     * @param key der auf die Karte soll
-     * @return gibt den fertig gecodeten String zum Schreiben auf den NFCTag zurück
-     */
-
-    public NdefMessage createData(Key key) {
-        return stringToData(key.encodeKey());
-    }
-
-    public NdefMessage createData(Message message) {
-        String datatext = "MES" + message.getMode().toString() + message.getEncryptedText();
-        return stringToData(datatext);
-    }
 
     /**
      * Bereitet die Daten für den NFCTag auf
