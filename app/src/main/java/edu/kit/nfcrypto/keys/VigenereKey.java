@@ -1,14 +1,23 @@
 package edu.kit.nfcrypto.keys;
 
+import edu.kit.nfcrypto.data.Mode;
 import edu.kit.nfcrypto.exceptions.KeyFormatException;
+
+import static edu.kit.nfcrypto.data.Mode.VIG;
 
 
 public class VigenereKey extends Key {
     private char keyData[];
+    private Mode mode = VIG;
 
     public VigenereKey(String keyDataString) {
-        //TODO Konstruktor
+        try {
+            keyData = keyDataString.toCharArray();
+        } catch (NumberFormatException e) {
+            throw new KeyFormatException();
+        }
     }
+
     @Override
     public String encrypt(String text) {
 
@@ -60,28 +69,6 @@ public class VigenereKey extends Key {
     public String encodeKey() {
         return "MESVIG" + String.valueOf(keyData);
     }
-
-<<<<<<< HEAD
-    /*@Override
-    public String decodeKey(String keyString) {
-        return null;
-    }*/
-=======
-    public char[] decodeKey(String keyText) {
-        String präfix = keyText.substring(0, 6);
-        if (präfix.equals("MESCES")) {
-            String suffix = keyText.substring(6);
-            try {
-                keyData = suffix.toCharArray();
-                return keyData;
-            } catch (NumberFormatException e) {
-                throw new KeyFormatException();
-            }
-        } else {
-            throw new KeyFormatException();
-        }
-    }
->>>>>>> general changes
 
 
 }

@@ -1,6 +1,7 @@
 package edu.kit.nfcrypto.keys;
 
 import edu.kit.nfcrypto.data.Mode;
+import edu.kit.nfcrypto.exceptions.KeyFormatException;
 
 public abstract class Key {
     private Mode mode;
@@ -18,13 +19,14 @@ public abstract class Key {
      */
     public abstract String encodeKey();
 
-<<<<<<< HEAD
+
     /**
      * nimmt den Key Daten String und
      * @return die Key Daten :O
      * Der Datentyp
      */
-    public static Key decodeKey(String keyString)
+
+    public static Key decodeKey(String keyString) throws KeyFormatException
     {
         String[] splitKeyString = {keyString.substring(0,2), keyString.substring(3,5), keyString.substring(6)};
         if(!splitKeyString[0].equals("KEY")){
@@ -39,8 +41,7 @@ public abstract class Key {
         }
     }
 
-=======
->>>>>>> general changes
+
     public Mode getMode() {
         return mode;
     }

@@ -1,21 +1,25 @@
 package edu.kit.nfcrypto.keys;
 
+import edu.kit.nfcrypto.data.Mode;
 import edu.kit.nfcrypto.exceptions.KeyFormatException;
 
-public class CesarKey extends Key {
-    int keyData;
+import static edu.kit.nfcrypto.data.Mode.CES;
 
-<<<<<<< HEAD
-    public CesarKey(String keyDataString){
-        //TODO Konstruktor
-=======
-    public CesarKey(int keyData) {
-        this.keyData = keyData;
+public class CesarKey extends Key {
+    private int keyData;
+    private Mode mode = CES;
+
+    public CesarKey(String keyDataString) throws  KeyFormatException{
+        try {
+            keyData = Integer.valueOf(keyDataString);
+        } catch (NumberFormatException e) {
+            throw new KeyFormatException();
+        }
     }
 
     public CesarKey() {
         keyData = (int) (Math.random() * 25 + 1);
->>>>>>> general changes
+
     }
 
     @Override
@@ -85,28 +89,8 @@ public class CesarKey extends Key {
 
     @Override
     public String encodeKey() {
-        return "KEYCES" + String.valueOf(keyData);
+        return "KEY"+ mode.toString() + String.valueOf(keyData);
     }
 
-<<<<<<< HEAD
-    /*@Override
-    public String decodeKey() {
-        return null;
-    }*/
-=======
-    public int decodeKey(String keyText) {
-        String präfix = keyText.substring(0, 6);
-        if (präfix.equals("MESCES")) {
-            String suffix = keyText.substring(6);
-            try {
-                keyData = Integer.valueOf(suffix);
-                return keyData;
-            } catch (NumberFormatException e) {
-                throw new KeyFormatException();
-            }
-        } else {
-            throw new KeyFormatException();
-        }
-    }
->>>>>>> general changes
+
 }

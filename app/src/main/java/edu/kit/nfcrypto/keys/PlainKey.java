@@ -1,10 +1,14 @@
 package edu.kit.nfcrypto.keys;
 
 import edu.kit.nfcrypto.data.Message;
+import edu.kit.nfcrypto.data.Mode;
 import edu.kit.nfcrypto.keys.Key;
+
+import static edu.kit.nfcrypto.data.Mode.PLA;
 
 public class PlainKey extends Key {
     String keyData = "";
+    Mode mode = PLA;
 
     public PlainKey() {
 
@@ -26,16 +30,4 @@ public class PlainKey extends Key {
 
     }
 
-<<<<<<< HEAD
-    /*@Override // Methode wird nicht benötigt, da statisch in Superklasse
-    public static Key decodeKey(String keyString) {
-        //TODO REGEX invers zu encode
-
-        return null;
-    }*/
-=======
-    public String decodeKey() {
-        return "";
-    }
->>>>>>> general changes
 }

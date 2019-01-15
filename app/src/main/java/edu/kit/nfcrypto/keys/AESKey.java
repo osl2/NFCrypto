@@ -56,8 +56,4 @@ public class AESKey extends Key {
         return "KEY" + this.getMode().toString() + new String(keyData);
     }
 
-    /*@Override
-    public String decodeKey() {
-        return null;
-    }*/
 }
