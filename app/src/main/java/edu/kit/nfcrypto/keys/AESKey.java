@@ -19,6 +19,13 @@ public class AESKey extends Key {
         keyDataString = new String(keyDataByte);
     }
 
+    public AESKey(String keyDataString) {
+        byte[] keyDataByte = keyDataString.getBytes();
+        //SecretKey aus keyData erzeugen
+        keyData = new SecretKeySpec(keyDataByte, "AES");
+        keyDataString = new String(keyDataByte);
+    }
+
 
     //TODO Exceptionhandling
     @Override
