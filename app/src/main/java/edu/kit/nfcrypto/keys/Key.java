@@ -17,7 +17,11 @@ public abstract class Key {
      * nimmt sich selbst und
      * @return einen String, abhängig von Key, also fertig für NFC
      */
-    public abstract String encodeKey();
+    public String encodeKey() {
+        return "KEY" + getMode().toString() + getKeyDataString();
+    };
+
+    public abstract String getKeyDataString();
 
 
     /**

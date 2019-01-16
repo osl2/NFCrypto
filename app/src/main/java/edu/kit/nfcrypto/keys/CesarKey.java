@@ -8,6 +8,7 @@ import static edu.kit.nfcrypto.data.Mode.CES;
 public class CesarKey extends Key {
     private int keyData;
     private Mode mode = CES;
+    private String letterRegEx = "[A-Z]";
 
     public CesarKey(String keyDataString) throws  KeyFormatException{
         try {
@@ -24,33 +25,21 @@ public class CesarKey extends Key {
 
     @Override
     public String encrypt(String text) {
-        char ch;
         String encryptedMessage = "";
+        char ch;
+        String st;
 
         for (int i = 0; i < text.length(); ++i) {
             ch = text.charAt(i);
 
-            if (ch >= 'a' && ch <= 'z') {
+            if(ch >= 'A' && ch <= 'Z'){
                 ch = (char) (ch + keyData);
-
-                if (ch > 'z') {
-                    ch = (char) (ch - 'z' + 'a' - 1);
-                }
-
-                encryptedMessage += ch;
-            } else if (ch >= 'A' && ch <= 'Z') {
-                ch = (char) (ch + keyData);
-
                 if (ch > 'Z') {
                     ch = (char) (ch - 'Z' + 'A' - 1);
                 }
-
-                encryptedMessage += ch;
-            } else {
-                encryptedMessage += ch;
             }
+            encryptedMessage += ch;
         }
-
         return encryptedMessage;
     }
 
@@ -63,33 +52,21 @@ public class CesarKey extends Key {
         for (int i = 0; i < text.length(); ++i) {
             ch = text.charAt(i);
 
-            if (ch >= 'a' && ch <= 'z') {
-                ch = (char) (ch - keyData);
-
-                if (ch < 'a') {
-                    ch = (char) (ch + 'z' - 'a' + 1);
-                }
-
-                decryptedMessage += ch;
-            } else if (ch >= 'A' && ch <= 'Z') {
+            if (ch >= 'A' && ch <= 'Z') {
                 ch = (char) (ch - keyData);
 
                 if (ch < 'A') {
                     ch = (char) (ch + 'Z' - 'A' + 1);
                 }
-
-                decryptedMessage += ch;
-            } else {
-                decryptedMessage += ch;
             }
+            decryptedMessage += ch;
         }
 
         return decryptedMessage;
     }
 
-    @Override
-    public String encodeKey() {
-        return "KEY"+ mode.toString() + String.valueOf(keyData);
+    public String getKeyDataString() {
+        return String.valueOf(keyData);
     }
 
 

@@ -30,4 +30,8 @@ public class PlainKey extends Key {
 
     }
 
+    public String getKeyDataString() {
+        return keyData;
+    }
+
 }

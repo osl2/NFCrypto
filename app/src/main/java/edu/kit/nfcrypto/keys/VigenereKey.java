@@ -65,9 +65,8 @@ public class VigenereKey extends Key {
         return String.valueOf(decryptedMsg);
     }
 
-    @Override
-    public String encodeKey() {
-        return "MESVIG" + String.valueOf(keyData);
+    public String getKeyDataString() {
+        return String.valueOf(keyData);
     }
 
 
