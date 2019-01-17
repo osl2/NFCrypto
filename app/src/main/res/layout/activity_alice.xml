@@ -18,7 +18,7 @@
             android:id="@+id/activity_alice_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="@string/alice"
             android:textAlignment="center"
             android:textSize="24sp" />
 

@@ -14,7 +14,7 @@
             android:id="@+id/Activity_welcome_text_welcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Willkommen!"
+            android:text="@string/welcome"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimary"
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
-            android:text="Infotext"
+            android:text="@string/info1"
             android:textAlignment="center"
             android:textSize="18sp" />
 

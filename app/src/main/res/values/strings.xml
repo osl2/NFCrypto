@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">NFCrypto</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Hier können jetzt alle Strings eingetragen werden -->
+    <string name="welcome">Willkommen!</string>
+    <string name="alice">Alice</string>
+    <string name="bob">Bob</string>
+    <string name="eve">Eve</string>
+    <string name="info1">Infotext...</string>
+    <string name="info2">zweiter Infotext...</string>
+    <string name="read_msg">Nachricht einlesen</string>
+    <string name="read_key">Schlüssel einlesen</string>
+
+
 </resources>

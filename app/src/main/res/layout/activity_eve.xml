@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="29dp"
         android:gravity="center"
-        android:text="Spion Eve"
+        android:text="@string/eve"
         android:textSize="24sp" />
 
     <TextView
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_marginLeft="24dp"
-            android:text="Nachricht einlesen" />
+            android:text="@string/read_msg" />
 
     </LinearLayout>
 

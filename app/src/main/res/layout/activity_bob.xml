@@ -15,7 +15,7 @@
             android:id="@+id/activity_bob_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bob - der Entschlüsseler"
+            android:text="@string/bob"
             android:textAlignment="center"
             android:textSize="24sp" />
 
@@ -51,14 +51,14 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:text=" Nachricht einlesen" />
+                android:text="@string/read_msg" />
 
             <Button
                 android:id="@+id/activity_bob_button_readKey"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|center_vertical"
-                android:text="Schlüssel einlesen" />
+                android:text="@string/read_key" />
         </LinearLayout>
 
         <TextView
