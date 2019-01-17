@@ -1,6 +1,5 @@
 package edu.kit.nfcrypto.keys;
 
-import edu.kit.nfcrypto.data.Mode;
 import edu.kit.nfcrypto.exceptions.KeyFormatException;
 
 import static edu.kit.nfcrypto.data.Mode.VIG;
@@ -8,13 +7,13 @@ import static edu.kit.nfcrypto.data.Mode.VIG;
 
 public class VigenereKey extends Key {
     private char keyData[];
-    private Mode mode = VIG;
 
     public VigenereKey(String keyDataString) {
+        super(VIG,keyDataString);
         try {
             keyData = keyDataString.toCharArray();
         } catch (NumberFormatException e) {
-            throw new KeyFormatException();
+            throw new KeyFormatException("CharArray needed instead of " + keyDataString + ".");
         }
     }
 
@@ -64,10 +63,4 @@ public class VigenereKey extends Key {
 
         return String.valueOf(decryptedMsg);
     }
-
-    public String getKeyDataString() {
-        return String.valueOf(keyData);
-    }
-
-
 }

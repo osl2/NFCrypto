@@ -1,26 +1,25 @@
 package edu.kit.nfcrypto.keys;
 
-import edu.kit.nfcrypto.data.Mode;
 import edu.kit.nfcrypto.exceptions.KeyFormatException;
 
 import static edu.kit.nfcrypto.data.Mode.CES;
 
 public class CesarKey extends Key {
     private int keyData;
-    private Mode mode = CES;
     private String letterRegEx = "[A-Z]";
 
     public CesarKey(String keyDataString) throws  KeyFormatException{
+        super(CES,keyDataString);
         try {
             keyData = Integer.valueOf(keyDataString);
         } catch (NumberFormatException e) {
-            throw new KeyFormatException();
+            throw new KeyFormatException("Integer needed instead of " + keyDataString + ".");
         }
     }
 
     public CesarKey() {
+        super(CES);
         keyData = (int) (Math.random() * 25 + 1);
-
     }
 
     @Override
@@ -63,10 +62,6 @@ public class CesarKey extends Key {
         }
 
         return decryptedMessage;
-    }
-
-    public String getKeyDataString() {
-        return String.valueOf(keyData);
     }
 
 

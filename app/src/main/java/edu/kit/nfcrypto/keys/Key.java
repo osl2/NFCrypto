@@ -1,15 +1,28 @@
 package edu.kit.nfcrypto.keys;
 
 import edu.kit.nfcrypto.data.Mode;
-import edu.kit.nfcrypto.exceptions.KeyFormatException;
+import edu.kit.nfcrypto.exceptions.WrongIdentifierException;
 
 public abstract class Key {
     private Mode mode;
+    private String keyDataString;
 
+    public Key(Mode mode) {
+        this.mode = mode;
+    }
 
-    public abstract String encrypt(String text) throws Exception;
+    public Key(Mode mode, String keyDataString) {
+        this(mode);
+        setKeyDataString(keyDataString);
+    }
 
-    public abstract String decrypt(String text) throws Exception;
+    protected void setKeyDataString(String keyDataString) {
+        this.keyDataString = keyDataString;
+    }
+
+    public abstract String encrypt(String text);
+
+    public abstract String decrypt(String text);
 
     /**
      * encode,decodeKey sind bijektiv
@@ -18,10 +31,8 @@ public abstract class Key {
      * @return einen String, abhängig von Key, also fertig für NFC
      */
     public String encodeKey() {
-        return "KEY" + getMode().toString() + getKeyDataString();
+        return "KEY" + getMode().toString() + keyDataString;
     };
-
-    public abstract String getKeyDataString();
 
 
     /**
@@ -30,19 +41,13 @@ public abstract class Key {
      * Der Datentyp
      */
 
-    public static Key decodeKey(String keyString) throws KeyFormatException
+    public static Key decodeKey(String keyString)
     {
         String[] splitKeyString = {keyString.substring(0,2), keyString.substring(3,5), keyString.substring(6)};
         if(!splitKeyString[0].equals("KEY")){
-            //TODO Fehlermeldung? Weil kein Schlüssel?
+            throw new WrongIdentifierException("Identifier 'KEY' needed instead of " + splitKeyString[0] + ".");
         }
-        switch(splitKeyString[1]) {
-            case "PLA": return new PlainKey();
-            case "CES": return new CesarKey(splitKeyString[2]);
-            case "VIG": return new VigenereKey(splitKeyString[2]);
-            case "AES": return new AESKey(splitKeyString[2]);
-            default: return null; //TODO Fehlermeldung? Weil kein gültiger Modus?
-        }
+        return Mode.createKey(splitKeyString[1], splitKeyString[2]);
     }
 
 
