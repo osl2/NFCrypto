@@ -19,6 +19,9 @@ public class Message {
         this.encryptedText = encryptedText;
     }
 
+    public void setPlaintext(String plaintext) {
+        this.plaintext = plaintext;
+    }
 
     public String getEncryptedText() {
         return encryptedText;

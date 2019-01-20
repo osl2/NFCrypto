@@ -87,11 +87,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginBottom="36dp"
-        android:clickable="true"
-        android:src="@android:drawable/ic_lock_idle_lock"
-        app:backgroundTint="@color/colorAccent"
-        app:elevation="0dp" />
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="36dp"
+            android:clickable="true"
+            android:src="@android:drawable/ic_lock_idle_lock"
+            app:backgroundTint="@color/colorAccent"
+            app:elevation="0dp" />
     </LinearLayout> <!-- Der Butten muss über das darüberliegende Textfenster-->
 </RelativeLayout>
