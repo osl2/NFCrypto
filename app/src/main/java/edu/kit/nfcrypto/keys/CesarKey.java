@@ -22,6 +22,10 @@ public class CesarKey extends Key {
         keyData = (int) (Math.random() * 25 + 1);
     }
 
+    public CesarKey(int keyData){
+        this.keyData = keyData;
+    }
+
     @Override
     public String encrypt(String text) {
         String encryptedMessage = "";

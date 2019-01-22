@@ -61,6 +61,14 @@ public class ActivityAlice extends ActivityBase {
             }
         });
 
+        final FloatingActionButton buttonNFCWrite = findViewById(R.id.activity_alice_button_nfcWrite);
+        buttonNFCWrite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityAlice.this.startActivity(new Intent(ActivityAlice.this, ActivityNFCWrite.class));
+            }
+        });
+
         final EditText inputText = findViewById(R.id.activity_alice_text_message);
         inputText.addTextChangedListener(new TextWatcher() {
             @Override

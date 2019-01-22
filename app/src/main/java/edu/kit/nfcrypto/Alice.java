@@ -10,7 +10,8 @@ import edu.kit.nfcrypto.keys.PlainKey;
 import edu.kit.nfcrypto.keys.VigenereKey;
 
 public class Alice {
-    Message currentMessage = null;
+    private Message currentMessage = null;
+    Key key;
 
     /**
      *
@@ -19,13 +20,12 @@ public class Alice {
      * @param cesarDetails wenn Cesardetails != 0, sonst 0
      */
     public void alicePreview(String text, Mode mode, int cesarDetails, ActivityAlice activity){
-        Key key = null;
         switch (mode){
             case PLA:
                 key = new PlainKey();
                 break;
             case CES:
-                key = new CesarKey(""+cesarDetails);
+                key = new CesarKey();
                 break;
             case VIG:
                 key = new VigenereKey();
@@ -36,7 +36,7 @@ public class Alice {
         }
         currentMessage = new Message(text, key.encrypt(text), mode);
 
-        activity.setTextView(key.encrypt(text)); //Sollte den TextView in AliceActivity umsetzen
+        activity.setTextView(currentMessage.getEncryptedText()); //Sollte den TextView in AliceActivity umsetzen
     }
 
 

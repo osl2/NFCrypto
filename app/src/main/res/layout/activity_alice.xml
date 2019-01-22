@@ -82,6 +82,12 @@
             android:text="TextView"
             tools:layout_height="180dp" />
 
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/activity_alice_button_encrypt"
             android:layout_width="wrap_content"
@@ -93,5 +99,18 @@
             android:src="@android:drawable/ic_lock_idle_lock"
             app:backgroundTint="@color/colorAccent"
             app:elevation="0dp" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/activity_alice_button_nfcWrite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="36dp"
+            android:clickable="true"
+            app:backgroundTint="@color/colorAccent"
+            app:elevation="0dp" />
+    </LinearLayout>
+
+
     </LinearLayout> <!-- Der Butten muss über das darüberliegende Textfenster-->
 </RelativeLayout>
