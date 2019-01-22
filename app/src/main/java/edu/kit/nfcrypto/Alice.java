@@ -25,7 +25,7 @@ public class Alice {
                 key = new PlainKey();
                 break;
             case CES:
-                key = new CesarKey();
+                key = new CesarKey(""+cesarDetails);
                 break;
             case VIG:
                 key = new VigenereKey();

@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -18,6 +19,11 @@ import edu.kit.nfcrypto.User;
 import edu.kit.nfcrypto.data.Mode;
 import edu.kit.nfcrypto.exceptions.InputFormatException;
 
+import static edu.kit.nfcrypto.data.Mode.AES;
+import static edu.kit.nfcrypto.data.Mode.CES;
+import static edu.kit.nfcrypto.data.Mode.PLA;
+import static edu.kit.nfcrypto.data.Mode.VIG;
+
 
 public class ActivityAlice extends ActivityBase {
 
@@ -25,9 +31,9 @@ public class ActivityAlice extends ActivityBase {
     Alice alice = new Alice();
     String messageString = null;
     Mode mode = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
 
         super.onCreate(savedInstanceState);
@@ -51,7 +57,7 @@ public class ActivityAlice extends ActivityBase {
         buttonEncrypt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onTextUpdate(messageString,mode);
+                onTextUpdate(messageString, mode);
             }
         });
 
@@ -70,23 +76,41 @@ public class ActivityAlice extends ActivityBase {
 
             @Override
             public void afterTextChanged(Editable s) {
-                try{
-                    messageString  = inputText.getText().toString();
+                try {
+                    messageString = inputText.getText().toString();
                     User.checkMessage(messageString);
 
-                }catch (InputFormatException e){
+                } catch (InputFormatException e) {
                     //TODO Fehlermeldung
                 }
 
             }
         });
 
-        final Spinner modeSpinner  = findViewById(R.id.activity_alice_spinner);
-        modeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+        final Spinner modeSpinner = findViewById(R.id.activity_alice_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.mode_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        modeSpinner.setAdapter(adapter);
+        modeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //TODO mode setzen, wie funktionieren Spinner?
+                switch (position) {
+                    case 0:
+                        mode = PLA;
+                        break;
+                    case 1:
+                        mode = CES;
+                        break;
+                    case 2:
+                        mode = VIG;
+                        break;
+                    case 3:
+                        mode = AES;
+                        break;
+
+                }
 
             }
 
@@ -99,23 +123,16 @@ public class ActivityAlice extends ActivityBase {
         //TODO Button zum Schreiben der Nachricht/Schlüssel
     }
 
-    private void onTextUpdate(String messageString, Mode mode){
+    private void onTextUpdate(String messageString, Mode mode) {
 
-        if(this.mode != null && this.messageString != null) {
-            if (mode == Mode.CES) {
-
-                alice.alicePreview(messageString, mode, getCesarDetails(), this); //TODO aus der Encryptdetails activity
-
-
-            } else {
-                alice.alicePreview(messageString, mode, 0, this);
-            }
+        if (this.mode != null && this.messageString != null) {
+            alice.alicePreview(messageString, mode, 3, this); //TODO aus der Encryptdetails activity
         } else {
             //TODO Fehlermeldung
         }
     }
 
-    public void setTextView(String encrypted){
+    public void setTextView(String encrypted) {
         final TextView textView = findViewById(R.id.activity_alice_text_crypted);
         textView.setText(encrypted);
 

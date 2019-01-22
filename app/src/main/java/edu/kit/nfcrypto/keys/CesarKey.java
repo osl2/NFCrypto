@@ -26,7 +26,6 @@ public class CesarKey extends Key {
     public String encrypt(String text) {
         String encryptedMessage = "";
         char ch;
-        String st;
 
         for (int i = 0; i < text.length(); ++i) {
             ch = text.charAt(i);

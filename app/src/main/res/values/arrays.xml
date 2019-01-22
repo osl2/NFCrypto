@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string-array name="mode_array">
+        <item>@string/plaintext</item>
+        <item>@string/cesar</item>
+        <item>@string/vigenere</item>
+        <item>@string/aes</item>
+    </string-array>
+</resources>

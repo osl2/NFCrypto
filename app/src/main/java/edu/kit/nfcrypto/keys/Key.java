@@ -16,6 +16,12 @@ public abstract class Key {
         setKeyDataString(keyDataString);
     }
 
+    public Key(){};
+
+    public String addSuffix(String crypted){
+        return crypted+encrypt("ENTSCHLUESSELT");
+    }
+
     protected void setKeyDataString(String keyDataString) {
         this.keyDataString = keyDataString;
     }

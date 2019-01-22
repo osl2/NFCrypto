@@ -12,4 +12,10 @@
     <string name="read_key">Schlüssel einlesen</string>
 
 
+    <string name="plaintext">Klartext</string>
+    <string name="cesar">Cesar</string>
+    <string name="vigenere">Minikey</string>
+    <string name="aes">AES</string>
+
+
 </resources>

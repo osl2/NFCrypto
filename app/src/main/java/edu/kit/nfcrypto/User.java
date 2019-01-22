@@ -28,10 +28,7 @@ public final class User {
     public static void checkMessage(String message) throws InputFormatException {
         //TODO soll den Eingabe Text checken ob alles okay ist, wenn nicht throw Exception
     }
-
-    public static void collectData(){
-        Message
-    }
+    
 
     //Preview Funktionen
 
