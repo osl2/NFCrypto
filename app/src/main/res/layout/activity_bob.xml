@@ -10,20 +10,27 @@
     android:orientation="vertical"
     android:padding="@dimen/margin_screen">
 
-    <TextView
-        android:id="@+id/activity_bob_text_plainmessage"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:minHeight="@dimen/height_min_textbox_halfscreen"
-        android:text="@string/empty_text_encoded"
-        android:textSize="14sp" />
+        android:layout_height="@dimen/height_min_textbox_halfscreen"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/activity_bob_text_plainmessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/height_min_textbox_halfscreen"
+            android:text="@string/empty_text_encoded"
+            android:textAppearance="@style/font_msg_default" />
+    </ScrollView>
 
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_distance"
+        android:layout_marginBottom="@dimen/margin_distance"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -60,13 +67,18 @@
     </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/activity_bob_text_messagecrypted"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/margin_distance"
-        android:layout_weight="1"
-        android:minHeight="@dimen/height_min_textbox_halfscreen"
-        android:text="@string/empty_text_decoded" />
+        android:layout_height="@dimen/height_min_textbox_halfscreen"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/activity_bob_text_messagecrypted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/height_min_textbox_halfscreen"
+            android:text="@string/empty_text_decoded"
+            android:textAppearance="@style/font_msg_default" />
+    </ScrollView>
 
 </LinearLayout>
