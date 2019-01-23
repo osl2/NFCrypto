@@ -25,8 +25,7 @@
             android:name=".activities.ActivityAlice"
             android:label="Alice" />
         <activity android:name=".activities.ActivityBob" />
-        <activity android:name=".activities.ActivityCryptotools" />
-        <activity android:name=".activities.ActivityDecryptDetails" />
+        <activity android:name=".activities.ActivityCryptotoolsCesar" />
         <activity android:name=".activities.ActivityEncryptDetails" />
         <activity android:name=".activities.ActivityEve" />
         <activity android:name=".activities.ActivityInfo" />
