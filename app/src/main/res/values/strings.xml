@@ -2,14 +2,31 @@
     <string name="app_name">NFCrypto</string>
 
     <!-- Hier können jetzt alle Strings eingetragen werden -->
-    <string name="welcome">Willkommen!</string>
     <string name="alice">Alice</string>
     <string name="bob">Bob</string>
     <string name="eve">Eve</string>
-    <string name="info1">Infotext...</string>
     <string name="info2">zweiter Infotext...</string>
     <string name="read_msg">Nachricht einlesen</string>
     <string name="read_key">Schlüssel einlesen</string>
+
+    <!-- Allgemeine Strings -->
+    <string name="empty_text_encoded">Die verschlüsselte Nachricht wird hier angezeigt.</string>
+    <string name="empty_text_decoded">Die entschlüsselte Nachricht wird hier angezeigt.</string>
+    <string name="empty_text_enter_msg">Gib eine Nachricht ein.</string>
+
+    <!-- Beschreibungen in activity_welcome -->
+    <string name="welcome_welcome">Willkommen!</string>
+    <string name="welcome_task">Infotext...\n\nWie möchtest du die App verwenden?</string>
+    <string name="welcome_guided">Im Unterricht</string>
+    <string name="welcome_unguided">Alleine</string>
+
+
+    <!-- Beschreibungen in activity_persons -->
+    <string name="persons_task">Wähle eine Rolle.</string>
+    <string name="persons_alice">Alice schreibt</string>
+    <string name="persons_bob">Bob liest</string>
+    <string name="persons_eve">Eve lauscht</string>
+    <string name="persons_info"></string>
 
 
     <string name="plaintext">Klartext</string>
