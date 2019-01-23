@@ -37,7 +37,7 @@
             android:layout_marginLeft="30dp"
             android:clickable="true"
             android:src="@android:drawable/ic_lock_idle_lock"
-            app:backgroundTint="@color/design_default_color_primary" />
+            app:backgroundTint="@color/colorEve" />
 
         <Button
             android:id="@+id/activity_eve_button_readMessage"

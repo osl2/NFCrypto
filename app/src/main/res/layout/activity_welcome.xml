@@ -4,63 +4,85 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/Activity_welcome_text_info"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Activity_welcome_text_welcome"
+        android:layout_marginTop="55dp"
+        android:text="@string/welcome_task"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/Activity_welcome_text_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_marginTop="64dp"
+        android:text="@string/welcome_welcome"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/Activity_welcome_text_info"
+        android:layout_alignEnd="@+id/Activity_welcome_text_info"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/activity_welcome_button_guided"
+            android:layout_width="129dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:clickable="true"
+            app:backgroundTint="@color/colorPrimaryDark"
+            app:fabCustomSize="60dp"
+            app:srcCompat="@android:drawable/ic_media_play" />
 
         <TextView
-            android:id="@+id/Activity_welcome_text_welcome"
-            android:layout_width="match_parent"
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/welcome"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/colorPrimary"
-            android:textSize="36sp"
-            android:textStyle="bold" />
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:text="@string/welcome_guided" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/Activity_welcome_text_info"
-            android:layout_width="match_parent"
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
-            android:text="@string/info1"
-            android:textAlignment="center"
-            android:textSize="18sp" />
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:text="@string/welcome_unguided"
+            android:textAlignment="textEnd" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/activity_welcome_button_guided"
-                app:backgroundTint="@color/colorPrimaryDark"
-                app:fabCustomSize="60dp"
-                app:srcCompat="@android:drawable/ic_media_play"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|left"
-                android:layout_marginLeft="20dp"
-                android:clickable="true" />
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/Activity_welcome_button_unguided"
-                app:backgroundTint="@color/colorPrimaryDark"
-                app:fabCustomSize="60dp"
-                app:srcCompat="@android:drawable/ic_media_play"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:layout_marginLeft="200dp"
-                android:clickable="true" />
-
-        </LinearLayout>
-
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/Activity_welcome_button_unguided"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:clickable="true"
+            app:backgroundTint="@color/colorPrimaryDark"
+            app:fabCustomSize="60dp"
+            app:srcCompat="@android:drawable/ic_media_play" />
 
     </LinearLayout>
+
 </RelativeLayout>
