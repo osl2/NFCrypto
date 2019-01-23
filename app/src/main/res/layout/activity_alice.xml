@@ -103,7 +103,10 @@
         app:backgroundTint="@color/colorAlice"
         app:elevation="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/activity_alice_button_encrypt"
-        app:layout_constraintEnd_toEndOf="@+id/activity_alice_button_details" />
+        app:layout_constraintEnd_toEndOf="@+id/activity_alice_button_details"
+        android:src="@android:drawable/ic_menu_send" />
+
+
 
 
     <!-- Der Butten muss über das darüberliegende Textfenster-->
