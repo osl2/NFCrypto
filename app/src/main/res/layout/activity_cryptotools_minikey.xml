@@ -4,11 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ActivityCryptotoolsCesar">
+    tools:context=".activities.ActivityCryptotoolsMinikey">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:orientation="vertical"
+        android:padding="8dp">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cryptotools" />
+        <TextView
+            android:id="@+id/activity_cryptotools_minikey_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Minikey Entschlüsselungstool"
+            android:textSize="24sp"
+            tools:layout_height="60dp" />
+
+        <TextView
+            android:id="@+id/activity_cryptotools_minikey_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="du glaubst das der Text mit einem Minikey verschlüsselt wurde, dann stell doch mal die 6 Buchstaben ein, die deiner meinung nach der Schlüssel sind."
+            tools:layout_height="120dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/activity_cryptotools_minikey_spinner1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp" />
+
+            <Spinner
+                android:id="@+id/activity_cryptotools_minikey_spinner2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp" />
+
+            <Spinner
+                android:id="@+id/activity_cryptotools_minikey_spinner3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp" />
+
+            <Spinner
+                android:id="@+id/activity_cryptotools_minikey_spinner4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp" />
+
+            <Spinner
+                android:id="@+id/activity_cryptotools_minikey_spinner5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp" />
+
+            <Spinner
+                android:id="@+id/activity_cryptotools_minikey_spinner6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" />
+
+            <Button
+                android:id="@+id/activity_cryptotools_minikey_butten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Entschlüsseln" />
+        </LinearLayout>
+
+    </LinearLayout>
 </RelativeLayout>
