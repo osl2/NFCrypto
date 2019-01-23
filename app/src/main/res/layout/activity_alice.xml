@@ -1,116 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
 
-        <TextView
-            android:id="@+id/activity_alice_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/alice"
-            android:textAlignment="center"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/activity_alice_text_message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:inputType="textMultiLine"
-            tools:layout_height="180dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/activity_alice_button_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="30dp"
-                android:clickable="true"
-                android:src="@android:drawable/ic_menu_help"
-                app:backgroundTint="@color/colorAccent" />
-
-            <Spinner
-                android:id="@+id/activity_alice_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="false"
-                android:layout_centerInParent="true"
-                tools:layout_height="40dp"
-                tools:layout_width="185dp" />
-
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/activity_alice_button_details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="30dp"
-                android:clickable="true"
-                android:src="@android:drawable/ic_menu_manage"
-                android:textAlignment="center"
-                app:backgroundTint="@color/colorAccent"
-                app:elevation="0dp" />
-
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/activity_alice_text_crypted"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="TextView"
-            tools:layout_height="180dp" />
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/activity_alice_title"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/activity_alice_button_encrypt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginBottom="36dp"
-            android:clickable="true"
-            android:src="@android:drawable/ic_lock_idle_lock"
-            app:backgroundTint="@color/colorAccent"
-            app:elevation="0dp" />
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/activity_alice_button_nfcWrite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginBottom="36dp"
-            android:clickable="true"
-            app:backgroundTint="@color/colorAccent"
-            app:elevation="0dp" />
-    </LinearLayout>
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/alice"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/activity_alice_text_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:maxLines="8"
+        android:minLines="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_alice_title" />
 
 
-    </LinearLayout> <!-- Der Butten muss über das darüberliegende Textfenster-->
-</RelativeLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_alice_button_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_menu_help"
+        app:backgroundTint="@color/colorAccent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_alice_text_message" />
+
+    <Spinner
+        android:id="@+id/activity_alice_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_alice_button_info"
+        app:layout_constraintEnd_toStartOf="@+id/activity_alice_button_details"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/activity_alice_button_info"
+        app:layout_constraintTop_toTopOf="@+id/activity_alice_button_info"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_height="40dp"
+        tools:layout_width="185dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_alice_button_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_menu_manage"
+        android:textAlignment="center"
+        app:backgroundTint="@color/colorAccent"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_alice_button_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/activity_alice_button_info" />
+
+
+    <TextView
+        android:id="@+id/activity_alice_text_crypted"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:maxLines="8"
+        android:minLines="3"
+        android:text="@string/encoded_text_empty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_alice_button_info" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_alice_button_encrypt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_lock_idle_lock"
+        app:backgroundTint="@color/colorAccent"
+        app:elevation="0dp"
+        app:layout_constraintStart_toStartOf="@+id/activity_alice_button_info"
+        app:layout_constraintTop_toBottomOf="@+id/activity_alice_text_crypted" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_alice_button_nfcWrite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        app:backgroundTint="@color/colorAccent"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_alice_button_encrypt"
+        app:layout_constraintEnd_toEndOf="@+id/activity_alice_button_details" />
+
+
+    <!-- Der Butten muss über das darüberliegende Textfenster-->
+</android.support.constraint.ConstraintLayout>

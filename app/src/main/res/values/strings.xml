@@ -10,6 +10,7 @@
     <string name="info2">zweiter Infotext...</string>
     <string name="read_msg">Nachricht einlesen</string>
     <string name="read_key">Schlüssel einlesen</string>
+    <string name="encoded_text_empty">Die verschlüsselte Nachricht wird hier angezeigt.</string>
 
 
     <string name="plaintext">Klartext</string>
