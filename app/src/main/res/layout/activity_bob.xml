@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="fill_vertical"
+    android:gravity="center_vertical|fill_vertical"
+    android:orientation="vertical"
     android:padding="@dimen/margin_screen">
 
     <TextView
         android:id="@+id/activity_bob_text_plainmessage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center_vertical"
-        android:minHeight="@dimen/height_min_textbox"
-        android:text="@string/empty_text_encoded" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:minHeight="@dimen/height_min_textbox_halfscreen"
+        android:text="@string/empty_text_encoded"
+        android:textSize="14sp" />
+
 
     <LinearLayout
-        android:id="@+id/activity_bob_control"
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="false"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/activity_bob_button_decrypt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
             android:clickable="true"
+            android:focusable="true"
             android:src="@android:drawable/ic_lock_idle_lock"
             app:backgroundTint="@color/colorBob" />
 
@@ -40,11 +42,10 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/activity_bob_button_readMessage"
-            android:layout_width="120dp"
+            android:id="@+id/activity_bob_button_readKey"
+            android:layout_width="@dimen/width_button_default"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/read_msg" />
+            android:text="@string/read_key" />
 
         <Space
             android:layout_width="wrap_content"
@@ -52,22 +53,20 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/activity_bob_button_readKey"
-            android:layout_width="120dp"
+            android:id="@+id/activity_bob_button_readMessage"
+            android:layout_width="@dimen/width_button_default"
             android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:text="@string/read_key" />
+            android:text="@string/read_msg" />
     </LinearLayout>
+
 
     <TextView
         android:id="@+id/activity_bob_text_messagecrypted"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/activity_bob_control"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="bottom"
+        android:layout_height="match_parent"
         android:layout_marginTop="@dimen/margin_distance"
-        android:minHeight="@dimen/height_min_textbox"
+        android:layout_weight="1"
+        android:minHeight="@dimen/height_min_textbox_halfscreen"
         android:text="@string/empty_text_decoded" />
 
-</RelativeLayout>
+</LinearLayout>
