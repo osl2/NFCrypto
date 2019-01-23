@@ -2,78 +2,72 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin_screen">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/activity_bob_text_plainmessage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_gravity="center_vertical"
+        android:minHeight="@dimen/height_min_textbox"
+        android:text="@string/empty_text_encoded" />
 
-        <TextView
-            android:id="@+id/activity_bob_title"
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/activity_bob_control"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="false"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/activity_bob_button_decrypt"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bob"
-            android:textAlignment="center"
-            android:textSize="24sp" />
+            android:layout_gravity="center_vertical"
+            android:clickable="true"
+            android:src="@android:drawable/ic_lock_idle_lock"
+            app:backgroundTint="@color/colorBob" />
 
-        <TextView
-            android:id="@+id/activity_bob_text_plainmessage"
-            android:layout_width="match_parent"
+        <Space
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginTop="8dp"
-            android:text="TextView"
-            tools:layout_height="200dp" />
+            android:layout_weight="1" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/activity_bob_button_readMessage"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:orientation="horizontal"
-            tools:layout_height="60dp">
+            android:layout_gravity="center_vertical"
+            android:text="@string/read_msg" />
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/activity_bob_button_decrypt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:clickable="true"
-                android:src="@android:drawable/ic_lock_idle_lock"
-                app:backgroundTint="@color/colorBob" />
-
-            <Button
-                android:id="@+id/activity_bob_button_readMessage"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:text="@string/read_msg" />
-
-            <Button
-                android:id="@+id/activity_bob_button_readKey"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right|center_vertical"
-                android:text="@string/read_key" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/activity_bob_text_messagecrypted"
-            android:layout_width="match_parent"
+        <Space
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:elevation="3dp"
-            android:text="TextView"
-            tools:layout_height="200dp" />
+            android:layout_weight="1" />
 
-
-
-
+        <Button
+            android:id="@+id/activity_bob_button_readKey"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:text="@string/read_key" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/activity_bob_text_messagecrypted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_bob_control"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="@dimen/margin_distance"
+        android:minHeight="@dimen/height_min_textbox"
+        android:text="@string/empty_text_decoded" />
+
 </RelativeLayout>

@@ -8,7 +8,8 @@
     <string name="info2">zweiter Infotext...</string>
     <string name="read_msg">Nachricht einlesen</string>
     <string name="read_key">Schlüssel einlesen</string>
-    <string name="encoded_text_empty">Die verschlüsselte Nachricht wird hier angezeigt.</string>
+    <string name="empty_text_encoded">Die verschlüsselte Nachricht wird hier angezeigt.</string>
+    <string name="empty_text_decoded">Die entschlüsselte Nachricht wird hier angezeigt.</string>
 
     <!-- Beschreibungen in activity_welcome -->
     <string name="welcome_welcome">Willkommen!</string>

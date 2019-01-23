@@ -1,106 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin_screen">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/activity_person_text_intro"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:minHeight="@dimen/height_min_textbox"
+        android:text="@string/persons_task" />
 
-        <TextView
-            android:id="@+id/activity_person_text_intro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="100dp"
-            android:text="@string/persons_task" />
+    <TableLayout
+        android:id="@+id/activity_person_overview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_person_text_intro"
+        android:layout_marginTop="@dimen/margin_distance">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/activity_persons_button_alice"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:backgroundTint="@color/colorAlice"
-                    android:text="@string/alice"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/activity_persons_text_alice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/persons_alice" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/activity_persons_button_bob"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:backgroundTint="@color/colorBob"
-                    android:text="@string/bob"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/activity_persons_text_bob"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/persons_bob" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/activity_persons_button_eve"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:backgroundTint="@color/colorEve"
-                    android:text="@string/eve"
-                    android:textColor="@android:color/background_light"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/activity_persons_text_eve"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/persons_eve" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/activity_person_text_info"
+        <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="bottom"
-            android:text="TextView" />
+            android:layout_alignStart="@+id/activity_person_overview">
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/activity_persons_button_alice"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:backgroundTint="@color/colorAlice"
+                android:text="@string/alice"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/activity_persons_text_alice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/persons_alice" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignStart="@+id/activity_person_overview">
+
+            <Button
+                android:id="@+id/activity_persons_button_eve"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:backgroundTint="@color/colorEve"
+                android:text="@string/eve"
+                android:textColor="@android:color/background_light"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/activity_persons_text_eve"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/persons_eve" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/activity_persons_button_bob"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:backgroundTint="@color/colorBob"
+                android:text="@string/bob"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/activity_persons_text_bob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/persons_bob" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/activity_person_text_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_person_overview"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="@dimen/margin_distance"
+        android:minHeight="@dimen/height_min_textbox"
+        android:text="TextView" />
 
 </RelativeLayout>
