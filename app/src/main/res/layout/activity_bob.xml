@@ -19,7 +19,6 @@
             android:id="@+id/activity_bob_text_plainmessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="@dimen/height_min_textbox_halfscreen"
             android:text="@string/empty_text_encoded"
             android:textAppearance="@style/font_msg_default" />
     </ScrollView>
@@ -76,7 +75,6 @@
             android:id="@+id/activity_bob_text_messagecrypted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="@dimen/height_min_textbox_halfscreen"
             android:text="@string/empty_text_decoded"
             android:textAppearance="@style/font_msg_default" />
     </ScrollView>

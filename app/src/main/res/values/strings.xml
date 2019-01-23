@@ -26,6 +26,7 @@
     <string name="persons_alice">Alice schreibt</string>
     <string name="persons_bob">Bob liest</string>
     <string name="persons_eve">Eve lauscht</string>
+    <string name="persons_info"></string>
 
 
     <string name="plaintext">Klartext</string>

@@ -12,7 +12,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:minHeight="@dimen/height_min_textbox"
-        android:text="@string/persons_task" />
+        android:text="@string/persons_task"
+        android:textAppearance="@style/font_explanation_default"/>
 
     <TableLayout
         android:id="@+id/activity_person_overview"
@@ -40,7 +41,8 @@
                 android:id="@+id/activity_persons_text_alice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/persons_alice" />
+                android:text="@string/persons_alice"
+                android:textAppearance="@style/font_explanation_default"/>
         </TableRow>
 
         <TableRow
@@ -63,7 +65,8 @@
                 android:id="@+id/activity_persons_text_eve"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/persons_eve" />
+                android:text="@string/persons_eve"
+                android:textAppearance="@style/font_explanation_default"/>
         </TableRow>
 
         <TableRow
@@ -84,7 +87,8 @@
                 android:id="@+id/activity_persons_text_bob"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/persons_bob" />
+                android:text="@string/persons_bob"
+                android:textAppearance="@style/font_explanation_default"/>
 
         </TableRow>
 
@@ -99,6 +103,7 @@
         android:layout_gravity="bottom"
         android:layout_marginTop="@dimen/margin_distance"
         android:minHeight="@dimen/height_min_textbox"
-        android:text="TextView" />
+        android:text="@string/persons_info"
+        android:textAppearance="@style/font_explanation_default" />
 
 </RelativeLayout>

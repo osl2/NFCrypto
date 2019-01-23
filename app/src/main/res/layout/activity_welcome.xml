@@ -5,16 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/Activity_welcome_text_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Activity_welcome_text_welcome"
-        android:layout_marginTop="55dp"
-        android:text="@string/welcome_task"
-        android:textAlignment="center"
-        android:textSize="18sp" />
-
-    <TextView
         android:id="@+id/Activity_welcome_text_welcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,11 +12,18 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="64dp"
         android:text="@string/welcome_welcome"
+        android:textAppearance="@style/font_title"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/Activity_welcome_text_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Activity_welcome_text_welcome"
+        android:layout_marginTop="55dp"
+        android:text="@string/welcome_task"
         android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/colorPrimary"
-        android:textSize="36sp"
-        android:textStyle="bold" />
+        android:textAppearance="@style/font_explanation_default" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -57,7 +54,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_weight="1"
-            android:text="@string/welcome_guided" />
+            android:text="@string/welcome_guided"
+            android:textAppearance="@style/font_explanation_default" />
 
         <Space
             android:layout_width="wrap_content"
@@ -71,7 +69,8 @@
             android:layout_marginRight="8dp"
             android:layout_weight="1"
             android:text="@string/welcome_unguided"
-            android:textAlignment="textEnd" />
+            android:textAlignment="textEnd"
+            android:textAppearance="@style/font_explanation_default" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/Activity_welcome_button_unguided"
