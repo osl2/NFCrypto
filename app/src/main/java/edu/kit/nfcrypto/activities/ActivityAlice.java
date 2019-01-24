@@ -24,6 +24,9 @@ import static edu.kit.nfcrypto.data.Mode.CES;
 import static edu.kit.nfcrypto.data.Mode.PLA;
 import static edu.kit.nfcrypto.data.Mode.VIG;
 
+import android.text.InputFilter;
+import android.text.Spanned;
+
 
 public class ActivityAlice extends ActivityBase {
 
@@ -31,6 +34,8 @@ public class ActivityAlice extends ActivityBase {
     Alice alice = new Alice();
     String messageString = null;
     Mode mode = null;
+
+    private static String FORBIDDEN_CHARS = "[^A-Z0-9 ,.?!():;#*\\-]"; //Negation (^) der erlaubten Zeichen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +132,21 @@ public class ActivityAlice extends ActivityBase {
 
             }
         });
+
+        //InputFilter um nur bestimmte Buchstaben zuzulassen
+        InputFilter filter = new InputFilter() {
+            public CharSequence filter(CharSequence source, int start, int end,
+                                       Spanned dest, int dstart, int dend) {
+                String sourceString = source.toString();
+                sourceString = sourceString.toUpperCase();
+                sourceString = sourceString.replaceAll("Ä","AE");
+                sourceString = sourceString.replaceAll("Ö","OE");
+                sourceString = sourceString.replaceAll("Ü","UE");
+                sourceString = sourceString.replaceAll(FORBIDDEN_CHARS,"");
+                return sourceString;
+            }
+        };
+        inputText.setFilters(new InputFilter[] { filter });
 
         //TODO Button zum Schreiben der Nachricht/Schlüssel
     }
