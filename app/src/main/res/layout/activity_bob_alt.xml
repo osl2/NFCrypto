@@ -7,7 +7,7 @@
     tools:context=".activities.ActivityBob">
 
     <TextView
-        android:id="@+id/activity_bob_text_plainmessage"
+        android:id="@+id/activity_bob_text_encrypted"
         android:layout_width="match_parent"
         android:layout_height="230dp"
         android:layout_gravity="bottom"
@@ -17,7 +17,7 @@
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/activity_bob_text_messagecrypted"
+        android:id="@+id/activity_bob_text_decrypted"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="top"

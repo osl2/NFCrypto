@@ -51,7 +51,7 @@
         android:inputType="textMultiLine" />
 
     <TextView
-        android:id="@+id/activity_alice_text_crypted"
+        android:id="@+id/activity_alice_text_encrypted"
         android:layout_width="match_parent"
         android:layout_height="230dp"
         android:layout_alignParentBottom="true"

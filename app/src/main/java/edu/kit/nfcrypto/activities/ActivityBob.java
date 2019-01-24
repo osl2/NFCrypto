@@ -49,13 +49,13 @@ public class ActivityBob extends ActivityBase {
     }
 
     public void setTextViewInput(String inputNFCTag) {
-        final TextView textView = findViewById(R.id.activity_bob_text_messagecrypted);
+        final TextView textView = findViewById(R.id.activity_bob_text_decrypted);
         textView.setText(inputNFCTag);
 
     }
 
     public void setTextViewDecrypted(String decrypted) {
-        final TextView textView = findViewById(R.id.activity_bob_text_plainmessage);
+        final TextView textView = findViewById(R.id.activity_bob_text_encrypted);
         textView.setText(decrypted);
 
     }

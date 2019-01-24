@@ -2,7 +2,6 @@ package edu.kit.nfcrypto.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -161,7 +160,7 @@ public class ActivityAlice extends ActivityBase {
     }
 
     public void setTextView(String encrypted) {
-        final TextView textView = findViewById(R.id.activity_alice_text_crypted);
+        final TextView textView = findViewById(R.id.activity_alice_text_encrypted);
         textView.setText(encrypted);
 
     }
