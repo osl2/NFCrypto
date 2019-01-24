@@ -13,10 +13,10 @@
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/activity_eve_text_encrypted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/empty_text_encoded"
+            android:text="@string/empty_text_encrypted"
             android:textAppearance="@style/font_msg_default"
             tools:layout_height="200dp" />
     </ScrollView>
@@ -40,8 +40,8 @@
             app:backgroundTint="@color/colorEve" />
 
         <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0pt"
+            android:layout_height="match_parent"
             android:layout_weight="1" />
 
         <Button
@@ -59,10 +59,10 @@
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/activity_eve_text_decrypted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/empty_text_decoded"
+            android:text="@string/empty_text_decrypted"
             android:textAppearance="@style/font_msg_default"
             tools:layout_height="200dp" />
     </ScrollView>

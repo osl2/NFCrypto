@@ -10,8 +10,8 @@
     <string name="read_key">Schlüssel einlesen</string>
 
     <!-- Allgemeine Strings -->
-    <string name="empty_text_encoded">Die verschlüsselte Nachricht wird hier angezeigt.</string>
-    <string name="empty_text_decoded">Die entschlüsselte Nachricht wird hier angezeigt.</string>
+    <string name="empty_text_encrypted">Die verschlüsselte Nachricht wird hier angezeigt.</string>
+    <string name="empty_text_decrypted">Die entschlüsselte Nachricht wird hier angezeigt.</string>
     <string name="empty_text_enter_msg">Gib eine Nachricht ein.</string>
     <string name="empty_text_TODO">Hier kreativ werden!</string> <!-- Platzhalter -->
 

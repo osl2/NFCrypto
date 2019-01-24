@@ -18,9 +18,10 @@
         android:gravity="top"
         android:hint="@string/empty_text_enter_msg"
         android:importantForAccessibility="no"
+        android:importantForAutofill="no"
         android:inputType="textMultiLine"
         android:textAppearance="@style/font_msg_default"
-        android:importantForAutofill="no" tools:targetApi="o"/>
+        tools:targetApi="o" />
 
 
     <LinearLayout
@@ -33,13 +34,11 @@
         android:orientation="horizontal">
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/activity_alice_button_details"
+            android:id="@+id/activity_alice_button_encrypt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
             android:clickable="true"
-            android:src="@android:drawable/ic_menu_manage"
-            android:textAlignment="center"
+            android:src="@android:drawable/ic_lock_idle_lock"
             app:backgroundTint="@color/colorAlice"
             app:elevation="0dp" />
 
@@ -52,9 +51,21 @@
             android:layout_weight="1" />
 
         <android.support.design.widget.FloatingActionButton
+            android:id="@+id/activity_alice_button_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:clickable="true"
+            android:src="@android:drawable/ic_menu_manage"
+            android:textAlignment="center"
+            app:backgroundTint="@color/colorAlice"
+            app:elevation="0dp" />
+
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/activity_alice_button_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_distance"
             android:layout_weight="0"
             android:clickable="true"
             android:src="@android:drawable/ic_menu_help"
@@ -74,10 +85,10 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/activity_alice_text_crypted"
+                android:id="@+id/activity_alice_text_encrypted"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/empty_text_encoded"
+                android:text="@string/empty_text_encrypted"
                 android:textAppearance="@style/font_msg_default" />
         </ScrollView>
 
@@ -88,18 +99,9 @@
             android:layout_weight="0"
             android:orientation="horizontal">
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/activity_alice_button_encrypt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:src="@android:drawable/ic_lock_idle_lock"
-                app:backgroundTint="@color/colorAlice"
-                app:elevation="0dp" />
-
             <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <android.support.design.widget.FloatingActionButton

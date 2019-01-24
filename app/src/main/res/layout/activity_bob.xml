@@ -16,10 +16,10 @@
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/activity_bob_text_plainmessage"
+            android:id="@+id/activity_bob_text_encrypted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/empty_text_encoded"
+            android:text="@string/empty_text_encrypted"
             android:textAppearance="@style/font_msg_default" />
     </ScrollView>
 
@@ -72,10 +72,10 @@
         android:layout_weight="1">
 
         <TextView
-            android:id="@+id/activity_bob_text_messagecrypted"
+            android:id="@+id/activity_bob_text_decrypted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/empty_text_decoded"
+            android:text="@string/empty_text_decrypted"
             android:textAppearance="@style/font_msg_default" />
     </ScrollView>
 
