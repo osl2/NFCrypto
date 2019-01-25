@@ -23,27 +23,28 @@
             android:textSize="24sp"
             tools:layout_height="60dp" />
 
-        <TextView
-            android:id="@+id/activity_encrypt_details_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:gravity="center"
-            android:text="Stelle unten denn Buchstaben ein, nach welche du deinen Text verschlüsseln Möchtest."
-            tools:layout_height="120dp" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/activity_encrypt_details_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="Stelle unten denn Buchstaben ein, nach welche du deinen Text verschlüsseln Möchtest."
+                tools:layout_height="120dp" />
+
             <Spinner
                 android:id="@+id/activity_encrypt_details_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="100dp" />
+                android:layout_marginTop="75dp"
+                android:layout_marginBottom="75dp" />
 
             <Button
                 android:id="@+id/activity_encrypt_details_button"

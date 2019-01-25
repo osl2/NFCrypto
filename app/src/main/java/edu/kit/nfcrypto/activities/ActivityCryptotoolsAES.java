@@ -4,11 +4,11 @@ import android.os.Bundle;
 
 import edu.kit.nfcrypto.R;
 
-public class ActivityCryptotoolsMinikey extends ActivityBase{
+public class ActivityCryptotoolsAES extends ActivityBase{
     protected void onCreate(Bundle savedInstanceState) {
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cryptotools_minikey);
+        setContentView(R.layout.activity_cryptotools_aes);
     }
 }
