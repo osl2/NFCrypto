@@ -19,7 +19,8 @@
             android:gravity="center"
             android:text="Minikey Entschlüsselungstool"
             android:textSize="24sp"
-            tools:layout_height="60dp" />
+            tools:layout_height="60dp"
+            android:textAppearance="@style/font_msg_default" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,7 +36,8 @@
                 android:layout_marginBottom="@dimen/margin_distance"
                 android:gravity="center"
                 android:text="du glaubst das der Text mit einem Minikey verschlüsselt wurde, dann stell doch mal die 6 Buchstaben ein, die deiner meinung nach der Schlüssel sind."
-                tools:layout_height="120dp" />
+                tools:layout_height="120dp"
+                android:textAppearance="@style/font_msg_default"/>
 
             <Button
                 android:id="@+id/activity_cryptotools_minikey_butten"
