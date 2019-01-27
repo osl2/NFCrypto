@@ -1,109 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="@dimen/margin_screen">
 
     <TextView
         android:id="@+id/activity_person_text_intro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:minHeight="@dimen/height_min_textbox"
+        android:layout_marginBottom="@dimen/margin_distance"
         android:text="@string/persons_task"
-        android:textAppearance="@style/font_explanation_default"/>
+        android:textAppearance="@style/font_explanation_default" />
 
-    <TableLayout
-        android:id="@+id/activity_person_overview"
+    <android.support.v7.widget.CardView
+        android:id="@+id/activity_persons_button_alice"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/activity_person_text_intro"
-        android:layout_marginTop="@dimen/margin_distance">
+        android:layout_height="100dp"
+        android:layout_gravity="center_vertical"
+        android:padding="@dimen/margin_distance">
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignStart="@+id/activity_person_overview">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/margin_distance"
+            android:paddingBottom="@dimen/margin_distance">
 
             <Button
-                android:id="@+id/activity_persons_button_alice"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/margin_distance"
+                android:layout_marginEnd="@dimen/margin_distance"
+                android:layout_weight="0"
+                android:background="@drawable/design_fab_background"
                 android:backgroundTint="@color/colorAlice"
-                android:text="@string/alice"
-                android:textSize="14sp" />
+                android:clickable="false"
+                android:text="A"
+                android:textAppearance="@style/font_msg_default"
+                android:textColor="@color/colorButtonWhite" />
 
             <TextView
-                android:id="@+id/activity_persons_text_alice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/persons_alice"
-                android:textAppearance="@style/font_explanation_default"/>
-        </TableRow>
+                android:layout_gravity="end|center_vertical"
+                android:layout_weight="1"
+                android:text="@string/persons_alice" />
+        </LinearLayout>
 
-        <TableRow
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/activity_persons_button_bob"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center_vertical"
+        android:padding="@dimen/margin_distance">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignStart="@+id/activity_person_overview">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/margin_distance"
+            android:paddingBottom="@dimen/margin_distance">
 
             <Button
-                android:id="@+id/activity_persons_button_eve"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
-                android:backgroundTint="@color/colorEve"
-                android:text="@string/eve"
-                android:textColor="@android:color/background_light"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/activity_persons_text_eve"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/persons_eve"
-                android:textAppearance="@style/font_explanation_default"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/activity_persons_button_bob"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/margin_distance"
+                android:layout_marginEnd="@dimen/margin_distance"
+                android:layout_weight="0"
+                android:background="@drawable/design_fab_background"
                 android:backgroundTint="@color/colorBob"
-                android:text="@string/bob"
-                android:textSize="14sp" />
+                android:clickable="false"
+                android:text="B"
+                android:textAppearance="@style/font_msg_default"
+                android:textColor="@color/colorButtonWhite" />
 
             <TextView
-                android:id="@+id/activity_persons_text_bob"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/persons_bob"
-                android:textAppearance="@style/font_explanation_default"/>
+                android:layout_gravity="end|center_vertical"
+                android:layout_weight="1"
+                android:text="@string/persons_bob" />
+        </LinearLayout>
 
-        </TableRow>
+    </android.support.v7.widget.CardView>
 
-    </TableLayout>
+    <android.support.v7.widget.CardView
+        android:id="@+id/activity_persons_button_eve"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center_vertical"
+        android:padding="@dimen/margin_distance">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/margin_distance"
+            android:paddingBottom="@dimen/margin_distance">
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/margin_distance"
+                android:layout_marginEnd="@dimen/margin_distance"
+                android:layout_weight="0"
+                android:background="@drawable/design_fab_background"
+                android:backgroundTint="@color/colorEve"
+                android:clickable="false"
+                android:text="E"
+                android:textAppearance="@style/font_msg_default"
+                android:textColor="@color/colorButtonWhite" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_weight="1"
+                android:text="@string/persons_eve" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
     <TextView
         android:id="@+id/activity_person_text_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/activity_person_overview"
-        android:layout_alignParentStart="true"
         android:layout_gravity="bottom"
         android:layout_marginTop="@dimen/margin_distance"
-        android:minHeight="@dimen/height_min_textbox"
         android:text="@string/persons_info"
         android:textAppearance="@style/font_explanation_default" />
-
-</RelativeLayout>
+</LinearLayout>

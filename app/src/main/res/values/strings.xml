@@ -24,9 +24,9 @@
 
     <!-- Beschreibungen in activity_persons -->
     <string name="persons_task">Wähle eine Rolle.</string>
-    <string name="persons_alice">Alice schreibt</string>
-    <string name="persons_bob">Bob liest</string>
-    <string name="persons_eve">Eve lauscht</string>
+    <string name="persons_alice">"Alice schreibt Nachrichten und sendet sie an Bob. Sie kann diese Nachrichten zuvor verschlüsseln."</string>
+    <string name="persons_bob">Bob empfängt Nachrichten von Alice und kann diese, falls nötig, entschlüsseln.</string>
+    <string name="persons_eve">Eve fängt Nachrichten ab, die nicht an sie adressiert sind. Sie muss selbst versuchen die Nachrichten zu entschlüsseln.</string>
     <string name="persons_info"></string>
 
 

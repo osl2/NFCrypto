@@ -54,7 +54,6 @@
             android:id="@+id/activity_alice_button_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
             android:clickable="true"
             android:src="@android:drawable/ic_menu_manage"
             android:textAlignment="center"
@@ -65,8 +64,7 @@
             android:id="@+id/activity_alice_button_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_distance"
-            android:layout_weight="0"
+            android:layout_marginStart="@dimen/margin_distance"
             android:clickable="true"
             android:src="@android:drawable/ic_menu_help"
             app:backgroundTint="@color/colorAlice" />
