@@ -102,12 +102,11 @@ public final class NFCWriter {
      * @return
      */
     public static NdefMessage stringToData(String datatext) {
-        byte[] dataBytes = datatext.getBytes();
         try {
-            NdefMessage data = new NdefMessage(dataBytes);
-            return data;
+            return new NdefMessage(datatext.getBytes());
+
         } catch (android.nfc.FormatException e) {
-            //TODO
+           System.out.println("Formatexception NFC");
             return null;
         }
 

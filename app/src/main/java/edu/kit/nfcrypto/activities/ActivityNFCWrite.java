@@ -4,9 +4,12 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.nfc.FormatException;
+import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.os.Bundle;
+import android.os.FileUriExposedException;
 import android.widget.Toast;
 
 import edu.kit.nfcrypto.Alice;
@@ -66,9 +69,16 @@ public class ActivityNFCWrite extends ActivityBase {
                 // check if tag is writable (to the extent that we can
                 if (NFCWriter.writableTag(detectedTag)) {
                     //writeTag here
-                    WriteResponse wr = NFCWriter.writeTag(NFCWriter.stringToData(text), detectedTag);
+                    try {
+
+
+                        WriteResponse wr = NFCWriter.writeTag(/*NFCWriter.stringToData(text)*/  new NdefMessage("test".getBytes()), detectedTag);
+
                     String message = (wr.getStatus() == 1 ? "Success: " : "Failed: ") + wr.getMessage();
                     Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+                    }catch (FormatException e){
+                        e.printStackTrace();
+                    }
                 } else {
                     Toast.makeText(context, "This tag is not writable", Toast.LENGTH_SHORT).show();
                 }
