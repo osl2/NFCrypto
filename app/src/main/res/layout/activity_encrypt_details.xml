@@ -12,7 +12,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:padding="@dimen/margin_screen">
 
         <TextView
             android:id="@+id/activity_encrypt_details_title"
@@ -20,18 +20,9 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Deine Cäsarverschlüsselung"
+            android:textAppearance="@style/font_msg_default"
             android:textSize="24sp"
             tools:layout_height="60dp" />
-
-        <TextView
-            android:id="@+id/activity_encrypt_details_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:gravity="center"
-            android:text="Stelle unten denn Buchstaben ein, nach welche du deinen Text verschlüsseln Möchtest."
-            tools:layout_height="120dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,11 +30,24 @@
             android:gravity="center"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/activity_encrypt_details_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_distance"
+                android:layout_marginBottom="@dimen/margin_distance"
+                android:gravity="center"
+                android:text="Stelle unten denn Buchstaben ein, nach welche du deinen Text verschlüsseln Möchtest."
+                android:textAppearance="@style/font_msg_default"
+                tools:layout_height="120dp" />
+
             <Spinner
                 android:id="@+id/activity_encrypt_details_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="100dp" />
+                android:layout_marginTop="75dp"
+                android:layout_marginBottom="75dp"
+                android:textAppearance="@style/font_msg_default" />
 
             <Button
                 android:id="@+id/activity_encrypt_details_button"

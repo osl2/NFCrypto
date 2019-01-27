@@ -12,7 +12,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:padding="@dimen/margin_screen">
 
         <TextView
             android:id="@+id/activity_info_title"
@@ -21,15 +21,17 @@
             android:gravity="center"
             android:text="@string/empty_text_TODO"
             android:textSize="24sp"
-            tools:layout_height="60dp" />
+            tools:layout_height="60dp"
+            android:textAppearance="@style/font_msg_default"/>
 
         <TextView
             android:id="@+id/activity_info_info"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="@dimen/margin_distance"
+            android:layout_marginBottom="@dimen/margin_distance"
             android:gravity="center"
-            android:text="@string/info2" />
+            android:text="@string/info2"
+            android:textAppearance="@style/font_msg_default"/>
     </LinearLayout>
 </RelativeLayout>
