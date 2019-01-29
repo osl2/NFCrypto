@@ -13,7 +13,7 @@ import edu.kit.nfcrypto.keys.VigenereKey;
 public final class User {
     //Speichert die Daten im Hintergrund für alle Activities
     private Key lastKey;
-    private Mode[] permission;
+    private static boolean[] permission; //0 PLA,
     private static User instance;
 
     private User(){}
@@ -25,28 +25,11 @@ public final class User {
         return instance;
     }
 
-    public static void checkMessage(String message) throws InputFormatException {
-        //TODO soll den Eingabe Text checken ob alles okay ist, wenn nicht throw Exception
-    }
-    
-
-    //Preview Funktionen
-
-
-    //Auslagern in 3 Vers. Klassen
-
-
-
-    public void bob(){
-        //Muss dann den Nachrichtentag Inhalt anzeigen
-        //Außerdem Key, Text abspeichern
+    public static void setPermission(boolean[] permission) {
+        permission = permission;
     }
 
-    public void eve(){
-        //Muss dann den Nachrichten Inhalt anzeigen, abspeichern
+    public static boolean[] getPermission() {
+        return permission;
     }
-
-
-
-
 }

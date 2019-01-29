@@ -2,6 +2,7 @@ package edu.kit.nfcrypto.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.ArrayRes;
 import android.support.design.widget.FloatingActionButton;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -29,7 +30,7 @@ import android.text.Spanned;
 
 public class ActivityAlice extends ActivityBase {
 
-
+    boolean[] permission = User.getPermission();
     Alice alice = new Alice();
     String messageString = null;
     Mode mode = null;
@@ -70,7 +71,7 @@ public class ActivityAlice extends ActivityBase {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ActivityAlice.this, ActivityNFCWrite.class);
-                i.putExtra("alice",alice);
+                i.putExtra("alice", alice);
                 ActivityAlice.this.startActivity(i);
             }
         });
@@ -90,18 +91,15 @@ public class ActivityAlice extends ActivityBase {
 
             @Override
             public void afterTextChanged(Editable s) {
-                try {
-                    messageString = inputText.getText().toString();
-                    User.checkMessage(messageString);
 
-                } catch (InputFormatException e) {
-                    //TODO Fehlermeldung
-                }
+                messageString = inputText.getText().toString();
+
 
             }
         });
 
         final Spinner modeSpinner = findViewById(R.id.activity_alice_spinner);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.mode_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -140,14 +138,14 @@ public class ActivityAlice extends ActivityBase {
                                        Spanned dest, int dstart, int dend) {
                 String sourceString = source.toString();
                 sourceString = sourceString.toUpperCase();
-                sourceString = sourceString.replaceAll("Ä","AE");
-                sourceString = sourceString.replaceAll("Ö","OE");
-                sourceString = sourceString.replaceAll("Ü","UE");
-                sourceString = sourceString.replaceAll(FORBIDDEN_CHARS,"");
+                sourceString = sourceString.replaceAll("Ä", "AE");
+                sourceString = sourceString.replaceAll("Ö", "OE");
+                sourceString = sourceString.replaceAll("Ü", "UE");
+                sourceString = sourceString.replaceAll(FORBIDDEN_CHARS, "");
                 return sourceString;
             }
         };
-        inputText.setFilters(new InputFilter[] { filter });
+        inputText.setFilters(new InputFilter[]{filter});
 
         //TODO Button zum Schreiben der Nachricht/Schlüssel
     }
