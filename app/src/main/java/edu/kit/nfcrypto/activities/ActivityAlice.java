@@ -40,6 +40,9 @@ public class ActivityAlice extends ActivityBase {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        if (getIntent().getSerializableExtra("alice") != null) {
+            alice = (Alice) getIntent().getSerializableExtra("alice");
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alice);
@@ -54,7 +57,9 @@ public class ActivityAlice extends ActivityBase {
         final FloatingActionButton buttonDetails = findViewById(R.id.activity_alice_button_details);
         buttonDetails.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ActivityAlice.this.startActivity(new Intent(ActivityAlice.this, ActivityEncryptDetails.class));
+                Intent i = new Intent(ActivityAlice.this, ActivityEncryptDetails.class);
+                i.putExtra("alice", alice);
+                ActivityAlice.this.startActivity(i);
             }
         });
 
@@ -153,7 +158,7 @@ public class ActivityAlice extends ActivityBase {
     private void onTextUpdate(String messageString, Mode mode) {
 
         if (this.mode != null && this.messageString != null) {
-            alice.alicePreview(messageString, mode, 3, this); //TODO aus der Encryptdetails activity
+            alice.alicePreview(messageString, mode, this); //TODO aus der Encryptdetails activity
         } else {
             //TODO Fehlermeldung
         }

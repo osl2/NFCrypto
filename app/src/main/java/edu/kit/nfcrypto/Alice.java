@@ -21,7 +21,7 @@ public class Alice implements Serializable {
      * @param mode wie Cesar etc.
      * @param cesarDetails wenn Cesardetails != 0, sonst 0
      */
-    public void alicePreview(String text, Mode mode, int cesarDetails, ActivityAlice activity){
+    public void alicePreview(String text, Mode mode, ActivityAlice activity){
         switch (mode){
             case PLA:
                 key = new PlainKey();
@@ -48,5 +48,9 @@ public class Alice implements Serializable {
 
     public Key getKey() {
         return key;
+    }
+
+    public void setKey(Key key) {
+        this.key = key;
     }
 }
