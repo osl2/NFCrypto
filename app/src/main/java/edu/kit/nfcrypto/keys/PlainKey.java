@@ -4,8 +4,10 @@ import static edu.kit.nfcrypto.data.Mode.PLA;
 
 public class PlainKey extends Key {
 
+
     public PlainKey() {
         super(PLA,"");
+        setKeyDataString("");
     }
 
     @Override
@@ -18,10 +20,5 @@ public class PlainKey extends Key {
         return text;
     }
 
-    @Override
-    public String encodeKey() {
-        return "";
-
-    }
 
 }

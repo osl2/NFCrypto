@@ -1,5 +1,7 @@
 package edu.kit.nfcrypto.data;
 
+import java.io.Serializable;
+
 import edu.kit.nfcrypto.exceptions.WrongIdentifierException;
 import edu.kit.nfcrypto.keys.Key;
 import edu.kit.nfcrypto.keys.AESKey;
@@ -13,7 +15,7 @@ import edu.kit.nfcrypto.keys.VigenereKey;
  * VIG: Vigenere aka Minikey
  * AES: trivial
  */
-public enum Mode {
+public enum Mode implements Serializable {
     PLA, CES, VIG, AES;
 
     public static Key createKey(String modeString, String keyString) {

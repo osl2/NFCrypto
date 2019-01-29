@@ -21,7 +21,9 @@ public class VigenereKey extends Key {
     }
 
     public VigenereKey() {
+        super(VIG);
         keyData = null;
+
 
     }
 
@@ -64,7 +66,7 @@ public class VigenereKey extends Key {
         for (int i = 0; i < keylength;i++){
             newKey[i] =(char) (floor(Math.random()*26)+'A');
         }
-
+        setKeyDataString(newKey.toString());
         return newKey;
     }
 }

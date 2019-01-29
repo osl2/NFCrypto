@@ -7,4 +7,22 @@
     android:padding="@dimen/margin_screen"
     tools:context=".activities.ActivityNFCWrite">
 
+    <Button
+        android:id="@+id/activity_nfcwrite_button_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="75dp"
+        android:text="Message" />
+
+    <Button
+        android:id="@+id/activity_nfcwrite_button_key"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/activity_nfcwrite_button_message"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="184dp"
+        android:text="Key" />
 </RelativeLayout>

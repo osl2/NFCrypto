@@ -20,6 +20,7 @@ public class CesarKey extends Key {
     public CesarKey() {
         super(CES);
         keyData = (int) (Math.random() * 25 + 1);
+        setKeyDataString(""+keyData);
     }
 
     public CesarKey(int keyData){

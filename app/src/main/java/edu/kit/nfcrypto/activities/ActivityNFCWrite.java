@@ -4,12 +4,11 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.nfc.FormatException;
-import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.os.Bundle;
-import android.os.FileUriExposedException;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import edu.kit.nfcrypto.Alice;
@@ -17,9 +16,20 @@ import edu.kit.nfcrypto.R;
 import edu.kit.nfcrypto.nfctools.NFCWriter;
 import edu.kit.nfcrypto.nfctools.WriteResponse;
 
+import static edu.kit.nfcrypto.activities.ActivityNFCWrite.MessageState.KEY;
+import static edu.kit.nfcrypto.activities.ActivityNFCWrite.MessageState.MES;
+import static edu.kit.nfcrypto.activities.ActivityNFCWrite.MessageState.NULL;
 import static edu.kit.nfcrypto.nfctools.NFCWriter.supportedTechs;
 
 public class ActivityNFCWrite extends ActivityBase {
+
+    public enum MessageState {
+        MES, KEY, NULL
+
+    }
+
+    private MessageState message = NULL;
+    private Alice alice;
     private static final String TAG = "NFCWriteTag";
     private NfcAdapter mNfcAdapter;
     private IntentFilter[] mWriteTagFilters;
@@ -28,6 +38,7 @@ public class ActivityNFCWrite extends ActivityBase {
     private boolean writeProtect = false;
     private Context context;
 
+
     public boolean isWriteProtect() {
         return writeProtect;
     }
@@ -35,6 +46,24 @@ public class ActivityNFCWrite extends ActivityBase {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nfcwrite);
+        alice = (Alice) getIntent().getSerializableExtra("alice");
+
+        final Button buttonMessage = findViewById(R.id.activity_nfcwrite_button_message);
+        buttonMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                message = MES;
+            }
+        });
+
+        final Button buttonKey = findViewById(R.id.activity_nfcwrite_button_key);
+        buttonKey.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                message = KEY;
+            }
+        });
+
         context = getApplicationContext();
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         mNfcPendingIntent = PendingIntent.getActivity(this, 0, new Intent(this,
@@ -59,7 +88,6 @@ public class ActivityNFCWrite extends ActivityBase {
 
     @Override
     protected void onNewIntent(Intent intent) {
-        String text = "test";
         //.getCurrentMessage().getEncryptedText();
         super.onNewIntent(intent);
         if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
@@ -69,15 +97,14 @@ public class ActivityNFCWrite extends ActivityBase {
                 // check if tag is writable (to the extent that we can
                 if (NFCWriter.writableTag(detectedTag)) {
                     //writeTag here
-                    try {
+                    String text = getText();
+                    if (text != null) {
+                        WriteResponse wr = NFCWriter.writeTag(NFCWriter.stringToData(text), detectedTag);
 
-
-                        WriteResponse wr = NFCWriter.writeTag(/*NFCWriter.stringToData(text)*/  new NdefMessage("test".getBytes()), detectedTag);
-
-                    String message = (wr.getStatus() == 1 ? "Success: " : "Failed: ") + wr.getMessage();
-                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-                    }catch (FormatException e){
-                        e.printStackTrace();
+                        String message = (wr.getStatus() == 1 ? "Success: " : "Failed: ") + wr.getMessage();
+                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(context, "Bitte wähle einen Knopf aus",Toast.LENGTH_LONG).show();
                     }
                 } else {
                     Toast.makeText(context, "This tag is not writable", Toast.LENGTH_SHORT).show();
@@ -86,6 +113,18 @@ public class ActivityNFCWrite extends ActivityBase {
                 Toast.makeText(context, "This tag type is not supported", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    private String getText() {
+        if (message == NULL) {
+            Toast.makeText(context, "Bitte drücke zuerst einen Knopf", Toast.LENGTH_LONG).show();
+        } else if (message == MES) {
+            return alice.getCurrentMessage().getEncryptedText();
+        } else if (message == KEY) {
+            return alice.getKey().encodeKey();
+        }
+
+        return null;
     }
 
 }

@@ -1,9 +1,11 @@
 package edu.kit.nfcrypto.keys;
 
+import java.io.Serializable;
+
 import edu.kit.nfcrypto.data.Mode;
 import edu.kit.nfcrypto.exceptions.WrongIdentifierException;
 
-public abstract class Key {
+public abstract class Key implements Serializable {
     private Mode mode;
     private String keyDataString;
 
@@ -25,6 +27,7 @@ public abstract class Key {
     protected void setKeyDataString(String keyDataString) {
         this.keyDataString = keyDataString;
     }
+
 
     public abstract String encrypt(String text);
 

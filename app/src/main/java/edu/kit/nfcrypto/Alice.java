@@ -1,5 +1,7 @@
 package edu.kit.nfcrypto;
 
+import java.io.Serializable;
+
 import edu.kit.nfcrypto.activities.ActivityAlice;
 import edu.kit.nfcrypto.data.Message;
 import edu.kit.nfcrypto.data.Mode;
@@ -9,9 +11,9 @@ import edu.kit.nfcrypto.keys.Key;
 import edu.kit.nfcrypto.keys.PlainKey;
 import edu.kit.nfcrypto.keys.VigenereKey;
 
-public class Alice {
+public class Alice implements Serializable {
     private Message currentMessage = null;
-    Key key;
+    private Key key;
 
     /**
      *
@@ -42,5 +44,9 @@ public class Alice {
 
     public Message getCurrentMessage() {
         return currentMessage;
+    }
+
+    public Key getKey() {
+        return key;
     }
 }

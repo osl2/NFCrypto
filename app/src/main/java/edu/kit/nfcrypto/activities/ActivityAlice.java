@@ -69,7 +69,9 @@ public class ActivityAlice extends ActivityBase {
         buttonNFCWrite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityAlice.this.startActivity(new Intent(ActivityAlice.this, ActivityNFCWrite.class));
+                Intent i = new Intent(ActivityAlice.this, ActivityNFCWrite.class);
+                i.putExtra("alice",alice);
+                ActivityAlice.this.startActivity(i);
             }
         });
 

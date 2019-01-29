@@ -1,6 +1,7 @@
 package edu.kit.nfcrypto.nfctools;
 
 import android.nfc.NdefMessage;
+import android.nfc.NdefRecord;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
@@ -102,13 +103,8 @@ public final class NFCWriter {
      * @return
      */
     public static NdefMessage stringToData(String datatext) {
-        try {
-            return new NdefMessage(datatext.getBytes());
-
-        } catch (android.nfc.FormatException e) {
-           System.out.println("Formatexception NFC");
-            return null;
-        }
+            NdefRecord record = new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_TEXT, new byte[0], datatext.getBytes());
+            return new NdefMessage(new NdefRecord[]{record});
 
     }
 }
