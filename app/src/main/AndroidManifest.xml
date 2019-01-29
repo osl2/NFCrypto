@@ -28,10 +28,10 @@
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data
+                <!-- <data
                     android:host="ext"
                     android:pathPrefix="/peterjohnwelcome.com:nfcapp"
-                    android:scheme="vnd.android.nfc" />
+                    android:scheme="vnd.android.nfc" /> -->
             </intent-filter>
         </activity>
         <activity android:name=".activities.ActivityCryptotoolsCesar" />

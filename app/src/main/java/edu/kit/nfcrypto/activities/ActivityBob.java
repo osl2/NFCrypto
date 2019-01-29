@@ -57,11 +57,8 @@ public class ActivityBob extends ActivityBase {
         mNfcPendingIntent = PendingIntent.getActivity(this, 0, new Intent(this,
                 getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP
                 | Intent.FLAG_ACTIVITY_CLEAR_TOP), 0);
-        IntentFilter smartwhere = new IntentFilter(NfcAdapter.ACTION_NDEF_DISCOVERED);
-        smartwhere.addDataScheme("http");
-        smartwhere.addDataAuthority("www.smartwhere.com", null);
-        smartwhere.addDataPath(".*", PatternMatcher.PATTERN_SIMPLE_GLOB);
-        mNdefExchangeFilters = new IntentFilter[]{smartwhere};
+
+        mNdefExchangeFilters = new IntentFilter[]{};
 
 
         Button keyButton = findViewById(R.id.activity_bob_button_readKey);
@@ -120,6 +117,8 @@ public class ActivityBob extends ActivityBase {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())) {
+
+
             NdefMessage[] messages = null;
             Parcelable[] rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
             if (rawMsgs != null) {
@@ -135,14 +134,18 @@ public class ActivityBob extends ActivityBase {
                 for (int b = 1; b < payload.length; b++) { // skip SOH
                     result += (char) payload[b];
                 }
+
+
                 String[] resultSplit = bob.splitInput(result);
                 Toast.makeText(getApplicationContext(), "Tag Contains " + result, Toast.LENGTH_SHORT).show();
+
                 if (message == MessageState.KEY) {
                     if (resultSplit[0].equals("KEY")) {
                         setMode(resultSplit[1]);
                         keyString = resultSplit[2];
+                        Toast.makeText(getApplicationContext(), keyString, Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Dies ist keine Schlüsselkarte.",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Dies ist keine Schlüsselkarte.", Toast.LENGTH_LONG).show();
                     }
                 } else if (message == MessageState.MES) {
                     if (resultSplit[0].equals("MES")) {
@@ -150,7 +153,7 @@ public class ActivityBob extends ActivityBase {
                         text = resultSplit[2];
                         setTextViewInput(text);
                     } else {
-                        Toast.makeText(getApplicationContext(), "Dies ist keine Nachrichtenkarte.",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Dies ist keine Nachrichtenkarte.", Toast.LENGTH_LONG).show();
                     }
 
                 } else if (message == MessageState.NULL) {
@@ -162,27 +165,36 @@ public class ActivityBob extends ActivityBase {
     }
 
     private void transfer() {
-        if (keyString != null && text != null && mode != null) {
-            bob.bobPreview(text, mode, keyString , this); //text, mode muss von NFC kommen
+        if (text != null && mode != null) {
+            if (mode == PLA && keyString == null) {
+                bob.bobPreview(text, PLA, null, this); //text, mode muss von NFC kommen
+            } else if(keyString != null && mode != PLA){
+                bob.bobPreview(text,mode,keyString,this);
+            }
         } else {
-            //TODO Fehlermeldung
+            Toast.makeText(getApplicationContext(), "Alles muss gesetzt sein", Toast.LENGTH_LONG).show();
         }
     }
 
-    public void setMode(String string){
-        switch (string) {
-            case "CES":
-                mode = CES;
-                break;
-            case "PLA":
-                mode = PLA;
-                break;
-            case "VIG":
-                mode = VIG;
-                break;
-            case "AES":
-                mode = AES;
-                break;
+    public void setMode(String string) {
+        if (mode != null && !string.equals(mode.toString())) {
+            Toast.makeText(getApplicationContext(), "Diese Karten gehören nicht zusammen", Toast.LENGTH_LONG).show();
+        } else {
+            switch (string) {
+                case "CES":
+                    this.mode = CES;
+                    break;
+                case "PLA":
+                    this.mode = PLA;
+                    break;
+                case "VIG":
+                    this.mode = VIG;
+                    break;
+                case "AES":
+                    this.mode = AES;
+                    break;
+
+            }
         }
 
     }

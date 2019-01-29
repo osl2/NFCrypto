@@ -15,12 +15,11 @@ public class Bob {
     Key key;
 
     /**
-     *
      * @param text der Eingelesen wird
      * @param mode wie Cesar etc.
      */
-    public void bobPreview(String text, Mode mode, String keyString, ActivityBob activity){
-        switch (mode){
+    public void bobPreview(String text, Mode mode, String keyString, ActivityBob activity) {
+        switch (mode) {
             case PLA:
                 key = new PlainKey();
                 break;
@@ -39,11 +38,17 @@ public class Bob {
         activity.setTextViewDecrypted(currentMessage.getPlaintext()); //Sollte den TextView in BobActivity umsetzen
     }
 
-    public String[] splitInput(String input){
-        String[] output = new String[3];
-        output[0] = input.substring(0,3);
-        output[1] = input.substring(3,6);
-        output[2] = input.substring(6);
+    public String[] splitInput(String input) {
+        String[] output = new String[4];
+        output[0] = input.substring(0, 3); //KEY oder MES
+        output[1] = input.substring(3, 6); //TYP
+        if (output[0].equals("MES")) {
+            output[2] = input.substring(6, input.length() - 14);
+            output[3] = input.substring(input.length() - 14);
+        } else if (output[0].equals("KEY")) {
+            output[2] = input.substring(6);
+        }
+
         return output;
 
     }

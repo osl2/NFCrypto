@@ -47,7 +47,7 @@ public class AESKey extends Key {
             return new String(encrypted);
         } catch (IllegalBlockSizeException e) {
             throw new KeyFormatException(e.getMessage());
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw new KeyFormatException(KeyFormatException.KEY_DATA + " (" + e.getMessage() + ")");
         }
     }
@@ -64,7 +64,7 @@ public class AESKey extends Key {
 
             // Entschlüsselte Nachricht als String zurückgeben
             return new String(cipherData);
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw new KeyFormatException(KeyFormatException.KEY_DATA + " (" + e.getMessage() + ")");
         }
     }
