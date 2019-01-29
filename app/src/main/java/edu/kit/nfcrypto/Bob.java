@@ -14,30 +14,38 @@ public class Bob {
     private Message currentMessage = null;
     Key key;
 
-
     /**
      *
      * @param text der Eingelesen wird
      * @param mode wie Cesar etc.
      */
-    public void bobPreview(String text, Mode mode, ActivityBob activity){
+    public void bobPreview(String text, Mode mode, String keyString, ActivityBob activity){
         switch (mode){
             case PLA:
                 key = new PlainKey();
                 break;
             case CES:
-                key = new CesarKey();
+                key = new CesarKey(keyString);
                 break;
             case VIG:
-                key = new VigenereKey();
+                key = new VigenereKey(keyString);
                 break;
             case AES:
-                key = new AESKey();
+                key = new AESKey(keyString);
                 break;
         }
         currentMessage = new Message(key.decrypt(text), text, mode);
 
         activity.setTextViewDecrypted(currentMessage.getPlaintext()); //Sollte den TextView in BobActivity umsetzen
+    }
+
+    public String[] splitInput(String input){
+        String[] output = new String[3];
+        output[0] = input.substring(0,3);
+        output[1] = input.substring(3,6);
+        output[2] = input.substring(6);
+        return output;
+
     }
 
 

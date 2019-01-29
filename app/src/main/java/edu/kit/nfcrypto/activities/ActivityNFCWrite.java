@@ -119,7 +119,8 @@ public class ActivityNFCWrite extends ActivityBase {
         if (message == NULL) {
             Toast.makeText(context, "Bitte drücke zuerst einen Knopf", Toast.LENGTH_LONG).show();
         } else if (message == MES) {
-            return alice.getCurrentMessage().getEncryptedText();
+            String suffix = alice.getKey().suffix();
+            return alice.getCurrentMessage().encodeEncryptedText()+suffix;
         } else if (message == KEY) {
             return alice.getKey().encodeKey();
         }

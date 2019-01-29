@@ -20,8 +20,8 @@ public abstract class Key implements Serializable {
 
     public Key(){};
 
-    public String addSuffix(String crypted){
-        return crypted+encrypt("ENTSCHLUESSELT");
+    public String suffix(){
+        return encrypt("ENTSCHLUESSELT");
     }
 
     protected void setKeyDataString(String keyDataString) {

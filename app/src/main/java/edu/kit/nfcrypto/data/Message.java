@@ -29,6 +29,10 @@ public class Message implements Serializable {
         return encryptedText;
     }
 
+    public String encodeEncryptedText() {
+        return "MES" + mode.toString() + encryptedText;
+    }
+
     public String getPlaintext() {
         return plaintext;
     }
