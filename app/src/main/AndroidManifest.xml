@@ -24,7 +24,9 @@
         <activity
             android:name=".activities.ActivityAlice"
             android:label="Alice" />
-        <activity android:name=".activities.ActivityBob">
+        <activity
+            android:name=".activities.ActivityBob"
+            android:label="Bob">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -34,18 +36,29 @@
                     android:scheme="vnd.android.nfc" /> -->
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ActivityCryptotoolsCesar" />
-        <activity android:name=".activities.ActivityEncryptDetails" />
-        <activity android:name=".activities.ActivityEve" />
-        <activity android:name=".activities.ActivityInfo" />
-        <activity android:name=".activities.ActivityPersons" />
+        <activity
+            android:name=".activities.ActivityCryptotoolsCesar"
+            android:label="Cesar knacken!" />
+        <activity
+            android:name=".activities.ActivityEncryptDetails"
+            android:label="Cesarverschiebung wählen" />
+        <activity
+            android:name=".activities.ActivityEve"
+            android:label="Eve" />
+        <activity
+            android:name=".activities.ActivityInfo"
+            android:label="Informationen" />
+        <activity
+            android:name=".activities.ActivityPersons"
+            android:label="Personenauswahl" />
         <activity android:name=".activities.ActivityBase" />
-        <activity android:name=".activities.ActivityCode" />
-        <activity android:name=".activities.ActivityNFCRead">
+        <activity
+            android:name=".activities.ActivityCode"
+            android:label="Freischaltcodes" />
 
-        </activity>
-
-        <activity android:name=".activities.ActivityNFCWrite">
+        <activity
+            android:name=".activities.ActivityNFCWrite"
+            android:label="Auf die Karte schreiben">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
                 <category android:name="android.intent.category.DEFAULT" />
