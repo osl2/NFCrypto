@@ -20,7 +20,7 @@ import static edu.kit.nfcrypto.data.Mode.VIG;
 
 public class ActivityEncryptDetails extends ActivityBase {
 
-    private Alice alice;
+    private String inputtext;
     private int cesar;
 
 
@@ -28,18 +28,7 @@ public class ActivityEncryptDetails extends ActivityBase {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_encrypt_details);
-        alice = (Alice) getIntent().getSerializableExtra("alice");
-
-        final Button applyButton = findViewById(R.id.activity_encrypt_details_button);
-        applyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alice.setKey(new CesarKey(cesar));
-                Intent i = new Intent(ActivityEncryptDetails.this, ActivityAlice.class);
-                i.putExtra("alice", alice);
-                startActivity(i);
-            }
-        });
+        inputtext = getIntent().getStringExtra("inputtext");
 
 
         final Spinner detailsSpinner = findViewById(R.id.activity_encrypt_details_spinner);
@@ -58,8 +47,21 @@ public class ActivityEncryptDetails extends ActivityBase {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                cesar = 28;
             }
         });
+
+
+        final Button applyButton = findViewById(R.id.activity_encrypt_details_button);
+        applyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ActivityEncryptDetails.this, ActivityAlice.class);
+                i.putExtra("inputtext",inputtext);
+                i.putExtra("cesar",cesar);
+                startActivity(i);
+            }
+        });
+
     }
 }

@@ -14,20 +14,19 @@ import edu.kit.nfcrypto.keys.VigenereKey;
 public class Alice implements Serializable {
     private Message currentMessage = null;
     private Key key;
+    private int cesar = 28;
 
-    /**
-     *
-     * @param text der Eingelesen wird
-     * @param mode wie Cesar etc.
-     * @param cesarDetails wenn Cesardetails != 0, sonst 0
-     */
-    public void alicePreview(String text, Mode mode, ActivityAlice activity){
-        switch (mode){
+    public void alicePreview(String text, Mode mode, ActivityAlice activity) {
+        switch (mode) {
             case PLA:
                 key = new PlainKey();
                 break;
             case CES:
-                key = new CesarKey();
+                if (cesar != 28) {
+                    key = new CesarKey(cesar);
+                } else {
+                    key = new CesarKey();
+                }
                 break;
             case VIG:
                 key = new VigenereKey();
@@ -44,6 +43,10 @@ public class Alice implements Serializable {
 
     public Message getCurrentMessage() {
         return currentMessage;
+    }
+
+    public void setCesar(int cesar) {
+        this.cesar = cesar;
     }
 
     public Key getKey() {

@@ -33,16 +33,14 @@ public class ActivityAlice extends ActivityBase {
     boolean[] permission = User.getPermission();
     Alice alice = new Alice();
     String messageString = null;
-    Mode mode = null;
+    Mode mode = PLA;
+    int cesar;
 
     private static String FORBIDDEN_CHARS = "[^A-Z0-9 ,.?!():;#*\\-]"; //Negation (^) der erlaubten Zeichen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        if (getIntent().getSerializableExtra("alice") != null) {
-            alice = (Alice) getIntent().getSerializableExtra("alice");
-        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alice);
@@ -58,7 +56,9 @@ public class ActivityAlice extends ActivityBase {
         buttonDetails.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(ActivityAlice.this, ActivityEncryptDetails.class);
-                i.putExtra("alice", alice);
+                if (messageString != null) {
+                    i.putExtra("inputtext", messageString);
+                }
                 ActivityAlice.this.startActivity(i);
             }
         });
@@ -103,6 +103,7 @@ public class ActivityAlice extends ActivityBase {
             }
         });
 
+
         final Spinner modeSpinner = findViewById(R.id.activity_alice_spinner);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -136,6 +137,18 @@ public class ActivityAlice extends ActivityBase {
 
             }
         });
+
+        if (getIntent().getStringExtra("inputtext") != null) {
+            messageString = getIntent().getStringExtra("inputtext");
+            inputText.setText(messageString);
+        }
+
+        if (getIntent().getIntExtra("cesar",28) != 28) {
+            cesar = getIntent().getIntExtra("cesar", 28);
+            alice.setCesar(cesar);
+            modeSpinner.setSelection(1);
+        }
+
 
         //InputFilter um nur bestimmte Buchstaben zuzulassen
         InputFilter filter = new InputFilter() {
