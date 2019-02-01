@@ -40,7 +40,7 @@
                 android:textAppearance="@style/font_msg_default"/>
 
             <Button
-                android:id="@+id/activity_cryptotools_minikey_butten"
+                android:id="@+id/activity_cryptotools_minikey_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_distance"

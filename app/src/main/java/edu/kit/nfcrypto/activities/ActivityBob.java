@@ -17,6 +17,7 @@ import android.widget.Toast;
 import edu.kit.nfcrypto.Alice;
 import edu.kit.nfcrypto.Bob;
 import edu.kit.nfcrypto.R;
+import edu.kit.nfcrypto.User;
 import edu.kit.nfcrypto.data.Mode;
 import edu.kit.nfcrypto.keys.Key;
 
@@ -136,7 +137,7 @@ public class ActivityBob extends ActivityBase {
                 }
 
 
-                String[] resultSplit = bob.splitInput(result);
+                String[] resultSplit = User.splitInput(result);
                 Toast.makeText(getApplicationContext(), "Tag Contains " + result, Toast.LENGTH_SHORT).show();
 
                 if (message == MessageState.KEY) {

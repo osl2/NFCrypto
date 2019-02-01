@@ -47,7 +47,7 @@ public class ActivityEncryptDetails extends ActivityBase {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                cesar = 28;
+                cesar = -1;
             }
         });
 

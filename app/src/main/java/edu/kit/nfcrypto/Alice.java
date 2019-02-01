@@ -14,7 +14,7 @@ import edu.kit.nfcrypto.keys.VigenereKey;
 public class Alice implements Serializable {
     private Message currentMessage = null;
     private Key key;
-    private int cesar = 28;
+    private int cesar = -1;
 
     public void alicePreview(String text, Mode mode, ActivityAlice activity) {
         switch (mode) {
@@ -22,7 +22,7 @@ public class Alice implements Serializable {
                 key = new PlainKey();
                 break;
             case CES:
-                if (cesar != 28) {
+                if (cesar != -1) {
                     key = new CesarKey(cesar);
                 } else {
                     key = new CesarKey();

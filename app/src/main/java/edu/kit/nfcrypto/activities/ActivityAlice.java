@@ -143,8 +143,8 @@ public class ActivityAlice extends ActivityBase {
             inputText.setText(messageString);
         }
 
-        if (getIntent().getIntExtra("cesar",28) != 28) {
-            cesar = getIntent().getIntExtra("cesar", 28);
+        if (getIntent().getIntExtra("cesar",-1) != -1) {
+            cesar = getIntent().getIntExtra("cesar", -1);
             alice.setCesar(cesar);
             modeSpinner.setSelection(1);
         }
@@ -165,7 +165,6 @@ public class ActivityAlice extends ActivityBase {
         };
         inputText.setFilters(new InputFilter[]{filter});
 
-        //TODO Button zum Schreiben der Nachricht/Schlüssel
     }
 
     private void onTextUpdate(String messageString, Mode mode) {

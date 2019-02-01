@@ -1,5 +1,6 @@
 package edu.kit.nfcrypto.activities;
 
+import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -9,7 +10,10 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +21,7 @@ import android.widget.Toast;
 import edu.kit.nfcrypto.Bob;
 import edu.kit.nfcrypto.Eve;
 import edu.kit.nfcrypto.R;
+import edu.kit.nfcrypto.User;
 import edu.kit.nfcrypto.data.Mode;
 
 import static edu.kit.nfcrypto.data.Mode.AES;
@@ -32,10 +37,12 @@ public class ActivityEve extends ActivityBase {
     private IntentFilter[] mNdefExchangeFilters;
     private PendingIntent mNfcPendingIntent;
     private String help;
-
+    private int cesar;
     Eve eve;
     String text;
-    Mode mode;
+    Mode modeSelected;
+    Mode modeNFC;
+    int spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +57,80 @@ public class ActivityEve extends ActivityBase {
 
         mNdefExchangeFilters = new IntentFilter[]{};
 
+        final Spinner modeSpinner = findViewById(R.id.activity_eve_spinner);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.mode_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        modeSpinner.setAdapter(adapter);
+        modeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        modeSelected = PLA;
+                        break;
+                    case 1:
+                        modeSelected = CES;
+                        break;
+                    case 2:
+                        modeSelected = VIG;
+                        break;
+                    case 3:
+                        modeSelected = AES;
+                        break;
+
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        if (getIntent().getStringExtra("inputtext") != null) {
+            text = getIntent().getStringExtra("inputtext");
+            setTextViewInput(text);
+        }
+
+        if (getIntent().getIntExtra("cesar", -1) != -1) {
+            cesar = getIntent().getIntExtra("cesar", -1);
+            eve.setCesar(cesar);
+        }
+
+        if (getIntent().getIntExtra("spinner", -1) != -1) {
+            spinner = getIntent().getIntExtra("spinner", -1);
+            modeSpinner.setSelection(spinner);
+        }
+
         final FloatingActionButton buttonCryptotools = findViewById(R.id.activity_eve_button_cryptotools);
         buttonCryptotools.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ActivityEve.this.startActivity(new Intent(ActivityEve.this, ActivityCryptotoolsCesar.class));
+                Class destination = ActivityEve.class;
+                Intent i;
+                switch (modeSelected) {
+                    case PLA:
+                        Toast.makeText(getApplicationContext(), "Klartext ist nicht verschlüsselt", Toast.LENGTH_LONG).show();
+                        break;
+                    case CES:
+                        destination = ActivityCryptotoolsCesar.class;
+                        break;
+                    case VIG:
+                        destination = ActivityCryptotoolsMinikey.class;
+                        break;
+                    case AES:
+                        destination = ActivityCryptotoolsAES.class;
+
+                }
+                if (modeSelected != PLA) {
+                    i = new Intent(ActivityEve.this, destination);
+                    i.putExtra("inputtext", text);
+                    i.putExtra("spinner", modeSelected.toInt());
+                    ActivityEve.this.startActivity(i);
+                }
             }
         });
 
@@ -63,6 +140,9 @@ public class ActivityEve extends ActivityBase {
                 pressed = true;
             }
         });
+
+        //TODO: Wenn allles gesetzt ist müssen hier die Cryptotools getriggert werden^^
+
 
     }
 
@@ -119,12 +199,12 @@ public class ActivityEve extends ActivityBase {
                 }
 
 
-                String[] resultSplit = eve.splitInput(result);
+                String[] resultSplit = User.splitInput(result);
                 Toast.makeText(getApplicationContext(), "Tag Contains " + result, Toast.LENGTH_SHORT).show();
 
                 if (pressed) {
                     if (resultSplit[0].equals("MES")) {
-                        mode = toMode(resultSplit[1]);
+                        modeNFC = toMode(resultSplit[1]);
                         text = resultSplit[2];
                         help = resultSplit[3];
                         setTextViewInput(text);

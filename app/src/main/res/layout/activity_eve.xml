@@ -39,9 +39,13 @@
             android:src="@android:drawable/ic_lock_idle_lock"
             app:backgroundTint="@color/colorEve" />
 
-        <Space
-            android:layout_width="0pt"
-            android:layout_height="match_parent"
+        <Spinner
+            android:id="@+id/activity_eve_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_distance"
+            android:layout_marginTop="@dimen/margin_distance"
+            android:layout_marginRight="@dimen/margin_distance"
             android:layout_weight="1" />
 
         <Button
