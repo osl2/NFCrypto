@@ -1,6 +1,5 @@
 package edu.kit.nfcrypto.activities;
 
-import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -18,10 +17,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import edu.kit.nfcrypto.Bob;
-import edu.kit.nfcrypto.Eve;
 import edu.kit.nfcrypto.R;
 import edu.kit.nfcrypto.User;
+import edu.kit.nfcrypto.cryptotools.Cryptotool;
+import edu.kit.nfcrypto.cryptotools.CryptotoolCesar;
+import edu.kit.nfcrypto.cryptotools.CryptotoolMinikey;
 import edu.kit.nfcrypto.data.Mode;
 
 import static edu.kit.nfcrypto.data.Mode.AES;
@@ -38,18 +38,19 @@ public class ActivityEve extends ActivityBase {
     private PendingIntent mNfcPendingIntent;
     private String help;
     private int cesar;
-    Eve eve;
+    private Cryptotool crypto;
+
     String text;
     Mode modeSelected;
     Mode modeNFC;
     int spinner;
+    String decrypted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eve);
 
-        eve = new Eve();
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         mNfcPendingIntent = PendingIntent.getActivity(this, 0, new Intent(this,
                 getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP
@@ -98,7 +99,6 @@ public class ActivityEve extends ActivityBase {
 
         if (getIntent().getIntExtra("cesar", -1) != -1) {
             cesar = getIntent().getIntExtra("cesar", -1);
-            eve.setCesar(cesar);
         }
 
         if (getIntent().getIntExtra("spinner", -1) != -1) {
@@ -141,14 +141,40 @@ public class ActivityEve extends ActivityBase {
             }
         });
 
-        //TODO: Wenn allles gesetzt ist müssen hier die Cryptotools getriggert werden^^
+        //TODO auslagern?
+
+        if (spinner != -1 & text != null & help != null) {
+            decrypted = "";
+            switch (spinner) {
+                case 0:
+                    decrypted = text;
+                    break;
+                case 1:
+                    if (cesar != -1) {
+                        crypto = new CryptotoolCesar(cesar);
+                        decrypted = crypto.crack(text, help);
+                    } else {
+                        //TODO Fehler
+                    }
+                    break;
+                case 2:
+                    crypto = new CryptotoolMinikey();
+                    decrypted = crypto.crack(text, help);
+                    break;
+                case 3:
+                    decrypted = "Das Knacken von AES dauert mehrere Jahre";
+                    break;
+            }
+            setTextViewDecrypted(decrypted);
 
 
+        }
     }
 
-    public void setTextViewInput(String inputNFCTag) {
+
+    public void setTextViewInput(String text) {
         final TextView textView = findViewById(R.id.activity_eve_text_encrypted);
-        textView.setText(inputNFCTag);
+        textView.setText(text);
 
     }
 
