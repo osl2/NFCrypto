@@ -18,7 +18,7 @@ public class CryptotoolCesar extends Cryptotool {
 
         //hier wird nur der help-String überprüft
         for (key = 0; key < 26; key++) {
-            for (int i = 0; i < help.length(); ++i) {
+            for (int i = 0; i < help.length(); i++) {
                 ch = help.charAt(i);
 
                 if (ch >= ('A') && ch <= ('Z')) {
