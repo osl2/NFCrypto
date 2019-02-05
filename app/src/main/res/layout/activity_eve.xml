@@ -31,7 +31,7 @@
         android:orientation="horizontal">
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/activity_eve_button_cryptotools"
+            android:id="@+id/activity_eve_button_decrypt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -48,13 +48,15 @@
             android:layout_marginRight="@dimen/margin_distance"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/activity_eve_button_readMessage"
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/activity_eve_button_cryptotools"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:text="@string/read_msg" />
-
+            android:clickable="true"
+            android:src="@android:drawable/ic_menu_manage"
+            android:textAlignment="center"
+            app:backgroundTint="@color/colorEve"
+            app:elevation="0dp" />
     </LinearLayout>
 
     <ScrollView

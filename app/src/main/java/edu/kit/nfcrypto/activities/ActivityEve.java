@@ -21,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 import edu.kit.nfcrypto.R;
@@ -37,13 +39,12 @@ import static edu.kit.nfcrypto.data.Mode.VIG;
 
 public class ActivityEve extends ActivityBase {
 
-    private boolean pressed = false;
     private static final String TAG = "NFCReadTag";
     private NfcAdapter mNfcAdapter;
     private IntentFilter[] mNdefExchangeFilters;
     private PendingIntent mNfcPendingIntent;
     private String help;
-    private int cesar;
+    private int cesar = -1;
     private Cryptotool crypto;
     ArrayList<String> arrayPermissionString;
     ArrayList<Mode> arrayPermissionMode;
@@ -87,6 +88,7 @@ public class ActivityEve extends ActivityBase {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 modeSelected = arrayPermissionMode.get(position);
+                spinner = position;
 
             }
 
@@ -99,80 +101,85 @@ public class ActivityEve extends ActivityBase {
         if (getIntent().getStringExtra("inputtext") != null) {
             text = getIntent().getStringExtra("inputtext");
             setTextViewInput(text);
+
+        }
+        if (getIntent().getStringExtra("help") != null) {
+            help = getIntent().getStringExtra("help");
+
         }
 
-        if (getIntent().getIntExtra("cesar", -1) != -1) {
-            cesar = getIntent().getIntExtra("cesar", -1);
+        if (getIntent().getIntExtra("cesar", cesar) != -1) {
+            cesar = getIntent().getIntExtra("cesar", cesar);
         }
 
-        if (getIntent().getIntExtra("spinner", -1) != -1) {
-            spinner = getIntent().getIntExtra("spinner", -1);
+        if (getIntent().getIntExtra("spinner", spinner) != -1) {
+            spinner = getIntent().getIntExtra("spinner", spinner);
             modeSpinner.setSelection(spinner);
         }
 
-        final FloatingActionButton buttonCryptotools = findViewById(R.id.activity_eve_button_cryptotools);
-        buttonCryptotools.setOnClickListener(new View.OnClickListener() {
+        final FloatingActionButton buttonDecrypt = findViewById(R.id.activity_eve_button_decrypt);
+        buttonDecrypt.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                decrypted = "";
+                if (text != null & help != null) {
+                    if (spinner != -1 ) {
+                        switch (spinner) {
+                            case 0:
+                                decrypted = text;
+                                Toast.makeText(getApplicationContext(), "Klartext ist nicht verschlüsselt *Decrypt", Toast.LENGTH_LONG).show();
+                                break;
+                            case 1:
+                                if (cesar != -1) {
+                                    crypto = new CryptotoolCesar(cesar);
+                                    decrypted = ((CryptotoolCesar) crypto).decrypt(text);
+                                    Toast.makeText(getApplicationContext(),""+cesar,Toast.LENGTH_LONG).show();
+                                } else {
+                                    crypto = new CryptotoolCesar();
+                                    decrypted = crypto.crack(text, help);
+                                }
+                                break;
+                            case 2:
+                                crypto = new CryptotoolMinikey();
+                                decrypted = crypto.crack(text, help);
+                                break;
+                            case 3:
+                                Toast.makeText(getApplicationContext(), "Das Knacken von AES dauert mehrere Jahre.", Toast.LENGTH_LONG).show();
+                                decrypted = "nicht möglich";
+                                break;
+                        }
+                        setTextViewDecrypted(decrypted);
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Spinner putt", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Du brauchst zuerst eine Nachrichtenkarte.", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
+
+        final FloatingActionButton buttonCryptotool = findViewById(R.id.activity_eve_button_cryptotools);
+        buttonCryptotool.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Class destination = ActivityEve.class;
                 Intent i;
-                switch (modeSelected) {
-                    case PLA:
-                        Toast.makeText(getApplicationContext(), "Klartext ist nicht verschlüsselt", Toast.LENGTH_LONG).show();
-                        break;
-                    case CES:
-                        destination = ActivityCryptotoolsCesar.class;
-                        break;
-                    case VIG:
-                        destination = ActivityCryptotoolsMinikey.class;
-                        break;
-                    case AES:
-                        destination = ActivityCryptotoolsAES.class;
-
-                }
-                if (modeSelected != PLA) {
+                if (modeSelected == CES) {
+                    destination = ActivityCryptotoolsCesar.class;
                     i = new Intent(ActivityEve.this, destination);
                     i.putExtra("inputtext", text);
                     i.putExtra("spinner", modeSelected.toInt());
+                    i.putExtra("help",help);
                     ActivityEve.this.startActivity(i);
+                } else if (modeSelected == PLA) {
+                    Toast.makeText(getApplicationContext(), "Klartext ist nicht verschlüsselt", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Man kann nur Cesar händisch entschlüsseln", Toast.LENGTH_LONG).show();
                 }
+
             }
         });
 
-        final Button buttonMessage = findViewById(R.id.activity_eve_button_readMessage);
-        buttonCryptotools.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                pressed = true;
-            }
-        });
-
-        //TODO auslagern?
-
-        if (spinner != -1 & text != null & help != null) {
-            decrypted = "";
-            switch (spinner) {
-                case 0:
-                    decrypted = text;
-                    break;
-                case 1:
-                    if (cesar != -1) {
-                        crypto = new CryptotoolCesar(cesar);
-                        decrypted = crypto.crack(text, help);
-                    } else {
-                        //TODO Fehler
-                    }
-                    break;
-                case 2:
-                    crypto = new CryptotoolMinikey();
-                    decrypted = crypto.crack(text, help);
-                    break;
-                case 3:
-                    decrypted = "Das Knacken von AES dauert mehrere Jahre";
-                    break;
-            }
-            setTextViewDecrypted(decrypted);
-
-
-        }
     }
 
 
@@ -232,19 +239,16 @@ public class ActivityEve extends ActivityBase {
                 String[] resultSplit = User.splitInput(result);
                 Toast.makeText(getApplicationContext(), "Tag Contains " + result, Toast.LENGTH_SHORT).show();
 
-                if (pressed) {
-                    if (resultSplit[0].equals("MES")) {
-                        modeNFC = toMode(resultSplit[1]);
-                        text = resultSplit[2];
-                        help = resultSplit[3];
-                        setTextViewInput(text);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Dies ist keine Nachrichtenkarte, Eve kann nur Nachrichtenkarten lesen", Toast.LENGTH_LONG).show();
-                    }
 
+                if (resultSplit[0].equals("MES")) {
+                    modeNFC = toMode(resultSplit[1]);
+                    text = resultSplit[2];
+                    help = resultSplit[3];
+                    setTextViewInput(text);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Bitte drücke zuerst den Knopf", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Dies ist keine Nachrichtenkarte, Eve kann nur Nachrichtenkarten lesen", Toast.LENGTH_LONG).show();
                 }
+
 
             }
         }

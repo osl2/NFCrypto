@@ -1,5 +1,7 @@
 package edu.kit.nfcrypto.cryptotools;
 
+import edu.kit.nfcrypto.keys.CesarKey;
+
 public class CryptotoolCesar extends Cryptotool {
     int cesar;
     String text;
@@ -9,7 +11,17 @@ public class CryptotoolCesar extends Cryptotool {
 
     }
 
-    @Override
+    public CryptotoolCesar(){
+
+    }
+
+    public String decrypt(String text){
+        CesarKey key = new CesarKey(cesar);
+        return key.decrypt(text);
+
+    }
+
+    @Override //TODO: FIX THIS FAST!
     public String crack(String text, String help) {
         String decryptedMessage = "";
         String decryptedHelp = "";

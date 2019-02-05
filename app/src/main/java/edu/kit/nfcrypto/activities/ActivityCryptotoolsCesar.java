@@ -13,16 +13,20 @@ import edu.kit.nfcrypto.R;
 
 public class ActivityCryptotoolsCesar extends ActivityBase {
     String inputtext;
+    String help;
     int cesar;
-    int spinner =1;
+    int spinner = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cryptotools_cesar);
         inputtext = getIntent().getStringExtra("inputtext");
 
+        help = getIntent().getStringExtra("help");
 
-        final Spinner detailsSpinner = findViewById(R.id.activity_encrypt_details_spinner);
+
+        final Spinner detailsSpinner = findViewById(R.id.activity_cryptotools_caesar_spinner);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.cesar_array, android.R.layout.simple_spinner_item);
@@ -38,7 +42,7 @@ public class ActivityCryptotoolsCesar extends ActivityBase {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                cesar = -1;
+
             }
         });
 
@@ -48,13 +52,13 @@ public class ActivityCryptotoolsCesar extends ActivityBase {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ActivityCryptotoolsCesar.this, ActivityEve.class);
-                i.putExtra("inputtext",inputtext);
-                i.putExtra("cesar",cesar);
-                i.putExtra("spinner",spinner);
+                i.putExtra("inputtext", inputtext);
+                i.putExtra("cesar", cesar);
+                i.putExtra("spinner", spinner);
+                i.putExtra("help", help);
                 startActivity(i);
             }
         });
-
 
 
     }
