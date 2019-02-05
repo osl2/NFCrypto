@@ -2,12 +2,6 @@
 <resources>
 
 
-    <string-array name="mode_array">
-        <item>@string/plaintext</item>
-        <item>@string/cesar</item>
-        <item>@string/vigenere</item>
-        <item>@string/aes</item>
-    </string-array>
 
     <string-array name="cesar_array">
         <item>@string/a</item>

@@ -6,6 +6,7 @@ import android.support.annotation.ArrayRes;
 import android.support.design.widget.FloatingActionButton;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Pair;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,10 +28,13 @@ import static edu.kit.nfcrypto.data.Mode.VIG;
 import android.text.InputFilter;
 import android.text.Spanned;
 
+import java.util.ArrayList;
+
 
 public class ActivityAlice extends ActivityBase {
 
-    boolean[] permission = User.getPermission();
+    ArrayList <String> arrayPermissionString;
+    ArrayList <Mode> arrayPermissionMode;
     Alice alice = new Alice();
     String messageString = null;
     Mode mode = PLA;
@@ -44,6 +48,15 @@ public class ActivityAlice extends ActivityBase {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alice);
+
+        try {
+            getToolbar().setBackgroundColor(this.getResources().getColor(R.color.colorAlice));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Pair <ArrayList<String>,ArrayList<Mode>> p = User.getInstance().getPermissionArray(this);
+        arrayPermissionString = p.first;
+        arrayPermissionMode = p.second;
 
         final FloatingActionButton buttonInfo = findViewById(R.id.activity_alice_button_info);
         buttonInfo.setOnClickListener(new View.OnClickListener() {
@@ -106,29 +119,14 @@ public class ActivityAlice extends ActivityBase {
 
         final Spinner modeSpinner = findViewById(R.id.activity_alice_spinner);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.mode_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, arrayPermissionString);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         modeSpinner.setAdapter(adapter);
         modeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                        mode = PLA;
-                        break;
-                    case 1:
-                        mode = CES;
-                        break;
-                    case 2:
-                        mode = VIG;
-                        break;
-                    case 3:
-                        mode = AES;
-                        break;
-
-                }
+               mode = arrayPermissionMode.get(position);
 
             }
 

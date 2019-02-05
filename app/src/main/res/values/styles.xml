@@ -6,6 +6,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+       <!-- <item name="colorAlice">@color/colorAlice</item>
+        <item name="colorBob">@color/colorBob</item>
+        <item name="colorEve">@color/colorEve</item> -->
+
     </style>
 
     <style name="font_msg_default">

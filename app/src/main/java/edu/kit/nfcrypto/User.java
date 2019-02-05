@@ -1,5 +1,10 @@
 package edu.kit.nfcrypto;
 
+import android.content.Context;
+import android.util.Pair;
+
+import java.util.ArrayList;
+
 import edu.kit.nfcrypto.exceptions.InputFormatException;
 import edu.kit.nfcrypto.keys.AESKey;
 import edu.kit.nfcrypto.keys.CesarKey;
@@ -9,14 +14,20 @@ import edu.kit.nfcrypto.data.Mode;
 import edu.kit.nfcrypto.keys.PlainKey;
 import edu.kit.nfcrypto.keys.VigenereKey;
 
+import static edu.kit.nfcrypto.data.Mode.AES;
+import static edu.kit.nfcrypto.data.Mode.CES;
+import static edu.kit.nfcrypto.data.Mode.PLA;
+import static edu.kit.nfcrypto.data.Mode.VIG;
+
 
 public final class User {
     //Speichert die Daten im Hintergrund für alle Activities
     private Key lastKey;
-    private static boolean[] permission; //0 PLA,
+    private boolean[] permission; //0 PLA,
     private static User instance;
 
-    private User(){}
+    private User() {
+    }
 
     public static String[] splitInput(String input) {
         String[] output = new String[4];
@@ -34,17 +45,35 @@ public final class User {
     }
 
     public static User getInstance() {
-        if(instance == null){
+        if (instance == null) {
             instance = new User();
         }
         return instance;
     }
 
-    public static void setPermission(boolean[] permission) {
-        permission = permission;
+    public void setPermission(boolean[] permissionInput) {
+        permission = permissionInput;
     }
 
-    public static boolean[] getPermission() {
-        return permission;
+    public Pair<ArrayList<String>, ArrayList<Mode>> getPermissionArray(Context c) {
+        ArrayList<String> outputString = new ArrayList<>();
+        ArrayList<Mode> outputMode = new ArrayList<>();
+        if (permission[0]) {
+            outputString.add(c.getResources().getString(R.string.plaintext));
+            outputMode.add(PLA);
+        }
+        if (permission[1]) {
+            outputString.add(c.getResources().getString(R.string.cesar));
+            outputMode.add(CES);
+        }
+        if (permission[2]) {
+            outputString.add(c.getResources().getString(R.string.vigenere));
+            outputMode.add(VIG);
+        }
+        if (permission[3]) {
+            outputString.add(c.getResources().getString(R.string.aes));
+            outputMode.add(AES);
+        }
+        return new Pair(outputString, outputMode);
     }
 }

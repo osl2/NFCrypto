@@ -3,11 +3,15 @@ package edu.kit.nfcrypto.activities;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
+import android.util.Pair;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,6 +20,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import java.util.ArrayList;
 
 import edu.kit.nfcrypto.R;
 import edu.kit.nfcrypto.User;
@@ -39,6 +45,8 @@ public class ActivityEve extends ActivityBase {
     private String help;
     private int cesar;
     private Cryptotool crypto;
+    ArrayList<String> arrayPermissionString;
+    ArrayList<Mode> arrayPermissionMode;
 
     String text;
     Mode modeSelected;
@@ -51,6 +59,17 @@ public class ActivityEve extends ActivityBase {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eve);
 
+        try {
+            getToolbar().setBackgroundColor(this.getResources().getColor(R.color.colorEve));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Pair<ArrayList<String>, ArrayList<Mode>> p = User.getInstance().getPermissionArray(this);
+        arrayPermissionString = p.first;
+        arrayPermissionMode = p.second;
+
+
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         mNfcPendingIntent = PendingIntent.getActivity(this, 0, new Intent(this,
                 getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP
@@ -60,29 +79,14 @@ public class ActivityEve extends ActivityBase {
 
         final Spinner modeSpinner = findViewById(R.id.activity_eve_spinner);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.mode_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arrayPermissionString);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         modeSpinner.setAdapter(adapter);
         modeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                        modeSelected = PLA;
-                        break;
-                    case 1:
-                        modeSelected = CES;
-                        break;
-                    case 2:
-                        modeSelected = VIG;
-                        break;
-                    case 3:
-                        modeSelected = AES;
-                        break;
-
-                }
+                modeSelected = arrayPermissionMode.get(position);
 
             }
 

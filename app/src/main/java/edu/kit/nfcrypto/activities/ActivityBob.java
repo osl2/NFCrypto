@@ -3,6 +3,7 @@ package edu.kit.nfcrypto.activities;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.drawable.ColorDrawable;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
@@ -53,6 +54,13 @@ public class ActivityBob extends ActivityBase {
         bob = new Bob();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bob);
+
+        try {
+            getToolbar().setBackgroundColor(this.getResources().getColor(R.color.colorBob));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         mNfcPendingIntent = PendingIntent.getActivity(this, 0, new Intent(this,
@@ -169,8 +177,8 @@ public class ActivityBob extends ActivityBase {
         if (text != null && mode != null) {
             if (mode == PLA && keyString == null) {
                 bob.bobPreview(text, PLA, null, this); //text, mode muss von NFC kommen
-            } else if(keyString != null && mode != PLA){
-                bob.bobPreview(text,mode,keyString,this);
+            } else if (keyString != null && mode != PLA) {
+                bob.bobPreview(text, mode, keyString, this);
             }
         } else {
             Toast.makeText(getApplicationContext(), "Alles muss gesetzt sein", Toast.LENGTH_LONG).show();
