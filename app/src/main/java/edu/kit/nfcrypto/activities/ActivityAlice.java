@@ -175,7 +175,7 @@ public class ActivityAlice extends ActivityBase {
     private void onTextUpdate(String messageString, Mode mode) {
 
         if (this.mode != null && this.messageString != null) {
-            alice.alicePreview(messageString, mode, this); //TODO aus der Encryptdetails activity
+            alice.alicePreview(messageString, mode, this);
         } else {
             //TODO Fehlermeldung
         }
