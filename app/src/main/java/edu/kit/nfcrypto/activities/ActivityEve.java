@@ -87,8 +87,14 @@ public class ActivityEve extends ActivityBase {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                modeSelected = arrayPermissionMode.get(position);
-                spinner = position;
+                 spinner = position;
+                if (arrayPermissionMode.size() < arrayPermissionString.size()) { //Wenn der Mode Array kleiner dem String Array ist muss nachträglich ein String hinzugefügt worden sein -> letztes Item ist Code
+                    if (position == arrayPermissionString.size() - 1) {
+                        ActivityEve.this.startActivity(new Intent(ActivityEve.this, ActivityCode.class));
+                    }
+                }else{
+                    modeSelected = arrayPermissionMode.get(position);
+                }
 
             }
 
@@ -122,17 +128,16 @@ public class ActivityEve extends ActivityBase {
             public void onClick(View v) {
                 decrypted = "";
                 if (text != null & help != null) {
-                    if (spinner != -1 ) {
+                    if (spinner != -1) {
                         switch (spinner) {
                             case 0:
                                 decrypted = text;
-                                Toast.makeText(getApplicationContext(), "Klartext ist nicht verschlüsselt *Decrypt", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Klartext ist nicht verschlüsselt", Toast.LENGTH_LONG).show();
                                 break;
                             case 1:
                                 if (cesar != -1) {
                                     crypto = new CryptotoolCesar(cesar);
                                     decrypted = ((CryptotoolCesar) crypto).decrypt(text);
-                                    Toast.makeText(getApplicationContext(),""+cesar,Toast.LENGTH_LONG).show();
                                 } else {
                                     crypto = new CryptotoolCesar();
                                     decrypted = crypto.crack(text, help);
@@ -148,7 +153,7 @@ public class ActivityEve extends ActivityBase {
                                 break;
                         }
                         setTextViewDecrypted(decrypted);
-                    }else{
+                    } else {
                         Toast.makeText(getApplicationContext(), "Spinner putt", Toast.LENGTH_LONG).show();
                     }
                 } else {
@@ -169,7 +174,7 @@ public class ActivityEve extends ActivityBase {
                     i = new Intent(ActivityEve.this, destination);
                     i.putExtra("inputtext", text);
                     i.putExtra("spinner", modeSelected.toInt());
-                    i.putExtra("help",help);
+                    i.putExtra("help", help);
                     ActivityEve.this.startActivity(i);
                 } else if (modeSelected == PLA) {
                     Toast.makeText(getApplicationContext(), "Klartext ist nicht verschlüsselt", Toast.LENGTH_LONG).show();

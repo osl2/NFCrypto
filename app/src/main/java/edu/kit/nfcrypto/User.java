@@ -74,6 +74,9 @@ public final class User {
             outputString.add(c.getResources().getString(R.string.aes));
             outputMode.add(AES);
         }
+        if (outputString.size() < 4 ){
+            outputString.add("Neues freischalten!");
+        }
         return new Pair(outputString, outputMode);
     }
 }
