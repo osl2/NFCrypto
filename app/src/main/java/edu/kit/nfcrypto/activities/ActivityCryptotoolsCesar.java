@@ -25,6 +25,11 @@ public class ActivityCryptotoolsCesar extends ActivityBase {
 
         help = getIntent().getStringExtra("help");
 
+        try {
+            getToolbar().setBackgroundColor(this.getResources().getColor(R.color.colorEve));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         final Spinner detailsSpinner = findViewById(R.id.activity_cryptotools_caesar_spinner);
 

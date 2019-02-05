@@ -29,6 +29,11 @@ public class ActivityEncryptDetails extends ActivityBase {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_encrypt_details);
         inputtext = getIntent().getStringExtra("inputtext");
+        try {
+            getToolbar().setBackgroundColor(this.getResources().getColor(R.color.colorAlice));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
         final Spinner detailsSpinner = findViewById(R.id.activity_encrypt_details_spinner);

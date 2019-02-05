@@ -44,6 +44,12 @@ public class ActivityNFCWrite extends ActivityBase {
     }
 
     protected void onCreate(Bundle savedInstanceState) {
+
+        try {
+            getToolbar().setBackgroundColor(this.getResources().getColor(R.color.colorAlice));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nfcwrite);
         alice = (Alice) getIntent().getSerializableExtra("alice");
