@@ -4,40 +4,25 @@ import edu.kit.nfcrypto.keys.VigenereKey;
 
 public class CryptotoolMinikey extends Cryptotool {
     private String text;
+    private VigenereKey key;
 
     @Override
     public String crack(String text, String help) {
-        String decryptedMessage = "";
 
-        //sorry, Lösung ist ziemlich schrottig, aber so gibt#s wenigstens schon mal ne Notlösung :D
-        char[] key = new char[6];
-        char ch;
-        boolean b0 = false, b1 = false, b2 = false , b3 = false , b4 = false, b5 = false;
+        char[] helpArray = help.toCharArray();
+        char[] referenceArray = "ENTSCHLUESSELT".toCharArray();
+        char[] keyArray = new char[VigenereKey.getKeylength()];
 
-        for (int i = 0; i < 26; i++) {
-            if(help.charAt(0) == 'E') key[0] = (char) (i + 65); b0 = true;
-            if(help.charAt(1) == 'N') key[1] = (char) (i + 65); b1 = true;
-            if(help.charAt(2) == 'T') key[2] = (char) (i + 65); b2 = true;
-            if(help.charAt(3) == 'S') key[3] = (char) (i + 65); b3 = true;
-            if(help.charAt(4) == 'C') key[4] = (char) (i + 65); b4 = true;
-            if(help.charAt(5) == 'H') key[5] = (char) (i + 65); b5 = true;
+        //Sollte so gehen kann nicht Testen ohne das Key gefixt wurde
 
-            if (b0 && b1 && b2 && b3 && b4 && b5) break;
+        for (int j = 0; j < keyArray.length; j++) {
+            keyArray[j] = (char) ((((helpArray[j] + 26) - referenceArray[j]) % 26)+'A');
         }
 
+        key = new VigenereKey(String.valueOf(keyArray));
+        return key.decrypt(text);
 
-        //hier wird mit dem oben ermittelten key der text entschlüsselt
-        for (int i = 0; i < text.length(); i++) {
-            ch = text.charAt(i);
-            if (ch >= ('A') && ch <= ('Z')) {
-                ch = (char) (ch - key[i % 6]);
-                if (ch < 'A') {
-                    ch = (char) (ch + 26);
-                }
-            }
-            decryptedMessage += ch;
-        }
-        return decryptedMessage;
+
     }
 
 

@@ -9,7 +9,7 @@ import static java.lang.Math.floor;
 
 public class VigenereKey extends Key {
     private char keyData[];
-    private int keylength = 6;
+    private static int keylength = 6;
 
     public VigenereKey(String keyDataString) {
         super(VIG, keyDataString);
@@ -22,7 +22,8 @@ public class VigenereKey extends Key {
 
     public VigenereKey() {
         super(VIG);
-        keyData = null;
+        keyData = createKey();
+        setKeyDataString(String.valueOf(keyData));
 
 
     }
@@ -32,11 +33,9 @@ public class VigenereKey extends Key {
         char msg[] = text.toCharArray();
         int msgLen = msg.length, i;
         char encryptedMsg[] = new char[msgLen];
-        if (keyData == null){ keyData = createKey(msgLen);}
-
         //encryption
         for (i = 0; i < msgLen; ++i)
-            encryptedMsg[i] = (char) (((msg[i] + keyData[i%keylength]) % 26) + 'A');
+            encryptedMsg[i] = (char) (((msg[i] + keyData[i % keylength]) % 26) + 'A');
 
         return String.valueOf(encryptedMsg);
     }
@@ -46,13 +45,13 @@ public class VigenereKey extends Key {
 
         if (keyData != null) {
             char encryptedMsg[] = text.toCharArray();
-            int msgLen = encryptedMsg.length, i, j;
+            int msgLen = encryptedMsg.length, i;
             char decryptedMsg[] = new char[msgLen];
 
             //decryption
-            for (i = 0; i < msgLen; ++i)
-                decryptedMsg[i] = (char) ((((encryptedMsg[i] - keyData[i%keylength]) + 26) % 26) + 'A');
-
+            for (i = 0; i < msgLen; ++i) {
+                decryptedMsg[i] = (char) ((((encryptedMsg[i] - keyData[i % keylength]) + 26) % 26) + 'A');
+            }
 
             return String.valueOf(decryptedMsg);
         }
@@ -60,14 +59,18 @@ public class VigenereKey extends Key {
         return null; //TODO Exception, dass noch KeyKarte gebrauch wird
     }
 
-    private char[] createKey(int msgLength){
+    private char[] createKey() {
         char newKey[] = new char[keylength];
 
-        for (int i = 0; i < keylength;i++){
-            newKey[i] =(char) (floor(Math.random()*26)+'A');
+        for (int i = 0; i < keylength; i++) {
+            newKey[i] = (char) (floor(Math.random() * 26) + 'A');
         }
-        setKeyDataString(newKey.toString());
+        setKeyDataString(String.valueOf(newKey));
         return newKey;
+    }
+
+    public static int getKeylength() {
+        return keylength;
     }
 }
 

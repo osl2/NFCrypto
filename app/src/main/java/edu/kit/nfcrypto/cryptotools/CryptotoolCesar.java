@@ -24,9 +24,7 @@ public class CryptotoolCesar extends Cryptotool {
     @Override
     public String crack(String text, String help) {
         char[] helpArray = help.toCharArray();
-        char ch;
-        int key;
-        cesar = ((helpArray[0] + 65) - 'E') % 65;
+        cesar = ((helpArray[0] + 26) - 'E') % 26;
         return decrypt(text);
 
 
