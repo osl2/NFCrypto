@@ -79,4 +79,18 @@ public final class User {
         }
         return new Pair(outputString, outputMode);
     }
+
+    public boolean addPermission(Mode mode){
+        if(permission[mode.toInt()]){
+            return false;
+        }else {
+            permission[mode.toInt()] = true;
+            return true;
+        }
+
+    }
+
+    public void setLastKey(Key lastKey) {
+        this.lastKey = lastKey;
+    }
 }

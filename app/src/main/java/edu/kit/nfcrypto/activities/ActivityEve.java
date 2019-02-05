@@ -90,7 +90,10 @@ public class ActivityEve extends ActivityBase {
                  spinner = position;
                 if (arrayPermissionMode.size() < arrayPermissionString.size()) { //Wenn der Mode Array kleiner dem String Array ist muss nachträglich ein String hinzugefügt worden sein -> letztes Item ist Code
                     if (position == arrayPermissionString.size() - 1) {
-                        ActivityEve.this.startActivity(new Intent(ActivityEve.this, ActivityCode.class));
+                        Intent i = new Intent(ActivityEve.this, ActivityCode.class);
+                        i.putExtra("origin","alice");
+                        ActivityEve.this.startActivity(i);
+
                     }
                 }else{
                     modeSelected = arrayPermissionMode.get(position);

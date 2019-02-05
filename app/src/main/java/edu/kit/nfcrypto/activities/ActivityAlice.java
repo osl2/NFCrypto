@@ -129,7 +129,9 @@ public class ActivityAlice extends ActivityBase {
 
                 if (arrayPermissionMode.size() < arrayPermissionString.size()) { //Wenn der Mode Array kleiner dem String Array ist muss nachträglich ein String hinzugefügt worden sein -> letztes Item ist Code
                     if (position == arrayPermissionString.size() - 1) {
-                        ActivityAlice.this.startActivity(new Intent(ActivityAlice.this, ActivityCode.class));
+                        Intent i = new Intent(ActivityAlice.this, ActivityCode.class);
+                        i.putExtra("origin","alice");
+                        ActivityAlice.this.startActivity(i);
                     }
                 }else{
                     mode = arrayPermissionMode.get(position);
@@ -171,6 +173,7 @@ public class ActivityAlice extends ActivityBase {
         inputText.setFilters(new InputFilter[]{filter});
 
     }
+
 
     private void onTextUpdate(String messageString, Mode mode) {
 

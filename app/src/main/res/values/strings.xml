@@ -62,6 +62,10 @@
     <string name="y">y</string>
     <string name="z">z</string>
 
+    <string name="pwces">PWces</string>
+    <string name="pwvig">PWvig</string>
+    <string name="pwaes">PWaes</string>
+
 
 
 </resources>
