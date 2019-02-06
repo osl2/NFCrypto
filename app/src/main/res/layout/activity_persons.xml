@@ -12,8 +12,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="0dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -103,6 +101,46 @@
 
         </android.support.v7.widget.CardView>
 
+        <android.support.v7.widget.CardView
+            android:id="@+id/activity_persons_button_eve"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center_vertical"
+            android:padding="@dimen/margin_distance">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/margin_distance"
+                android:paddingBottom="@dimen/margin_distance">
+
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/margin_distance"
+                    android:layout_marginEnd="@dimen/margin_distance"
+                    android:layout_weight="0"
+                    android:background="@drawable/design_fab_background"
+                    android:backgroundTint="@color/colorEve"
+                    android:clickable="false"
+                    android:text="E"
+                    android:textAppearance="@style/font_msg_default"
+                    android:textColor="@color/colorButtonWhite" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_weight="1"
+                    android:text="@string/persons_eve" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
         <TextView
             android:id="@+id/activity_person_text_info"
             android:layout_width="match_parent"
@@ -113,44 +151,5 @@
             android:textAppearance="@style/font_explanation_default" />
 
     </LinearLayout>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/activity_persons_button_eve"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_gravity="center_vertical"
-        android:padding="@dimen/margin_distance">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingTop="@dimen/margin_distance"
-            android:paddingBottom="@dimen/margin_distance">
-
-            <Button
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/margin_distance"
-                android:layout_marginEnd="@dimen/margin_distance"
-                android:layout_weight="0"
-                android:background="@drawable/design_fab_background"
-                android:backgroundTint="@color/colorEve"
-                android:clickable="false"
-                android:text="E"
-                android:textAppearance="@style/font_msg_default"
-                android:textColor="@color/colorButtonWhite" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|center_vertical"
-                android:layout_weight="1"
-                android:text="@string/persons_eve" />
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
 
 </RelativeLayout>
