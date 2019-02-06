@@ -5,15 +5,20 @@ import android.nfc.NdefRecord;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
+import android.widget.Toast;
 
 import java.io.IOException;
+
+import edu.kit.nfcrypto.activities.ActivityNFCWrite;
+import edu.kit.nfcrypto.keys.Key;
+import edu.kit.nfcrypto.data.Message;
 
 public final class NFCWriter {
 
     public static WriteResponse writeTag(NdefMessage message, Tag tag) {
 
         int size = message.toByteArray().length;
-        String mess;
+        String mess = "";
         try {
             Ndef ndef = Ndef.get(tag);
             if (ndef != null) {
@@ -67,7 +72,11 @@ public final class NFCWriter {
                 ndef=true;
             }
         }
-        return ultralight && nfcA && ndef;
+        if(ultralight && nfcA && ndef) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static boolean writableTag(Tag tag) {

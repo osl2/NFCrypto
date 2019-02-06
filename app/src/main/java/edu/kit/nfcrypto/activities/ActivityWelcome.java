@@ -6,11 +6,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import edu.kit.nfcrypto.R;
 import edu.kit.nfcrypto.User;
+import edu.kit.nfcrypto.data.Mode;
+
+import static edu.kit.nfcrypto.data.Mode.AES;
+import static edu.kit.nfcrypto.data.Mode.CES;
+import static edu.kit.nfcrypto.data.Mode.PLA;
+import static edu.kit.nfcrypto.data.Mode.VIG;
 
 
 public class ActivityWelcome extends AppCompatActivity {
-    private boolean[] perm = {false,false,false,false};
+    boolean[] perm = {false,false,false,false};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +46,7 @@ public class ActivityWelcome extends AppCompatActivity {
         });
     }
 
-    private void setPerm(boolean[] perm) {
+    public void setPerm(boolean[] perm) {
         this.perm = perm;
     }
 }

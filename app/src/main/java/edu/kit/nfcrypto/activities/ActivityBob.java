@@ -3,26 +3,32 @@ package edu.kit.nfcrypto.activities;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.drawable.ColorDrawable;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.os.PatternMatcher;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import edu.kit.nfcrypto.Alice;
 import edu.kit.nfcrypto.Bob;
+import edu.kit.nfcrypto.R;
 import edu.kit.nfcrypto.User;
 import edu.kit.nfcrypto.data.Mode;
+import edu.kit.nfcrypto.keys.Key;
 
+import static edu.kit.nfcrypto.activities.ActivityNFCWrite.MessageState.KEY;
+import static edu.kit.nfcrypto.activities.ActivityNFCWrite.MessageState.MES;
+import static edu.kit.nfcrypto.activities.ActivityNFCWrite.MessageState.NULL;
 import static edu.kit.nfcrypto.data.Mode.AES;
 import static edu.kit.nfcrypto.data.Mode.CES;
 import static edu.kit.nfcrypto.data.Mode.PLA;
 import static edu.kit.nfcrypto.data.Mode.VIG;
-
-import java.util.Objects;
 
 
 public class ActivityBob extends ActivityBase {
@@ -39,9 +45,9 @@ public class ActivityBob extends ActivityBase {
 
 
     private Bob bob;
-    private String text;
-    private Mode mode;
-    private String keyString;
+    String text;
+    Mode mode;
+    String keyString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +92,7 @@ public class ActivityBob extends ActivityBase {
 
     }
 
-    private void setTextViewInput(String inputNFCTag) {
+    public void setTextViewInput(String inputNFCTag) {
         final TextView textView = findViewById(R.id.activity_bob_text_encrypted);
         textView.setText(inputNFCTag);
 
@@ -130,7 +136,7 @@ public class ActivityBob extends ActivityBase {
                     messages[i] = (NdefMessage) rawMsgs[i];
                 }
             }
-            if (Objects.requireNonNull(messages)[0] != null) {
+            if (messages[0] != null) {
                 String result = "";
                 byte[] payload = messages[0].getRecords()[0].getPayload();
                 // this assumes that we get back am SOH followed by host/code
@@ -179,7 +185,7 @@ public class ActivityBob extends ActivityBase {
         }
     }
 
-    private void setMode(String string) {
+    public void setMode(String string) {
         if (mode != null && !string.equals(mode.toString())) {
             Toast.makeText(getApplicationContext(), "Diese Karten gehören nicht zusammen", Toast.LENGTH_LONG).show();
         } else {

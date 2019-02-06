@@ -1,5 +1,9 @@
 package edu.kit.nfcrypto.activities;
 
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -7,10 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import java.util.Objects;
+import edu.kit.nfcrypto.R;
 
 public class ActivityBase extends AppCompatActivity {
-    private Toolbar toolbar;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +22,7 @@ public class ActivityBase extends AppCompatActivity {
         super.setContentView(R.layout.app_bar_main);
         toolbar = (Toolbar) findViewById(R.id.app_bar_main_toolbar);
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
     }
@@ -42,7 +46,7 @@ public class ActivityBase extends AppCompatActivity {
         }
     }
 
-    Toolbar getToolbar() {
+    public Toolbar getToolbar() {
         return toolbar;
     }
 }

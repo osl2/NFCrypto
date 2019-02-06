@@ -2,6 +2,8 @@ package edu.kit.nfcrypto.activities;
 
 import android.os.Bundle;
 
+import edu.kit.nfcrypto.R;
+
 
 public class ActivityInfo extends ActivityBase {
 

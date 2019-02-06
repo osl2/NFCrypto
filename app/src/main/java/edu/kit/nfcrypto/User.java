@@ -5,8 +5,14 @@ import android.util.Pair;
 
 import java.util.ArrayList;
 
+import edu.kit.nfcrypto.exceptions.InputFormatException;
+import edu.kit.nfcrypto.keys.AESKey;
+import edu.kit.nfcrypto.keys.CesarKey;
 import edu.kit.nfcrypto.keys.Key;
+import edu.kit.nfcrypto.data.Message;
 import edu.kit.nfcrypto.data.Mode;
+import edu.kit.nfcrypto.keys.PlainKey;
+import edu.kit.nfcrypto.keys.VigenereKey;
 
 import static edu.kit.nfcrypto.data.Mode.AES;
 import static edu.kit.nfcrypto.data.Mode.CES;
@@ -15,6 +21,8 @@ import static edu.kit.nfcrypto.data.Mode.VIG;
 
 
 public final class User {
+    //Speichert die Daten im Hintergrund für alle Activities
+    private Key lastKey;
     private boolean[] permission; //0 PLA,
     private static User instance;
 
@@ -83,6 +91,6 @@ public final class User {
     }
 
     public void setLastKey(Key lastKey) {
-        //Speichert die Daten im Hintergrund für alle Activities
+        this.lastKey = lastKey;
     }
 }

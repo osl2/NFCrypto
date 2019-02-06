@@ -3,7 +3,7 @@ package edu.kit.nfcrypto.cryptotools;
 import edu.kit.nfcrypto.keys.CesarKey;
 
 public class CryptotoolCesar extends Cryptotool {
-    private int cesar;
+    int cesar;
     String text;
 
     public CryptotoolCesar(int cesar) {

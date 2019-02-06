@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import edu.kit.nfcrypto.R;
+
 
 public class ActivityCryptotoolsMinikey extends ActivityBase{
 
-    private String inputtext;
-    private final int spinner=2;
+    String inputtext;
+    int spinner=2;
 
     protected void onCreate(Bundle savedInstanceState) {
         inputtext = getIntent().getStringExtra("inputtext");

@@ -1,6 +1,7 @@
 package edu.kit.nfcrypto.activities;
 
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import edu.kit.nfcrypto.R;
 import edu.kit.nfcrypto.User;
 import edu.kit.nfcrypto.data.Mode;
 
@@ -18,11 +20,11 @@ import static edu.kit.nfcrypto.data.Mode.PLA;
 import static edu.kit.nfcrypto.data.Mode.VIG;
 
 public class ActivityCode extends ActivityBase {
-    private String codeString;
-    private String codeCes;
-    private String codeVig;
-    private String codeAES;
-    private Class origin;
+    String codeString;
+    String codeCes;
+    String codeVig;
+    String codeAES;
+    Class origin;
 
 
     @Override

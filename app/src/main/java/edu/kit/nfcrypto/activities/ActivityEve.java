@@ -3,6 +3,9 @@ package edu.kit.nfcrypto.activities;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
@@ -12,14 +15,17 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-import java.util.ArrayList;
-import java.util.Objects;
+import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
+import edu.kit.nfcrypto.R;
 import edu.kit.nfcrypto.User;
 import edu.kit.nfcrypto.cryptotools.Cryptotool;
 import edu.kit.nfcrypto.cryptotools.CryptotoolCesar;
@@ -40,13 +46,14 @@ public class ActivityEve extends ActivityBase {
     private String help;
     private int cesar = -1;
     private Cryptotool crypto;
-    private ArrayList<String> arrayPermissionString;
-    private ArrayList<Mode> arrayPermissionMode;
+    ArrayList<String> arrayPermissionString;
+    ArrayList<Mode> arrayPermissionMode;
 
-    private String text;
-    private Mode modeSelected;
-    private int spinner;
-    private String decrypted;
+    String text;
+    Mode modeSelected;
+    Mode modeNFC;
+    int spinner;
+    String decrypted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,7 +170,7 @@ public class ActivityEve extends ActivityBase {
         final FloatingActionButton buttonCryptotool = findViewById(R.id.activity_eve_button_cryptotools);
         buttonCryptotool.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Class destination;
+                Class destination = ActivityEve.class;
                 Intent i;
                 if (modeSelected == CES) {
                     destination = ActivityCryptotoolsCesar.class;
@@ -184,13 +191,13 @@ public class ActivityEve extends ActivityBase {
     }
 
 
-    private void setTextViewInput(String text) {
+    public void setTextViewInput(String text) {
         final TextView textView = findViewById(R.id.activity_eve_text_encrypted);
         textView.setText(text);
 
     }
 
-    private void setTextViewDecrypted(String decrypted) {
+    public void setTextViewDecrypted(String decrypted) {
         final TextView textView = findViewById(R.id.activity_eve_text_decrypted);
         textView.setText(decrypted);
 
@@ -228,7 +235,7 @@ public class ActivityEve extends ActivityBase {
                     messages[i] = (NdefMessage) rawMsgs[i];
                 }
             }
-            if (Objects.requireNonNull(messages)[0] != null) {
+            if (messages[0] != null) {
                 String result = "";
                 byte[] payload = messages[0].getRecords()[0].getPayload();
                 // this assumes that we get back am SOH followed by host/code
@@ -242,7 +249,7 @@ public class ActivityEve extends ActivityBase {
 
 
                 if (resultSplit[0].equals("MES")) {
-                    Mode modeNFC = toMode(resultSplit[1]);
+                    modeNFC = toMode(resultSplit[1]);
                     text = resultSplit[2];
                     help = resultSplit[3];
                     setTextViewInput(text);

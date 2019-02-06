@@ -8,12 +8,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import edu.kit.nfcrypto.R;
+
 
 public class ActivityCryptotoolsCesar extends ActivityBase {
-    private String inputtext;
-    private String help;
-    private int cesar;
-    private final int spinner = 1;
+    String inputtext;
+    String help;
+    int cesar;
+    int spinner = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
