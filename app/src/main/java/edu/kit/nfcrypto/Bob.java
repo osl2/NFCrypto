@@ -1,6 +1,5 @@
 package edu.kit.nfcrypto;
 
-import edu.kit.nfcrypto.activities.ActivityAlice;
 import edu.kit.nfcrypto.activities.ActivityBob;
 import edu.kit.nfcrypto.data.Message;
 import edu.kit.nfcrypto.data.Mode;
@@ -12,7 +11,7 @@ import edu.kit.nfcrypto.keys.VigenereKey;
 
 public class Bob {
     private Message currentMessage = null;
-    Key key;
+    private Key key;
 
     /**
      * @param text der Eingelesen wird

@@ -9,22 +9,22 @@ public abstract class Key implements Serializable {
     private Mode mode;
     private String keyDataString;
 
-    public Key(Mode mode) {
+    Key(Mode mode) {
         this.mode = mode;
     }
 
-    public Key(Mode mode, String keyDataString) {
+    Key(Mode mode, String keyDataString) {
         this(mode);
         setKeyDataString(keyDataString);
     }
 
-    public Key(){};
+    Key(){}
 
     public String suffix(){
         return encrypt("ENTSCHLUESSELT");
     }
 
-    protected void setKeyDataString(String keyDataString) {
+    void setKeyDataString(String keyDataString) {
         this.keyDataString = keyDataString;
     }
 
@@ -41,7 +41,7 @@ public abstract class Key implements Serializable {
      */
     public String encodeKey() {
         return "KEY" + getMode().toString() + keyDataString;
-    };
+    }
 
 
     /**
@@ -60,7 +60,7 @@ public abstract class Key implements Serializable {
     }
 
 
-    public Mode getMode() {
+    private Mode getMode() {
         return mode;
     }
 }

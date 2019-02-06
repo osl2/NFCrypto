@@ -8,15 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-import edu.kit.nfcrypto.Alice;
-import edu.kit.nfcrypto.R;
-import edu.kit.nfcrypto.keys.CesarKey;
-
-import static edu.kit.nfcrypto.data.Mode.AES;
-import static edu.kit.nfcrypto.data.Mode.CES;
-import static edu.kit.nfcrypto.data.Mode.PLA;
-import static edu.kit.nfcrypto.data.Mode.VIG;
-
 
 public class ActivityEncryptDetails extends ActivityBase {
 

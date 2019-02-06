@@ -2,7 +2,6 @@ package edu.kit.nfcrypto.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.ArrayRes;
 import android.support.design.widget.FloatingActionButton;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,15 +14,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import edu.kit.nfcrypto.Alice;
-import edu.kit.nfcrypto.R;
 import edu.kit.nfcrypto.User;
 import edu.kit.nfcrypto.data.Mode;
-import edu.kit.nfcrypto.exceptions.InputFormatException;
 
-import static edu.kit.nfcrypto.data.Mode.AES;
-import static edu.kit.nfcrypto.data.Mode.CES;
 import static edu.kit.nfcrypto.data.Mode.PLA;
-import static edu.kit.nfcrypto.data.Mode.VIG;
 
 import android.text.InputFilter;
 import android.text.Spanned;
@@ -33,14 +27,13 @@ import java.util.ArrayList;
 
 public class ActivityAlice extends ActivityBase {
 
-    ArrayList <String> arrayPermissionString;
-    ArrayList <Mode> arrayPermissionMode;
-    Alice alice = new Alice();
-    String messageString = null;
-    Mode mode = PLA;
-    int cesar;
+    private ArrayList <String> arrayPermissionString;
+    private ArrayList <Mode> arrayPermissionMode;
+    private final Alice alice = new Alice();
+    private String messageString = null;
+    private Mode mode = PLA;
 
-    private static String FORBIDDEN_CHARS = "[^A-Z0-9 ,.?!():;#*\\-]"; //Negation (^) der erlaubten Zeichen
+    private static final String FORBIDDEN_CHARS = "[^A-Z0-9 ,.?!():;#*\\-]"; //Negation (^) der erlaubten Zeichen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,7 +144,7 @@ public class ActivityAlice extends ActivityBase {
         }
 
         if (getIntent().getIntExtra("cesar",-1) != -1) {
-            cesar = getIntent().getIntExtra("cesar", -1);
+            int cesar = getIntent().getIntExtra("cesar", -1);
             alice.setCesar(cesar);
             modeSpinner.setSelection(1);
         }

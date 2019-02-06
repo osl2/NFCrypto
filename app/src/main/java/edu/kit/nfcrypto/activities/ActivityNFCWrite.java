@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import edu.kit.nfcrypto.Alice;
-import edu.kit.nfcrypto.R;
 import edu.kit.nfcrypto.nfctools.NFCWriter;
 import edu.kit.nfcrypto.nfctools.WriteResponse;
 
@@ -35,12 +34,11 @@ public class ActivityNFCWrite extends ActivityBase {
     private IntentFilter[] mWriteTagFilters;
     private PendingIntent mNfcPendingIntent;
     private boolean silent = false;
-    private boolean writeProtect = false;
     private Context context;
 
 
     public boolean isWriteProtect() {
-        return writeProtect;
+        return false;
     }
 
     protected void onCreate(Bundle savedInstanceState) {

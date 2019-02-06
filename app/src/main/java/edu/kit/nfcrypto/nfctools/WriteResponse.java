@@ -1,8 +1,8 @@
 package edu.kit.nfcrypto.nfctools;
 
 public class WriteResponse {
-    int status;
-    String message;
+    private final int status;
+    private final String message;
     WriteResponse(int Status, String Message) {
         this.status = Status;
         this.message = Message;

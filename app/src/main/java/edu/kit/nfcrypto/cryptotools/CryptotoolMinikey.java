@@ -4,7 +4,6 @@ import edu.kit.nfcrypto.keys.VigenereKey;
 
 public class CryptotoolMinikey extends Cryptotool {
     private String text;
-    private VigenereKey key;
 
     @Override
     public String crack(String text, String help) {
@@ -19,7 +18,7 @@ public class CryptotoolMinikey extends Cryptotool {
             keyArray[j] = (char) ((((helpArray[j] + 26) - referenceArray[j]) % 26)+'A');
         }
 
-        key = new VigenereKey(String.valueOf(keyArray));
+        VigenereKey key = new VigenereKey(String.valueOf(keyArray));
         return key.decrypt(text);
 
 

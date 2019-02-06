@@ -11,7 +11,7 @@ import edu.kit.nfcrypto.exceptions.KeyFormatException;
 import static edu.kit.nfcrypto.data.Mode.AES;
 
 public class AESKey extends Key {
-    private SecretKeySpec keyData;
+    private final SecretKeySpec keyData;
 
     public AESKey() {
         super(AES);
@@ -28,7 +28,6 @@ public class AESKey extends Key {
         byte[] keyDataByte = keyDataString.getBytes();
         //SecretKey aus keyData erzeugen
         keyData = new SecretKeySpec(keyDataByte, "AES");
-        keyDataString = new String(keyDataByte);
     }
 
 
