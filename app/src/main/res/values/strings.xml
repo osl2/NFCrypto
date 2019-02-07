@@ -8,6 +8,9 @@
     <string name="info2">zweiter Infotext...</string>
     <string name="read_msg">Nachricht einlesen</string>
     <string name="read_key">Schlüssel einlesen</string>
+    <string name="anwenden">Anwenden</string>
+    <string name="entschlüsseln">Entschlüsseln</string>
+    <string name="freischalten">Freischalten</string>
 
     <!-- Allgemeine Strings -->
     <string name="empty_text_encrypted">Die verschlüsselte Nachricht wird hier angezeigt.</string>
@@ -31,8 +34,17 @@
 
     <!-- Beschreibung in activity_cryptotools -->
     <string name="cryptotools_aes_info"></string>
+    <string name="cryptotools_minikey_title">Minikey Entschlüsselungstool</string>
     <string name="cryptotools_minikey_info">Du glaubst die Nachricht wurde mit einem Minikey verschlüsselt? dann wirst du wohl mit dem Bruteforce verfahren herangehen müssen. Das bedeutet das du jede mögliche Schlüsselkombination versuchst. Das macht hier ein Programm im Hintergrund aber du kannst es auch selbst mal versuchen.</string>
-    <string name="cryptotools_caesar_info">Stelle unten denn Buchstaben ein, nach welchem du deinen Text verschlüsseln möchtest.</string>
+    <string name="cryptotools_caesar_info">Du willst versuchen denn Text mit Cäsar-Verschlüsselung zu knacken, na dann stell unten mal denn Buchtaben ein, von dem du glaubst das er der Schlüssel war.</string>
+    <string name="cryptotools_caesar_title">Cäsar Entschlüsselungstool</string>
+
+
+    <!-- Beschreibungen activity_encrypt_details -->
+    <string name="encrypt_details_caesar">Deine Cäsarverschlüsselung</string>
+    <string name="encrypt_details_caesar_info">Stelle unten denn Buchstaben ein, nach welchem du deinen Text verschlüsseln möchtest.</string>
+
+
 
 
     <string name="plaintext">Klartext</string>

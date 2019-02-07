@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Cäsar Entschlüsselungstool"
+            android:text="@string/cryptotools_caesar_title"
             android:textAppearance="@style/font_msg_default"
             android:textSize="24sp"
             tools:layout_height="60dp" />
@@ -31,7 +31,7 @@
             android:layout_marginTop="@dimen/margin_distance"
             android:layout_marginBottom="@dimen/margin_distance"
             android:gravity="center"
-            android:text="Du willst versuchen denn Text mit Cäsar-Verschlüsselung zu knacken, na dann stell unten mal denn Buchtaben ein, von dem du glaubst das er der Schlüssel war."
+            android:text="@string/cryptotools_caesar_info"
             android:textAppearance="@style/font_msg_default"
             tools:layout_height="120dp" />
 
@@ -51,7 +51,7 @@
                 android:id="@+id/activity_cryptotools_caesar_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Entschlüsseln" />
+                android:text="@string/entschlüsseln" />
         </LinearLayout>
 
     </LinearLayout>

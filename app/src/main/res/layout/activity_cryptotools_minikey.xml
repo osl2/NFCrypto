@@ -17,10 +17,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Minikey Entschlüsselungstool"
+            android:text="@string/cryptotools_minikey_title"
+            android:textAppearance="@style/font_msg_default"
             android:textSize="24sp"
-            tools:layout_height="60dp"
-            android:textAppearance="@style/font_msg_default" />
+            tools:layout_height="60dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_distance"
                 android:layout_marginBottom="@dimen/margin_distance"
-                android:text="Entschlüsseln" />
+                android:text="@string/entschlüsseln" />
 
         </LinearLayout>
     </LinearLayout>

@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Deine Cäsarverschlüsselung"
+            android:text="@string/encrypt_details_caesar"
             android:textAppearance="@style/font_msg_default"
             android:textSize="24sp"
             tools:layout_height="60dp" />
@@ -37,7 +37,7 @@
                 android:layout_marginTop="@dimen/margin_distance"
                 android:layout_marginBottom="@dimen/margin_distance"
                 android:gravity="center"
-                android:text="@string/cryptotools_caesar_info"
+                android:text="@string/encrypt_details_caesar_info"
                 android:textAppearance="@style/font_msg_default"
                 tools:layout_height="120dp" />
 
@@ -53,7 +53,7 @@
                 android:id="@+id/activity_encrypt_details_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Anwenden" />
+                android:text="@string/anwenden" />
         </LinearLayout>
 
     </LinearLayout>
