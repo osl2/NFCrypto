@@ -37,7 +37,7 @@
                 android:layout_marginTop="@dimen/margin_distance"
                 android:layout_marginBottom="@dimen/margin_distance"
                 android:gravity="center"
-                android:text="Stelle unten denn Buchstaben ein, nach welche du deinen Text verschlüsseln Möchtest."
+                android:text="@string/cryptotools_caesar_info"
                 android:textAppearance="@style/font_msg_default"
                 tools:layout_height="120dp" />
 

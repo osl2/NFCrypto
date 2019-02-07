@@ -29,6 +29,11 @@
     <string name="persons_eve">Eve fängt Nachrichten ab, die nicht an sie adressiert sind. Sie muss selbst versuchen die Nachrichten zu entschlüsseln.</string>
     <string name="persons_info"></string>
 
+    <!-- Beschreibung in activity_cryptotools -->
+    <string name="cryptotools_aes_info"></string>
+    <string name="cryptotools_minikey_info">Du glaubst die Nachricht wurde mit einem Minikey verschlüsselt? dann wirst du wohl mit dem Bruteforce verfahren herangehen müssen. Das bedeutet das du jede mögliche Schlüsselkombination versuchst. Das macht hier ein Programm im Hintergrund aber du kannst es auch selbst mal versuchen.</string>
+    <string name="cryptotools_caesar_info">Stelle unten denn Buchstaben ein, nach welchem du deinen Text verschlüsseln möchtest.</string>
+
 
     <string name="plaintext">Klartext</string>
     <string name="cesar">Cesar</string>
