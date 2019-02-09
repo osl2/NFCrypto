@@ -17,10 +17,6 @@ public class Message implements Serializable {
     }
 
 
-    public Message(String encryptedText) {
-        this.encryptedText = encryptedText;
-    }
-
     public void setPlaintext(String plaintext) {
         this.plaintext = plaintext;
     }
@@ -29,16 +25,16 @@ public class Message implements Serializable {
         return encryptedText;
     }
 
+    /**
+     *
+     * @return die Nachricht mit Präfix MES  und Modus
+     */
     public String encodeEncryptedText() {
         return "MES" + mode.toString() + encryptedText;
     }
 
     public String getPlaintext() {
         return plaintext;
-    }
-
-    public void setEncryptedText(String encryptedText) {
-        this.encryptedText = encryptedText;
     }
 
     public Mode getMode() {

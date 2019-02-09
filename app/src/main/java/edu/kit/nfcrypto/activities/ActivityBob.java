@@ -3,28 +3,21 @@ package edu.kit.nfcrypto.activities;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.drawable.ColorDrawable;
 import android.nfc.NdefMessage;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.os.PatternMatcher;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import edu.kit.nfcrypto.Alice;
 import edu.kit.nfcrypto.Bob;
 import edu.kit.nfcrypto.R;
 import edu.kit.nfcrypto.User;
 import edu.kit.nfcrypto.data.Mode;
-import edu.kit.nfcrypto.keys.Key;
 
-import static edu.kit.nfcrypto.activities.ActivityNFCWrite.MessageState.KEY;
-import static edu.kit.nfcrypto.activities.ActivityNFCWrite.MessageState.MES;
-import static edu.kit.nfcrypto.activities.ActivityNFCWrite.MessageState.NULL;
 import static edu.kit.nfcrypto.data.Mode.AES;
 import static edu.kit.nfcrypto.data.Mode.CES;
 import static edu.kit.nfcrypto.data.Mode.PLA;
@@ -32,12 +25,12 @@ import static edu.kit.nfcrypto.data.Mode.VIG;
 
 
 public class ActivityBob extends ActivityBase {
-    public enum MessageState {
+    private enum MessageState {  //Typ der Karte, die gelesen werden soll ; NULL = nichts ausgewählt
         MES, KEY, NULL
 
     }
 
-    private MessageState message = MessageState.NULL;
+    private MessageState message = MessageState.NULL; //s.o.
     private static final String TAG = "NFCReadTag";
     private NfcAdapter mNfcAdapter;
     private IntentFilter[] mNdefExchangeFilters;
@@ -45,22 +38,24 @@ public class ActivityBob extends ActivityBase {
 
 
     private Bob bob;
-    String text;
-    Mode mode;
-    String keyString;
+    private String text; //Text auf der NFC karte
+    private Mode mode; //Mode auf der NFC Karte
+    private String keyString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Initialisiert bob zum lokalen speichern
         bob = new Bob();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bob);
 
+        //Setzt die Farbe der Toolbar
         try {
             getToolbar().setBackgroundColor(this.getResources().getColor(R.color.colorBob));
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         mNfcPendingIntent = PendingIntent.getActivity(this, 0, new Intent(this,
@@ -69,13 +64,15 @@ public class ActivityBob extends ActivityBase {
 
         mNdefExchangeFilters = new IntentFilter[]{};
 
-
-        Button keyButton = findViewById(R.id.activity_bob_button_readKey);
+        //Knopf zum Einlesen des Schlüssels
+        final Button keyButton = findViewById(R.id.activity_bob_button_readKey);
         keyButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 message = MessageState.KEY;
             }
         });
+
+        //Knopf zum Einlesen der Nachricht
         final Button messageButton = findViewById(R.id.activity_bob_button_readMessage);
         messageButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -83,7 +80,8 @@ public class ActivityBob extends ActivityBase {
             }
         });
 
-        FloatingActionButton decryptButton = findViewById(R.id.activity_bob_button_decrypt);
+        //Knopf der das Entschlüsseln triggert
+        final FloatingActionButton decryptButton = findViewById(R.id.activity_bob_button_decrypt);
         decryptButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 transfer();
@@ -92,12 +90,23 @@ public class ActivityBob extends ActivityBase {
 
     }
 
+
+    /**
+     * Ändert den Inputtext
+     * @param inputNFCTag zeigt den Text der vom NFC Tag kommt im Inputtextfeld an.
+     */
     public void setTextViewInput(String inputNFCTag) {
         final TextView textView = findViewById(R.id.activity_bob_text_encrypted);
         textView.setText(inputNFCTag);
 
     }
 
+
+
+    /**
+     * Ändert das entschlüsselte Textfeld
+     * @param decrypted text, der im Textfeld für den entschlüsselten Text angezeigt wird.
+     */
     public void setTextViewDecrypted(String decrypted) {
         final TextView textView = findViewById(R.id.activity_bob_text_decrypted);
         textView.setText(decrypted);
@@ -105,14 +114,14 @@ public class ActivityBob extends ActivityBase {
     }
 
     @Override
-    protected void onResume() {
+    protected void onResume() { //TODO: Test ob NFC angeschalten ist
         super.onResume();
         if (mNfcAdapter != null) {
             mNfcAdapter.enableForegroundDispatch(this, mNfcPendingIntent,
                     mNdefExchangeFilters, null);
 
         } else {
-            Toast.makeText(getApplicationContext(), "Sorry, No NFC Adapter found.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Es wurde kein NFC-Adapter gefunden", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -122,8 +131,13 @@ public class ActivityBob extends ActivityBase {
         if (mNfcAdapter != null) mNfcAdapter.disableForegroundDispatch(this);
     }
 
+
+
+    //Intent - aufgerufen durch NFC
     @Override
     protected void onNewIntent(Intent intent) {
+
+        //liest Nachrichtenkarte
         super.onNewIntent(intent);
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())) {
 
@@ -136,23 +150,27 @@ public class ActivityBob extends ActivityBase {
                     messages[i] = (NdefMessage) rawMsgs[i];
                 }
             }
+
+
             if (messages[0] != null) {
                 String result = "";
                 byte[] payload = messages[0].getRecords()[0].getPayload();
-                // this assumes that we get back am SOH followed by host/code
-                for (int b = 1; b < payload.length; b++) { // skip SOH
+
+                for (int b = 1; b < payload.length; b++) {
                     result += (char) payload[b];
                 }
 
 
                 String[] resultSplit = User.splitInput(result);
-                Toast.makeText(getApplicationContext(), "Tag Contains " + result, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(), "Tag Contains " + result, Toast.LENGTH_SHORT).show();
 
+
+                //Abfrage des Präfixes auf der Karte
                 if (message == MessageState.KEY) {
                     if (resultSplit[0].equals("KEY")) {
                         setMode(resultSplit[1]);
                         keyString = resultSplit[2];
-                        Toast.makeText(getApplicationContext(), keyString, Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(), keyString, Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(getApplicationContext(), "Dies ist keine Schlüsselkarte.", Toast.LENGTH_LONG).show();
                     }
@@ -166,13 +184,15 @@ public class ActivityBob extends ActivityBase {
                     }
 
                 } else if (message == MessageState.NULL) {
-                    Toast.makeText(getApplicationContext(), "Bitte wähle zuerst einen Knopf", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Bitte wähle zuerst ob du eine Nachrichten- oder eine Schlüsselkarte lesen möchtest.", Toast.LENGTH_LONG).show();
                 }
 
             }
         }
     }
 
+
+    //Hilfsfunktion, überträgt die Daten zu Bob
     private void transfer() {
         if (text != null && mode != null) {
             if (mode == PLA && keyString == null) {
@@ -181,11 +201,21 @@ public class ActivityBob extends ActivityBase {
                 bob.bobPreview(text, mode, keyString, this);
             }
         } else {
-            Toast.makeText(getApplicationContext(), "Alles muss gesetzt sein", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Du musst zuerst einen Schlüssel und eine Nachtichtenkarte einlesen", Toast.LENGTH_LONG).show();
         }
     }
 
+
+
+    //TODO: ggf. Aus/Umlagern
+
+    /**
+     * Wandelt Strings in Modi um.
+     * @param string String der zu Mode umgewandelt werden soll (wird dann gleich in Bob gesetzt.
+     */
     public void setMode(String string) {
+
+        //Wenn Schlüssel und Nachrichtenkarte nicht zusammen passen
         if (mode != null && !string.equals(mode.toString())) {
             Toast.makeText(getApplicationContext(), "Diese Karten gehören nicht zusammen", Toast.LENGTH_LONG).show();
         } else {

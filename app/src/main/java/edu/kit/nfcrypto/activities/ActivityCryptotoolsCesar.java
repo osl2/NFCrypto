@@ -12,25 +12,28 @@ import edu.kit.nfcrypto.R;
 
 
 public class ActivityCryptotoolsCesar extends ActivityBase {
-    String inputtext;
-    String help;
-    int cesar;
-    int spinner = 1;
+    private String inputtext; //Speichert die relevanten Variablen zwiscehn um sie an Eve zurüchzugeben.
+    private String help;
+    private int cesar;
+    private int spinner = 1; //Spinner muss auf CES gesetzt werden
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cryptotools_cesar);
-        inputtext = getIntent().getStringExtra("inputtext");
 
+        //Setzt die mit dem Intent übergebenen Variablen
+        inputtext = getIntent().getStringExtra("inputtext");
         help = getIntent().getStringExtra("help");
 
+        //Setzt die Farbe der Toolbar
         try {
             getToolbar().setBackgroundColor(this.getResources().getColor(R.color.colorEve));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        //Dropdownmenü für das Alphabet
         final Spinner detailsSpinner = findViewById(R.id.activity_cryptotools_caesar_spinner);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -51,11 +54,13 @@ public class ActivityCryptotoolsCesar extends ActivityBase {
             }
         });
 
-
+        //"Anwenden" Knopf
         final Button applyButton = findViewById(R.id.activity_cryptotools_caesar_button);
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //Alles relevante wird an ActivityAlice zurück gegeben und ActivityEve starten.
                 Intent i = new Intent(ActivityCryptotoolsCesar.this, ActivityEve.class);
                 i.putExtra("inputtext", inputtext);
                 i.putExtra("cesar", cesar);

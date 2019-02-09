@@ -6,7 +6,7 @@ import edu.kit.nfcrypto.data.Mode;
 import edu.kit.nfcrypto.exceptions.WrongIdentifierException;
 
 public abstract class Key implements Serializable {
-    private Mode mode;
+    public Mode mode;
     private String keyDataString;
 
     public Key(Mode mode) {
@@ -14,12 +14,16 @@ public abstract class Key implements Serializable {
     }
 
     public Key(Mode mode, String keyDataString) {
-        this(mode);
+        this.mode = mode;
         setKeyDataString(keyDataString);
     }
 
     public Key(){};
 
+    /**
+     *
+     * @return den verschlüsselten Suffix
+     */
     public String suffix(){
         return encrypt("ENTSCHLUESSELT");
     }
@@ -28,9 +32,18 @@ public abstract class Key implements Serializable {
         this.keyDataString = keyDataString;
     }
 
-
+    /**
+     *  Verschlüsstelt
+     * @param text entsprechend der KeyData
+     * @return und gibt diesen verschlüsselten Text zurück
+     */
     public abstract String encrypt(String text);
 
+    /**
+     *  Entschlüsstelt
+     * @param text entsprechend der KeyData
+     * @return und gibt diesen entschlüsselten Text zurück
+     */
     public abstract String decrypt(String text);
 
     /**
@@ -40,7 +53,7 @@ public abstract class Key implements Serializable {
      * @return einen String, abhängig von Key, also fertig für NFC
      */
     public String encodeKey() {
-        return "KEY" + getMode().toString() + keyDataString;
+        return "KEY" + mode.toString() + keyDataString;
     };
 
 
@@ -62,5 +75,9 @@ public abstract class Key implements Serializable {
 
     public Mode getMode() {
         return mode;
+    }
+
+    public void setMode(Mode mode) {
+        this.mode = mode;
     }
 }

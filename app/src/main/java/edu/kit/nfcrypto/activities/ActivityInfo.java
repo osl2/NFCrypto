@@ -7,6 +7,8 @@ import edu.kit.nfcrypto.R;
 
 public class ActivityInfo extends ActivityBase {
 
+    //Zeigt Infotexte an
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

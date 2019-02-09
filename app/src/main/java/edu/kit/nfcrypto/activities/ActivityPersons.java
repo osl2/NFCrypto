@@ -2,10 +2,8 @@ package edu.kit.nfcrypto.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.CardView;
 import android.view.View;
-import android.widget.Button;
 
 import edu.kit.nfcrypto.R;
 
@@ -17,6 +15,8 @@ public class ActivityPersons extends ActivityBase {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_persons);
 
+
+        //Knöpfe um zu Alice/Bob/Eve weiterzuleiten
         final CardView buttonAlice = findViewById(R.id.activity_persons_button_alice);
         buttonAlice.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

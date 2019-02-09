@@ -1,5 +1,6 @@
 package edu.kit.nfcrypto.keys;
 
+import edu.kit.nfcrypto.data.Mode;
 import edu.kit.nfcrypto.exceptions.KeyFormatException;
 
 import static edu.kit.nfcrypto.data.Mode.CES;
@@ -8,10 +9,13 @@ public class CesarKey extends Key {
     private int keyData;
     private String letterRegEx = "[A-Z]";
 
+
     public CesarKey(String keyDataString) throws  KeyFormatException{
         super(CES,keyDataString);
+        setMode(CES);
         try {
             keyData = Integer.valueOf(keyDataString);
+            setKeyDataString(keyDataString);
         } catch (NumberFormatException e) {
             throw new KeyFormatException("Integer needed instead of " + keyDataString + ".");
         }
@@ -19,13 +23,11 @@ public class CesarKey extends Key {
 
     public CesarKey() {
         super(CES);
+        setMode(CES);
         keyData = (int) (Math.random() * 25 + 1);
         setKeyDataString("" + keyData);
     }
 
-    public CesarKey(int keyData){
-        this.keyData = keyData;
-    }
 
     @Override
     public String encrypt(String text) {

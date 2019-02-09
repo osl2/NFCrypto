@@ -1,9 +1,9 @@
 package edu.kit.nfcrypto.keys;
 
+import edu.kit.nfcrypto.data.Mode;
 import edu.kit.nfcrypto.exceptions.KeyFormatException;
 
 import static edu.kit.nfcrypto.data.Mode.VIG;
-import static edu.kit.nfcrypto.data.Mode.createKey;
 import static java.lang.Math.floor;
 
 
@@ -34,9 +34,13 @@ public class VigenereKey extends Key {
         int msgLen = msg.length, i;
         char encryptedMsg[] = new char[msgLen];
         //encryption
-        for (i = 0; i < msgLen; ++i)
-            encryptedMsg[i] = (char) (((msg[i] + keyData[i % keylength]) % 26) + 'A');
-
+        for (i = 0; i < msgLen; ++i) {
+            if (msg[i] == ' ') {
+                encryptedMsg[i] = ' ';
+            } else {
+                encryptedMsg[i] = (char) (((msg[i] + keyData[i % keylength]) % 26) + 'A');
+            }
+        }
         return String.valueOf(encryptedMsg);
     }
 
@@ -50,7 +54,11 @@ public class VigenereKey extends Key {
 
             //decryption
             for (i = 0; i < msgLen; ++i) {
-                decryptedMsg[i] = (char) ((((encryptedMsg[i] - keyData[i % keylength]) + 26) % 26) + 'A');
+                if (encryptedMsg[i] == ' ') {
+                    decryptedMsg[i] = ' ';
+                } else {
+                    decryptedMsg[i] = (char) ((((encryptedMsg[i] - keyData[i % keylength]) + 26) % 26) + 'A');
+                }
             }
 
             return String.valueOf(decryptedMsg);

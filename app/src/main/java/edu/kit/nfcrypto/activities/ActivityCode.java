@@ -1,7 +1,6 @@
 package edu.kit.nfcrypto.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -19,12 +18,12 @@ import static edu.kit.nfcrypto.data.Mode.CES;
 import static edu.kit.nfcrypto.data.Mode.PLA;
 import static edu.kit.nfcrypto.data.Mode.VIG;
 
-public class ActivityCode extends ActivityBase {
-    String codeString;
-    String codeCes;
-    String codeVig;
-    String codeAES;
-    Class origin;
+public class ActivityCode extends ActivityBase { //Activity in der dann die Modi freigeschaltet werden können.
+    private String codeString;  //Speichert den input
+    private String codeCes;  //Speichert das Passwort für CES, VIG, AES
+    private String codeVig;
+    private String codeAES;
+    private Class origin; // Speichert die Activity, von der diese Activity aufgerufen wurde
 
 
     @Override
@@ -37,15 +36,14 @@ public class ActivityCode extends ActivityBase {
         codeAES = this.getResources().getString(R.string.pwaes);
 
         if (getIntent().getStringExtra("origin").equals("alice")) {
-             origin = ActivityAlice.class;
-        } else if(getIntent().getStringExtra("origin").equals("eve")){
+            origin = ActivityAlice.class;
+        } else if (getIntent().getStringExtra("origin").equals("eve")) {
             origin = ActivityEve.class;
         }
         final EditText codeInput = findViewById(R.id.activity_code_edittext);
         codeInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
 
             }
 
@@ -56,16 +54,19 @@ public class ActivityCode extends ActivityBase {
 
             @Override
             public void afterTextChanged(Editable s) {
-
-                codeString = codeInput.getText().toString();
+                codeString = codeInput.getText().toString(); //Speichert die Codeeingabe
 
             }
         });
+
+        //"anwenden" knopf
         final Button button = findViewById(R.id.activity_code_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String unlocked = "";
                 Mode mode = PLA;
+
+                //Es wird überprüft, ob ein Code stimmt
                 if (codeString != null) {
                     if (codeString.equals(codeCes)) {
                         mode = CES;
@@ -79,11 +80,15 @@ public class ActivityCode extends ActivityBase {
                     } else {
                         Toast.makeText(getApplicationContext(), "Der Code ist leider falsch", Toast.LENGTH_LONG).show();
                     }
+
+                    //Bei Freischaltung
                     if (mode != PLA & User.getInstance().addPermission(mode)) {
                         Toast.makeText(getApplicationContext(), unlocked + " erfolgreich freigeschaltet", Toast.LENGTH_LONG).show();
+
+                        //Kehre bei Freischaltung auf vorherige Activity zurück.
                         ActivityCode.this.startActivity(new Intent(ActivityCode.this, origin));
                     } else {
-                        Toast.makeText(getApplicationContext(), unlocked + " ist bereits freigeschaltet", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), unlocked + " das wurde bereits freigeschaltet", Toast.LENGTH_LONG).show();
                     }
                 }
             }

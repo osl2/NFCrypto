@@ -18,6 +18,12 @@ import edu.kit.nfcrypto.keys.VigenereKey;
 public enum Mode implements Serializable {
     PLA, CES, VIG, AES;
 
+    /**
+     * Erstellt einen neuen Key mit
+     * @param modeString als Modus
+     * @param keyString als KeyString
+     * @return den Schlüssel
+     */
     public static Key createKey(String modeString, String keyString) {
         switch (modeString) {
             case "PLA":
@@ -33,6 +39,10 @@ public enum Mode implements Serializable {
         }
     }
 
+    /**
+     * Modus zu
+     * @return int für Spinner
+     */
     public int toInt() {
         switch (this) {
             case PLA:

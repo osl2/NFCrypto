@@ -6,6 +6,7 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.spec.SecretKeySpec;
 
+import edu.kit.nfcrypto.data.Mode;
 import edu.kit.nfcrypto.exceptions.KeyFormatException;
 
 import static edu.kit.nfcrypto.data.Mode.AES;

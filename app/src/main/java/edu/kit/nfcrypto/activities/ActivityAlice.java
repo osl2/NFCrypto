@@ -2,28 +2,20 @@ package edu.kit.nfcrypto.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.ArrayRes;
 import android.support.design.widget.FloatingActionButton;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Pair;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.*;
 
 import edu.kit.nfcrypto.Alice;
 import edu.kit.nfcrypto.R;
 import edu.kit.nfcrypto.User;
 import edu.kit.nfcrypto.data.Mode;
-import edu.kit.nfcrypto.exceptions.InputFormatException;
 
-import static edu.kit.nfcrypto.data.Mode.AES;
 import static edu.kit.nfcrypto.data.Mode.CES;
 import static edu.kit.nfcrypto.data.Mode.PLA;
-import static edu.kit.nfcrypto.data.Mode.VIG;
 
 import android.text.InputFilter;
 import android.text.Spanned;
@@ -33,12 +25,11 @@ import java.util.ArrayList;
 
 public class ActivityAlice extends ActivityBase {
 
-    ArrayList <String> arrayPermissionString;
-    ArrayList <Mode> arrayPermissionMode;
-    Alice alice = new Alice();
-    String messageString = null;
-    Mode mode = PLA;
-    int cesar;
+    private ArrayList<String> arrayPermissionString; // Permission Elemente
+    private ArrayList<Mode> arrayPermissionMode;
+    private Alice alice = new Alice();
+    private String messageString = null;
+    private Mode mode = PLA;    // mode wird standardmäßig als PLA inizialisiert, da dies dem NULL objekt entspricht
 
     private static String FORBIDDEN_CHARS = "[^A-Z0-9 ,.?!():;#*\\-]"; //Negation (^) der erlaubten Zeichen
 
@@ -49,15 +40,20 @@ public class ActivityAlice extends ActivityBase {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alice);
 
+
+        // Setzt die Farbe der Toolbar
         try {
             getToolbar().setBackgroundColor(this.getResources().getColor(R.color.colorAlice));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Pair <ArrayList<String>,ArrayList<Mode>> p = User.getInstance().getPermissionArray(this);
+
+        //Läd die aktuellen Permissions
+        Pair<ArrayList<String>, ArrayList<Mode>> p = User.getInstance().getPermissionArray(this);
         arrayPermissionString = p.first;
         arrayPermissionMode = p.second;
 
+        // Info Knopf
         final FloatingActionButton buttonInfo = findViewById(R.id.activity_alice_button_info);
         buttonInfo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -65,9 +61,12 @@ public class ActivityAlice extends ActivityBase {
             }
         });
 
+        //Knopf der die Cesardetails aufruft
         final FloatingActionButton buttonDetails = findViewById(R.id.activity_alice_button_details);
         buttonDetails.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                //dem Intent werden alle wichtigen indos zum Speichern übergeben.
                 Intent i = new Intent(ActivityAlice.this, ActivityEncryptDetails.class);
                 if (messageString != null) {
                     i.putExtra("inputtext", messageString);
@@ -76,6 +75,7 @@ public class ActivityAlice extends ActivityBase {
             }
         });
 
+        //Knopf der die Verschlüsselung und die Aktualisierung des Textfeldes initialisiert
         final FloatingActionButton buttonEncrypt = findViewById(R.id.activity_alice_button_encrypt);
         buttonEncrypt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,42 +84,42 @@ public class ActivityAlice extends ActivityBase {
             }
         });
 
+        //Knopf der die NFCWrite aufruft
         final FloatingActionButton buttonNFCWrite = findViewById(R.id.activity_alice_button_nfcWrite);
         buttonNFCWrite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //dem Intent wird Alice mitgegeben, diese speichert alle lokal wichtigen Daten
                 Intent i = new Intent(ActivityAlice.this, ActivityNFCWrite.class);
                 i.putExtra("alice", alice);
                 ActivityAlice.this.startActivity(i);
             }
         });
 
+
+        // Eingabefeld
         final EditText inputText = findViewById(R.id.activity_alice_text_message);
         inputText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                //wenn dich der Text geändert hat
                 messageString = inputText.getText().toString();
-
-
             }
         });
 
-
+        //Dropdownmenü
         final Spinner modeSpinner = findViewById(R.id.activity_alice_spinner);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, arrayPermissionString);
+        //Nutzt die Permissions um alles erlaubte anzuzeigen
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arrayPermissionString);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         modeSpinner.setAdapter(adapter);
         modeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -130,10 +130,10 @@ public class ActivityAlice extends ActivityBase {
                 if (arrayPermissionMode.size() < arrayPermissionString.size()) { //Wenn der Mode Array kleiner dem String Array ist muss nachträglich ein String hinzugefügt worden sein -> letztes Item ist Code
                     if (position == arrayPermissionString.size() - 1) {
                         Intent i = new Intent(ActivityAlice.this, ActivityCode.class);
-                        i.putExtra("origin","alice");
+                        i.putExtra("origin", "alice");
                         ActivityAlice.this.startActivity(i);
                     }
-                }else{
+                } else {
                     mode = arrayPermissionMode.get(position);
                 }
 
@@ -141,18 +141,29 @@ public class ActivityAlice extends ActivityBase {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+                if (getIntent().getIntExtra("cesar", -1) != -1) {
+                    mode = CES;
+                } else {
+                    mode = PLA;
+                }
 
             }
         });
 
+
+        // Falls die Activity beim Starten einen Eingabetext erhält, soll dieser angezeigt werden
         if (getIntent().getStringExtra("inputtext") != null) {
             messageString = getIntent().getStringExtra("inputtext");
             inputText.setText(messageString);
         }
 
-        if (getIntent().getIntExtra("cesar",-1) != -1) {
-            cesar = getIntent().getIntExtra("cesar", -1);
+        //Falls die Activity einen Wert für Cesar erhält, soll dieser genutz werden
+        if (getIntent().getIntExtra("cesar", -1) != -1) {
+            //Cesar Verschiebung
+            int cesar = getIntent().getIntExtra("cesar", -1);
             alice.setCesar(cesar);
+
+            //Setzt den Spinner passend
             modeSpinner.setSelection(1);
         }
 
@@ -175,15 +186,22 @@ public class ActivityAlice extends ActivityBase {
     }
 
 
+    //Hilfsmethode
     private void onTextUpdate(String messageString, Mode mode) {
 
         if (this.mode != null && this.messageString != null) {
             alice.alicePreview(messageString, mode, this);
         } else {
-            //TODO Fehlermeldung
+            Toast.makeText(this, "Irgendwas ist schiefgelaufen", Toast.LENGTH_LONG).show();
         }
     }
 
+
+    /**
+     * Setzt von außerhalb den encryptedtext
+     *
+     * @param encrypted Text der angezeigt werden soll
+     */
     public void setTextView(String encrypted) {
         final TextView textView = findViewById(R.id.activity_alice_text_encrypted);
         textView.setText(encrypted);

@@ -24,15 +24,15 @@ public final class NFCWriter {
             if (ndef != null) {
                 ndef.connect();
                 if (!ndef.isWritable()) {
-                    return new WriteResponse(0,"Tag is read-only");
+                    return new WriteResponse(0,"Dieser Tag ist nicht beschriebbar");
                 }
                 if (ndef.getMaxSize() < size) {
-                    mess = "Tag capacity is " + ndef.getMaxSize() + " bytes, message is " + size
-                            + " bytes.";
+                    mess = "Tag Speicherplatz ist " + ndef.getMaxSize() + " bytes, Inhalt ist " + size
+                            + " bytes. Dies ist zu groß.";
                     return new WriteResponse(0,mess);
                 }
                 ndef.writeNdefMessage(message);
-                mess = "Wrote message to pre-formatted tag.";
+                mess = "der Schlüssel oder die Nachricht wurde auf den Tag geschrieben";
                 return new WriteResponse(1,mess);
             } else {
                 NdefFormatable format = NdefFormatable.get(tag);
@@ -40,25 +40,29 @@ public final class NFCWriter {
                     try {
                         format.connect();
                         format.format(message);
-                        mess = "Formatted tag and wrote message";
+                        mess = "der Schlüssel oder die Nachricht wurde auf den Tag geschrieben";
                         return new WriteResponse(1,mess);
                     } catch (IOException e) {
-                        mess = "Failed to format tag.";
+                        mess = "Es hat nicht geklappt";
                         return new WriteResponse(0,mess);
                     }
                 } else {
-                    mess = "Tag doesn't support NDEF.";
+                    mess = "Dieser Tag wird nicht unterstützt.";
                     return new WriteResponse(0,mess);
                 }
             }
         } catch (Exception e) {
-            mess = "Failed to write tag";
+            mess = "Etwas ist schiefgelaufen";
             return new WriteResponse(0,mess);
         }
     }
 
 
-
+    /**
+     * Schaut ob der Typ des Tags unterstützt wird
+     * @param techs Typen des Tags
+     * @return ob techs unterstützt werden.
+     */
     public static boolean supportedTechs(String[] techs) {
         boolean ultralight=false;
         boolean nfcA=false;
@@ -79,6 +83,11 @@ public final class NFCWriter {
         }
     }
 
+    /**
+     * gibt zurück ob
+     * @param tag beschreibbar ist.
+     * @return beschreibbar
+     */
     public static boolean writableTag(Tag tag) {
         try {
             Ndef ndef = Ndef.get(tag);
@@ -98,9 +107,9 @@ public final class NFCWriter {
     }
 
     /**
-     * Bereitet die Daten für den NFCTag auf
-     * @param datatext
-     * @return
+     * Bereitet
+     * @param datatext  zu
+     * @return  NFCData auf und gibt diese zurück
      */
     public static NdefMessage stringToData(String datatext) {
             NdefRecord record = new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_TEXT, new byte[0], datatext.getBytes());

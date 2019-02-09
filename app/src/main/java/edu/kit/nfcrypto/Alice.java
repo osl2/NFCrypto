@@ -16,6 +16,12 @@ public class Alice implements Serializable {
     private Key key;
     private int cesar = -1;
 
+    /**
+     * Stellt alle Daten für das Preview in der GUI bereit
+     * @param text der Eingelesen wird
+     * @param mode wie Cesar etc.
+     * @param activity Activity aus der die Funktionaufgerufen wurde
+     */
     public void alicePreview(String text, Mode mode, ActivityAlice activity) {
         switch (mode) {
             case PLA:
@@ -23,7 +29,7 @@ public class Alice implements Serializable {
                 break;
             case CES:
                 if (cesar != -1) {
-                    key = new CesarKey(cesar);
+                    key = new CesarKey(""+cesar);
                 } else {
                     key = new CesarKey();
                 }

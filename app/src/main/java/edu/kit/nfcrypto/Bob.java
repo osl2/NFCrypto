@@ -1,6 +1,5 @@
 package edu.kit.nfcrypto;
 
-import edu.kit.nfcrypto.activities.ActivityAlice;
 import edu.kit.nfcrypto.activities.ActivityBob;
 import edu.kit.nfcrypto.data.Message;
 import edu.kit.nfcrypto.data.Mode;
@@ -15,6 +14,7 @@ public class Bob {
     Key key;
 
     /**
+     * Stellt alle Daten für das Preview in der GUI bereit
      * @param text der Eingelesen wird
      * @param mode wie Cesar etc.
      */

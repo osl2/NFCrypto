@@ -20,7 +20,7 @@ import static edu.kit.nfcrypto.data.Mode.VIG;
 
 public class ActivityEncryptDetails extends ActivityBase {
 
-    private String inputtext;
+    private String inputtext; //Relevante Dinge werden zum zurückgeben an Activity Alice zwischengespeichert
     private int cesar;
 
 
@@ -28,7 +28,11 @@ public class ActivityEncryptDetails extends ActivityBase {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_encrypt_details);
+
+        //Wir von ActivityAlice zum zwischenspeichern mit dem Intent übergeben
         inputtext = getIntent().getStringExtra("inputtext");
+
+        //Setzt die Farbe der Toolbar
         try {
             getToolbar().setBackgroundColor(this.getResources().getColor(R.color.colorAlice));
         } catch (Exception e) {
@@ -36,6 +40,7 @@ public class ActivityEncryptDetails extends ActivityBase {
         }
 
 
+        //Dropdownmenü vgl. ActivityCryptotoolsCesar
         final Spinner detailsSpinner = findViewById(R.id.activity_encrypt_details_spinner);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -56,7 +61,7 @@ public class ActivityEncryptDetails extends ActivityBase {
             }
         });
 
-
+        //"Anwenden" Knopf vgl. ActivityCryptotoolsCesar
         final Button applyButton = findViewById(R.id.activity_encrypt_details_button);
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override

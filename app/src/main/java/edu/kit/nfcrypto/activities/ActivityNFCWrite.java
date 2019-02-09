@@ -23,6 +23,7 @@ import static edu.kit.nfcrypto.nfctools.NFCWriter.supportedTechs;
 
 public class ActivityNFCWrite extends ActivityBase {
 
+    //Ob Nachricht oder Schlüssel geschrieben werden soll
     public enum MessageState {
         MES, KEY, NULL
 
@@ -39,21 +40,22 @@ public class ActivityNFCWrite extends ActivityBase {
     private Context context;
 
 
-    public boolean isWriteProtect() {
-        return writeProtect;
-    }
-
     protected void onCreate(Bundle savedInstanceState) {
 
+        //setzt die Farbe der Toolbar
         try {
             getToolbar().setBackgroundColor(this.getResources().getColor(R.color.colorAlice));
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nfcwrite);
+
+        //nimmt Zwischenspeicherinstanz Alice entgegen
         alice = (Alice) getIntent().getSerializableExtra("alice");
 
+        //Wählt aus, was geschrieben werden soll
         final Button buttonMessage = findViewById(R.id.activity_nfcwrite_button_message);
         buttonMessage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +80,7 @@ public class ActivityNFCWrite extends ActivityBase {
         IntentFilter discovery = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         IntentFilter ndefDetected = new IntentFilter(NfcAdapter.ACTION_NDEF_DISCOVERED);
         IntentFilter techDetected = new IntentFilter(NfcAdapter.ACTION_TECH_DISCOVERED);
-        // Intent filters for writing to a tag
+        // Intentfilter fpür NFCTags
         mWriteTagFilters = new IntentFilter[]{discovery};
     }
 
@@ -88,43 +90,44 @@ public class ActivityNFCWrite extends ActivityBase {
         if (mNfcAdapter != null) {
             mNfcAdapter.enableForegroundDispatch(this, mNfcPendingIntent, mWriteTagFilters, null);
         } else {
-            Toast.makeText(context, "Sorry, No NFC Adapter found.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Sorry, kein NFC Adapter gefunden", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
-        //.getCurrentMessage().getEncryptedText();
         super.onNewIntent(intent);
         if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
-            // validate that this tag can be written
+            // überprüft ob auf den Tag geschreiben werden kann.
             Tag detectedTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
             if (supportedTechs(detectedTag.getTechList())) {
-                // check if tag is writable (to the extent that we can
                 if (NFCWriter.writableTag(detectedTag)) {
-                    //writeTag here
                     String text = getText();
                     if (text != null) {
                         WriteResponse wr = NFCWriter.writeTag(NFCWriter.stringToData(text), detectedTag);
 
-                        String message = (wr.getStatus() == 1 ? "Success: " : "Failed: ") + wr.getMessage();
+                        String message = (wr.getStatus() == 1 ? "Erfolg: " : "Fehler: ") + wr.getMessage();
                         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(context, "Bitte wähle einen Knopf aus",Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    Toast.makeText(context, "This tag is not writable", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Dieser Tag ist nicht beschreibbar", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(context, "This tag type is not supported", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Diese Art von Tag ist nicht kompatibel ", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
+
+    //Wählt den Text und Setzt den zuschreibenden Text lokal zusammen
+    //O muss zuvor geschriebn werden, da dies den Typ definiert, der auf dem Tag steht. 0 => PLAIN
     private String getText() {
         if (message == NULL) {
             Toast.makeText(context, "Bitte drücke zuerst einen Knopf", Toast.LENGTH_LONG).show();
         } else if (message == MES) {
+            //suffix ist "ENTSCHLUSSELT" nocheinmal getrennt verschlüsselt.
             String suffix = alice.getKey().suffix();
             return "0"+alice.getCurrentMessage().encodeEncryptedText()+suffix;
         } else if (message == KEY) {

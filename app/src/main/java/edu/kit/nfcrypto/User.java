@@ -22,13 +22,18 @@ import static edu.kit.nfcrypto.data.Mode.VIG;
 
 public final class User {
     //Speichert die Daten im Hintergrund für alle Activities
-    private Key lastKey;
-    private boolean[] permission; //0 PLA,
+    private Key lastKey; //Letzter Schlüssel
+    private boolean[] permission; //Array mit Permissions, in der Userklasse, sodass es Activityübergreifend ist.
     private static User instance;
 
     private User() {
     }
 
+    /**
+     * Splittet den
+     * @param input in dessen unterschiedliche teile und gibt
+     * @return diese als StringArray zurück.
+     */
     public static String[] splitInput(String input) {
         String[] output = new String[4];
         output[0] = input.substring(0, 3); //KEY oder MES
@@ -51,9 +56,16 @@ public final class User {
         return instance;
     }
 
+
     public void setPermission(boolean[] permissionInput) {
         permission = permissionInput;
     }
+
+    /**
+     * Gibt ein Paar an ArrayLists zurück, die an denn gleichen index im String und ModeArray passende Elemente
+     * @param c Kontext, so dass man auf resourcen zugreifen kann
+     * @return Arraylist Paar an Permissions
+     */
 
     public Pair<ArrayList<String>, ArrayList<Mode>> getPermissionArray(Context c) {
         ArrayList<String> outputString = new ArrayList<>();
@@ -80,6 +92,11 @@ public final class User {
         return new Pair(outputString, outputMode);
     }
 
+    /**
+     * Fügt den
+     * @param mode der Permission zu und
+     * @return ob es geklappt hat
+     */
     public boolean addPermission(Mode mode){
         if(permission[mode.toInt()]){
             return false;

@@ -1,5 +1,6 @@
 package edu.kit.nfcrypto.keys;
 
+import edu.kit.nfcrypto.data.Mode;
 import static edu.kit.nfcrypto.data.Mode.PLA;
 
 public class PlainKey extends Key {
