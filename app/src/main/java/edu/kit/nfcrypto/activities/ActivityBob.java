@@ -187,6 +187,10 @@ public class ActivityBob extends ActivityBase {
                     Toast.makeText(getApplicationContext(), "Bitte wähle zuerst ob du eine Nachrichten- oder eine Schlüsselkarte lesen möchtest.", Toast.LENGTH_LONG).show();
                 }
 
+                if(keyString != null && text != null){
+                    Toast.makeText(getApplicationContext(), "Du kannst nun auf Enschlüsseln drücken!", Toast.LENGTH_LONG).show();
+                }
+
             }
         }
     }
