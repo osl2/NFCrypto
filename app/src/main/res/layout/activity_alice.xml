@@ -35,13 +35,13 @@
             android:orientation="horizontal">
 
         <android.support.design.widget.FloatingActionButton
-                android:id="@+id/activity_alice_button_encrypt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:src="@android:drawable/ic_lock_idle_lock"
-                app:backgroundTint="@color/colorAlice"
-                app:elevation="0dp"/>
+            android:id="@+id/activity_alice_button_encrypt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:src="@drawable/lock"
+            app:backgroundTint="@color/colorAlice"
+            app:elevation="0dp" />
 
         <Spinner
                 android:id="@+id/activity_alice_spinner"
@@ -52,23 +52,23 @@
                 android:layout_weight="1"/>
 
         <android.support.design.widget.FloatingActionButton
-                android:id="@+id/activity_alice_button_details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:src="@android:drawable/ic_menu_manage"
-                android:textAlignment="center"
-                app:backgroundTint="@color/colorAlice"
-                app:elevation="0dp"/>
+            android:id="@+id/activity_alice_button_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:src="@drawable/wrench"
+            android:textAlignment="center"
+            app:backgroundTint="@color/colorAlice"
+            app:elevation="0dp" />
 
         <android.support.design.widget.FloatingActionButton
-                android:id="@+id/activity_alice_button_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_distance"
-                android:clickable="true"
-                android:src="@android:drawable/ic_menu_help"
-                app:backgroundTint="@color/colorAlice"/>
+            android:id="@+id/activity_alice_button_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_distance"
+            android:clickable="true"
+            android:src="@drawable/help"
+            app:backgroundTint="@color/colorAlice" />
 
     </LinearLayout>
 
@@ -104,13 +104,13 @@
                     android:layout_weight="1"/>
 
             <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/activity_alice_button_nfcWrite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:src="@android:drawable/ic_menu_send"
-                    app:backgroundTint="@color/colorAlice"
-                    app:elevation="0dp"/>
+                android:id="@+id/activity_alice_button_nfcWrite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:src="@drawable/send"
+                app:backgroundTint="@color/colorAlice"
+                app:elevation="0dp" />
         </LinearLayout>
 
     </LinearLayout>

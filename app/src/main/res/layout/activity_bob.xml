@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
-            android:src="@android:drawable/ic_lock_idle_lock"
+            android:src="@drawable/lock"
             app:backgroundTint="@color/colorBob" />
 
         <Space
