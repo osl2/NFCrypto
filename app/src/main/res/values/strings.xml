@@ -36,7 +36,7 @@
     <string name="persons_info"></string>
 
     <!-- Beschreibung in activity_nfcwrite -->
-    <string name="nfc_info">Wähle aus, was du auf die NFC-Karte schreiben willst. Um den Vorgang abzuschließen, musst du sowohl Nachricht als auch Schlüssel auf eine NFC-Karte schreiben."</string>
+    <string name="nfc_info">Wähle aus, was du auf die NFC-Karte schreiben willst. Halte anschließend die Karte an dein Handy. Meistens befindet sich das Lesegerät in der Nähe von der Kamra.</string>
 
     <!-- Beschreibung in activity_cryptotools -->
     <string name="cryptotools_caesar_info">Du willst versuchen denn Text mit Cäsar-Verschlüsselung zu knacken, na dann stell unten mal denn Buchtaben ein, von dem du glaubst das er der Schlüssel war.</string>
