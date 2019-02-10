@@ -9,16 +9,16 @@
 
     <EditText
             android:id="@+id/activity_code_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="281dp"
+            android:layout_height="127dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="106dp"
-            android:layout_marginTop="181dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="140dp"
             android:ems="10"
             android:inputType="text"
             android:text="Gib hier deinen Freischaltcode ein." android:layout_alignParentEnd="true"
-            android:layout_marginEnd="83dp"/>
+            android:layout_marginEnd="103dp"/>
 
     <Button
             android:id="@+id/activity_code_button"

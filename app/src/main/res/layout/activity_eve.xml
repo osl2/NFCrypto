@@ -16,7 +16,7 @@
             android:id="@+id/activity_eve_text_encrypted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/empty_text_encrypted"
+            android:text="@string/empty_text_encrypted_eve"
             android:textAppearance="@style/font_msg_default"
             tools:layout_height="200dp" />
     </ScrollView>

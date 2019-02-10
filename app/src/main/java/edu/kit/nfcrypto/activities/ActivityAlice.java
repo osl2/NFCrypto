@@ -111,8 +111,12 @@ public class ActivityAlice extends ActivityBase {
 
             @Override
             public void afterTextChanged(Editable s) {
-                //wenn dich der Text geändert hat
+                //wenn sich der Text geändert hat
                 messageString = inputText.getText().toString();
+
+                if(messageString.length()<100){
+                    Toast.makeText(getApplicationContext(),"Der Text darf maximal 100 Zeichen lang sein.", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

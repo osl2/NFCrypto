@@ -17,7 +17,7 @@
     <!-- Allgemeine Strings -->
     <string name="empty_text_encrypted">Die verschlüsselte Nachricht wird hier angezeigt.</string>
     <string name="empty_text_decrypted">Die entschlüsselte Nachricht wird hier angezeigt.</string>
-    <string name="empty_text_decrypted_eve">Die entschlüsselte Nachricht wird hier angezeigt, wenn du eine NAchrichtenkarte an dein Smartphone hältst.</string>
+    <string name="empty_text_encrypted_eve">Die entschlüsselte Nachricht wird hier angezeigt, wenn du eine Nachrichtenkarte an dein Smartphone hältst.</string>
     <string name="empty_text_enter_msg">Gib eine Nachricht ein.</string>
     <string name="empty_text_TODO">Hier kreativ werden!</string> <!-- Platzhalter -->
 
@@ -36,15 +36,15 @@
     <string name="persons_info"></string>
 
     <!-- Beschreibung in activity_nfcwrite -->
-    <string name="nfc_info">Wähle aus, was du auf die NFC-Karte schreiben willst. Halte anschließend die Karte an dein Handy. Meistens befindet sich das Lesegerät in der Nähe von der Kamra.</string>
+    <string name="nfc_info">Wähle aus, was du auf die NFC-Karte schreiben willst. Halte anschließend die Karte an dein Handy. Meistens befindet sich das Lesegerät in der Nähe von der Kamera.</string>
 
     <!-- Beschreibung in activity_cryptotools -->
-    <string name="cryptotools_caesar_info">Du willst versuchen denn Text mit Cäsar-Verschlüsselung zu knacken, na dann stell unten mal denn Buchtaben ein, von dem du glaubst das er der Schlüssel war.</string>
-    <string name="cryptotools_caesar_title">Cäsar Entschlüsselungstool</string>
+    <string name="cryptotools_caesar_info">Du willst versuchen den Text mit der Cesar-Verschlüsselung zu knacken? Na dann stell unten den Buchstaben ein, von dem du glaubst, dass er der Schlüssel ist.</string>
+    <string name="cryptotools_caesar_title">Cesar Entschlüsselungstool</string>
 
 
     <!-- Beschreibungen activity_encrypt_details -->
-    <string name="encrypt_details_caesar">Deine Cäsarverschlüsselung</string>
+    <string name="encrypt_details_caesar">Deine Cesarverschlüsselung</string>
     <string name="encrypt_details_caesar_info">Stelle unten den Buchstaben ein, nach welchem du deinen Text verschlüsseln möchtest.</string>
 
 
