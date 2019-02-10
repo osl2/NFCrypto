@@ -1,6 +1,5 @@
 package edu.kit.nfcrypto.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +19,7 @@ public class ActivityEncryptCesarDetails extends ActivityBase {
     private String inputtext; //Relevante Dinge werden zum zurückgeben an Activity Alice zwischengespeichert
     private Key key;
     private int cesar = -1;
-    private Mode spinner = Mode.CES;
+    private final Mode spinner = Mode.CES;
 
 
     @Override

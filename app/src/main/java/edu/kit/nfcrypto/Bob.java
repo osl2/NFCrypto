@@ -38,11 +38,4 @@ public class Bob {
         activity.setTextViewDecrypted(currentMessage.getPlaintext()); //Sollte den TextView in BobActivity umsetzen
     }
 
-    public void setKey(Key key) {
-        this.key = key;
-    }
-
-    public Message getCurrentMessage() {
-        return currentMessage;
-    }
 }

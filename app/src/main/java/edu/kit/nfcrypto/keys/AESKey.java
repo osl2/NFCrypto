@@ -17,9 +17,9 @@ import static edu.kit.nfcrypto.data.Mode.AES;
 
 
 public class AESKey extends Key {
-    private SecretKeySpec keyData;
-    private byte[] iv = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-    transient private IvParameterSpec ivspec = new IvParameterSpec(iv); //transient wird benötigt, da sonst Probleme mit Serializable von Key
+    private final SecretKeySpec keyData;
+    private final byte[] iv = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    final transient private IvParameterSpec ivspec = new IvParameterSpec(iv); //transient wird benötigt, da sonst Probleme mit Serializable von Key
 
     public AESKey() {
         super(AES);

@@ -26,13 +26,10 @@ import edu.kit.nfcrypto.cryptotools.CryptotoolCesar;
 import edu.kit.nfcrypto.cryptotools.CryptotoolMinikey;
 import edu.kit.nfcrypto.data.Mode;
 
-import static edu.kit.nfcrypto.data.Mode.AES;
 import static edu.kit.nfcrypto.data.Mode.CES;
 import static edu.kit.nfcrypto.data.Mode.PLA;
-import static edu.kit.nfcrypto.data.Mode.VIG;
 
 public class ActivityEve extends ActivityBase {
-    private static final String TAG = "NFCReadTag";
     private NfcAdapter mNfcAdapter;
     private IntentFilter[] mNdefExchangeFilters;
     private PendingIntent mNfcPendingIntent;
@@ -48,7 +45,6 @@ public class ActivityEve extends ActivityBase {
 
     private String text; //Text vom NFC Tag
     private Mode modeSelected; //Mode des Spinners
-    private Mode modeNFC; //Mode von NFCTag
     private int spinner; //Position des Spinners
     private String decrypted; //Entschlüsselter Text
 
@@ -185,7 +181,7 @@ public class ActivityEve extends ActivityBase {
         final FloatingActionButton buttonCryptotool = findViewById(R.id.activity_eve_button_cryptotools);
         buttonCryptotool.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Class destination = ActivityEve.class;
+                Class destination;
                 Intent i;
                 if (modeSelected == CES) {
                     destination = ActivityCryptotoolsCesar.class;
@@ -213,7 +209,7 @@ public class ActivityEve extends ActivityBase {
     }
 
     //Vgl. ActivityBob
-    public void setTextViewDecrypted(String decrypted) {
+    private void setTextViewDecrypted(String decrypted) {
         final TextView textView = findViewById(R.id.activity_eve_text_decrypted);
         textView.setText(decrypted);
 
@@ -265,7 +261,8 @@ public class ActivityEve extends ActivityBase {
 
 
                 if (resultSplit[0].equals("MES")) {
-                    modeNFC = Mode.toMode(resultSplit[1]);
+                    //Mode von NFCTag
+                    Mode modeNFC = Mode.toMode(resultSplit[1]);
                     text = resultSplit[2];
                     help = resultSplit[3];
                     setTextViewInput(text);

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import android.widget.Toast;
@@ -15,14 +14,13 @@ import edu.kit.nfcrypto.keys.AESKey;
 import edu.kit.nfcrypto.keys.Key;
 
 import static edu.kit.nfcrypto.data.Mode.AES;
-import static edu.kit.nfcrypto.data.Mode.VIG;
 
 
 public class ActivityEncryptAESDetails extends ActivityBase {
 
     private String inputtext; //Relevante Dinge werden zum zurückgeben an Activity Alice zwischengespeichert
     private String aes;
-    private Mode spinner = AES;
+    private final Mode spinner = AES;
     private Key key;
 
 

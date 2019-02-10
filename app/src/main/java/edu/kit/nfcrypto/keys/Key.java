@@ -6,19 +6,19 @@ import edu.kit.nfcrypto.data.Mode;
 import edu.kit.nfcrypto.exceptions.WrongIdentifierException;
 
 public abstract class Key implements Serializable {
-    public Mode mode;
+    private Mode mode;
     private String keyDataString;
 
-    public Key(Mode mode) {
+    Key(Mode mode) {
         this.mode = mode;
     }
 
-    public Key(Mode mode, String keyDataString) {
+    Key(Mode mode, String keyDataString) {
         this.mode = mode;
         setKeyDataString(keyDataString);
     }
 
-    public Key(){};
+    Key(){}
 
     /**
      *
@@ -28,7 +28,7 @@ public abstract class Key implements Serializable {
         return encrypt("ENTSCHLUESSELT");
     }
 
-    protected void setKeyDataString(String keyDataString) {
+    void setKeyDataString(String keyDataString) {
         this.keyDataString = keyDataString;
     }
 
@@ -54,23 +54,8 @@ public abstract class Key implements Serializable {
      */
     public String encodeKey() {
         return "KEY" + mode.toString() + keyDataString;
-    };
-
-
-    /**
-     * nimmt den Key Daten String und
-     * @return die Key Daten :O
-     * Der Datentyp
-     */
-
-    public static Key decodeKey(String keyString)
-    {
-        String[] splitKeyString = {keyString.substring(0,2), keyString.substring(3,5), keyString.substring(6)};
-        if(!splitKeyString[0].equals("KEY")){
-            throw new WrongIdentifierException("Identifier 'KEY' needed instead of " + splitKeyString[0] + ".");
-        }
-        return Mode.createKey(splitKeyString[1], splitKeyString[2]);
     }
+
 
     public String getKeyDataString() {
         return keyDataString;
@@ -80,7 +65,7 @@ public abstract class Key implements Serializable {
         return mode;
     }
 
-    public void setMode(Mode mode) {
+    void setMode(Mode mode) {
         this.mode = mode;
     }
 }

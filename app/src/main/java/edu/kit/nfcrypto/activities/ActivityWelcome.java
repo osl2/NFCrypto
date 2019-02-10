@@ -51,7 +51,7 @@ public class ActivityWelcome extends AppCompatActivity {
      * @param perm von außerhalb
      */
 
-    public void setPerm(boolean[] perm) {
+    private void setPerm(boolean[] perm) {
         this.perm = perm;
     }
 }

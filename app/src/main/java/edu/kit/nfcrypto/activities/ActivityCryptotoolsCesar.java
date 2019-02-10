@@ -15,7 +15,7 @@ public class ActivityCryptotoolsCesar extends ActivityBase {
     private String inputtext; //Speichert die relevanten Variablen zwiscehn um sie an Eve zurüchzugeben.
     private String help;
     private int cesar;
-    private int spinner = 1; //Spinner muss auf CES gesetzt werden
+    private final int spinner = 1; //Spinner muss auf CES gesetzt werden
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

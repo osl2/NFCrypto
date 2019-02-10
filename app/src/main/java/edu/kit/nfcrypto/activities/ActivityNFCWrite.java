@@ -31,12 +31,9 @@ public class ActivityNFCWrite extends ActivityBase {
 
     private MessageState message = NULL;
     private Alice alice;
-    private static final String TAG = "NFCWriteTag";
     private NfcAdapter mNfcAdapter;
     private IntentFilter[] mWriteTagFilters;
     private PendingIntent mNfcPendingIntent;
-    private boolean silent = false;
-    private boolean writeProtect = false;
     private Context context;
 
 

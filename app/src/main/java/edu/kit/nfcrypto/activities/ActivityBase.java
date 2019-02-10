@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import edu.kit.nfcrypto.R;
 
 public class ActivityBase extends AppCompatActivity { //Grundactivity die allen anderen Activities die Toolbar vererbt.
-    Toolbar toolbar;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class ActivityBase extends AppCompatActivity { //Grundactivity die allen 
      *
      * @return Toolbar die ActivityBase erzeugt.
      */
-    public Toolbar getToolbar() {
+    Toolbar getToolbar() {
         return toolbar;
     }
 }

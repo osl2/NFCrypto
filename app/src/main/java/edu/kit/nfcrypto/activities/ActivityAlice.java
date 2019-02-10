@@ -28,12 +28,12 @@ public class ActivityAlice extends ActivityBase {
 
     private ArrayList<String> arrayPermissionString; // Permission Elemente
     private ArrayList<Mode> arrayPermissionMode;
-    private Alice alice = new Alice();
+    private final Alice alice = new Alice();
     private Key key = null; //Nur zur besseren Datenübertragung
     private String messageString = null;
     private Mode mode = PLA;    // mode wird standardmäßig als PLA inizialisiert, da dies dem NULL objekt entspricht
 
-    private static String FORBIDDEN_CHARS = "[^A-Z0-9 ,.?!():;#*\\-]"; //Negation (^) der erlaubten Zeichen
+    private static final String FORBIDDEN_CHARS = "[^A-Z0-9 ,.?!():;#*\\-]"; //Negation (^) der erlaubten Zeichen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

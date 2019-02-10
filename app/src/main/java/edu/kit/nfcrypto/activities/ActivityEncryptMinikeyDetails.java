@@ -18,7 +18,7 @@ public class ActivityEncryptMinikeyDetails extends ActivityBase {
 
     private String inputtext; //Relevante Dinge werden zum zurückgeben an Activity Alice zwischengespeichert
     private String minikey;
-    private Mode spinner = VIG;
+    private final Mode spinner = VIG;
     private Key key;
 
 

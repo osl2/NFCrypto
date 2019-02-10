@@ -7,7 +7,6 @@ import static edu.kit.nfcrypto.data.Mode.CES;
 
 public class CesarKey extends Key {
     private int keyData;
-    private String letterRegEx = "[A-Z]";
 
 
     public CesarKey(String keyDataString) throws  KeyFormatException{

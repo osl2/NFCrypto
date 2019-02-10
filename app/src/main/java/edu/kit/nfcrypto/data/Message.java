@@ -6,8 +6,8 @@ import java.io.Serializable;
 public class Message implements Serializable {
 
     private String plaintext;
-    private String encryptedText;
-    private Mode mode;
+    private final String encryptedText;
+    private final Mode mode;
 
 
     public Message(String plaintext, String encryptedText, Mode mode) {
@@ -16,10 +16,6 @@ public class Message implements Serializable {
         this.mode = mode;
     }
 
-
-    public void setPlaintext(String plaintext) {
-        this.plaintext = plaintext;
-    }
 
     public String getEncryptedText() {
         return encryptedText;
@@ -37,7 +33,4 @@ public class Message implements Serializable {
         return plaintext;
     }
 
-    public Mode getMode() {
-        return mode;
-    }
 }

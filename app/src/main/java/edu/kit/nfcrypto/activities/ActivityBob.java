@@ -19,10 +19,8 @@ import edu.kit.nfcrypto.User;
 import edu.kit.nfcrypto.data.Mode;
 import edu.kit.nfcrypto.keys.Key;
 
-import static edu.kit.nfcrypto.data.Mode.AES;
-import static edu.kit.nfcrypto.data.Mode.CES;
 import static edu.kit.nfcrypto.data.Mode.PLA;
-import static edu.kit.nfcrypto.data.Mode.VIG;
+
 
 
 public class ActivityBob extends ActivityBase {
@@ -32,7 +30,6 @@ public class ActivityBob extends ActivityBase {
     }
 
     private MessageState message = MessageState.NULL; //s.o.
-    private static final String TAG = "NFCReadTag";
     private NfcAdapter mNfcAdapter;
     private IntentFilter[] mNdefExchangeFilters;
     private PendingIntent mNfcPendingIntent;
@@ -111,7 +108,7 @@ public class ActivityBob extends ActivityBase {
      *
      * @param inputNFCTag zeigt den Text der vom NFC Tag kommt im Inputtextfeld an.
      */
-    public void setTextViewInput(String inputNFCTag) {
+    private void setTextViewInput(String inputNFCTag) {
         final TextView textView = findViewById(R.id.activity_bob_text_encrypted);
         textView.setText(inputNFCTag);
 

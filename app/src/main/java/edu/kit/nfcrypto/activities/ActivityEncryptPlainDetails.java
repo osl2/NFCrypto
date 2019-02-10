@@ -3,10 +3,7 @@ package edu.kit.nfcrypto.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 
 import edu.kit.nfcrypto.R;
 import edu.kit.nfcrypto.data.Mode;
@@ -14,8 +11,7 @@ import edu.kit.nfcrypto.data.Mode;
 
 public class ActivityEncryptPlainDetails extends ActivityBase {
 
-    private String inputtext; //Relevante Dinge werden zum zurückgeben an Activity Alice zwischengespeichert
-    private Mode spinner = Mode.PLA;
+    private final Mode spinner = Mode.PLA;
 
 
     @Override
@@ -24,7 +20,8 @@ public class ActivityEncryptPlainDetails extends ActivityBase {
         setContentView(R.layout.activity_encrypt_details_plain);
 
         //Wir von ActivityAlice zum zwischenspeichern mit dem Intent übergeben
-        inputtext = getIntent().getStringExtra("inputtext");
+        //Relevante Dinge werden zum zurückgeben an Activity Alice zwischengespeichert
+        String inputtext = getIntent().getStringExtra("inputtext");
 
         //Setzt die Farbe der Toolbar
         try {

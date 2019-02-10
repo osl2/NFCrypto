@@ -9,7 +9,7 @@ import static java.lang.Math.floor;
 
 public class VigenereKey extends Key {
     private char keyData[];
-    private static int keylength = 6;
+    private static final int keylength = 6;
 
     public VigenereKey(String keyDataString) {
         super(VIG, keyDataString);
