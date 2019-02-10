@@ -93,13 +93,14 @@ public class ActivityBob extends ActivityBase {
         lastKeyButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Key key = User.getInstance().getLastKey();
-                setMode(key.getMode().toString());
-                keyString = key.getKeyDataString();
+                if (key != null) {
+                    setMode(key.getMode().toString());
+                    keyString = key.getKeyDataString();
 
-                if(keyString != null && text != null){
-                    Toast.makeText(getApplicationContext(), "Du kannst nun auf Enschlüsseln drücken!", Toast.LENGTH_LONG).show();
+                    if (keyString != null && text != null) {
+                        Toast.makeText(getApplicationContext(), "Du kannst nun auf Enschlüsseln drücken!", Toast.LENGTH_LONG).show();
+                    }
                 }
-
             }
         });
     }
@@ -107,6 +108,7 @@ public class ActivityBob extends ActivityBase {
 
     /**
      * Ändert den Inputtext
+     *
      * @param inputNFCTag zeigt den Text der vom NFC Tag kommt im Inputtextfeld an.
      */
     public void setTextViewInput(String inputNFCTag) {
@@ -116,9 +118,9 @@ public class ActivityBob extends ActivityBase {
     }
 
 
-
     /**
      * Ändert das entschlüsselte Textfeld
+     *
      * @param decrypted text, der im Textfeld für den entschlüsselten Text angezeigt wird.
      */
     public void setTextViewDecrypted(String decrypted) {
@@ -144,7 +146,6 @@ public class ActivityBob extends ActivityBase {
         super.onPause();
         if (mNfcAdapter != null) mNfcAdapter.disableForegroundDispatch(this);
     }
-
 
 
     //Intent - aufgerufen durch NFC
@@ -176,7 +177,7 @@ public class ActivityBob extends ActivityBase {
 
 
                 String[] resultSplit = User.splitInput(result);
-               // Toast.makeText(getApplicationContext(), "Tag Contains " + result, Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getApplicationContext(), "Tag Contains " + result, Toast.LENGTH_SHORT).show();
 
 
                 //Abfrage des Präfixes auf der Karte
@@ -201,7 +202,7 @@ public class ActivityBob extends ActivityBase {
                     Toast.makeText(getApplicationContext(), "Bitte wähle zuerst ob du eine Nachrichten- oder eine Schlüsselkarte lesen möchtest.", Toast.LENGTH_LONG).show();
                 }
 
-                if(keyString != null && text != null){
+                if (keyString != null && text != null) {
                     Toast.makeText(getApplicationContext(), "Du kannst nun auf Enschlüsseln drücken!", Toast.LENGTH_LONG).show();
                 }
 
@@ -224,10 +225,9 @@ public class ActivityBob extends ActivityBase {
     }
 
 
-
-
     /**
      * Wandelt Strings in Modi um.
+     *
      * @param string String der zu Mode umgewandelt werden soll (wird dann gleich in Bob gesetzt.
      */
     public void setMode(String string) {
