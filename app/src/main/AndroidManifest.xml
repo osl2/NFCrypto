@@ -40,7 +40,7 @@
             android:name=".activities.ActivityCryptotoolsCesar"
             android:label="Cesar knacken!" />
         <activity
-            android:name=".activities.ActivityEncryptDetails"
+            android:name=".activities.ActivityEncryptCesarDetails"
             android:label="Cesarverschiebung wählen" />
         <activity
             android:name=".activities.ActivityEve"

@@ -67,7 +67,7 @@ public class ActivityAlice extends ActivityBase {
             public void onClick(View v) {
 
                 //dem Intent werden alle wichtigen indos zum Speichern übergeben.
-                Intent i = new Intent(ActivityAlice.this, ActivityEncryptDetails.class);
+                Intent i = new Intent(ActivityAlice.this, ActivityEncryptCesarDetails.class);
                 if (messageString != null) {
                     i.putExtra("inputtext", messageString);
                 }

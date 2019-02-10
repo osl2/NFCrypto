@@ -13,12 +13,14 @@
     <string name="freischalten">Freischalten</string>
     <string name="nachricht">Nachricht</string>
     <string name="schlüssel">Schlüssel</string>
+    <string name="or">oder:</string>
 
     <!-- Allgemeine Strings -->
     <string name="empty_text_encrypted">Die verschlüsselte Nachricht wird hier angezeigt.</string>
     <string name="empty_text_decrypted">Die entschlüsselte Nachricht wird hier angezeigt.</string>
     <string name="empty_text_encrypted_eve">Die entschlüsselte Nachricht wird hier angezeigt, wenn du eine Nachrichtenkarte an dein Smartphone hältst.</string>
     <string name="empty_text_enter_msg">Gib eine Nachricht ein.</string>
+    <string name="empty_text_generateKey">Hier wird dein Schlüssel angezeigt.</string>
     <string name="empty_text_TODO">Hier kreativ werden!</string> <!-- Platzhalter -->
 
     <!-- Beschreibungen in activity_welcome -->
@@ -44,10 +46,20 @@
 
 
     <!-- Beschreibungen activity_encrypt_details -->
+    <string name="lastKey">Letzer Schlüssel</string>
+    <string name="randomKey">Zufälliger Schlüssel</string>
+
     <string name="encrypt_details_caesar">Deine Cesarverschlüsselung</string>
     <string name="encrypt_details_caesar_info">Stelle unten den Buchstaben ein, nach welchem du deinen Text verschlüsseln möchtest.</string>
 
+    <string name="encrypt_details_minikey">Deine Minikeyverschlüsselung</string>
+    <string name="encrypt_details_minikey_info">Gib ein sechsstelliges Wort als Schlüssel ein.</string>
 
+    <string name="encrypt_details_aes">Deine AES-Verschlüsselung</string>
+    <string name="encrypt_details_aes_info">Der AES-Schlüssel ist zu lang um ihn von Hand einzugeben.</string>
+
+    <string name="encrypt_details_plain">Deine Klartextverschlüsselung</string>
+    <string name="encrypt_details_plain_info">Bei der Klartextverschlüsselung handelt es sich genau genommen nicht um eine Verschlüsselung, denn dein Text wird unverschlüsselt als sogenannter Klartext versendet. Daher gibt es auch keinen Schlüssel.</string>
 
 
     <string name="plaintext">Klartext</string>

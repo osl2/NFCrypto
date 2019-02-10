@@ -8,17 +8,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-import edu.kit.nfcrypto.Alice;
 import edu.kit.nfcrypto.R;
-import edu.kit.nfcrypto.keys.CesarKey;
-
-import static edu.kit.nfcrypto.data.Mode.AES;
-import static edu.kit.nfcrypto.data.Mode.CES;
-import static edu.kit.nfcrypto.data.Mode.PLA;
-import static edu.kit.nfcrypto.data.Mode.VIG;
 
 
-public class ActivityEncryptDetails extends ActivityBase {
+public class ActivityEncryptPlainDetails extends ActivityBase {
 
     private String inputtext; //Relevante Dinge werden zum zurückgeben an Activity Alice zwischengespeichert
     private int cesar;
@@ -62,13 +55,11 @@ public class ActivityEncryptDetails extends ActivityBase {
         });
 
         //"Anwenden" Knopf vgl. ActivityCryptotoolsCesar
-        final Button applyButton = findViewById(R.id.activity_encrypt_details_button);
+        final Button applyButton = findViewById(R.id.activity_encrypt_details_plain_button);
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ActivityEncryptDetails.this, ActivityAlice.class);
-                i.putExtra("inputtext",inputtext);
-                i.putExtra("cesar",cesar);
+                Intent i = new Intent(ActivityEncryptPlainDetails.this, ActivityAlice.class);
                 startActivity(i);
             }
         });
