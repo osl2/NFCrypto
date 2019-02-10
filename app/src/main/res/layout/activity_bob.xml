@@ -47,11 +47,24 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/activity_bob_button_readKey"
-            android:layout_width="@dimen/width_button_default"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/read_key" />
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/activity_bob_button_readKey"
+                android:layout_width="@dimen/width_button_default"
+                android:layout_height="wrap_content"
+                android:text="@string/read_key" />
+
+            <Button
+                android:id="@+id/activity_bob_button_lastkey"
+                android:layout_width="@dimen/width_button_default"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/bob_button_lastkey" />
+        </LinearLayout>
 
         <Space
             android:layout_width="wrap_content"
@@ -63,6 +76,7 @@
             android:layout_width="@dimen/width_button_default"
             android:layout_height="wrap_content"
             android:text="@string/read_msg" />
+
     </LinearLayout>
 
 

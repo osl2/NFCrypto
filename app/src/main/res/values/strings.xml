@@ -61,6 +61,8 @@
     <string name="encrypt_details_plain">Deine Klartextverschlüsselung</string>
     <string name="encrypt_details_plain_info">Bei der Klartextverschlüsselung handelt es sich genau genommen nicht um eine Verschlüsselung, denn dein Text wird unverschlüsselt als sogenannter Klartext versendet. Daher gibt es auch keinen Schlüssel.</string>
 
+    <string name="alice_butten_lastkey">Letzten Schlüssel verwenden</string>
+    <string name="bob_button_lastkey">Letzter Schlüssel</string>
 
     <string name="plaintext">Klartext</string>
     <string name="cesar">Cesar</string>
