@@ -47,8 +47,8 @@
     <string name="encrypt_details_caesar">Deine Cesarverschlüsselung</string>
     <string name="encrypt_details_caesar_info">Stelle unten den Buchstaben ein, nach welchem du deinen Text verschlüsseln möchtest.</string>
 
-
-
+    <string name="alice_butten_lastkey">Letzten Schlüssel verwenden</string>
+    <string name="bob_button_lastkey">Letzter Schlüssel</string>
 
     <string name="plaintext">Klartext</string>
     <string name="cesar">Cesar</string>
