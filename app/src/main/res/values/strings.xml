@@ -69,6 +69,7 @@
     <string name="vigenere">Minikey</string>
     <string name="aes">AES</string>
 
+    <string name="none">keine</string>
     <string name="a">a</string>
     <string name="b">b</string>
     <string name="c">c</string>

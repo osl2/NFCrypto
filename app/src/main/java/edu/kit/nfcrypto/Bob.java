@@ -11,7 +11,7 @@ import edu.kit.nfcrypto.keys.VigenereKey;
 
 public class Bob {
     private Message currentMessage = null;
-    Key key;
+    private Key key;
 
     /**
      * Stellt alle Daten für das Preview in der GUI bereit
@@ -38,8 +38,9 @@ public class Bob {
         activity.setTextViewDecrypted(currentMessage.getPlaintext()); //Sollte den TextView in BobActivity umsetzen
     }
 
-
-
+    public void setKey(Key key) {
+        this.key = key;
+    }
 
     public Message getCurrentMessage() {
         return currentMessage;

@@ -17,6 +17,7 @@ import edu.kit.nfcrypto.Bob;
 import edu.kit.nfcrypto.R;
 import edu.kit.nfcrypto.User;
 import edu.kit.nfcrypto.data.Mode;
+import edu.kit.nfcrypto.keys.Key;
 
 import static edu.kit.nfcrypto.data.Mode.AES;
 import static edu.kit.nfcrypto.data.Mode.CES;
@@ -88,6 +89,19 @@ public class ActivityBob extends ActivityBase {
             }
         });
 
+        final Button lastKeyButton = findViewById(R.id.activity_bob_button_lastkey);
+        lastKeyButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Key key = User.getInstance().getLastKey();
+                setMode(key.getMode().toString());
+                keyString = key.getKeyDataString();
+
+                if(keyString != null && text != null){
+                    Toast.makeText(getApplicationContext(), "Du kannst nun auf Enschlüsseln drücken!", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
     }
 
 
@@ -205,13 +219,12 @@ public class ActivityBob extends ActivityBase {
                 bob.bobPreview(text, mode, keyString, this);
             }
         } else {
-            Toast.makeText(getApplicationContext(), "Du musst zuerst einen Schlüssel und eine Nachtichtenkarte einlesen", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Du musst zuerst einen Schlüssel und eine Nachtichtenkarte einlesen oder auswählen", Toast.LENGTH_LONG).show();
         }
     }
 
 
 
-    //TODO: ggf. Aus/Umlagern
 
     /**
      * Wandelt Strings in Modi um.
@@ -223,21 +236,8 @@ public class ActivityBob extends ActivityBase {
         if (mode != null && !string.equals(mode.toString())) {
             Toast.makeText(getApplicationContext(), "Diese Karten gehören nicht zusammen", Toast.LENGTH_LONG).show();
         } else {
-            switch (string) {
-                case "CES":
-                    this.mode = CES;
-                    break;
-                case "PLA":
-                    this.mode = PLA;
-                    break;
-                case "VIG":
-                    this.mode = VIG;
-                    break;
-                case "AES":
-                    this.mode = AES;
-                    break;
+            this.mode = Mode.toMode(string);
 
-            }
         }
 
     }

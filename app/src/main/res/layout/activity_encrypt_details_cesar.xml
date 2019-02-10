@@ -39,13 +39,6 @@
                 android:layout_marginBottom="@dimen/margin_distance"
                 android:text="@string/lastKey" />
 
-            <Button
-                android:id="@+id/activity_encrypt_details_cesar_randomKey"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_distance"
-                android:text="@string/randomKey" />
-
             <TextView
                 android:id="@+id/activity_encrypt_details_cesar_generatedKey"
                 android:layout_width="match_parent"

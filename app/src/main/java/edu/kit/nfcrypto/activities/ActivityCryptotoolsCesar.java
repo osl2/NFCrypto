@@ -44,7 +44,7 @@ public class ActivityCryptotoolsCesar extends ActivityBase {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                cesar = position;
+                cesar = position - 1;
 
             }
 

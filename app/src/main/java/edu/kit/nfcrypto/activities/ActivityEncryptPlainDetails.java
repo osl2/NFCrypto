@@ -9,12 +9,13 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import edu.kit.nfcrypto.R;
+import edu.kit.nfcrypto.data.Mode;
 
 
 public class ActivityEncryptPlainDetails extends ActivityBase {
 
     private String inputtext; //Relevante Dinge werden zum zurückgeben an Activity Alice zwischengespeichert
-    private int cesar;
+    private Mode spinner = Mode.PLA;
 
 
     @Override
@@ -39,6 +40,7 @@ public class ActivityEncryptPlainDetails extends ActivityBase {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ActivityEncryptPlainDetails.this, ActivityAlice.class);
+                i.putExtra("spinner",spinner);
                 startActivity(i);
             }
         });

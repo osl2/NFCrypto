@@ -41,7 +41,16 @@
             android:label="Cesar knacken!" />
         <activity
             android:name=".activities.ActivityEncryptCesarDetails"
-            android:label="Cesarverschiebung wählen" />
+            android:label="Cesarverschlüsselung anpassen" />
+        <activity
+                android:name=".activities.ActivityEncryptPlainDetails"
+                android:label="Klartext anpassen" />
+        <activity
+                android:name=".activities.ActivityEncryptMinikeyDetails"
+                android:label="Minikey anpassen" />
+        <activity
+                android:name=".activities.ActivityEncryptAESDetails"
+                android:label="AES anpassen" />
         <activity
             android:name=".activities.ActivityEve"
             android:label="Eve" />

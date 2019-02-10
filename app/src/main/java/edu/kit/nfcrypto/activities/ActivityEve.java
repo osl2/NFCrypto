@@ -265,7 +265,7 @@ public class ActivityEve extends ActivityBase {
 
 
                 if (resultSplit[0].equals("MES")) {
-                    modeNFC = toMode(resultSplit[1]);
+                    modeNFC = Mode.toMode(resultSplit[1]);
                     text = resultSplit[2];
                     help = resultSplit[3];
                     setTextViewInput(text);
@@ -278,25 +278,7 @@ public class ActivityEve extends ActivityBase {
         }
     }
 
-    //Hilfsmethode String to Mode, TODO: Auslagern?
-    private Mode toMode(String string) {
-        switch (string) {
-            case "CES":
-                return CES;
-            case "PLA":
-                return PLA;
 
-            case "VIG":
-                return VIG;
-
-            case "AES":
-                return AES;
-
-
-        }
-        return null;
-
-    }
 
 
 }

@@ -110,4 +110,6 @@ public final class User {
     public void setLastKey(Key lastKey) {
         this.lastKey = lastKey;
     }
+
+    public Key getLastKey(){return lastKey;}
 }

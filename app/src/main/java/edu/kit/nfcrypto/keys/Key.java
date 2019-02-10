@@ -72,6 +72,9 @@ public abstract class Key implements Serializable {
         return Mode.createKey(splitKeyString[1], splitKeyString[2]);
     }
 
+    public String getKeyDataString() {
+        return keyDataString;
+    }
 
     public Mode getMode() {
         return mode;

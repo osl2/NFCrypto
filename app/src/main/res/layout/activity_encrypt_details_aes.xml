@@ -32,18 +32,11 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/activity_encrypt_details_aes_lastKey2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_distance"
-                android:text="@string/lastKey" />
-
-            <Button
-                android:id="@+id/activity_encrypt_details_aes_randomKey"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_distance"
-                android:text="@string/randomKey" />
+                    android:id="@+id/activity_encrypt_details_aes_lastKey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_distance"
+                    android:text="@string/lastKey"/>
 
 
             <TextView

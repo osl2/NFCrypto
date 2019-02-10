@@ -14,33 +14,33 @@ import edu.kit.nfcrypto.keys.VigenereKey;
 public class Alice implements Serializable {
     private Message currentMessage = null;
     private Key key;
-    private int cesar = -1;
+
 
     /**
      * Stellt alle Daten für das Preview in der GUI bereit
-     * @param text der Eingelesen wird
-     * @param mode wie Cesar etc.
+     *
+     * @param text     der Eingelesen wird
+     * @param mode     wie Cesar etc.
      * @param activity Activity aus der die Funktionaufgerufen wurde
      */
     public void alicePreview(String text, Mode mode, ActivityAlice activity) {
-        switch (mode) {
-            case PLA:
-                key = new PlainKey();
-                break;
-            case CES:
-                if (cesar != -1) {
-                    key = new CesarKey(""+cesar);
-                } else {
+        if (key == null) {
+            switch (mode) {
+                case PLA:
+                    key = new PlainKey();
+                    break;
+                case CES:
                     key = new CesarKey();
-                }
-                break;
-            case VIG:
-                key = new VigenereKey();
-                break;
-            case AES:
-                key = new AESKey();
-                break;
+                    break;
+                case VIG:
+                    key = new VigenereKey();
+                    break;
+                case AES:
+                    key = new AESKey();
+                    break;
+            }
         }
+        User.getInstance().setLastKey(key);
         currentMessage = new Message(text, key.encrypt(text), mode);
 
         activity.setTextView(currentMessage.getEncryptedText()); //Sollte den TextView in AliceActivity umsetzen
@@ -51,9 +51,6 @@ public class Alice implements Serializable {
         return currentMessage;
     }
 
-    public void setCesar(int cesar) {
-        this.cesar = cesar;
-    }
 
     public Key getKey() {
         return key;

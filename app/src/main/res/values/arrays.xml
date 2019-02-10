@@ -4,6 +4,7 @@
 
 
     <string-array name="cesar_array">
+        <item>@string/none</item>
         <item>@string/a</item>
         <item>@string/b</item>
         <item>@string/c</item>

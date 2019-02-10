@@ -7,13 +7,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import android.widget.Toast;
 import edu.kit.nfcrypto.R;
+import edu.kit.nfcrypto.User;
+import edu.kit.nfcrypto.data.Mode;
+import edu.kit.nfcrypto.keys.AESKey;
+import edu.kit.nfcrypto.keys.Key;
+
+import static edu.kit.nfcrypto.data.Mode.AES;
+import static edu.kit.nfcrypto.data.Mode.VIG;
 
 
 public class ActivityEncryptAESDetails extends ActivityBase {
 
     private String inputtext; //Relevante Dinge werden zum zurückgeben an Activity Alice zwischengespeichert
     private String aes;
+    private Mode spinner = AES;
+    private Key key;
 
 
     @Override
@@ -23,6 +33,9 @@ public class ActivityEncryptAESDetails extends ActivityBase {
 
         //Wir von ActivityAlice zum zwischenspeichern mit dem Intent übergeben
         inputtext = getIntent().getStringExtra("inputtext");
+        if (getIntent().getSerializableExtra("key") != null) {
+            key = (Key) getIntent().getSerializableExtra("key");
+        }
 
         //Setzt die Farbe der Toolbar
         try {
@@ -37,22 +50,42 @@ public class ActivityEncryptAESDetails extends ActivityBase {
 
             @Override
             public void onClick(View v) {
+                if (aes != null) {
+                    key = new AESKey(aes);
+                }
                 Intent i = new Intent(ActivityEncryptAESDetails.this, ActivityAlice.class);
-                i.putExtra("inputtext",inputtext);
-                i.putExtra("aes",aes);
+                i.putExtra("inputtext", inputtext);
+                i.putExtra("key", key);
+                i.putExtra("spinner", spinner);
                 startActivity(i);
             }
         });
 
-        // Zufälligen Schlüssel erzeugen
         final TextView generatedKey = findViewById(R.id.activity_encrypt_details_aes_generatedKey);
-        final Button buttonRandomKey = findViewById(R.id.activity_encrypt_details_aes_randomKey);
-        buttonRandomKey.setOnClickListener(new View.OnClickListener() {
+
+        //letzten Schlüssel verwenden
+        final Button buttonLastKey = findViewById(R.id.activity_encrypt_details_aes_lastKey);
+        buttonLastKey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO zufälligen Schlüssel generieren (statt automatisch in ActivityAlice) und in generatedKey ausgeben
+                Key lastKey = User.getInstance().getLastKey();
+                if (lastKey != null) {
+                    if (lastKey.getMode() == AES) {
+                        key = lastKey;
+                        aes = key.getKeyDataString();
+                        setTextView(aes);
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Der letzte Schlüssel war kein AESschlüssel!", Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
+
+    }
+    private void setTextView(String text) {
+        final TextView textView = findViewById(R.id.activity_encrypt_details_aes_generatedKey);
+        textView.setText(text);
 
     }
 }

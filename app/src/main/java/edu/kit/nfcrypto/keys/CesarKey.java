@@ -70,5 +70,8 @@ public class CesarKey extends Key {
         return decryptedMessage;
     }
 
+    public int getKeyData() {
+        return keyData;
+    }
 
 }

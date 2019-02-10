@@ -99,13 +99,6 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/activity_alice_butten_lastkey"
-                android:layout_width="@dimen/width_button_default"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/alice_butten_lastkey" />
-
             <Space
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

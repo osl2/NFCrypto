@@ -60,4 +60,29 @@ public enum Mode implements Serializable {
         }
         return -1;
     }
+
+    /**
+     * String
+     * @param string to
+     * @return mode
+     */
+
+    public static Mode toMode(String string) {
+        switch (string) {
+            case "CES":
+                return CES;
+            case "PLA":
+                return PLA;
+
+            case "VIG":
+                return VIG;
+
+            case "AES":
+                return AES;
+
+
+        }
+        return null;
+
+    }
 }

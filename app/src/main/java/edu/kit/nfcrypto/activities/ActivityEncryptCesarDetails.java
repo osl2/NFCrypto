@@ -1,21 +1,26 @@
 package edu.kit.nfcrypto.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.*;
 
 import edu.kit.nfcrypto.R;
+import edu.kit.nfcrypto.User;
+import edu.kit.nfcrypto.data.Mode;
+import edu.kit.nfcrypto.keys.CesarKey;
+import edu.kit.nfcrypto.keys.Key;
+
+import static edu.kit.nfcrypto.data.Mode.CES;
 
 
 public class ActivityEncryptCesarDetails extends ActivityBase {
 
     private String inputtext; //Relevante Dinge werden zum zurückgeben an Activity Alice zwischengespeichert
-    private int cesar;
+    private Key key;
+    private int cesar = -1;
+    private Mode spinner = Mode.CES;
 
 
     @Override
@@ -23,8 +28,12 @@ public class ActivityEncryptCesarDetails extends ActivityBase {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_encrypt_details_cesar);
 
-        //Wir von ActivityAlice zum zwischenspeichern mit dem Intent übergeben
+        //Wir von ActivityAlice zum zwischenspeichern & ggf. anzeigen mit dem Intent übergeben
         inputtext = getIntent().getStringExtra("inputtext");
+        if (getIntent().getSerializableExtra("key") != null) {
+
+            key = (Key) getIntent().getSerializableExtra("key");
+        }
 
         //Setzt die Farbe der Toolbar
         try {
@@ -45,7 +54,7 @@ public class ActivityEncryptCesarDetails extends ActivityBase {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               cesar = position;
+                cesar = position-1;
 
             }
 
@@ -60,33 +69,48 @@ public class ActivityEncryptCesarDetails extends ActivityBase {
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (cesar != -1) {
+                    key = new CesarKey("" + cesar);
+                }
                 Intent i = new Intent(ActivityEncryptCesarDetails.this, ActivityAlice.class);
-                i.putExtra("inputtext",inputtext);
-                i.putExtra("cesar",cesar);
+                i.putExtra("inputtext", inputtext);
+                i.putExtra("key", key);
+                i.putExtra("spinner", spinner);
                 startActivity(i);
             }
         });
 
         // Zufälligen Schlüssel erzeugen
         final TextView gerneratedKey = findViewById(R.id.activity_encrypt_details_cesar_generatedKey);
-        final Button buttonRandomKey = findViewById(R.id.activity_encrypt_details_cesar_randomKey);
-        buttonRandomKey.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO zufälligen Schlüssel erzeugen und in generatedKey anzeigen
-            }
-        });
+        if (cesar != -1) {
+            gerneratedKey.setText((char) (cesar + 65));
+        }
 
         //letzten Schlüssel verwenden
         final Button buttonLastKey = findViewById(R.id.activity_encrypt_details_cesar_lastKey);
-        buttonRandomKey.setOnClickListener( new View.OnClickListener() {
+        buttonLastKey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO letzten Schlüssel verwenden und in generatedKey anzeigen
+                Key lastKey = User.getInstance().getLastKey();
+                if (lastKey != null) {
+                    if (lastKey.getMode() == CES) {
+                        key = lastKey;
+                        cesar = ((CesarKey) key).getKeyData();
+                        setTextView(""+(char) (cesar + 65));
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Der letzte Schlüssel war kein Cesarschlüssel!", Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
 
 
+
+
+    }
+    private void setTextView(String text) {
+        final TextView textView = findViewById(R.id.activity_encrypt_details_cesar_generatedKey);
+        textView.setText(text);
 
     }
 }
