@@ -11,6 +11,8 @@
     <string name="anwenden">Anwenden</string>
     <string name="entschlüsseln">Entschlüsseln</string>
     <string name="freischalten">Freischalten</string>
+    <string name="nachricht">Nachricht</string>
+    <string name="schlüssel">Schlüssel</string>
 
     <!-- Allgemeine Strings -->
     <string name="empty_text_encrypted">Die verschlüsselte Nachricht wird hier angezeigt.</string>
@@ -32,6 +34,9 @@
     <string name="persons_bob">Bob empfängt Nachrichten von Alice und kann diese, falls nötig, entschlüsseln.</string>
     <string name="persons_eve">Eve fängt Nachrichten ab, die nicht an sie adressiert sind. Sie muss selbst versuchen die Nachrichten zu entschlüsseln.</string>
     <string name="persons_info"></string>
+
+    <!-- Beschreibung in activity_nfcwrite -->
+    <string name="nfc_info">Wähle aus, was du auf die NFC-Karte schreiben willst. Um den Vorgang abzuschließen, musst du sowohl Nachricht als auch Schlüssel auf eine NFC-Karte schreiben."</string>
 
     <!-- Beschreibung in activity_cryptotools -->
     <string name="cryptotools_caesar_info">Du willst versuchen denn Text mit Cäsar-Verschlüsselung zu knacken, na dann stell unten mal denn Buchtaben ein, von dem du glaubst das er der Schlüssel war.</string>
