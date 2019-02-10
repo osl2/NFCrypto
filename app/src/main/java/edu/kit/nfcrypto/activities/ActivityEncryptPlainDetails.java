@@ -20,7 +20,7 @@ public class ActivityEncryptPlainDetails extends ActivityBase {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_encrypt_details);
+        setContentView(R.layout.activity_encrypt_details_plain);
 
         //Wir von ActivityAlice zum zwischenspeichern mit dem Intent übergeben
         inputtext = getIntent().getStringExtra("inputtext");
@@ -32,27 +32,6 @@ public class ActivityEncryptPlainDetails extends ActivityBase {
             e.printStackTrace();
         }
 
-
-        //Dropdownmenü vgl. ActivityCryptotoolsCesar
-        final Spinner detailsSpinner = findViewById(R.id.activity_encrypt_details_spinner);
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.cesar_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        detailsSpinner.setAdapter(adapter);
-        detailsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               cesar = position;
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                cesar = -1;
-            }
-        });
 
         //"Anwenden" Knopf vgl. ActivityCryptotoolsCesar
         final Button applyButton = findViewById(R.id.activity_encrypt_details_plain_button);

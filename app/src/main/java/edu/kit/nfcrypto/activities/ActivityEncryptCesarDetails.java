@@ -21,7 +21,7 @@ public class ActivityEncryptCesarDetails extends ActivityBase {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_encrypt_details);
+        setContentView(R.layout.activity_encrypt_details_cesar);
 
         //Wir von ActivityAlice zum zwischenspeichern mit dem Intent übergeben
         inputtext = getIntent().getStringExtra("inputtext");
@@ -35,7 +35,7 @@ public class ActivityEncryptCesarDetails extends ActivityBase {
 
 
         //Dropdownmenü vgl. ActivityCryptotoolsCesar
-        final Spinner detailsSpinner = findViewById(R.id.activity_encrypt_details_spinner);
+        final Spinner detailsSpinner = findViewById(R.id.activity_encrypt_details_cesar_spinner);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.cesar_array, android.R.layout.simple_spinner_item);
@@ -69,7 +69,7 @@ public class ActivityEncryptCesarDetails extends ActivityBase {
 
         // Zufälligen Schlüssel erzeugen
         final TextView gerneratedKey = findViewById(R.id.activity_encrypt_details_cesar_generatedKey);
-        final Button buttonRandomKey = findViewById(R.id.actvity_encrypt_details_cesar_randomKey);
+        final Button buttonRandomKey = findViewById(R.id.activity_encrypt_details_cesar_randomKey);
         buttonRandomKey.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +78,7 @@ public class ActivityEncryptCesarDetails extends ActivityBase {
         });
 
         //letzten Schlüssel verwenden
-        final Button buttonLastKey = findViewById(R.id.actvity_encrypt_details_cesar_lastKey);
+        final Button buttonLastKey = findViewById(R.id.activity_encrypt_details_cesar_lastKey);
         buttonRandomKey.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {

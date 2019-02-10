@@ -22,7 +22,7 @@ public class ActivityEncryptMinikeyDetails extends ActivityBase {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_encrypt_details);
+        setContentView(R.layout.activity_encrypt_details_minikey);
 
         //Wir von ActivityAlice zum zwischenspeichern mit dem Intent übergeben
         inputtext = getIntent().getStringExtra("inputtext");
