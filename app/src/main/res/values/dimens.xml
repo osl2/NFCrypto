@@ -12,5 +12,6 @@
 
     <dimen name="width_button_persons">140dp</dimen>
     <dimen name="width_switch">180dp</dimen>
+    <dimen name="width_switch_small">120dp</dimen>
 
 </resources>

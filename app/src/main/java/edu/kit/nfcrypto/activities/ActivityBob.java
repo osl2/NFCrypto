@@ -10,6 +10,8 @@ import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,22 +64,6 @@ public class ActivityBob extends ActivityBase {
 
         mNdefExchangeFilters = new IntentFilter[]{};
 
-        //Knopf zum Einlesen des Schlüssels
-        final Button keyButton = findViewById(R.id.activity_bob_button_readKey);
-        keyButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                message = MessageState.KEY;
-            }
-        });
-
-        //Knopf zum Einlesen der Nachricht
-        final Button messageButton = findViewById(R.id.activity_bob_button_readMessage);
-        messageButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                message = MessageState.MES;
-            }
-        });
-
         //Knopf der das Entschlüsseln triggert
         final FloatingActionButton decryptButton = findViewById(R.id.activity_bob_button_decrypt);
         decryptButton.setOnClickListener(new View.OnClickListener() {
@@ -95,8 +81,32 @@ public class ActivityBob extends ActivityBase {
                     keyString = key.getKeyDataString();
 
                     if (keyString != null && text != null) {
-                        Toast.makeText(getApplicationContext(), "Du kannst nun auf Enschlüsseln drücken!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Du kannst auf Enschlüsseln drücken!", Toast.LENGTH_LONG).show();
                     }
+                }
+            }
+        });
+
+        // Umschalter für das Schreiben von Nachricht und Schlüssel
+        final Switch switchMessage = findViewById(R.id.activity_bob_switchMessage);
+        final Switch switchKey = findViewById(R.id.activity_bob_switchKey);
+        switchMessage.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    switchKey.setChecked(false);
+                    message = MessageState.MES;
+                } else if(!switchMessage.isChecked()) {
+                    message = MessageState.NULL;
+                }
+            }
+        });
+        switchKey.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    switchMessage.setChecked(false);
+                    message = MessageState.KEY;
+                } else if(!switchKey.isChecked()) {
+                    message = MessageState.NULL;
                 }
             }
         });
@@ -184,7 +194,7 @@ public class ActivityBob extends ActivityBase {
                         keyString = resultSplit[2];
                         //Toast.makeText(getApplicationContext(), keyString, Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Dies ist keine Schlüsselkarte.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Das ist keine Schlüsselkarte.", Toast.LENGTH_LONG).show();
                     }
                 } else if (message == MessageState.MES) {
                     if (resultSplit[0].equals("MES")) {
@@ -192,11 +202,11 @@ public class ActivityBob extends ActivityBase {
                         text = resultSplit[2];
                         setTextViewInput(text);
                     } else {
-                        Toast.makeText(getApplicationContext(), "Dies ist keine Nachrichtenkarte.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Das ist keine Nachrichtenkarte.", Toast.LENGTH_LONG).show();
                     }
 
                 } else if (message == MessageState.NULL) {
-                    Toast.makeText(getApplicationContext(), "Bitte wähle zuerst ob du eine Nachrichten- oder eine Schlüsselkarte lesen möchtest.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Bitte wähle zuerst ob du eine Nachricht oder einen Schlüssel einlesen möchtest.", Toast.LENGTH_LONG).show();
                 }
 
                 if (keyString != null && text != null) {
