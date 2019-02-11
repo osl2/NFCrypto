@@ -97,7 +97,7 @@ public class ActivityEve extends ActivityBase {
                         ActivityEve.this.startActivity(i);
 
                     } else {
-                        mode = arrayPermissionMode.get(position);
+                        modeSelected = arrayPermissionMode.get(position);
                     }
                 } else {
                     modeSelected = arrayPermissionMode.get(position);
