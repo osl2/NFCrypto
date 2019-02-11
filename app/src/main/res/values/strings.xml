@@ -26,6 +26,16 @@
     <string name="empty_text_generateKey">Hier wird dein Schlüssel angezeigt.</string>
     <string name="empty_text_TODO">Hier kreativ werden!</string> <!-- Platzhalter -->
 
+    <!-- Beschreibungen in activity_info -->
+    <string name="info_info">Was ist zu tun?</string>
+    <string name="info_text">Gib zuerst im Textfeld eine Nachricht ein.</string>
+    <string name="info_spinner">Wähle anschließend eine Verschlüsselungsart.</string>
+    <string name="info_lock">Drücke diesen Button, um deine Nachricht zu verschlüsseln.
+        Wenn du keinen Schlüssel ausgewählt hast, wird ein zufälliger Schlüssel erzeugt.</string>
+    <string name="info_wrench">Drücke auf diesen Button um Einstellungen für den Schlüssel vorzunehmen.
+        Hier kannst du auch deinen letzen Schlüssel wiederverwenden.</string>
+    <string name="info_send">Drücke auf diesen Button um deine Nachricht zu versenden. Hierfür benötigst du deine NFC-Karten.</string>
+
     <!-- Beschreibungen in activity_welcome -->
     <string name="welcome_welcome">Willkommen!</string>
     <string name="welcome_task">Mit dieser App kannst du verschiedene Verschlüsselungen ausprobieren und über NFC-Karten Nachrichten an deine Freunde schreiben.\n\nStelle bitte zuerst sicher, dass du NFC angeschalten hast.</string>

@@ -13,5 +13,12 @@ public class ActivityInfo extends ActivityBase {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
+
+        // Setzt die Farbe der Toolbar
+        try {
+            getToolbar().setBackgroundColor(this.getResources().getColor(R.color.colorAlice));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
