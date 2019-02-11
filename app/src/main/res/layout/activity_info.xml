@@ -18,10 +18,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/empty_text_TODO"
+            android:text="@string/activity_info_header"
+            android:textAppearance="@style/font_msg_default"
             android:textSize="24sp"
-            tools:layout_height="60dp"
-            android:textAppearance="@style/font_msg_default"/>
+            tools:layout_height="60dp" />
 
         <TextView
             android:id="@+id/activity_info_info"
@@ -30,7 +30,7 @@
             android:layout_marginTop="@dimen/margin_distance"
             android:layout_marginBottom="@dimen/margin_distance"
             android:gravity="center"
-            android:text="@string/info2"
-            android:textAppearance="@style/font_msg_default"/>
+            android:text="@string/activity_info_text"
+            android:textAppearance="@style/font_msg_default" />
     </LinearLayout>
 </RelativeLayout>
