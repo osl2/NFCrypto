@@ -62,7 +62,7 @@ public class ActivityAlice extends ActivityBase {
         final FloatingActionButton buttonInfo = findViewById(R.id.activity_alice_button_info);
         buttonInfo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ActivityAlice.this.startActivity(new Intent(ActivityAlice.this, ActivityInfo.class));
+                ActivityAlice.this.startActivity(new Intent(ActivityAlice.this, ActivityAliceInfo.class));
             }
         });
 

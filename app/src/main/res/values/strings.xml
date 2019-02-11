@@ -26,15 +26,24 @@
     <string name="empty_text_generateKey">Hier wird dein Schlüssel angezeigt.</string>
     <string name="empty_text_TODO">Hier kreativ werden!</string> <!-- Platzhalter -->
 
-    <!-- Beschreibungen in activity_info -->
-    <string name="info_info">Was ist zu tun?</string>
-    <string name="info_text">Gib zuerst im Textfeld eine Nachricht ein.</string>
-    <string name="info_spinner">Wähle anschließend eine Verschlüsselungsart.</string>
-    <string name="info_lock">Drücke diesen Button, um deine Nachricht zu verschlüsseln.
+    <!-- Beschreibungen in activity_alice_info -->
+    <string name="alice_info_info">Was ist zu tun?</string>
+    <string name="alice_info_text">Gib zuerst im Textfeld eine Nachricht ein.</string>
+    <string name="alice_info_spinner">Wähle anschließend eine Verschlüsselungsart.</string>
+    <string name="alice_info_lock">Drücke diesen Button, um deine Nachricht zu verschlüsseln.
         Wenn du keinen Schlüssel ausgewählt hast, wird ein zufälliger Schlüssel erzeugt.</string>
-    <string name="info_wrench">Drücke auf diesen Button um Einstellungen für den Schlüssel vorzunehmen.
+    <string name="alice_info_wrench">Drücke auf diesen Button um Einstellungen für den Schlüssel vorzunehmen.
         Hier kannst du auch deinen letzen Schlüssel wiederverwenden.</string>
-    <string name="info_send">Drücke auf diesen Button um deine Nachricht zu versenden. Hierfür benötigst du deine NFC-Karten.</string>
+    <string name="alice_info_send">Drücke auf diesen Button um deine Nachricht zu versenden. Hierfür benötigst du deine NFC-Karten.</string>
+
+    <!-- Beschreibungen in activity_eve_info -->
+    <string name="eve_info_info">Was ist zu tun?</string>
+    <string name="eve_info_text">Lies zuerst eine Nachrichtenkarte ein.</string>
+    <string name="eve_info_spinner">Wähle anschließend eine Verschlüsselungsart.</string>
+    <string name="eve_info_lock">Drücke diesen Button, um die Nachricht automatisch zu entschlüsseln.
+        Dabei wird ein Verfahren gestartet, das automatisch versucht die Nachricht zu entschlüsseln.</string>
+    <string name="eve_info_wrench">Drücke auf diesen Button um selbst Einstellungen für den Schlüssel vorzunehmen.</string>
+
 
     <!-- Beschreibungen in activity_welcome -->
     <string name="welcome_welcome">Willkommen!</string>
@@ -84,7 +93,7 @@
     <string name="bob_button_lastkey">Letzter Schlüssel</string>
 
     <string name="plaintext">Klartext</string>
-    <string name="cesar">Cesar</string>
+    <string name="cesar">Cäsar</string>
     <string name="vigenere">Minikey</string>
     <string name="aes">AES</string>
 

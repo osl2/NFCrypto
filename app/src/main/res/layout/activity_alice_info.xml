@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/margin_screen"
-    tools:context=".activities.ActivityInfo">
+    tools:context=".activities.ActivityAliceInfo">
 
     <TextView
         android:id="@+id/activity_encrypt_details_plain_title"
@@ -15,7 +15,7 @@
         android:layout_marginBottom="@dimen/margin_distance"
         android:layout_weight="0"
         android:gravity="center"
-        android:text="@string/info_info"
+        android:text="@string/alice_info_info"
         android:textAppearance="@style/font_title_alice" />
 
     <ScrollView
@@ -59,7 +59,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
                         android:layout_weight="1"
-                        android:text="@string/info_text"
+                        android:text="@string/alice_info_text"
                         android:textAppearance="@style/font_explanation_additional" />
                 </LinearLayout>
 
@@ -96,7 +96,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
                         android:layout_weight="1"
-                        android:text="@string/info_spinner"
+                        android:text="@string/alice_info_spinner"
                         android:textAppearance="@style/font_explanation_additional" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
@@ -132,7 +132,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
                         android:layout_weight="1"
-                        android:text="@string/info_lock"
+                        android:text="@string/alice_info_lock"
                         android:textAppearance="@style/font_explanation_additional" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
@@ -168,7 +168,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
                         android:layout_weight="1"
-                        android:text="@string/info_wrench"
+                        android:text="@string/alice_info_wrench"
                         android:textAppearance="@style/font_explanation_additional" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
@@ -204,7 +204,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|center_vertical"
                         android:layout_weight="1"
-                        android:text="@string/info_send"
+                        android:text="@string/alice_info_send"
                         android:textAppearance="@style/font_explanation_additional" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>

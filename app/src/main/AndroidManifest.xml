@@ -55,7 +55,10 @@
             android:name=".activities.ActivityEve"
             android:label="Eve" />
         <activity
-            android:name=".activities.ActivityInfo"
+            android:name=".activities.ActivityAliceInfo"
+            android:label="Informationen" />
+        <activity
+            android:name=".activities.ActivityEveInfo"
             android:label="Informationen" />
         <activity
             android:name=".activities.ActivityPersons"

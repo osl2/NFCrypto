@@ -5,14 +5,14 @@ import android.os.Bundle;
 import edu.kit.nfcrypto.R;
 
 
-public class ActivityInfo extends ActivityBase {
+public class ActivityAliceInfo extends ActivityBase {
 
     //Zeigt Infotexte an
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info);
+        setContentView(R.layout.activity_alice_info);
 
         // Setzt die Farbe der Toolbar
         try {

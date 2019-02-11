@@ -16,7 +16,7 @@
             android:id="@+id/activity_eve_text_encrypted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/empty_text_encrypted_eve"
+            android:text="@string/empty_text_encrypted"
             android:textAppearance="@style/font_msg_default"
             tools:layout_height="200dp" />
     </ScrollView>
@@ -46,7 +46,8 @@
             android:layout_marginLeft="@dimen/margin_distance"
             android:layout_marginTop="@dimen/margin_distance"
             android:layout_marginRight="@dimen/margin_distance"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textAppearance="@style/font_explanation_default"/>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/activity_eve_button_cryptotools"
@@ -57,6 +58,16 @@
             android:textAlignment="center"
             app:backgroundTint="@color/colorEve"
             app:elevation="0dp" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/activity_eve_button_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_distance"
+            android:layout_weight="0"
+            android:clickable="true"
+            android:src="@drawable/help"
+            app:backgroundTint="@color/colorEve" />
     </LinearLayout>
 
     <ScrollView

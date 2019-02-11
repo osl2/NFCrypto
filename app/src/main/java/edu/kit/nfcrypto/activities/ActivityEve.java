@@ -40,8 +40,8 @@ public class ActivityEve extends ActivityBase {
     private ArrayList<String> arrayPermissionString; //Permissions
     private ArrayList<Mode> arrayPermissionMode;
 
-    //Keine instanz zum zwischenspeichern, da direkt von der Activity aus operriert werden kann
-    //und Eve weniger komplex ist, dafür passiert dass in den Cryptotools
+    //Keine instanz zum zwischenspeichern, da direkt von der Activity aus operiert werden kann
+    //und Eve weniger komplex ist, dafür passiert das in den Cryptotools
 
     private String text; //Text vom NFC Tag
     private Mode modeSelected; //Mode des Spinners
@@ -163,7 +163,7 @@ public class ActivityEve extends ActivityBase {
 
                         //AES
                         case 3:
-                            Toast.makeText(getApplicationContext(), "Das Knacken von AES dauert mehrere Jahre.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Wenn du extrem reich bist, könntest du jetzt mit dem Bau eines Supercomputers anfangen. In etwas mehr als 80 Jahren kannst du dann die Verschlüsselung knacken.", Toast.LENGTH_LONG).show();
                             decrypted = "nicht möglich";
                             break;
                     }
@@ -176,6 +176,13 @@ public class ActivityEve extends ActivityBase {
             }
         });
 
+        // Info Knopf
+        final FloatingActionButton buttonInfo = findViewById(R.id.activity_eve_button_info);
+        buttonInfo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                ActivityEve.this.startActivity(new Intent(ActivityEve.this, ActivityEveInfo.class));
+            }
+        });
 
         // Knopf der zur passenden Cryptotoolactivity weiterleitet
         final FloatingActionButton buttonCryptotool = findViewById(R.id.activity_eve_button_cryptotools);
