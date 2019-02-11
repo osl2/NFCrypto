@@ -25,9 +25,11 @@
 
     <!-- Beschreibungen in activity_welcome -->
     <string name="welcome_welcome">Willkommen!</string>
-    <string name="welcome_task">Mit dieser App kannst du verschiedene Verschlüsselungen ausprobieren und über NFC-Karten Nachrichten an deine Freunde schreiben. Stelle bitte zuerst sicher, dass du NFC angeschalten hast. \n\nWie möchtest du die App verwenden?</string>
+    <string name="welcome_task">Mit dieser App kannst du verschiedene Verschlüsselungen ausprobieren und über NFC-Karten Nachrichten an deine Freunde schreiben.\nStelle bitte zuerst sicher, dass du NFC angeschalten hast.</string>
     <string name="welcome_guided">Im Unterricht</string>
     <string name="welcome_unguided">Alleine</string>
+    <string name="welcome_use">Wie möchtest du die App verwenden?</string>
+    <string name="welcome_nfcOn">Ich habe NFC angeschaltet.</string>
 
 
     <!-- Beschreibungen in activity_persons -->

@@ -5,6 +5,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.CompoundButton;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import edu.kit.nfcrypto.R;
 import edu.kit.nfcrypto.User;
@@ -42,6 +48,23 @@ public class ActivityWelcome extends AppCompatActivity {
                 setPerm(permPre);
                 User.getInstance().setPermission(perm);
                 ActivityWelcome.this.startActivity(new Intent(ActivityWelcome.this, ActivityPersons.class));
+            }
+        });
+
+        //Buttons für Weiter nur einblenden, wenn NFC angeschaltet ist.
+        final CheckBox checkBoxNFCOn = findViewById(R.id.activity_welcome_checkBox_nfcOn);
+        final LinearLayout linearLayout = findViewById(R.id.activity_welcome_buttonsGo);
+        final TextView textUse = findViewById(R.id.activity_welcome_text_use);
+        checkBoxNFCOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    linearLayout.setVisibility(View.VISIBLE);
+                    textUse.setVisibility(View.VISIBLE);
+                } else {
+                    linearLayout.setVisibility(View.INVISIBLE);
+                    textUse.setVisibility(View.INVISIBLE);
+                }
             }
         });
     }
