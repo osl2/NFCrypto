@@ -192,7 +192,7 @@ public class ActivityBob extends ActivityBase {
                     if (resultSplit[0].equals("KEY")) {
                         setMode(resultSplit[1]);
                         keyString = resultSplit[2];
-                        //Toast.makeText(getApplicationContext(), keyString, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Du hast eine Schlüsselkarte eingelesen!", Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(getApplicationContext(), "Das ist keine Schlüsselkarte.", Toast.LENGTH_LONG).show();
                     }
@@ -201,6 +201,7 @@ public class ActivityBob extends ActivityBase {
                         setMode(resultSplit[1]);
                         text = resultSplit[2];
                         setTextViewInput(text);
+                        Toast.makeText(getApplicationContext(),"Du hast eine Nachrichtenkarte eingelesen!", Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(getApplicationContext(), "Das ist keine Nachrichtenkarte.", Toast.LENGTH_LONG).show();
                     }
