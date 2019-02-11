@@ -22,6 +22,12 @@
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
+    <style name="font_explanation_additional">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/colorTextAdditional</item>
+    </style>
+
     <style name="font_title">
         <item name="android:textSize">36sp</item>
         <item name="android:fontFamily">cursive</item>
