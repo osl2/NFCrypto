@@ -9,7 +9,7 @@ import edu.kit.nfcrypto.R;
 import edu.kit.nfcrypto.data.Mode;
 
 
-public class ActivityEncryptPlainDetails extends ActivityBase {
+public class ActivityEncryptDetailsPlain extends ActivityBase {
 
     private final Mode spinner = Mode.PLA;
 
@@ -36,7 +36,7 @@ public class ActivityEncryptPlainDetails extends ActivityBase {
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ActivityEncryptPlainDetails.this, ActivityAlice.class);
+                Intent i = new Intent(ActivityEncryptDetailsPlain.this, ActivityAlice.class);
                 i.putExtra("spinner",spinner);
                 startActivity(i);
             }
