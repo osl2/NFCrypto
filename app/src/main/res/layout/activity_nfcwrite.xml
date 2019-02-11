@@ -1,43 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:id="@+id/relativeLayout"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:padding="@dimen/margin_screen">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_screen">
 
     <TextView
-        android:id="@+id/nfc_infotext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/nfc_info"
         android:textAlignment="center"
-        android:textSize="18sp" />
+        android:textAppearance="@style/font_explanation_default" />
 
-    <RelativeLayout
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:padding="@dimen/margin_screen"
-        tools:context=".activities.ActivityNFCWrite">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:minHeight="@dimen/height_min_space" />
 
-        <Button
-            android:id="@+id/activity_nfcwrite_button_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:text="@string/nachricht" />
+    <Switch
+        android:id="@+id/activity_nfcwrite_switchKey"
+        android:layout_width="@dimen/width_switch"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:text="Schlüssel"
+        android:textAppearance="@style/font_explanation_default" />
 
-        <Button
-            android:id="@+id/activity_nfcwrite_button_key"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="100dp"
-            android:text="@string/schlüssel" />
+    <Switch
+        android:id="@+id/activity_nfcwrite_switchMessage"
+        android:layout_width="@dimen/width_switch"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/margin_distance"
+        android:text="Nachricht"
+        android:textAppearance="@style/font_explanation_default" />
 
-    </RelativeLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:minHeight="@dimen/height_min_space" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nfc_task"
+        android:textAlignment="center"
+        android:textAppearance="@style/font_explanation_default" />
 
 </LinearLayout>

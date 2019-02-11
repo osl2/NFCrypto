@@ -9,7 +9,9 @@ import android.nfc.Tag;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.Toast;
+import android.widget.CompoundButton;
 
 import edu.kit.nfcrypto.Alice;
 import edu.kit.nfcrypto.R;
@@ -52,22 +54,6 @@ public class ActivityNFCWrite extends ActivityBase {
         //nimmt Zwischenspeicherinstanz Alice entgegen
         alice = (Alice) getIntent().getSerializableExtra("alice");
 
-        //Wählt aus, was geschrieben werden soll
-        final Button buttonMessage = findViewById(R.id.activity_nfcwrite_button_message);
-        buttonMessage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                message = MES;
-            }
-        });
-
-        final Button buttonKey = findViewById(R.id.activity_nfcwrite_button_key);
-        buttonKey.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                message = KEY;
-            }
-        });
 
         context = getApplicationContext();
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
@@ -79,6 +65,30 @@ public class ActivityNFCWrite extends ActivityBase {
         IntentFilter techDetected = new IntentFilter(NfcAdapter.ACTION_TECH_DISCOVERED);
         // Intentfilter fpür NFCTags
         mWriteTagFilters = new IntentFilter[]{discovery};
+
+        // Umschalter für das Schreiben von Nachricht und Schlüssel
+        final Switch switchMessage = findViewById(R.id.activity_nfcwrite_switchMessage);
+        final Switch switchKey = findViewById(R.id.activity_nfcwrite_switchKey);
+        switchMessage.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    switchKey.setChecked(false);
+                    message = MES;
+                } else if(!switchMessage.isChecked()) {
+                    message = NULL;
+                }
+            }
+        });
+        switchKey.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    switchMessage.setChecked(false);
+                    message = KEY;
+                } else if(!switchKey.isChecked()) {
+                    message = NULL;
+                }
+            }
+        });
     }
 
     @Override
@@ -106,7 +116,7 @@ public class ActivityNFCWrite extends ActivityBase {
                         String message = (wr.getStatus() == 1 ? "Erfolg: " : "Fehler: ") + wr.getMessage();
                         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
                     }else{
-                        Toast.makeText(context, "Bitte wähle einen Knopf aus",Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Bitte wähle die Art deiner NFC-Karte.",Toast.LENGTH_LONG).show();
                     }
                 } else {
                     Toast.makeText(context, "Dieser Tag ist nicht beschreibbar", Toast.LENGTH_SHORT).show();

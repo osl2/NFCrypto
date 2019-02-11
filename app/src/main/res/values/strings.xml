@@ -43,10 +43,13 @@
     <string name="persons_info">Du kannst die Auswahl später wieder ändern.</string>
 
     <!-- Beschreibung in activity_nfcwrite -->
-    <string name="nfc_info">Wähle aus, was du auf die NFC-Karte schreiben willst. Halte anschließend die Karte an dein Handy. Meistens befindet sich das Lesegerät in der Nähe von der Kamera.</string>
+    <string name="nfc_info">Wähle aus welche NFC-Karte du schreiben willst.</string>
+    <string name="nfc_task">Halte anschließend die Karte an dein Handy.\n\n
+        Der NFC-Reader befindet sich meistens in der Näher der Kamera.</string>
 
     <!-- Beschreibung in activity_cryptotools -->
-    <string name="cryptotools_caesar_info">Du willst versuchen den Text mit der Cesar-Verschlüsselung zu knacken? Na dann stell unten den Buchstaben ein, von dem du glaubst, dass er der Schlüssel ist.</string>
+    <string name="cryptotools_caesar_info">Du willst versuchen den Text mit der Cesar-Verschlüsselung zu knacken?
+        Na dann stell unten den Buchstaben ein, von dem du glaubst, dass er der Schlüssel ist.</string>
     <string name="cryptotools_caesar_title">Cesar Entschlüsselungstool</string>
 
 

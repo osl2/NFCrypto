@@ -6,7 +6,10 @@
 
     <dimen name="height_min_textbox">120dp</dimen>
     <dimen name="height_min_textbox_halfscreen">500dp</dimen>
+    <dimen name="height_min_space">50dp</dimen>
     <dimen name="width_button_default">120dp</dimen>
 
     <dimen name="width_button_persons">140dp</dimen>
+    <dimen name="width_switch">180dp</dimen>
+
 </resources>
