@@ -147,6 +147,8 @@ public class ActivityAlice extends ActivityBase {
                         Intent i = new Intent(ActivityAlice.this, ActivityCode.class);
                         i.putExtra("origin", "alice");
                         ActivityAlice.this.startActivity(i);
+                    }else{
+                        mode = arrayPermissionMode.get(position);
                     }
                 } else {
                     mode = arrayPermissionMode.get(position);
