@@ -8,7 +8,6 @@
     <string name="bob_short">B</string>
     <string name="eve">Eve</string>
     <string name="eve_short">E</string>
-    <string name="info2">zweiter Infotext...</string>
     <string name="read_msg">Nachricht einlesen</string>
     <string name="read_key">Schlüssel einlesen</string>
     <string name="anwenden">Anwenden</string>
@@ -51,6 +50,12 @@
     <string name="persons_bob">Bob empfängt Nachrichten von Alice und kann diese, falls nötig, entschlüsseln.</string>
     <string name="persons_eve">Eve fängt Nachrichten ab, die nicht an sie adressiert sind. Sie muss selbst versuchen die Nachrichten zu entschlüsseln.</string>
     <string name="persons_info">Du kannst die Auswahl später wieder ändern.</string>
+
+
+    <!-- Beschreibung in activity_info -->
+    <string name="activity_info_header">Formuliere eine Nachricht an Bob und verschlüssele sie!</string>
+    <string name="activity_info_text">Wähle dazu eine Verschlüsselungsart rechts neben dem Schloss-Symbol. Den Schlüssel kannst du bei dem Schraubenschlüssel einstellen. Anschließend klicke auf das Schloss. Die verschlüsselte Nachricht wird dir unten angezeigt. Mit dem Sende-Knopf kannst du sie für Bob auf eine NFC-Karte schreiben.</string>
+
 
     <!-- Beschreibung in activity_nfcwrite -->
     <string name="nfc_info">Wähle aus welche NFC-Karte du schreiben willst.</string>
