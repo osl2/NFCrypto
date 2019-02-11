@@ -72,6 +72,8 @@
         Na dann stell unten den Buchstaben ein, von dem du glaubst, dass er der Schlüssel ist.</string>
     <string name="cryptotools_caesar_title">Cesar Entschlüsselungstool</string>
 
+    <!-- Beschreibung in activity_code -->
+    <string name="code_info">Mithilfe eines Freischaltcodes kannst du neue Funktionen freischalten.\n\nDen Code erhältst du von deinem Lehrer oder deiner Lehrerin.</string>
 
     <!-- Beschreibungen activity_encrypt_details -->
     <string name="lastKey">Letzer Schlüssel</string>

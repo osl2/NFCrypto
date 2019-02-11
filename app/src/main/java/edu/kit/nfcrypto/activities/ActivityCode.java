@@ -65,18 +65,22 @@ public class ActivityCode extends ActivityBase { //Activity in der dann die Modi
             public void onClick(View v) {
                 String unlocked = "";
                 Mode mode = PLA;
+                boolean unlock = false;
 
                 //Es wird überprüft, ob ein Code stimmt
                 if (codeString != null) {
                     if (codeString.equals(codeCes)) {
                         mode = CES;
                         unlocked = "Cesar";
+                        unlock = true;
                     } else if (codeString.equals(codeVig)) {
                         mode = VIG;
                         unlocked = "Minikey";
+                        unlock = true;
                     } else if (codeString.equals(codeAES)) {
                         mode = AES;
                         unlocked = "AES";
+                        unlock = true;
                     } else {
                         Toast.makeText(getApplicationContext(), "Der Code ist leider falsch", Toast.LENGTH_LONG).show();
                     }
@@ -88,7 +92,10 @@ public class ActivityCode extends ActivityBase { //Activity in der dann die Modi
                         //Kehre bei Freischaltung auf vorherige Activity zurück.
                         ActivityCode.this.startActivity(new Intent(ActivityCode.this, origin));
                     } else {
-                        Toast.makeText(getApplicationContext(), unlocked + " das wurde bereits freigeschaltet", Toast.LENGTH_LONG).show();
+                        if(unlock) {
+                            Toast.makeText(getApplicationContext(), unlocked + " das wurde bereits freigeschaltet", Toast.LENGTH_LONG).show();
+                        }
+
                     }
                 }
             }
