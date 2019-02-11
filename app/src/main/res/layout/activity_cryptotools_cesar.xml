@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".activities.ActivityCryptotoolsCesar">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_screen"
+    tools:context=".activities.ActivityCryptotoolsCesar">
+
+    <TextView
+        android:id="@+id/activity_encrypt_details_plain_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_distance"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:text="@string/cryptotools_caesar_title"
+        android:textAppearance="@style/font_title_eve" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:orientation="vertical"
-        android:padding="@dimen/margin_screen">
-
-        <TextView
-            android:id="@+id/activity_cryptotools_caesar_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/cryptotools_caesar_title"
-            android:textAppearance="@style/font_msg_default"
-            android:textSize="24sp"
-            tools:layout_height="60dp" />
+        android:layout_height="@dimen/height_min_textbox_fullscreen"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/activity_cryptotools_caesar_info"
@@ -31,27 +32,28 @@
             android:layout_marginBottom="@dimen/margin_distance"
             android:gravity="center"
             android:text="@string/cryptotools_caesar_info"
-            android:textAppearance="@style/font_msg_default"
-            tools:layout_height="120dp" />
+            android:textAppearance="@style/font_explanation_default" />
 
-        <LinearLayout
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/height_min_space" />
 
-            <Spinner
-                android:id="@+id/activity_cryptotools_caesar_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="100dp" />
-
-            <Button
-                android:id="@+id/activity_cryptotools_caesar_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cryptotools_caesar_decrypt" />
-        </LinearLayout>
+        <Spinner
+            android:id="@+id/activity_cryptotools_caesar_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="@dimen/width_button_default"
+            android:textAppearance="@style/font_explanation_default"/>
 
     </LinearLayout>
-</RelativeLayout>
+
+    <Button
+        android:id="@+id/activity_cryptotools_caesar_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="@string/cryptotools_caesar_decrypt"
+        android:textAppearance="@style/font_explanation_default"/>
+
+</LinearLayout>
