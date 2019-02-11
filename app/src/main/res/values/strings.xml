@@ -44,7 +44,7 @@
 
     <!-- Beschreibung in activity_info -->
     <string name="activity_info_header">Formuliere eine Nachricht an Bob und verschlüssele sie!</string>
-    <string name="activity_info_text">Wähle dazu eine Verschlüsselungsart rechts neben dem Schloss-Symbol. Wenn du deine Nachricht mit Cäsar verschlüsseln möchtest, kannst du bei dem Schraubenschlüssel den Schlüssel einstellen. Die anderen Schlüssel werden automatisch gesetzt. Anschließend klicke auf das Schloss. Die verschlüsselte Nachricht wird dir unten angezeigt. Mit dem Sende-Knopf kannst du sie für Bob auf eine NFC-Karte schreiben.</string>
+    <string name="activity_info_text">Wähle dazu eine Verschlüsselungsart rechts neben dem Schloss-Symbol. Den Schlüssel kannst du bei dem Schraubenschlüssel einstellen. Anschließend klicke auf das Schloss. Die verschlüsselte Nachricht wird dir unten angezeigt. Mit dem Sende-Knopf kannst du sie für Bob auf eine NFC-Karte schreiben.</string>
 
 
     <!-- Beschreibung in activity_nfcwrite -->
