@@ -16,7 +16,7 @@ import edu.kit.nfcrypto.keys.Key;
 import static edu.kit.nfcrypto.data.Mode.AES;
 
 
-public class ActivityEncryptAESDetails extends ActivityBase {
+public class ActivityEncryptDetailsAES extends ActivityBase {
 
     private String inputtext; //Relevante Dinge werden zum zurückgeben an Activity Alice zwischengespeichert
     private String aes;
@@ -51,7 +51,7 @@ public class ActivityEncryptAESDetails extends ActivityBase {
                 if (aes != null) {
                     key = new AESKey(aes);
                 }
-                Intent i = new Intent(ActivityEncryptAESDetails.this, ActivityAlice.class);
+                Intent i = new Intent(ActivityEncryptDetailsAES.this, ActivityAlice.class);
                 i.putExtra("inputtext", inputtext);
                 i.putExtra("key", key);
                 i.putExtra("spinner", spinner);
@@ -76,6 +76,8 @@ public class ActivityEncryptAESDetails extends ActivityBase {
                     } else {
                         Toast.makeText(getApplicationContext(), "Der letzte Schlüssel war kein AESschlüssel!", Toast.LENGTH_LONG).show();
                     }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Du hast keinen letzten Schlüssel. Erstelle einen neuen.", Toast.LENGTH_LONG).show();
                 }
             }
         });

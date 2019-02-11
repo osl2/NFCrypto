@@ -35,6 +35,12 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
+    <style name="font_title_alice">
+        <item name="android:textSize">36sp</item>
+        <item name="android:fontFamily">cursive</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorAlice</item>
+    </style>
     <style name="font_button_white">
         <item name="android:textSize">36sp</item>
         <item name="android:fontFamily">casual</item>

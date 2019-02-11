@@ -40,16 +40,16 @@
             android:name=".activities.ActivityCryptotoolsCesar"
             android:label="Cesar knacken!" />
         <activity
-            android:name=".activities.ActivityEncryptCesarDetails"
+            android:name=".activities.ActivityEncryptDetailsCesar"
             android:label="Cesarverschlüsselung anpassen" />
         <activity
-                android:name=".activities.ActivityEncryptPlainDetails"
+                android:name=".activities.ActivityEncryptDetailsPlain"
                 android:label="Klartext anpassen" />
         <activity
-                android:name=".activities.ActivityEncryptMinikeyDetails"
+                android:name=".activities.ActivityEncryptDetailsMinikey"
                 android:label="Minikey anpassen" />
         <activity
-                android:name=".activities.ActivityEncryptAESDetails"
+                android:name=".activities.ActivityEncryptDetailsAES"
                 android:label="AES anpassen" />
         <activity
             android:name=".activities.ActivityEve"

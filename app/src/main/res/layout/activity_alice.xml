@@ -49,7 +49,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_distance"
                 android:layout_marginRight="@dimen/margin_distance"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:textAppearance="@style/font_msg_default"/>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/activity_alice_button_details"

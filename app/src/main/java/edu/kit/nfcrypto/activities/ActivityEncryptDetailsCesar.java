@@ -14,7 +14,7 @@ import edu.kit.nfcrypto.keys.Key;
 import static edu.kit.nfcrypto.data.Mode.CES;
 
 
-public class ActivityEncryptCesarDetails extends ActivityBase {
+public class ActivityEncryptDetailsCesar extends ActivityBase {
 
     private String inputtext; //Relevante Dinge werden zum zurückgeben an Activity Alice zwischengespeichert
     private Key key;
@@ -71,7 +71,7 @@ public class ActivityEncryptCesarDetails extends ActivityBase {
                 if (cesar != -1) {
                     key = new CesarKey("" + cesar);
                 }
-                Intent i = new Intent(ActivityEncryptCesarDetails.this, ActivityAlice.class);
+                Intent i = new Intent(ActivityEncryptDetailsCesar.this, ActivityAlice.class);
                 i.putExtra("inputtext", inputtext);
                 i.putExtra("key", key);
                 i.putExtra("spinner", spinner);
@@ -97,8 +97,10 @@ public class ActivityEncryptCesarDetails extends ActivityBase {
                         cesar = ((CesarKey) key).getKeyData();
                         setTextView(""+(char) (cesar + 65));
                     } else {
-                        Toast.makeText(getApplicationContext(), "Der letzte Schlüssel war kein Cesarschlüssel!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Der letzte Schlüssel war kein Cäsarschlüssel!", Toast.LENGTH_LONG).show();
                     }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Du hast keinen letzten Schlüssel. Erstelle einen neuen.", Toast.LENGTH_LONG).show();
                 }
             }
         });

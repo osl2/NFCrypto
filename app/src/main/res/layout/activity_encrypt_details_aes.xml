@@ -1,59 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".activities.ActivityInfo">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_screen"
+    tools:context=".activities.ActivityInfo">
+
+    <TextView
+        android:id="@+id/activity_encrypt_details_plain_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_distance"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:text="@string/encrypt_details_aes"
+        android:textAppearance="@style/font_title_alice" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:orientation="vertical"
-        android:padding="@dimen/margin_screen">
+        android:layout_height="@dimen/height_min_textbox_fullscreen"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/activity_encrypt_details_aes_lastKey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_distance"
+            android:text="@string/lastKey" />
+
 
         <TextView
-            android:id="@+id/activity_encrypt_details_aes_title"
+            android:id="@+id/activity_encrypt_details_aes_generatedKey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/encrypt_details_aes"
-            android:textAppearance="@style/font_explanation_default"
-            android:textSize="24sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <Button
-                    android:id="@+id/activity_encrypt_details_aes_lastKey"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_distance"
-                    android:text="@string/lastKey"/>
-
-
-            <TextView
-                android:id="@+id/activity_encrypt_details_aes_generatedKey"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:minHeight="@dimen/height_min_textbox"
-                android:text="@string/empty_text_generateKey"
-                android:textAppearance="@style/font_msg_default" />
-
-            <Button
-                android:id="@+id/activity_encrypt_details_aes_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/anwenden" />
-
-        </LinearLayout>
+            android:minHeight="@dimen/height_min_textbox"
+            android:textAppearance="@style/font_msg_default" />
 
     </LinearLayout>
-</RelativeLayout>
+
+    <Button
+        android:id="@+id/activity_encrypt_details_aes_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/anwenden" />
+
+</LinearLayout>

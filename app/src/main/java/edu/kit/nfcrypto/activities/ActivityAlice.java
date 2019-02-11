@@ -70,12 +70,12 @@ public class ActivityAlice extends ActivityBase {
         final FloatingActionButton buttonDetails = findViewById(R.id.activity_alice_button_details);
         buttonDetails.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Class destination = ActivityEncryptPlainDetails.class;
+                Class destination = ActivityEncryptDetailsPlain.class;
                 switch (mode){
-                    case PLA: destination=ActivityEncryptPlainDetails.class;break;
-                    case CES: destination = ActivityEncryptCesarDetails.class;break;
-                    case VIG:destination = ActivityEncryptMinikeyDetails.class;break;
-                    case AES:destination = ActivityEncryptAESDetails.class;break;
+                    case PLA: destination=ActivityEncryptDetailsPlain.class;break;
+                    case CES: destination = ActivityEncryptDetailsCesar.class;break;
+                    case VIG:destination = ActivityEncryptDetailsMinikey.class;break;
+                    case AES:destination = ActivityEncryptDetailsAES.class;break;
                 }
 
                 //dem Intent werden alle wichtigen indos zum Speichern übergeben.
@@ -127,10 +127,6 @@ public class ActivityAlice extends ActivityBase {
             public void afterTextChanged(Editable s) {
                 //wenn sich der Text geändert hat
                 messageString = inputText.getText().toString();
-
-                if(messageString.length()>100){
-                    Toast.makeText(getApplicationContext(),"Der Text darf maximal 100 Zeichen lang sein.", Toast.LENGTH_LONG).show();
-                }
             }
         });
 
@@ -203,7 +199,7 @@ public class ActivityAlice extends ActivityBase {
                 return sourceString;
             }
         };
-        inputText.setFilters(new InputFilter[]{filter});
+        inputText.setFilters(new InputFilter[]{filter, new InputFilter.LengthFilter(100)});
 
     }
 
