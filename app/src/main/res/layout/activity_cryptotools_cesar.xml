@@ -50,7 +50,7 @@
                 android:id="@+id/activity_cryptotools_caesar_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/entschlüsseln" />
+                android:text="@string/cryptotools_caesar_decrypt" />
         </LinearLayout>
 
     </LinearLayout>

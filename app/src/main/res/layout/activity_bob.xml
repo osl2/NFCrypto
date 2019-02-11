@@ -54,7 +54,7 @@
             android:layout_marginLeft="@dimen/margin_distance"
             android:layout_marginEnd="@dimen/margin_distance"
             android:layout_weight="1"
-            android:text="@string/bob_button_lastkey"
+            android:text="@string/lastKey"
             android:textAppearance="@style/font_explanation_default" />
 
         <Space

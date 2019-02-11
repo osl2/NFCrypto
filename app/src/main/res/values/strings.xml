@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">NFCrypto</string>
 
-    <!-- Hier können jetzt alle Strings eingetragen werden -->
+    <!-- Namen der Rollen -->
     <string name="alice">Alice</string>
     <string name="alice_short">A</string>
     <string name="bob">Bob</string>
@@ -9,16 +9,20 @@
     <string name="eve">Eve</string>
     <string name="eve_short">E</string>
 
+    <!-- Namen der Modi -->
+    <string name="plaintext">Klartext</string>
+    <string name="cesar">Cäsar</string>
+    <string name="vigenere">Minikey</string>
+    <string name="aes">AES</string>
+
+    <!-- Allgemeine Strings -->
     <string name="read_msg">Nachricht einlesen</string>
     <string name="read_key">Schlüssel einlesen</string>
-    <string name="anwenden">Anwenden</string>
-    <string name="entschlüsseln">Entschlüsseln</string>
-    <string name="freischalten">Freischalten</string>
     <string name="nachricht">Nachricht</string>
     <string name="schlüssel">Schlüssel</string>
     <string name="or">oder:</string>
 
-    <!-- Allgemeine Strings -->
+    <!-- Allgemeine Strings für leere Felder -->
     <string name="empty_text_encrypted">Die verschlüsselte Nachricht wird hier angezeigt.</string>
     <string name="empty_text_decrypted">Die entschlüsselte Nachricht wird hier angezeigt.</string>
     <string name="empty_text_encrypted_eve">Die entschlüsselte Nachricht wird hier angezeigt, wenn du eine Nachrichtenkarte an dein Smartphone hältst.</string>
@@ -26,7 +30,25 @@
     <string name="empty_text_generateKey">Hier wird dein Schlüssel angezeigt.</string>
     <string name="empty_text_TODO">Hier kreativ werden!</string> <!-- Platzhalter -->
 
-    <!-- Beschreibungen in activity_alice_info -->
+
+    <!-- Beschreibungen für Activities (nach chronologischer Verwendung in der App sortiert)-->
+
+    <!-- activity_welcome -->
+    <string name="welcome_welcome">Willkommen!</string>
+    <string name="welcome_task">Mit dieser App kannst du verschiedene Verschlüsselungen ausprobieren und über NFC-Karten Nachrichten an deine Freunde schreiben.\n\nStelle bitte zuerst sicher, dass du NFC angeschalten hast.</string>
+    <string name="welcome_guided">Im Unterricht</string>
+    <string name="welcome_unguided">Alleine</string>
+    <string name="welcome_use">Wie möchtest du die App verwenden?</string>
+    <string name="welcome_nfcOn">Ich habe NFC angeschaltet.</string>
+
+    <!-- activity_persons -->
+    <string name="persons_task">Wähle eine Rolle.</string>
+    <string name="persons_alice">"Alice schreibt Nachrichten und sendet sie an Bob. Sie kann diese Nachrichten zuvor verschlüsseln."</string>
+    <string name="persons_bob">Bob empfängt Nachrichten von Alice und kann diese, falls nötig, entschlüsseln.</string>
+    <string name="persons_eve">Eve fängt Nachrichten ab, die nicht an sie adressiert sind. Sie muss selbst versuchen die Nachrichten zu entschlüsseln.</string>
+    <string name="persons_info">Du kannst die Auswahl später wieder ändern.</string>
+
+    <!-- activity_alice_info -->
     <string name="alice_info_info">Was ist zu tun?</string>
     <string name="alice_info_text">Gib zuerst im Textfeld eine Nachricht ein.</string>
     <string name="alice_info_spinner">Wähle anschließend eine Verschlüsselungsart.</string>
@@ -36,7 +58,26 @@
         Hier kannst du auch deinen letzen Schlüssel wiederverwenden.</string>
     <string name="alice_info_send">Drücke auf diesen Button um deine Nachricht zu versenden. Hierfür benötigst du deine NFC-Karten.</string>
 
-    <!-- Beschreibungen in activity_eve_info -->
+    <!-- activity_encrypt_details -->
+    <string name="lastKey">Letzer Schlüssel</string>
+    <string name="randomKey">Zufälliger Schlüssel</string>
+    <string name="anwenden">Anwenden</string>
+    <string name="encrypt_details_caesar">Deine Cesarverschlüsselung</string>
+    <string name="encrypt_details_caesar_info">Stelle unten den Buchstaben ein, nach welchem du deinen Text verschlüsseln möchtest.</string>
+    <string name="encrypt_details_minikey">Deine Minikeyverschlüsselung</string>
+    <string name="encrypt_details_minikey_info">Gib ein sechsstelliges Wort als Schlüssel ein.</string>
+    <string name="encrypt_details_aes">Deine AES-Verschlüsselung</string>
+    <string name="encrypt_details_aes_info">Der AES-Schlüssel ist zu lang um ihn von Hand einzugeben.</string>
+    <string name="encrypt_details_plain">Deine Klartextverschlüsselung</string>
+    <string name="encrypt_details_plain_info">Bei der Klartextverschlüsselung handelt es sich genau genommen nicht um eine Verschlüsselung,
+        denn dein Text wird unverschlüsselt als sogenannter Klartext versendet. Daher gibt es auch keinen Schlüssel.</string>
+
+    <!-- activity_nfcwrite -->
+    <string name="nfc_info">Wähle aus welche NFC-Karte du schreiben willst.</string>
+    <string name="nfc_task">Halte anschließend die Karte an dein Handy.\n\n
+        Der NFC-Reader befindet sich meistens in der Näher der Kamera.</string>
+
+    <!-- activity_eve_info -->
     <string name="eve_info_info">Was ist zu tun?</string>
     <string name="eve_info_text">Lies zuerst eine Nachrichtenkarte ein.</string>
     <string name="eve_info_spinner">Wähle anschließend eine Verschlüsselungsart.</string>
@@ -44,61 +85,13 @@
         Dabei wird ein Verfahren gestartet, das automatisch versucht die Nachricht zu entschlüsseln.</string>
     <string name="eve_info_wrench">Drücke auf diesen Button um selbst Einstellungen für den Schlüssel vorzunehmen.</string>
 
-
-    <!-- Beschreibungen in activity_welcome -->
-    <string name="welcome_welcome">Willkommen!</string>
-    <string name="welcome_task">Mit dieser App kannst du verschiedene Verschlüsselungen ausprobieren und über NFC-Karten Nachrichten an deine Freunde schreiben.\n\nStelle bitte zuerst sicher, dass du NFC angeschalten hast.</string>
-    <string name="welcome_guided">Im Unterricht</string>
-    <string name="welcome_unguided">Alleine</string>
-    <string name="welcome_use">Wie möchtest du die App verwenden?</string>
-    <string name="welcome_nfcOn">Ich habe NFC angeschaltet.</string>
-
-
-    <!-- Beschreibungen in activity_persons -->
-    <string name="persons_task">Wähle eine Rolle.</string>
-    <string name="persons_alice">"Alice schreibt Nachrichten und sendet sie an Bob. Sie kann diese Nachrichten zuvor verschlüsseln."</string>
-    <string name="persons_bob">Bob empfängt Nachrichten von Alice und kann diese, falls nötig, entschlüsseln.</string>
-    <string name="persons_eve">Eve fängt Nachrichten ab, die nicht an sie adressiert sind. Sie muss selbst versuchen die Nachrichten zu entschlüsseln.</string>
-    <string name="persons_info">Du kannst die Auswahl später wieder ändern.</string>
-
-
-    <!-- Beschreibung in activity_nfcwrite -->
-    <string name="nfc_info">Wähle aus welche NFC-Karte du schreiben willst.</string>
-    <string name="nfc_task">Halte anschließend die Karte an dein Handy.\n\n
-        Der NFC-Reader befindet sich meistens in der Näher der Kamera.</string>
-
-    <!-- Beschreibung in activity_cryptotools -->
+    <!-- activity_cryptotools -->
     <string name="cryptotools_caesar_info">Du willst versuchen den Text mit der Cesar-Verschlüsselung zu knacken?
         Na dann stell unten den Buchstaben ein, von dem du glaubst, dass er der Schlüssel ist.</string>
     <string name="cryptotools_caesar_title">Cesar Entschlüsselungstool</string>
+    <string name="cryptotools_caesar_decrypt">Entschlüsseln</string>
 
-    <!-- Beschreibung in activity_code -->
-    <string name="code_info">Mithilfe eines Freischaltcodes kannst du neue Funktionen freischalten.\n\nDen Code erhältst du von deinem Lehrer oder deiner Lehrerin.</string>
-
-    <!-- Beschreibungen activity_encrypt_details -->
-    <string name="lastKey">Letzer Schlüssel</string>
-    <string name="randomKey">Zufälliger Schlüssel</string>
-
-    <string name="encrypt_details_caesar">Deine Cesarverschlüsselung</string>
-    <string name="encrypt_details_caesar_info">Stelle unten den Buchstaben ein, nach welchem du deinen Text verschlüsseln möchtest.</string>
-
-    <string name="encrypt_details_minikey">Deine Minikeyverschlüsselung</string>
-    <string name="encrypt_details_minikey_info">Gib ein sechsstelliges Wort als Schlüssel ein.</string>
-
-    <string name="encrypt_details_aes">Deine AES-Verschlüsselung</string>
-    <string name="encrypt_details_aes_info">Der AES-Schlüssel ist zu lang um ihn von Hand einzugeben.</string>
-
-    <string name="encrypt_details_plain">Deine Klartextverschlüsselung</string>
-    <string name="encrypt_details_plain_info">Bei der Klartextverschlüsselung handelt es sich genau genommen nicht um eine Verschlüsselung, denn dein Text wird unverschlüsselt als sogenannter Klartext versendet. Daher gibt es auch keinen Schlüssel.</string>
-
-    <string name="alice_butten_lastkey">Letzten Schlüssel verwenden</string>
-    <string name="bob_button_lastkey">Letzter Schlüssel</string>
-
-    <string name="plaintext">Klartext</string>
-    <string name="cesar">Cäsar</string>
-    <string name="vigenere">Minikey</string>
-    <string name="aes">AES</string>
-
+    <!-- Beschreibungen für Cäsar-Spinner-->
     <string name="none">keine</string>
     <string name="a">A</string>
     <string name="b">B</string>
@@ -127,10 +120,14 @@
     <string name="y">Y</string>
     <string name="z">Z</string>
 
+    <!-- activity_code -->
+    <string name="code_info">Mithilfe eines Freischaltcodes kannst du neue Funktionen freischalten.\n\n
+        Den Code erhältst du von deinem Lehrer oder deiner Lehrerin.</string>
+    <string name="code_unlock">Freischalten</string>
+
+    <!-- Passwörter für Lehrermodul -->
     <string name="pwces">PWces</string>
     <string name="pwvig">PWvig</string>
     <string name="pwaes">PWaes</string>
-
-
 
 </resources>
