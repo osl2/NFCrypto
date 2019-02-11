@@ -34,7 +34,9 @@ public class ActivityEve extends ActivityBase {
     private IntentFilter[] mNdefExchangeFilters;
     private PendingIntent mNfcPendingIntent;
 
-    private String help; // Verschlüsselter "ENTSCHLUESSELT" String, der zur Hilfe beim Knacken genutzt werden soll.
+    private String help;
+            // Verschlüsselter "ENTSCHLUESSELT" String, der zur Hilfe beim Knacken genutzt werden
+            // soll.
     private int cesar = -1; //Cesar wert für nicht gesetzt
     private Cryptotool crypto; //zuverwendendes Cryptotool
     private ArrayList<String> arrayPermissionString; //Permissions
@@ -76,7 +78,8 @@ public class ActivityEve extends ActivityBase {
         //Spinner vgl. ActivityAlice
         final Spinner modeSpinner = findViewById(R.id.activity_eve_spinner);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arrayPermissionString);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, arrayPermissionString);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         modeSpinner.setAdapter(adapter);
         modeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -84,12 +87,17 @@ public class ActivityEve extends ActivityBase {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 spinner = position;
-                if (arrayPermissionMode.size() < arrayPermissionString.size()) { //Wenn der Mode Array kleiner dem String Array ist muss nachträglich ein String hinzugefügt worden sein -> letztes Item ist Code
+                if (arrayPermissionMode.size()
+                        < arrayPermissionString.size()) { //Wenn der Mode Array kleiner dem
+                    // String Array ist muss nachträglich ein String hinzugefügt worden sein ->
+                    // letztes Item ist Code
                     if (position == arrayPermissionString.size() - 1) {
                         Intent i = new Intent(ActivityEve.this, ActivityCode.class);
                         i.putExtra("origin", "alice");
                         ActivityEve.this.startActivity(i);
 
+                    } else {
+                        mode = arrayPermissionMode.get(position);
                     }
                 } else {
                     modeSelected = arrayPermissionMode.get(position);
@@ -103,7 +111,8 @@ public class ActivityEve extends ActivityBase {
             }
         });
 
-        //Wenn von einer Anderen Activity ein Text für die Eingabe / zur hilfe / für Cesar/ als Spinnerposition übergeben wird,
+        //Wenn von einer Anderen Activity ein Text für die Eingabe / zur hilfe / für Cesar/ als
+        // Spinnerposition übergeben wird,
         //setzte diese & passe ggf. die Anzeige an.
 
         if (getIntent().getStringExtra("inputtext") != null) {
@@ -135,13 +144,15 @@ public class ActivityEve extends ActivityBase {
                 //Überptüft ob alles gesetzt wurde
                 if (text != null & help != null & spinner != -1) {
 
-                    //Stellung des Spinners wird ausgelesen, kann/sollte noch ggf. ausgelagert werden, Toasts sind dann schwerer
+                    //Stellung des Spinners wird ausgelesen, kann/sollte noch ggf. ausgelagert
+                    // werden, Toasts sind dann schwerer
                     switch (spinner) {
 
                         //Plaintext
                         case 0:
                             decrypted = text;
-                            Toast.makeText(getApplicationContext(), "Klartext ist nicht verschlüsselt", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(),
+                                    "Klartext ist nicht verschlüsselt", Toast.LENGTH_LONG).show();
                             break;
 
                         //Cesar
@@ -163,14 +174,20 @@ public class ActivityEve extends ActivityBase {
 
                         //AES
                         case 3:
-                            Toast.makeText(getApplicationContext(), "Wenn du extrem reich bist, könntest du jetzt mit dem Bau eines Supercomputers anfangen. In etwas mehr als 80 Jahren kannst du dann die Verschlüsselung knacken.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(),
+                                    "Wenn du extrem reich bist, könntest du jetzt mit dem Bau "
+                                            + "eines Supercomputers anfangen. In etwas mehr als "
+                                            + "80 Jahren kannst du dann die Verschlüsselung "
+                                            + "knacken.",
+                                    Toast.LENGTH_LONG).show();
                             decrypted = "nicht möglich";
                             break;
                     }
                     setTextViewDecrypted(decrypted);
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "Du brauchst zuerst eine Nachrichtenkarte.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),
+                            "Du brauchst zuerst eine Nachrichtenkarte.", Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -185,7 +202,8 @@ public class ActivityEve extends ActivityBase {
         });
 
         // Knopf der zur passenden Cryptotoolactivity weiterleitet
-        final FloatingActionButton buttonCryptotool = findViewById(R.id.activity_eve_button_cryptotools);
+        final FloatingActionButton buttonCryptotool = findViewById(
+                R.id.activity_eve_button_cryptotools);
         buttonCryptotool.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Class destination;
@@ -198,9 +216,11 @@ public class ActivityEve extends ActivityBase {
                     i.putExtra("help", help);
                     ActivityEve.this.startActivity(i);
                 } else if (modeSelected == PLA) {
-                    Toast.makeText(getApplicationContext(), "Klartext ist nicht verschlüsselt", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Klartext ist nicht verschlüsselt",
+                            Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Man kann nur Cesar händisch entschlüsseln", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),
+                            "Man kann nur Cesar händisch entschlüsseln", Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -230,7 +250,8 @@ public class ActivityEve extends ActivityBase {
                     mNdefExchangeFilters, null);
 
         } else {
-            Toast.makeText(getApplicationContext(), "Sorry, No NFC Adapter found.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Sorry, No NFC Adapter found.",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -264,7 +285,8 @@ public class ActivityEve extends ActivityBase {
 
 
                 String[] resultSplit = User.splitInput(result);
-               // Toast.makeText(getApplicationContext(), "Tag Contains " + result, Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getApplicationContext(), "Tag Contains " + result, Toast
+                // .LENGTH_SHORT).show();
 
 
                 if (resultSplit[0].equals("MES")) {
@@ -274,15 +296,15 @@ public class ActivityEve extends ActivityBase {
                     help = resultSplit[3];
                     setTextViewInput(text);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Dies ist keine Nachrichtenkarte, Eve kann nur Nachrichtenkarten lesen", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),
+                            "Dies ist keine Nachrichtenkarte, Eve kann nur Nachrichtenkarten lesen",
+                            Toast.LENGTH_LONG).show();
                 }
 
 
             }
         }
     }
-
-
 
 
 }
