@@ -93,7 +93,7 @@ public class ActivityEve extends ActivityBase {
                     // letztes Item ist Code
                     if (position == arrayPermissionString.size() - 1) {
                         Intent i = new Intent(ActivityEve.this, ActivityCode.class);
-                        i.putExtra("origin", "alice");
+                        i.putExtra("origin", "eve");
                         ActivityEve.this.startActivity(i);
 
                     } else {
