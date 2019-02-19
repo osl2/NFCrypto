@@ -9,18 +9,19 @@
               android:orientation="vertical"
               android:padding="@dimen/margin_screen">
 
-    <ScrollView
+    <EditText
+        android:id="@+id/activity_bob_text_encrypted"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_min_textbox_halfscreen"
-        android:layout_weight="1">
-
-        <TextView
-            android:id="@+id/activity_bob_text_encrypted"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/empty_text_encrypted"
-            android:textAppearance="@style/font_msg_default" />
-    </ScrollView>
+        android:layout_weight="1"
+        android:background="@null"
+        android:gravity="top"
+        android:hint="@string/empty_text_encrypted"
+        android:importantForAccessibility="no"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        android:textAppearance="@style/font_msg_default"
+        android:focusable="false"/> <!-- letzte Zeile entfernen um manuelle Texteingabe zu erlauben -->
 
 
     <LinearLayout

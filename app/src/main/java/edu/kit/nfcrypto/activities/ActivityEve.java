@@ -12,6 +12,7 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -230,7 +231,7 @@ public class ActivityEve extends ActivityBase {
 
     //Vgl. ActivityBob
     public void setTextViewInput(String text) {
-        final TextView textView = findViewById(R.id.activity_eve_text_encrypted);
+        final EditText textView = findViewById(R.id.activity_eve_text_encrypted);
         textView.setText(text);
 
     }
