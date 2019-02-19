@@ -91,11 +91,27 @@
     <string name="bob_info_key">Wähle diesen Button um den letzten Schlüssel wiederzuverwenden.</string>
     <string name="bob_info_lock">Drücke diesen Button, um die Nachricht anschließend zu entschlüsseln.</string>
 
-    <!-- activity_cryptotools -->
+    <!-- activity_cryptotools_AES -->
+    <string name="cryptotools_aes_info">Wenn du extrem reich bist, könntest du jetzt mit dem Bau eines Supercomputers anfangen.
+        In etwas mehr als 80 Jahren kannst du dann die Verschlüsselung knacken.</string>
+    <string name="cryptotools_aes_title">AES Entschlüsselungstool</string>
+
+    <!-- activity_cryptotools_caesar -->
     <string name="cryptotools_caesar_info">Du willst versuchen den Text mit der Cesar-Verschlüsselung zu knacken?
         Na dann stell unten den Buchstaben ein, von dem du glaubst, dass er der Schlüssel ist.</string>
     <string name="cryptotools_caesar_title">Cesar Entschlüsselungstool</string>
     <string name="cryptotools_caesar_decrypt">Entschlüsseln</string>
+
+    <!-- activity_cryptotools_minikey -->
+    <string name="cryptotools_minikey_info">Du willst versuchen den Text mit der Minikey-Verschlüsselung zu knacken?
+        Dafür steht dir ein sogenanntes Brute-Force-Verfahren zur Verfügung, das alle Möglichkeiten ausprobiert und dir die Lösung anzeigt.</string>
+    <string name="cryptotools_minikey_title">Minikey Entschlüsselungstool</string>
+    <string name="cryptotools_minikey_decrypt">Brute-Force starten</string>
+
+    <!-- activity_cryptotools_plain -->
+    <string name="cryptotools_plain_info">Ein Klartext ist eine unverschlüsselte Nachricht.\n\n
+        Wenn du die Nachricht nicht lesen kannst, ist es also vermutlich keine Klartextnachricht.</string>
+    <string name="cryptotools_plain_title">Klartext Entschlüsselungstool</string>
 
     <!-- Beschreibungen für Cäsar-Spinner-->
     <string name="none">keine</string>

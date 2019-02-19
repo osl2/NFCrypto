@@ -37,8 +37,17 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".activities.ActivityCryptotoolsAES"
+            android:label="AES knacken!" />
+        <activity
             android:name=".activities.ActivityCryptotoolsCesar"
             android:label="Cesar knacken!" />
+        <activity
+            android:name=".activities.ActivityCryptotoolsMinikey"
+            android:label="Minikey knacken!" />
+        <activity
+            android:name=".activities.ActivityCryptotoolsPlain"
+            android:label="Klartext knacken!" />
         <activity
             android:name=".activities.ActivityEncryptDetailsCesar"
             android:label="Cesarverschlüsselung anpassen" />

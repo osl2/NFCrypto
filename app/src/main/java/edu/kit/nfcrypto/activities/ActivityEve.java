@@ -209,7 +209,7 @@ public class ActivityEve extends ActivityBase {
             public void onClick(View v) {
                 Class destination;
                 Intent i;
-                if (modeSelected == CES) {
+                /*if (modeSelected == CES) {
                     destination = ActivityCryptotoolsCesar.class;
                     i = new Intent(ActivityEve.this, destination);
                     i.putExtra("inputtext", text);
@@ -217,11 +217,40 @@ public class ActivityEve extends ActivityBase {
                     i.putExtra("help", help);
                     ActivityEve.this.startActivity(i);
                 } else if (modeSelected == PLA) {
-                    Toast.makeText(getApplicationContext(), "Klartext ist nicht verschlüsselt",
-                            Toast.LENGTH_LONG).show();
+                    ActivityEve.this.startActivity(ActivityEve.this, ActivityCryptotoolsPlain.class);
+
                 } else {
                     Toast.makeText(getApplicationContext(),
                             "Man kann nur Cesar händisch entschlüsseln", Toast.LENGTH_LONG).show();
+                }*/
+
+                switch (modeSelected) {
+                    case PLA:
+                        destination = ActivityCryptotoolsPlain.class;
+                        i = new Intent(ActivityEve.this, destination);
+                        ActivityEve.this.startActivity(i);
+                        break;
+                    case CES:
+                        destination = ActivityCryptotoolsCesar.class;
+                        i = new Intent(ActivityEve.this, destination);
+                        i.putExtra("inputtext", text);
+                        i.putExtra("spinner", modeSelected.toInt());
+                        i.putExtra("help", help);
+                        ActivityEve.this.startActivity(i);
+                        break;
+                    case VIG:
+                        destination = ActivityCryptotoolsMinikey.class;
+                        i = new Intent(ActivityEve.this, destination);
+                        //TODO putExtra hinzufügen, sodass Brute-Force startet
+                        ActivityEve.this.startActivity(i);
+                        break;
+                    case AES:
+                        destination = ActivityCryptotoolsAES.class;
+                        i = new Intent(ActivityEve.this, destination);
+                        ActivityEve.this.startActivity(i);
+                        break;
+                    default: Toast.makeText(getApplicationContext(),
+                            "Kein Cryptotool ausgewählt!", Toast.LENGTH_LONG).show();
                 }
 
             }
