@@ -85,6 +85,12 @@
         Dabei wird ein Verfahren gestartet, das automatisch versucht die Nachricht zu entschlüsseln.</string>
     <string name="eve_info_wrench">Drücke auf diesen Button um selbst Einstellungen für den Schlüssel vorzunehmen.</string>
 
+    <!-- activity_bob_info -->
+    <string name="bob_info_info">Was ist zu tun?</string>
+    <string name="bob_info_text">Lies zuerst eine Nachrichtenkarte und, falls du möchtest, eine Schlüsselkarte ein, indem du den richtigen Schalter aktivierst.</string>
+    <string name="bob_info_key">Wähle diesen Button um den letzten Schlüssel wiederzuverwenden.</string>
+    <string name="bob_info_lock">Drücke diesen Button, um die Nachricht anschließend zu entschlüsseln.</string>
+
     <!-- activity_cryptotools -->
     <string name="cryptotools_caesar_info">Du willst versuchen den Text mit der Cesar-Verschlüsselung zu knacken?
         Na dann stell unten den Buchstaben ein, von dem du glaubst, dass er der Schlüssel ist.</string>

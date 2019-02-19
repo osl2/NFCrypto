@@ -42,6 +42,13 @@
         <item name="android:textColor">@color/colorAlice</item>
     </style>
 
+    <style name="font_title_bob">
+        <item name="android:textSize">36sp</item>
+        <item name="android:fontFamily">cursive</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorBob</item>
+    </style>
+
     <style name="font_title_eve">
         <item name="android:textSize">36sp</item>
         <item name="android:fontFamily">cursive</item>

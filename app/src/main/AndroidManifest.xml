@@ -58,6 +58,9 @@
             android:name=".activities.ActivityAliceInfo"
             android:label="Informationen" />
         <activity
+            android:name=".activities.ActivityBobInfo"
+            android:label="Informationen" />
+        <activity
             android:name=".activities.ActivityEveInfo"
             android:label="Informationen" />
         <activity

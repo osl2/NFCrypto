@@ -110,6 +110,14 @@ public class ActivityBob extends ActivityBase {
                 }
             }
         });
+
+        // Info Knopf
+        final FloatingActionButton buttonInfo = findViewById(R.id.activity_bob_button_info);
+        buttonInfo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                ActivityBob.this.startActivity(new Intent(ActivityBob.this, ActivityBobInfo.class));
+            }
+        });
     }
 
 

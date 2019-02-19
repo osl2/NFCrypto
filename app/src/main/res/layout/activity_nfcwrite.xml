@@ -22,15 +22,6 @@
         android:minHeight="@dimen/height_min_space" />
 
     <Switch
-        android:id="@+id/activity_nfcwrite_switchKey"
-        android:layout_width="@dimen/width_switch"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:text="Schlüssel"
-        android:textAppearance="@style/font_explanation_default" />
-
-    <Switch
         android:id="@+id/activity_nfcwrite_switchMessage"
         android:layout_width="@dimen/width_switch"
         android:layout_height="wrap_content"
@@ -38,6 +29,15 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="@dimen/margin_distance"
         android:text="Nachricht"
+        android:textAppearance="@style/font_explanation_default" />
+
+    <Switch
+        android:id="@+id/activity_nfcwrite_switchKey"
+        android:layout_width="@dimen/width_switch"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:text="Schlüssel"
         android:textAppearance="@style/font_explanation_default" />
 
     <Space
