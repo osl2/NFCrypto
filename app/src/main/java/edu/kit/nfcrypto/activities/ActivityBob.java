@@ -11,6 +11,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -127,9 +128,8 @@ public class ActivityBob extends ActivityBase {
      * @param inputNFCTag zeigt den Text der vom NFC Tag kommt im Inputtextfeld an.
      */
     private void setTextViewInput(String inputNFCTag) {
-        final TextView textView = findViewById(R.id.activity_bob_text_encrypted);
+        final EditText textView = findViewById(R.id.activity_bob_text_encrypted);
         textView.setText(inputNFCTag);
-
     }
 
 
