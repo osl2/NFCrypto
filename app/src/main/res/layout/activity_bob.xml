@@ -47,34 +47,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/activity_bob_button_lastkey"
-            android:layout_width="@dimen/width_button_default"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_distance"
-            android:layout_marginEnd="@dimen/margin_distance"
-            android:layout_weight="1"
-            android:text="@string/lastKey"
-            android:textAppearance="@style/font_explanation_default" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:orientation="vertical">
-
-            <Switch
-                android:id="@+id/activity_bob_switchKey"
-                android:layout_width="@dimen/width_switch_small"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/schlüssel"
-                android:textAppearance="@style/font_explanation_default"/>
 
             <Switch
                 android:id="@+id/activity_bob_switchMessage"
@@ -84,8 +61,44 @@
                 android:text="@string/nachricht"
                 android:textAppearance="@style/font_explanation_default"/>
 
+            <Switch
+                android:id="@+id/activity_bob_switchKey"
+                android:layout_width="@dimen/width_switch_small"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/schlüssel"
+                android:textAppearance="@style/font_explanation_default" />
         </LinearLayout>
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/activity_bob_button_lastkey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/key"
+            app:backgroundTint="@color/colorBob" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/activity_bob_button_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/help"
+            app:backgroundTint="@color/colorBob" />
     </LinearLayout>
 
 

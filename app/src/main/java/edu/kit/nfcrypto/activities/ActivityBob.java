@@ -72,7 +72,7 @@ public class ActivityBob extends ActivityBase {
             }
         });
 
-        final Button lastKeyButton = findViewById(R.id.activity_bob_button_lastkey);
+        final FloatingActionButton lastKeyButton = findViewById(R.id.activity_bob_button_lastkey);
         lastKeyButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Key key = User.getInstance().getLastKey();
