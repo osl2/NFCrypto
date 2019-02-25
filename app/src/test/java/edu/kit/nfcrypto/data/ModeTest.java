@@ -150,8 +150,8 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
         assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(),ces.getMode());
-        assertSame(cesKey.getClass(),ces.getClass());
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
     }
 
     @Test
@@ -161,9 +161,9 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
         assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(),ces.getMode());
-        assertSame(cesKey.getClass(),ces.getClass());
-}
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
+    }
 
     @Test
     public void createKeyCaesarL() {
@@ -172,8 +172,8 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
         assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(),ces.getMode());
-        assertSame(cesKey.getClass(),ces.getClass());
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
     }
 
     @Test
@@ -183,8 +183,8 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
         assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(),ces.getMode());
-        assertSame(cesKey.getClass(),ces.getClass());
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
     }
 
     @Test
@@ -194,8 +194,8 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
         assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(),ces.getMode());
-        assertSame(cesKey.getClass(),ces.getClass());
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
     }
 
     @Test
@@ -205,8 +205,8 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
         assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(),ces.getMode());
-        assertSame(cesKey.getClass(),ces.getClass());
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
     }
 
     @Test
@@ -216,8 +216,8 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
         assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(),ces.getMode());
-        assertSame(cesKey.getClass(),ces.getClass());
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
     }
 
     @Test
@@ -227,8 +227,8 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
         assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(),ces.getMode());
-        assertSame(cesKey.getClass(),ces.getClass());
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
     }
 
     @Test
@@ -238,8 +238,8 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
         assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(),ces.getMode());
-        assertSame(cesKey.getClass(),ces.getClass());
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
     }
 
     @Test
@@ -249,8 +249,8 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
         assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(),ces.getMode());
-        assertSame(cesKey.getClass(),ces.getClass());
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
     }
 
     @Test
@@ -260,8 +260,8 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
         assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(),ces.getMode());
-        assertSame(cesKey.getClass(),ces.getClass());
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
     }
 
     @Test
@@ -271,8 +271,8 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
         assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(),ces.getMode());
-        assertSame(cesKey.getClass(),ces.getClass());
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
     }
 
     @Test
@@ -282,8 +282,8 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
         assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(),ces.getMode());
-        assertSame(cesKey.getClass(),ces.getClass());
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
     }
 
     @Test
@@ -293,8 +293,8 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
         assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(),ces.getMode());
-        assertSame(cesKey.getClass(),ces.getClass());
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
     }
 
     @Test
@@ -304,8 +304,8 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
         assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(),ces.getMode());
-        assertSame(cesKey.getClass(),ces.getClass());
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
     }
 
     @Test
@@ -315,8 +315,8 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
         assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(),ces.getMode());
-        assertSame(cesKey.getClass(),ces.getClass());
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
     }
 
     @Test
@@ -326,8 +326,8 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
         assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(),ces.getMode());
-        assertSame(cesKey.getClass(),ces.getClass());
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
     }
 
     //TODO Mehr Fälle Testen Randfälle
@@ -338,23 +338,63 @@ public class ModeTest {
         assertTrue("Ist keine Instanz von CäsarKey", vig instanceof VigenereKey);
         Key vigKey = new VigenereKey(keyData);
         assertSame(vigKey.getKeyDataString(), vig.getKeyDataString());
-        assertSame(vigKey.getMode(),vig.getMode());
-        assertSame(vigKey.getClass(),vig.getClass());
+        assertSame(vigKey.getMode(), vig.getMode());
+        assertSame(vigKey.getClass(), vig.getClass());
     }
 
-    //TODO Randfälle testen
 
     @Test
     public void createKeyAES() {
-
+        //TODO Annika hier kommen noch AES tests hin
     }
 
     @Test
-    public void toInt() {
-
+    public void toIntPLA() {
+        Mode mode = Mode.PLA;
+        int test = mode.toInt();
+        assertSame(0, test);
     }
 
     @Test
-    public void toMode() {
+    public void toIntCES() {
+        Mode mode = Mode.CES;
+        int test = mode.toInt();
+        assertSame(1, test);
     }
+
+    @Test
+    public void toIntVIG() {
+        Mode mode = Mode.VIG;
+        int test = mode.toInt();
+        assertSame(1, test);
+    }
+
+    @Test
+    public void toIntAES() {
+        Mode mode = Mode.AES;
+        int test = mode.toInt();
+        assertSame(1, test);
+    }
+
+    @Test
+    public void toModePLA() {
+        assertSame("PLA", Mode.toMode("PLA"));
+    }
+
+    @Test
+    public void toModeCES() {
+        assertSame("CES", Mode.toMode("CES"));
+    }
+
+    @Test
+    public void toModeVIG() {
+        assertSame("VIG", Mode.toMode("VIG"));
+    }
+
+    @Test
+    public void toModeAES() {
+        assertSame("AES", Mode.toMode("AES"));
+    }
+
+
 }

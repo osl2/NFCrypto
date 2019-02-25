@@ -22,7 +22,6 @@ public class Message implements Serializable {
     }
 
     /**
-     *
      * @return die Nachricht mit Präfix MES  und Modus
      */
     public String encodeEncryptedText() {
