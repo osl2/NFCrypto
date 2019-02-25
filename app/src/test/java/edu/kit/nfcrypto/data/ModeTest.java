@@ -366,34 +366,34 @@ public class ModeTest {
     public void toIntVIG() {
         Mode mode = Mode.VIG;
         int test = mode.toInt();
-        assertSame(1, test);
+        assertSame(2, test);
     }
 
     @Test
     public void toIntAES() {
         Mode mode = Mode.AES;
         int test = mode.toInt();
-        assertSame(1, test);
+        assertSame(3, test);
     }
 
     @Test
     public void toModePLA() {
-        assertSame("PLA", Mode.toMode("PLA"));
+        assertSame(Mode.PLA, Mode.toMode("PLA"));
     }
 
     @Test
     public void toModeCES() {
-        assertSame("CES", Mode.toMode("CES"));
+        assertSame(Mode.CES, Mode.toMode("CES"));
     }
 
     @Test
     public void toModeVIG() {
-        assertSame("VIG", Mode.toMode("VIG"));
+        assertSame(Mode.VIG, Mode.toMode("VIG"));
     }
 
     @Test
     public void toModeAES() {
-        assertSame("AES", Mode.toMode("AES"));
+        assertSame(Mode.AES, Mode.toMode("AES"));
     }
 
 
