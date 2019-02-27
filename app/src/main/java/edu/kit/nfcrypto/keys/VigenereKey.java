@@ -24,8 +24,6 @@ public class VigenereKey extends Key {
         super(VIG);
         keyData = createKey();
         setKeyDataString(String.valueOf(keyData));
-
-
     }
 
     @Override
