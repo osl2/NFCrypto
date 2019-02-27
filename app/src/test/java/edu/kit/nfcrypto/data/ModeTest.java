@@ -1,6 +1,11 @@
 package edu.kit.nfcrypto.data;
 
+import android.util.Base64;
+
+import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.Arrays;
 
 import edu.kit.nfcrypto.keys.AESKey;
 import edu.kit.nfcrypto.keys.CesarKey;
@@ -344,8 +349,21 @@ public class ModeTest {
 
 
     @Test
+    @Ignore
+    //Dieser Test benötigt android.util.Base64, was nicht für JUnit verfügbar ist -> nur mit Mocking
     public void createKeyAES() {
-        //TODO Annika hier kommen noch AES tests hin
+        String keyDataString = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+        byte[] keyDataByte = keyDataString.getBytes();
+        keyDataByte = Arrays.copyOf(keyDataByte,16);
+        keyDataByte = Base64.encode(keyDataByte,Base64.DEFAULT);
+        String keyData = Base64.encodeToString(keyDataByte, Base64.DEFAULT);
+
+        Key aes = Mode.createKey("AES", keyData);
+        assertTrue(aes instanceof AESKey);
+        Key aesKey = new AESKey(keyData);
+        assertSame(aesKey.getKeyDataString(), aes.getKeyDataString());
+        assertSame(aesKey.getMode(), aes.getMode());
+        assertSame(aesKey.getClass(), aes.getClass());
     }
 
     @Test
