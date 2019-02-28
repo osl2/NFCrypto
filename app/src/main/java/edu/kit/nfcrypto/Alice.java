@@ -56,6 +56,7 @@ public class Alice implements Serializable {
         return key;
     }
 
+
     public void setKey(Key key) {
         this.key = key;
     }
