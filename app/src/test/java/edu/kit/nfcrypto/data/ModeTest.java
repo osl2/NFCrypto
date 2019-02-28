@@ -7,6 +7,11 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
+<<<<<<< HEAD
+import edu.kit.nfcrypto.exceptions.KeyFormatException;
+import edu.kit.nfcrypto.exceptions.WrongIdentifierException;
+=======
+>>>>>>> 41fe0375febac4fb7fbf21a9bda18d7f673989d7
 import edu.kit.nfcrypto.keys.AESKey;
 import edu.kit.nfcrypto.keys.CesarKey;
 import edu.kit.nfcrypto.keys.Key;
@@ -14,6 +19,7 @@ import edu.kit.nfcrypto.keys.PlainKey;
 import edu.kit.nfcrypto.keys.VigenereKey;
 
 import static org.junit.Assert.*;
+
 
 /*
 Wenn ihr für eine neue Klasse Tests anlegen wollt klickt auf den Klassennamen  mit alt-enter
@@ -24,9 +30,11 @@ auf den grünen Pfeil neben dem Test könnt ihr den einzelnen Test laufen lassen
 Rechtsklick auf den Testordner dann auf "Run tests in "" " um alle Tests zu starten
  */
 public class ModeTest {
-    /*
-        Hier wird ein Fall getestet
-     */
+
+    //##############################################################################################
+    //Hier wird PlainKey getestet
+    //##############################################################################################
+
     @Test // Testet einen Methoden Anwendungsfall
     public void createKeyPlain() { //Denn Test wenn möglich spezifisch auf denn Test benennen
         Key pla = Mode.createKey("PLA", ""); //Die zu Testende Methode nur einmal im Test ausführen
@@ -38,20 +46,14 @@ public class ModeTest {
         assertSame(plaKey.getClass(), pla.getClass());
     }
 
+
+    //##############################################################################################
+    //Hier werden die Cäsarschlüssel getestet
+    //##############################################################################################
+
     @Test
     public void createKeyCaesarA() {
         String keyData = "1";
-        Key ces = Mode.createKey("CES", keyData);
-        assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
-        Key cesKey = new CesarKey(keyData);
-        assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
-        assertSame(cesKey.getMode(), ces.getMode());
-        assertSame(cesKey.getClass(), ces.getClass());
-    }
-
-    @Test
-    public void createKeyCaesarNull() {
-        String keyData = "";
         Key ces = Mode.createKey("CES", keyData);
         assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
         Key cesKey = new CesarKey(keyData);
@@ -335,18 +337,63 @@ public class ModeTest {
         assertSame(cesKey.getClass(), ces.getClass());
     }
 
-    //TODO Mehr Fälle Testen Randfälle
     @Test
-    public void createKeyCaesarAAAAAA() {
+    public void createKeyCaesarNull() {
+        String keyData = "";
+        Key ces = Mode.createKey("CES", keyData);
+        assertTrue("Ist keine Instanz von CäsarKey", ces instanceof CesarKey);
+        Key cesKey = new CesarKey(keyData);
+        assertSame(cesKey.getKeyDataString(), ces.getKeyDataString());
+        assertSame(cesKey.getMode(), ces.getMode());
+        assertSame(cesKey.getClass(), ces.getClass());
+    }
+
+
+
+    //##############################################################################################
+    //Hier werden die Vigenere-Schlüssel getestet
+    //##############################################################################################
+
+    @Test
+    public void createKeyVigenereAAAAAA() {
         String keyData = "AAAAAA";
         Key vig = Mode.createKey("VIG", keyData);
-        assertTrue("Ist keine Instanz von CäsarKey", vig instanceof VigenereKey);
+        assertTrue("Ist keine Instanz von VigenereKey", vig instanceof VigenereKey);
         Key vigKey = new VigenereKey(keyData);
         assertSame(vigKey.getKeyDataString(), vig.getKeyDataString());
         assertSame(vigKey.getMode(), vig.getMode());
         assertSame(vigKey.getClass(), vig.getClass());
     }
 
+<<<<<<< HEAD
+    public void createKeyVigenereABCDEF() {
+        String keyData = "ABCDEF";
+        Key vig = Mode.createKey("VIG", keyData);
+        assertTrue("Ist keine Instanz von VigenereKey", vig instanceof VigenereKey);
+        Key vigKey = new VigenereKey(keyData);
+        assertSame(vigKey.getKeyDataString(), vig.getKeyDataString());
+        assertSame(vigKey.getMode(),vig.getMode());
+        assertSame(vigKey.getClass(),vig.getClass());
+    }
+
+    public void createKeyVigenereZZZZZZ() {
+        String keyData = "ZZZZZZ";
+        Key vig = Mode.createKey("VIG", keyData);
+        assertTrue("Ist keine Instanz von VigenereKey", vig instanceof VigenereKey);
+        Key vigKey = new VigenereKey(keyData);
+        assertSame(vigKey.getKeyDataString(), vig.getKeyDataString());
+        assertSame(vigKey.getMode(),vig.getMode());
+        assertSame(vigKey.getClass(),vig.getClass());
+    }
+
+
+
+    //##############################################################################################
+    //Hier werden die AES-Schlüssel getestet
+    //##############################################################################################
+
+=======
+>>>>>>> 41fe0375febac4fb7fbf21a9bda18d7f673989d7
 
     @Test
     @Ignore
@@ -365,6 +412,14 @@ public class ModeTest {
         assertSame(aesKey.getMode(), aes.getMode());
         assertSame(aesKey.getClass(), aes.getClass());
     }
+<<<<<<< HEAD
+
+
+
+
+    //##############################################################################################
+    //Hier werden die Hilfsmethoden getestet
+    //##############################################################################################
 
     @Test
     public void toIntPLA() {
@@ -413,6 +468,89 @@ public class ModeTest {
     public void toModeAES() {
         assertSame(Mode.AES, Mode.toMode("AES"));
     }
+
+
+
+    //##############################################################################################
+    //Hier werden die Exceptions getestet
+    //##############################################################################################
+
+
+    @Test(expected= WrongIdentifierException.class)
+    public void createKeyUnknown() {
+        String keyData = "";
+        Key key = Mode.createKey("unkown", keyData);
+    }
+
+    @Test(expected= KeyFormatException.class)
+    public void createKeyCaesarEmpty() {
+        String keyData = "";
+        Key key = Mode.createKey("CES", keyData);
+    }
+
+    @Test(expected= NullPointerException.class)
+    public void createKeyVigenereNull() {
+        String keyData = null;
+        Key key = Mode.createKey("VIG", keyData);
+    }
+
+
+    //##############################################################################################
+    //Hier werden die Randfälle getestet
+    //##############################################################################################
+
+
+    //TODO Randfälle testen
+=======
+
+    @Test
+    public void toIntPLA() {
+        Mode mode = Mode.PLA;
+        int test = mode.toInt();
+        assertSame(0, test);
+    }
+
+    @Test
+    public void toIntCES() {
+        Mode mode = Mode.CES;
+        int test = mode.toInt();
+        assertSame(1, test);
+    }
+
+    @Test
+    public void toIntVIG() {
+        Mode mode = Mode.VIG;
+        int test = mode.toInt();
+        assertSame(2, test);
+    }
+
+    @Test
+    public void toIntAES() {
+        Mode mode = Mode.AES;
+        int test = mode.toInt();
+        assertSame(3, test);
+    }
+
+    @Test
+    public void toModePLA() {
+        assertSame(Mode.PLA, Mode.toMode("PLA"));
+    }
+
+    @Test
+    public void toModeCES() {
+        assertSame(Mode.CES, Mode.toMode("CES"));
+    }
+
+    @Test
+    public void toModeVIG() {
+        assertSame(Mode.VIG, Mode.toMode("VIG"));
+    }
+
+    @Test
+    public void toModeAES() {
+        assertSame(Mode.AES, Mode.toMode("AES"));
+    }
+>>>>>>> 41fe0375febac4fb7fbf21a9bda18d7f673989d7
 
 
 }
