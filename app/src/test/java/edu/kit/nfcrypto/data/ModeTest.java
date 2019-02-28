@@ -7,11 +7,11 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-<<<<<<< HEAD
+
 import edu.kit.nfcrypto.exceptions.KeyFormatException;
 import edu.kit.nfcrypto.exceptions.WrongIdentifierException;
-=======
->>>>>>> 41fe0375febac4fb7fbf21a9bda18d7f673989d7
+
+
 import edu.kit.nfcrypto.keys.AESKey;
 import edu.kit.nfcrypto.keys.CesarKey;
 import edu.kit.nfcrypto.keys.Key;
@@ -365,7 +365,6 @@ public class ModeTest {
         assertSame(vigKey.getClass(), vig.getClass());
     }
 
-<<<<<<< HEAD
     public void createKeyVigenereABCDEF() {
         String keyData = "ABCDEF";
         Key vig = Mode.createKey("VIG", keyData);
@@ -392,8 +391,7 @@ public class ModeTest {
     //Hier werden die AES-Schlüssel getestet
     //##############################################################################################
 
-=======
->>>>>>> 41fe0375febac4fb7fbf21a9bda18d7f673989d7
+
 
     @Test
     @Ignore
@@ -412,7 +410,6 @@ public class ModeTest {
         assertSame(aesKey.getMode(), aes.getMode());
         assertSame(aesKey.getClass(), aes.getClass());
     }
-<<<<<<< HEAD
 
 
 
@@ -501,56 +498,6 @@ public class ModeTest {
 
 
     //TODO Randfälle testen
-=======
-
-    @Test
-    public void toIntPLA() {
-        Mode mode = Mode.PLA;
-        int test = mode.toInt();
-        assertSame(0, test);
-    }
-
-    @Test
-    public void toIntCES() {
-        Mode mode = Mode.CES;
-        int test = mode.toInt();
-        assertSame(1, test);
-    }
-
-    @Test
-    public void toIntVIG() {
-        Mode mode = Mode.VIG;
-        int test = mode.toInt();
-        assertSame(2, test);
-    }
-
-    @Test
-    public void toIntAES() {
-        Mode mode = Mode.AES;
-        int test = mode.toInt();
-        assertSame(3, test);
-    }
-
-    @Test
-    public void toModePLA() {
-        assertSame(Mode.PLA, Mode.toMode("PLA"));
-    }
-
-    @Test
-    public void toModeCES() {
-        assertSame(Mode.CES, Mode.toMode("CES"));
-    }
-
-    @Test
-    public void toModeVIG() {
-        assertSame(Mode.VIG, Mode.toMode("VIG"));
-    }
-
-    @Test
-    public void toModeAES() {
-        assertSame(Mode.AES, Mode.toMode("AES"));
-    }
->>>>>>> 41fe0375febac4fb7fbf21a9bda18d7f673989d7
 
 
 }
