@@ -28,25 +28,42 @@ public class VigenereKey extends Key {
 
     @Override
     public String encrypt(String text) {
-        char msg[] = text.toCharArray();
-        int msgLen = msg.length, i;
+        /*char msg[] = text.toCharArray();
+        int msgLen = msg.length;
         char encryptedMsg[] = new char[msgLen];
         //encryption
-        for (i = 0; i < msgLen; ++i) {
+        for (int i = 0; i < msgLen; ++i) {
+
             if (msg[i] == ' ') {
                 encryptedMsg[i] = ' ';
             } else {
                 encryptedMsg[i] = (char) (((msg[i] + keyData[i % keylength]) % 26) + 'A');
             }
         }
-        return String.valueOf(encryptedMsg);
+        return String.valueOf(encryptedMsg);*/
+
+        String encryptedMessage = "";
+        char ch;
+
+        for (int i = 0; i < text.length(); ++i) {
+            ch = text.charAt(i);
+
+            if(ch >= 'A' && ch <= 'Z'){
+                ch = (char) (ch + (keyData[i % keylength] - 'A'));
+                if (ch > 'Z') {
+                    ch = (char) (ch - 'Z' + 'A' - 1);
+                }
+            }
+            encryptedMessage += ch;
+        }
+        return encryptedMessage;
     }
 
     @Override
     public String decrypt(String text) {
 
         if (keyData != null) {
-            char encryptedMsg[] = text.toCharArray();
+            /*char encryptedMsg[] = text.toCharArray();
             int msgLen = encryptedMsg.length, i;
             char decryptedMsg[] = new char[msgLen];
 
@@ -59,7 +76,24 @@ public class VigenereKey extends Key {
                 }
             }
 
-            return String.valueOf(decryptedMsg);
+            return String.valueOf(decryptedMsg);*/
+            String decryptedMessage = "";
+            char ch;
+
+            for (int i = 0; i < text.length(); ++i) {
+                ch = text.charAt(i);
+
+                if (ch >= 'A' && ch <= 'Z') {
+                    ch = (char) (ch - (keyData[i % keylength] - 'A'));
+
+                    if (ch < 'A') {
+                        ch = (char) (ch + 'Z' - 'A' + 1);
+                    }
+                }
+                decryptedMessage += ch;
+            }
+
+            return decryptedMessage;
         }
 
         return null; //TODO Exception, dass noch KeyKarte gebrauch wird
