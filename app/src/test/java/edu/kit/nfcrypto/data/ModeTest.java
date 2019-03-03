@@ -500,4 +500,5 @@ public class ModeTest {
     //TODO Randfälle testen
 
 
+
 }
