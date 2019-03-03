@@ -46,6 +46,17 @@
             android:minWidth="@dimen/width_button_default"
             android:textAppearance="@style/font_explanation_default"/>
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/height_min_space" />
+
+        <TextView
+            android:id="@+id/activity_cryptotools_caesar_textView_preview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/font_msg_default" />
+
     </LinearLayout>
 
     <Button

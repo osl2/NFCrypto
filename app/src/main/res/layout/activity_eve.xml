@@ -80,8 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/empty_text_decrypted"
-            android:textAppearance="@style/font_msg_default"
-            tools:layout_height="200dp" />
+            android:textAppearance="@style/font_msg_default"/>
     </ScrollView>
 
 </LinearLayout>
