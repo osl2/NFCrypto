@@ -15,6 +15,7 @@ import android.util.Base64;
 import javax.crypto.IllegalBlockSizeException;
 
 import edu.kit.nfcrypto.exceptions.KeyFormatException;
+import edu.kit.nfcrypto.exceptions.WrongKeyException;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -82,7 +83,7 @@ public class AESKeyTest {
         assertEquals(plainText, keyRead.decrypt(encryptedText));
     }
 
-    @Test(expected = KeyFormatException.class)
+    @Test(expected = WrongKeyException.class)
     public void wrongKeyError() {
         keyRandom.decrypt(encryptedText);
     }

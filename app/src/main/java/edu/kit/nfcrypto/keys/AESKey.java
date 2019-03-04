@@ -12,6 +12,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import edu.kit.nfcrypto.exceptions.KeyFormatException;
+import edu.kit.nfcrypto.exceptions.WrongKeyException;
 
 import static edu.kit.nfcrypto.data.Mode.AES;
 
@@ -82,7 +83,7 @@ public class AESKey extends Key {
             // Entschlüsselte Nachricht als String zurückgeben
             return new String (cipherData);
         } catch (BadPaddingException e) {
-            throw new KeyFormatException(KeyFormatException.WRONG_KEY + " (" + e.getMessage() + ")");
+            throw new WrongKeyException(e.getMessage());
         } catch (Exception e) {
             throw new KeyFormatException(KeyFormatException.KEY_DATA + " (" + e.getMessage() + ")");
         }
