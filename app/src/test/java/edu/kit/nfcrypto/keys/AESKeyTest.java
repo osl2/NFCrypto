@@ -6,10 +6,15 @@ import org.junit.runner.RunWith;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import android.util.Base64;
+
+import javax.crypto.IllegalBlockSizeException;
+
+import edu.kit.nfcrypto.exceptions.KeyFormatException;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -19,8 +24,12 @@ import static org.powermock.api.mockito.PowerMockito.when;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(Base64.class)
+@PowerMockIgnore({"javax.crypto.*" })
 public class AESKeyTest {
-    Key key;
+    Key keyRandom;
+    Key keyRead;
+    String plainText;
+    String encryptedText;
 
     @Before
     public void setUp() {
@@ -41,20 +50,52 @@ public class AESKeyTest {
                     }
                 }
         );
+        when(Base64.encodeToString(any(byte[].class), anyInt())).thenAnswer(
+                new Answer<String>() {
+                    @Override
+                    public String answer(final InvocationOnMock invocation) {
+                        return java.util.Base64.getMimeEncoder().encodeToString((byte[]) invocation.getArguments()[0]);
+                    }
+                }
+        );
 
-        key = new AESKey();
+
+        keyRandom = new AESKey();
+        keyRead = new AESKey("NUxBRHVMK1BKY0o0M0RkeA==");
+        plainText = "HALLO BOB";
+        encryptedText = "PTCAnR1QfpCcaIUxbEbI3A==";
     }
 
     @Test
     public void suffix() {
-        assertSame(key.suffix(), "ENTSCHLUSSELT");
+        assertSame(keyRandom.suffix(), "ENTSCHLUSSELT");
+        assertSame(keyRead.suffix(),"ENTSCHLUSSELT");
     }
 
     @Test
     public void encrypt() {
+        assertEquals(encryptedText, keyRead.encrypt(plainText));
     }
 
     @Test
     public void decrypt() {
+        assertEquals(plainText, keyRead.decrypt(encryptedText));
+    }
+
+    @Test(expected = KeyFormatException.class)
+    public void wrongKeyError() {
+        keyRandom.decrypt(encryptedText);
+    }
+
+    @Test(expected = KeyFormatException.class)
+    public void encryptError() {
+        Key key = new AESKey("ABC");
+        key.encrypt(plainText);
+    }
+
+    @Test(expected = KeyFormatException.class)
+    public void decryptError() {
+        Key key = new AESKey("ABC");
+        key.decrypt(plainText);
     }
 }

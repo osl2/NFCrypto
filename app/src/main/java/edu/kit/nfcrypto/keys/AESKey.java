@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Random;
 
 import android.util.Base64;
-import android.widget.Toast;
 
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.spec.IvParameterSpec;
@@ -14,7 +14,6 @@ import javax.crypto.spec.SecretKeySpec;
 import edu.kit.nfcrypto.exceptions.KeyFormatException;
 
 import static edu.kit.nfcrypto.data.Mode.AES;
-
 
 public class AESKey extends Key {
     private final SecretKeySpec keyData;
@@ -60,13 +59,10 @@ public class AESKey extends Key {
             cipher.init(Cipher.ENCRYPT_MODE, keyData, ivspec);
 
             // Text in byte[] umwandeln und verschlüsseln
-            //byte[] plainBytes = Base64.decode(plainText, Base64.DEFAULT);
             byte[] encrypted = cipher.doFinal(plainText.getBytes());
 
             // Verschlüsselte Nachricht als String zurückgeben
             return Base64.encodeToString(encrypted, Base64.DEFAULT);
-        } catch (IllegalBlockSizeException e) {
-            throw new KeyFormatException(e.getMessage());
         } catch (Exception e) {
             throw new KeyFormatException(KeyFormatException.KEY_DATA + " (" + e.getMessage() + ")");
         }
@@ -85,6 +81,8 @@ public class AESKey extends Key {
 
             // Entschlüsselte Nachricht als String zurückgeben
             return new String (cipherData);
+        } catch (BadPaddingException e) {
+            throw new KeyFormatException(KeyFormatException.WRONG_KEY + " (" + e.getMessage() + ")");
         } catch (Exception e) {
             throw new KeyFormatException(KeyFormatException.KEY_DATA + " (" + e.getMessage() + ")");
         }
