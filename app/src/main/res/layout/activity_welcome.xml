@@ -75,13 +75,12 @@
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/activity_welcome_button_guided"
-            android:layout_width="129dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|start"
             android:clickable="true"
-            app:backgroundTint="@color/colorPrimaryDark"
-            app:fabCustomSize="60dp"
-            app:srcCompat="@android:drawable/ic_media_play" />
+            android:src="@drawable/play"
+            app:backgroundTint="@color/colorPrimaryDark" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -111,9 +110,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:clickable="true"
-            app:backgroundTint="@color/colorPrimaryDark"
-            app:fabCustomSize="60dp"
-            app:srcCompat="@android:drawable/ic_media_play" />
+            android:src="@drawable/play"
+            app:backgroundTint="@color/colorPrimaryDark" />
 
     </LinearLayout>
 
