@@ -98,7 +98,8 @@
 
     <!-- activity_cryptotools_caesar -->
     <string name="cryptotools_caesar_info">Du willst versuchen den Text mit der Cesar-Verschlüsselung zu knacken?
-        Na dann stell unten den Buchstaben ein, von dem du glaubst, dass er der Schlüssel ist.</string>
+        Na dann stell unten den Buchstaben ein, von dem du glaubst, dass er der Schlüssel ist.
+        Das nächste Mal kannst du auch das Brute-Force-Verfahren testen, das die Buchstaben automatisch durchprobiert.</string>
     <string name="cryptotools_caesar_title">Cesar Entschlüsselungstool</string>
     <string name="cryptotools_caesar_decrypt">Entschlüsseln</string>
 

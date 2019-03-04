@@ -34,11 +34,6 @@
             android:text="@string/cryptotools_caesar_info"
             android:textAppearance="@style/font_explanation_default" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="@dimen/height_min_space" />
-
         <Spinner
             android:id="@+id/activity_cryptotools_caesar_spinner"
             android:layout_width="wrap_content"
@@ -46,15 +41,11 @@
             android:minWidth="@dimen/width_button_default"
             android:textAppearance="@style/font_explanation_default"/>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="@dimen/height_min_space" />
-
         <TextView
             android:id="@+id/activity_cryptotools_caesar_textView_preview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_distance"
             android:textAppearance="@style/font_msg_default" />
 
     </LinearLayout>
@@ -66,5 +57,13 @@
         android:layout_weight="0"
         android:text="@string/cryptotools_caesar_decrypt"
         android:textAppearance="@style/font_explanation_default"/>
+
+    <Button
+        android:id="@+id/activity_cryptotools_caesar_buttonbf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:text="@string/cryptotools_minikey_decrypt"
+        android:textAppearance="@style/font_explanation_default" />
 
 </LinearLayout>
