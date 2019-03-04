@@ -2,6 +2,7 @@ package edu.kit.nfcrypto.keys;
 
 import edu.kit.nfcrypto.data.Mode;
 import edu.kit.nfcrypto.exceptions.KeyFormatException;
+import edu.kit.nfcrypto.exceptions.WrongKeyException;
 
 import static edu.kit.nfcrypto.data.Mode.VIG;
 import static java.lang.Math.floor;
@@ -13,11 +14,12 @@ public class VigenereKey extends Key {
 
     public VigenereKey(String keyDataString) {
         super(VIG, keyDataString);
-        try {
+        keyData = keyDataString.toCharArray();
+        /*try {
             keyData = keyDataString.toCharArray();
         } catch (NumberFormatException e) {
             throw new KeyFormatException("CharArray needed instead of " + keyDataString + ".");
-        }
+        }*/ //Wofür wird diese Exception benötigt? Umwandlung sollte doch hier sicher sein, oder?
     }
 
     public VigenereKey() {
@@ -28,19 +30,6 @@ public class VigenereKey extends Key {
 
     @Override
     public String encrypt(String text) {
-        /*char msg[] = text.toCharArray();
-        int msgLen = msg.length;
-        char encryptedMsg[] = new char[msgLen];
-        //encryption
-        for (int i = 0; i < msgLen; ++i) {
-
-            if (msg[i] == ' ') {
-                encryptedMsg[i] = ' ';
-            } else {
-                encryptedMsg[i] = (char) (((msg[i] + keyData[i % keylength]) % 26) + 'A');
-            }
-        }
-        return String.valueOf(encryptedMsg);*/
 
         String encryptedMessage = "";
         char ch;
@@ -62,41 +51,23 @@ public class VigenereKey extends Key {
     @Override
     public String decrypt(String text) {
 
-        if (keyData != null) {
-            /*char encryptedMsg[] = text.toCharArray();
-            int msgLen = encryptedMsg.length, i;
-            char decryptedMsg[] = new char[msgLen];
+        String decryptedMessage = "";
+        char ch;
 
-            //decryption
-            for (i = 0; i < msgLen; ++i) {
-                if (encryptedMsg[i] == ' ') {
-                    decryptedMsg[i] = ' ';
-                } else {
-                    decryptedMsg[i] = (char) ((((encryptedMsg[i] - keyData[i % keylength]) + 26) % 26) + 'A');
+        for (int i = 0; i < text.length(); ++i) {
+            ch = text.charAt(i);
+
+            if (ch >= 'A' && ch <= 'Z') {
+                ch = (char) (ch - (keyData[i % keylength] - 'A'));
+
+                if (ch < 'A') {
+                    ch = (char) (ch + 'Z' - 'A' + 1);
                 }
             }
-
-            return String.valueOf(decryptedMsg);*/
-            String decryptedMessage = "";
-            char ch;
-
-            for (int i = 0; i < text.length(); ++i) {
-                ch = text.charAt(i);
-
-                if (ch >= 'A' && ch <= 'Z') {
-                    ch = (char) (ch - (keyData[i % keylength] - 'A'));
-
-                    if (ch < 'A') {
-                        ch = (char) (ch + 'Z' - 'A' + 1);
-                    }
-                }
-                decryptedMessage += ch;
-            }
-
-            return decryptedMessage;
+            decryptedMessage += ch;
         }
+        return decryptedMessage;
 
-        return null; //TODO Exception, dass noch KeyKarte gebrauch wird
     }
 
     private char[] createKey() {

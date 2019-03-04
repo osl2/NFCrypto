@@ -83,6 +83,11 @@ public class AESKeyTest {
         assertEquals(plainText, keyRead.decrypt(encryptedText));
     }
 
+    @Test
+    public void randomKey() {
+        assertEquals(keyRandom.decrypt(keyRandom.encrypt(plainText)),plainText);
+    }
+
     @Test(expected = WrongKeyException.class)
     public void wrongKeyError() {
         keyRandom.decrypt(encryptedText);
