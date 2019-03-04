@@ -56,6 +56,7 @@ public class ActivityEncryptDetailsAES extends ActivityBase {
                 i.putExtra("key", key);
                 i.putExtra("spinner", spinner);
                 startActivity(i);
+                ActivityEncryptDetailsAES.this.finish();
             }
         });
 

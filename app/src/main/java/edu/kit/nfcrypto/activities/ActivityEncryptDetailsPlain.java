@@ -39,6 +39,7 @@ public class ActivityEncryptDetailsPlain extends ActivityBase {
                 Intent i = new Intent(ActivityEncryptDetailsPlain.this, ActivityAlice.class);
                 i.putExtra("spinner",spinner);
                 startActivity(i);
+                ActivityEncryptDetailsPlain.this.finish();
             }
         });
 

@@ -75,6 +75,7 @@ public class ActivityEncryptDetailsMinikey extends ActivityBase {
                 i.putExtra("key", key);
                 i.putExtra("spinner", spinner);
                 startActivity(i);
+                ActivityEncryptDetailsMinikey.this.finish();
             }
         });
 
