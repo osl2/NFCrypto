@@ -58,6 +58,7 @@ public class ActivityAlice extends ActivityBase {
         arrayPermissionString = p.first;
         arrayPermissionMode = p.second;
 
+
         // Info Knopf
         final FloatingActionButton buttonInfo = findViewById(R.id.activity_alice_button_info);
         buttonInfo.setOnClickListener(new View.OnClickListener() {
@@ -141,6 +142,7 @@ public class ActivityAlice extends ActivityBase {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 alice.setKey(null);
+                Mode old = mode;
 
                 if (arrayPermissionMode.size() < arrayPermissionString.size()) { //Wenn der Mode Array kleiner dem String Array ist muss nachträglich ein String hinzugefügt worden sein -> letztes Item ist Code
                     if (position == arrayPermissionString.size() - 1) {
@@ -153,7 +155,9 @@ public class ActivityAlice extends ActivityBase {
                 } else {
                     mode = arrayPermissionMode.get(position);
                 }
-
+                if (mode != old){
+                    key = null;
+                }
             }
 
             @Override

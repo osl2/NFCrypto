@@ -65,8 +65,10 @@ public class ActivityEncryptDetailsMinikey extends ActivityBase {
             @Override
             public void onClick(View v) {
                 minikey = inputKey.getText().toString();
-                if (minikey != null) {
+                if (minikey != null & !minikey.equals("")) {
                     key = new VigenereKey(minikey);
+                } else {
+                    key = new VigenereKey();
                 }
                 Intent i = new Intent(ActivityEncryptDetailsMinikey.this, ActivityAlice.class);
                 i.putExtra("inputtext", inputtext);
