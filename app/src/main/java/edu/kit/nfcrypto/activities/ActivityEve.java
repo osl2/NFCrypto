@@ -87,6 +87,7 @@ public class ActivityEve extends ActivityBase {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                 spinner = position;
                 if (arrayPermissionMode.size()
                         < arrayPermissionString.size()) { //Wenn der Mode Array kleiner dem

@@ -42,6 +42,7 @@ public class ActivityBob extends ActivityBase {
     private String text; //Text auf der NFC karte
     private Mode mode; //Mode auf der NFC Karte
     private String keyString;
+    private Key key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +77,7 @@ public class ActivityBob extends ActivityBase {
         final FloatingActionButton lastKeyButton = findViewById(R.id.activity_bob_button_lastkey);
         lastKeyButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Key key = User.getInstance().getLastKey();
+                key = User.getInstance().getLastKey();
                 if (key != null) {
                     setMode(key.getMode().toString());
                     keyString = key.getKeyDataString();
@@ -199,6 +200,7 @@ public class ActivityBob extends ActivityBase {
                 if (message == MessageState.KEY) {
                     if (resultSplit[0].equals("KEY")) {
                         setMode(resultSplit[1]);
+                        key = null;
                         keyString = resultSplit[2];
                         Toast.makeText(getApplicationContext(),"Du hast eine Schlüsselkarte eingelesen!", Toast.LENGTH_LONG).show();
                     } else {
