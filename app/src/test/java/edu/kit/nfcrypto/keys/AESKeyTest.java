@@ -12,8 +12,6 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import android.util.Base64;
 
-import javax.crypto.IllegalBlockSizeException;
-
 import edu.kit.nfcrypto.exceptions.KeyFormatException;
 import edu.kit.nfcrypto.exceptions.WrongKeyException;
 

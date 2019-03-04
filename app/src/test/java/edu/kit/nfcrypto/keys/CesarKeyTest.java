@@ -1,11 +1,40 @@
 package edu.kit.nfcrypto.keys;
 
+import org.junit.Before;
 import org.junit.Test;
+
+import edu.kit.nfcrypto.exceptions.KeyFormatException;
 
 import static org.junit.Assert.*;
 
 public class CesarKeyTest {
-//##############################################################################################
+
+    //##############################################################################################
+    //Allgemeine Tests
+    //##############################################################################################
+    Key keyRandom;
+    Key keyRead;
+    String keyData = "";
+
+    @Before
+    public void setUp() {
+        keyData = "1";
+        keyRead = new CesarKey(keyData);
+        keyRandom = new CesarKey();
+    }
+
+    @Test(expected = KeyFormatException.class)
+    public void createKeyFromLetter() {
+        new CesarKey("A");
+    }
+
+    @Test
+    public void keyData() {
+        Key key = new CesarKey(keyData);
+        assertEquals(Integer.parseInt(keyData),((CesarKey) key).getKeyData());
+    }
+
+    //##############################################################################################
     //Hier wird encrypt getestet
     //##############################################################################################
 
