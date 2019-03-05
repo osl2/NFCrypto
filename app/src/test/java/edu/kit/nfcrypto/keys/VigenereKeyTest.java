@@ -2,59 +2,64 @@ package edu.kit.nfcrypto.keys;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 
 import static org.junit.Assert.*;
 
+@RunWith(Parameterized.class)
 public class VigenereKeyTest {
     Key keyRead;
     Key keyRandom;
-    String keyData = "";
-    ArrayList<String[]> testStrings = new ArrayList<String[]>();
 
-    private void readStrings() {
-        keyData = "ABCDEZ";
-        addString("HALLO WELT","HBNOS WFNW");
-        addString("HALLO!!","HBNOS!!");
-        addString("ZZZZZZZZZZ","ZABCDYZABC");
+    @Parameters
+    public static Collection<String[]> data(){
+        return Arrays.asList(new String[][] {
+                {"ABCDEZ",  "HALLO WELT",   "HBNOS WFNW"},
+                {"ABCDEZ",  "HALLO!!",      "HBNOS!!"},
+                {"ABCDEZ",  "ZZZZZZZZZZ",   "ZABCDYZABC"}
+        });
     }
-    private void addString(String string, String encoded) {
-        testStrings.add(new String[]{string,encoded});
-    }
+
+    @Parameter
+    public String keyData;
+
+    @Parameter(1)
+    public String plainText;
+
+    @Parameter(2)
+    public String encryptedText;
 
     @Before
     public void setUp() {
-        readStrings();
-        keyRead = new VigenereKey(keyData);
         keyRandom = new VigenereKey();
+        keyRead = new VigenereKey(keyData);
     }
-
 
     @Test
     public void encrypt() {
-        for (String[] s : testStrings) {
-            assertEquals(keyRead.encrypt(s[0]),s[1]);
-        }
+        String encrypted = keyRead.encrypt(plainText);
+        assertEquals(encryptedText, encrypted);
     }
-
 
     @Test
     public void decrypt() {
-        for (String[] s : testStrings) {
-            assertEquals(keyRead.decrypt(s[1]),s[0]);
-        }
-    }
-
-    @Test
-    public void getKeylength() {
-        assertEquals(VigenereKey.getKeylength(),6);
+        String decrypted = keyRead.decrypt(encryptedText);
+        assertEquals(plainText,decrypted);
     }
 
     @Test
     public void randomKey() {
-        for (String[] s : testStrings) {
-            assertEquals(keyRandom.decrypt(keyRandom.encrypt(s[0])),s[0]);
-        }
+        assertEquals(plainText,keyRandom.decrypt(keyRandom.encrypt(plainText)));
+    }
+
+    @Test
+    public void getKeyLength() {
+        assertEquals(VigenereKey.getKeylength(),6);
     }
 }
