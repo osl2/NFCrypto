@@ -13,11 +13,16 @@ public class CesarKey extends Key {
         super(CES,keyDataString);
         setMode(CES);
         try {
-            keyData = Integer.valueOf(keyDataString);
+            if(keyDataString.isEmpty()) {
+                keyData = 0;
+            } else {
+                keyData = Integer.valueOf(keyDataString);
+            }
             setKeyDataString(keyDataString);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | NullPointerException e) {
             throw new KeyFormatException("Integer needed instead of " + keyDataString + ".");
         }
+
     }
 
     public CesarKey() {

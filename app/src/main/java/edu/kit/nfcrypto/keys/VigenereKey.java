@@ -14,12 +14,11 @@ public class VigenereKey extends Key {
 
     public VigenereKey(String keyDataString) {
         super(VIG, keyDataString);
-        keyData = keyDataString.toCharArray();
-        /*try {
+        try {
             keyData = keyDataString.toCharArray();
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | NullPointerException e) {
             throw new KeyFormatException("CharArray needed instead of " + keyDataString + ".");
-        }*/ //Wofür wird diese Exception benötigt? Umwandlung sollte doch hier sicher sein, oder?
+        }
     }
 
     public VigenereKey() {
