@@ -39,7 +39,12 @@ public class AESKey extends Key {
     public AESKey(String keyDataString) {
         super(AES);
         // KeyDataString decodieren
-        byte[] keyDataByte = Base64.decode(keyDataString, Base64.DEFAULT);
+        byte[] keyDataByte = new byte[0];
+        try {
+            keyDataByte = Base64.decode(keyDataString, Base64.DEFAULT);
+        } catch (IllegalArgumentException e) {
+            throw new KeyFormatException("Faulty Key. (" + e.getMessage() + ")");
+        }
         //SecretKey aus keyData erzeugen
         keyData = new SecretKeySpec(keyDataByte, "AES");
         setKeyDataString(Base64.encodeToString(keyDataByte, Base64.DEFAULT));

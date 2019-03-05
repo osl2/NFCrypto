@@ -9,6 +9,19 @@ import static org.junit.Assert.*;
 public class VigenereKeyTest {
 
     @Test
+    public void suffix() {
+        Key key = new VigenereKey();
+        assertEquals(14, key.suffix().length());
+    }
+
+    @Test
+    public void encodeKey() {
+        String keyData = "ABCDEZ";
+        Key key = new VigenereKey(keyData);
+        assertEquals("KEYVIG" + keyData, key.encodeKey());
+    }
+
+    @Test
     public void getKeyLength() {
         assertEquals(VigenereKey.getKeylength(),6);
     }

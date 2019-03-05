@@ -18,7 +18,7 @@ public abstract class Key implements Serializable {
         setKeyDataString(keyDataString);
     }
 
-    Key(){}
+    //Key(){} //Wird dieser Konstruktor benötigt? Wenn nicht, löschen!
 
     /**
      *
