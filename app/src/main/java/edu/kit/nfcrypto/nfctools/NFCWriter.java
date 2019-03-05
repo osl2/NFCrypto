@@ -19,7 +19,7 @@ public final class NFCWriter {
             if (ndef != null) {
                 ndef.connect();
                 if (!ndef.isWritable()) {
-                    return new WriteResponse(0,"Dieser Tag ist nicht beschriebbar");
+                    return new WriteResponse(0,"Dieser Tag ist nicht beschreibbar");
                 }
                 if (ndef.getMaxSize() < size) {
                     mess = "Tag Speicherplatz ist " + ndef.getMaxSize() + " bytes, Inhalt ist " + size
