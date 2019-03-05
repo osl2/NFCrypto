@@ -14,11 +14,23 @@ public class VigenereKey extends Key {
 
     public VigenereKey(String keyDataString) {
         super(VIG, keyDataString);
-        try {
+
+        if(keyDataString != null && keyDataString.matches("[A-Z]{" + keylength + "}")) {
             keyData = keyDataString.toCharArray();
+        } else {
+            throw new KeyFormatException(keylength + " capitals needed instead of '" + keyDataString + "'.");
+        }
+        /*
+        try {
+            if(keyDataString.matches("[A-Z]{" + keylength + "}")) {
+                keyData = keyDataString.toCharArray();
+            } else {
+                throw new KeyFormatException(keylength + " capitals needed instead of '" + keyDataString + "'.");
+            }
+
         } catch (NumberFormatException | NullPointerException e) {
             throw new KeyFormatException("CharArray needed instead of " + keyDataString + ".");
-        }
+        }*/
     }
 
     public VigenereKey() {
