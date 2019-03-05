@@ -20,8 +20,8 @@ public class CryptotoolCesarTest {
     @Test
     public void decryptZ() {
         CryptotoolCesar cesar = new CryptotoolCesar(25);
-        String testString = "";
-        String decryptString = "ZABCDEFGHIJKLMNOPQRSTUVWXY";
+        String testString = "ZABCDEFGHIJKLMNOPQRSTUVWXY";
+        String decryptString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         assertEquals("",decryptString ,cesar.decrypt(testString));
     }
 
