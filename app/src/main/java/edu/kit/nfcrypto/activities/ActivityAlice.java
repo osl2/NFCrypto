@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Pair;
+import android.support.v4.util.Pair;
 import android.view.View;
 import android.widget.*;
 

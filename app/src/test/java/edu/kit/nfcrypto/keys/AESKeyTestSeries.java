@@ -5,34 +5,53 @@ import android.util.Base64;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+import org.powermock.modules.junit4.PowerMockRunnerDelegate;
 
-import edu.kit.nfcrypto.exceptions.KeyFormatException;
-import edu.kit.nfcrypto.exceptions.WrongKeyException;
+import java.util.Arrays;
+import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.powermock.api.mockito.PowerMockito.when;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(Base64.class)
+@PowerMockRunnerDelegate(Parameterized.class)
 @PowerMockIgnore({"javax.crypto.*" })
+@PrepareForTest(Base64.class)
 public class AESKeyTestSeries {
     Key keyRandom;
     Key keyRead;
-    String plainText;
-    String encryptedText;
+
+    @Parameterized.Parameters
+    public static Collection<String[]> data(){
+        return Arrays.asList(new String[][] {
+                {"NUxBRHVMK1BKY0o0M0RkeA==",   "HALLO BOB",             "PTCAnR1QfpCcaIUxbEbI3A=="},
+                {"Z0Q3N3A4SE0yUEVDTWVncA==",   "A",                     "I8Bji8/CXIRnv62leITKAw=="},
+                {"Z0Q3N3A4SE0yUEVDTWVncA==",   "0123456789#!?:-);-)*",  "3pz3CvGzjWqRSqEq/uUm68eHTk6vCz05KPtgh8jinY0="}
+        });
+    }
+
+    @Parameterized.Parameter
+    public String keyData;
+
+    @Parameterized.Parameter(1)
+    public String plainText;
+
+    @Parameterized.Parameter(2)
+    public String encryptedText;
 
     @Before
     public void setUp() {
+        //Mock
         PowerMockito.mockStatic(Base64.class);
         when(Base64.encode(any(byte[].class), anyInt())).thenAnswer(
                 new Answer<byte[]>() {
@@ -59,48 +78,25 @@ public class AESKeyTestSeries {
                 }
         );
 
-
+        //Init
         keyRandom = new AESKey();
-        keyRead = new AESKey("NUxBRHVMK1BKY0o0M0RkeA==");
-        plainText = "HALLO BOB";
-        encryptedText = "PTCAnR1QfpCcaIUxbEbI3A==";
-    }
-
-    @Test
-    public void suffix() {
-        assertSame(keyRandom.suffix(), "ENTSCHLUSSELT");
-        assertSame(keyRead.suffix(),"ENTSCHLUSSELT");
+        keyRead = new AESKey(keyData);
     }
 
     @Test
     public void encrypt() {
-        assertEquals(encryptedText, keyRead.encrypt(plainText));
+        String encrypted = keyRead.encrypt(plainText);
+        assertEquals(encryptedText, encrypted);
     }
 
     @Test
     public void decrypt() {
-        assertEquals(plainText, keyRead.decrypt(encryptedText));
+        String decrypted = keyRead.decrypt(encryptedText);
+        assertEquals(plainText,decrypted);
     }
 
     @Test
     public void randomKey() {
-        assertEquals(keyRandom.decrypt(keyRandom.encrypt(plainText)),plainText);
-    }
-
-    @Test(expected = WrongKeyException.class)
-    public void wrongKeyError() {
-        keyRandom.decrypt(encryptedText);
-    }
-
-    @Test(expected = KeyFormatException.class)
-    public void encryptError() {
-        Key key = new AESKey("ABC");
-        key.encrypt(plainText);
-    }
-
-    @Test(expected = KeyFormatException.class)
-    public void decryptError() {
-        Key key = new AESKey("ABC");
-        key.decrypt(plainText);
+        assertEquals(plainText,keyRandom.decrypt(keyRandom.encrypt(plainText)));
     }
 }

@@ -1,143 +1,98 @@
 package edu.kit.nfcrypto;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v4.util.Pair;
+
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import java.util.ArrayList;
+
+import edu.kit.nfcrypto.data.Mode;
+import edu.kit.nfcrypto.keys.Key;
 
 import static org.junit.Assert.*;
+import static org.powermock.api.mockito.PowerMockito.when;
 
+@RunWith(MockitoJUnitRunner.class)
 public class UserTest {
+    private String namePLA = "Klartext";
+    private String nameCES = "Cäsar";
+    private String nameVIG = "Minikey";
+    private String nameAES = "AES";
 
-    //##############################################################################################
-    //Hier wird splitInput getestet
-    //##############################################################################################
+    private final String FREISCHALTEN = "Neues freischalten!";
 
-    @Test
-    public void splitInputMESPLA() {
-        String input = "MESPLATESTENTSCHLUESSELT";
-        String[] output = User.splitInput(input);
-        assertTrue("Das wird nicht als Nachricht erkannt.", output[0].equals("MES"));
-        assertTrue("Das wird nicht als PlainKey erkannt.", output[1].equals("PLA"));
-        assertTrue("Das ist nicht der korrekte Text.", output[2].equals("TEST"));
-        assertTrue("Das wird nicht als entschlüsselt erkannt.", output[3].equals("ENTSCHLUESSELT"));
+    private User user = User.getInstance();
+
+    @Mock
+    private Context context;
+    @Mock
+    private Resources resource;
+
+    @Before
+    public void setUp() {
+        //Mock context
+        when(context.getResources()).thenReturn(resource);
+        when(resource.getString(R.string.plaintext)).thenReturn(namePLA);
+        when(resource.getString(R.string.cesar)).thenReturn(nameCES);
+        when(resource.getString(R.string.vigenere)).thenReturn(nameVIG);
+        when(resource.getString(R.string.aes)).thenReturn(nameAES);
     }
-
-    @Test
-    public void splitInputKEYPLA() {
-        String input = "KEYPLA";
-        String[] output = User.splitInput(input);
-        assertTrue("Das wird nicht als Nachricht erkannt.", output[0].equals("KEY"));
-        assertTrue("Das wird nicht als PlainKey erkannt.", output[1].equals("PLA"));
-        assertTrue("Das ist nicht der korrekte Text.", output[2].equals(""));
-    }
-
-    @Test
-    public void splitInputMESCES() {
-        String input = "MESCESTESTENTSCHLUESSELT";
-        String[] output = User.splitInput(input);
-        assertTrue("Das wird nicht als Nachricht erkannt.", output[0].equals("MES"));
-        assertTrue("Das wird nicht als Cäsar erkannt.", output[1].equals("CES"));
-        assertTrue("Das ist nicht der korrekte Text.", output[2].equals("TEST"));
-        assertTrue("Das wird nicht als entschlüsselt erkannt.", output[3].equals("ENTSCHLUESSELT"));
-    }
-
-    @Test
-    public void splitInputKEYCES() {
-        String input = "KEYCESA";
-        String[] output = User.splitInput(input);
-        assertTrue("Das wird nicht als Nachricht erkannt.", output[0].equals("KEY"));
-        assertTrue("Das wird nicht als Cäsar erkannt.", output[1].equals("CES"));
-        assertTrue("Das ist nicht der korrekte Schlüssel.", output[2].equals("A"));
-    }
-
-    @Test
-    public void splitInputMESVIG() {
-        String input = "MESVIGTESTENTSCHLUESSELT";
-        String[] output = User.splitInput(input);
-        assertTrue("Das wird nicht als Nachricht erkannt.", output[0].equals("MES"));
-        assertTrue("Das wird nicht als Vigenere erkannt.", output[1].equals("VIG"));
-        assertTrue("Das ist nicht der korrekte Text.", output[2].equals("TEST"));
-        assertTrue("Das wird nicht als entschlüsselt erkannt.", output[3].equals("ENTSCHLUESSELT"));
-    }
-
-    @Test
-    public void splitInputKEYVIG() {
-        String input = "KEYVIGAAAAAA";
-        String[] output = User.splitInput(input);
-        assertTrue("Das wird nicht als Schlüssel erkannt.", output[0].equals("KEY"));
-        assertTrue("Das wird nicht als Vigenere erkannt.", output[1].equals("VIG"));
-        assertTrue("Das ist nicht der korrekte Schlüssel.", output[2].equals("AAAAAA"));
-    }
-
-    @Test
-    public void splitInputMESAES() {
-        String input = "MESAESTESTENTSCHLUESSELT";
-        String[] output = User.splitInput(input);
-        assertTrue("Das wird nicht als Nachricht erkannt.", output[0].equals("MES"));
-        assertTrue("Das wird nicht als AES erkannt.", output[1].equals("AES"));
-        assertTrue("Das ist nicht der korrekte Text.", output[2].equals("TEST"));
-        assertTrue("Das wird nicht als entschlüsselt erkannt.", output[3].equals("ENTSCHLUESSELT"));
-    }
-
-    @Test
-    public void splitInputKEYAES() {
-        String input = "KEYAESSCHLUESSEL";
-        String[] output = User.splitInput(input);
-        assertTrue("Das wird nicht als Schlüssel erkannt.", output[0].equals("KEY"));
-        assertTrue("Das wird nicht als AES erkannt.", output[1].equals("AES"));
-        assertTrue("Das ist nicht der korrekte Schlüssel.", output[2].equals("SCHLUESSEL"));
-    }
-
-
-
-    //##############################################################################################
-    //Hier wird getInstance getestet
-    //##############################################################################################
 
     @Test
     public void getInstance() {
+        assertSame(user,User.getInstance());
     }
 
-
-    //##############################################################################################
-    //Hier wird setPermission getestet
-    //##############################################################################################
-
     @Test
-    public void setPermission() {
+    public void permissionNone() {
+        boolean[] permissionArray = new boolean[]{false,false,false,false};
+        //setPermission
+        user.setPermission(permissionArray);
+        //getPermission
+        ArrayList<String> nameString = new ArrayList<String>();
+        ArrayList<Mode> modeString = new ArrayList<Mode>();
+        nameString.add("Neues freischalten!");
+        Pair<ArrayList<String>, ArrayList<Mode>> permissionPair = new Pair<ArrayList<String>, ArrayList<Mode>>(nameString, modeString);
+        //getPermissionArray
+        assertEquals(permissionPair, user.getPermissionArray(context));
+        //addPermission
+        assertTrue(user.addPermission(Mode.CES));
     }
 
-
-    //##############################################################################################
-    //Hier wird setPermission getestet
-    //##############################################################################################
-
     @Test
-    public void getPermissionArray() {
+    public void permissionAll() {
+        boolean[] permissionArray = new boolean[]{true,true,true,true};
+        //setPermission
+        user.setPermission(permissionArray);
+        //getPermission
+        ArrayList<String> nameString = new ArrayList<String>();
+        ArrayList<Mode> modeString = new ArrayList<Mode>();
+        nameString.add(namePLA);
+        modeString.add(Mode.PLA);
+        nameString.add(nameCES);
+        modeString.add(Mode.CES);
+        nameString.add(nameVIG);
+        modeString.add(Mode.VIG);
+        nameString.add(nameAES);
+        modeString.add(Mode.AES);
+        Pair<ArrayList<String>, ArrayList<Mode>> permissionPair = new Pair<ArrayList<String>, ArrayList<Mode>>(nameString, modeString);
+        //getPermissionArray
+        assertEquals(permissionPair, user.getPermissionArray(context));
+        //addPermission
+        assertFalse(user.addPermission(Mode.PLA));
     }
 
-
-    //##############################################################################################
-    //Hier wird addPermission getestet
-    //##############################################################################################
+    @Mock
+    private Key key;
 
     @Test
-    public void addPermission() {
-    }
-
-
-    //##############################################################################################
-    //Hier wird setLastKey getestet
-    //##############################################################################################
-
-    @Test
-    public void setLastKey() {
-    }
-
-
-    //##############################################################################################
-    //Hier wird getLastKey getestet
-    //##############################################################################################
-
-    @Test
-    public void getLastKey() {
+    public void lastKey() {
+        user.setLastKey(key);
+        assertSame(key,user.getLastKey());
     }
 }

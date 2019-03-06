@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
+import org.junit.runners.Parameterized.Parameter;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -16,7 +18,7 @@ public class CesarKeyTestSeries {
     Key keyRead;
     Key keyRandom;
 
-    @Parameterized.Parameters
+    @Parameters
     public static Collection<String[]> data(){
         return Arrays.asList(new String[][] {
                 {"0",   "ABCDEFGHIJKLMNOPQRSTUVWXYZ",   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"},  //encrypt()
@@ -32,13 +34,13 @@ public class CesarKeyTestSeries {
         });
     }
 
-    @Parameterized.Parameter
+    @Parameter
     public String keyData;
 
-    @Parameterized.Parameter(1)
+    @Parameter(1)
     public String plainText;
 
-    @Parameterized.Parameter(2)
+    @Parameter(2)
     public String encryptedText;
 
     @Before

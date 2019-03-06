@@ -1,7 +1,7 @@
 package edu.kit.nfcrypto;
 
 import android.content.Context;
-import android.util.Pair;
+import android.support.v4.util.Pair;
 
 import java.util.ArrayList;
 
@@ -20,8 +20,8 @@ public final class User {
     private boolean[] permission; //Array mit Permissions, in der Userklasse, sodass es Activityübergreifend ist.
     private static User instance;
 
-    private User() {
-    }
+    //Kann nicht von außen erzeugt werden
+    private User() {}
 
     /**
      * Splittet den
@@ -40,7 +40,6 @@ public final class User {
         }
 
         return output;
-
     }
 
     public static User getInstance() {
@@ -60,7 +59,6 @@ public final class User {
      * @param c Kontext, so dass man auf resourcen zugreifen kann
      * @return Arraylist Paar an Permissions
      */
-
     public Pair<ArrayList<String>, ArrayList<Mode>> getPermissionArray(Context c) {
         ArrayList<String> outputString = new ArrayList<>();
         ArrayList<Mode> outputMode = new ArrayList<>();

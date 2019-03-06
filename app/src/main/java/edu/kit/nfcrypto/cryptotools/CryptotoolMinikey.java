@@ -18,8 +18,5 @@ public class CryptotoolMinikey extends Cryptotool {
         VigenereKey key = new VigenereKey(String.valueOf(keyArray));
         return key.decrypt(text);
 
-
     }
-
-
 }
