@@ -7,7 +7,6 @@ import android.util.Base64;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -53,7 +52,7 @@ public class AESKey extends Key {
     // Suffix soll nicht mitverschlüsselt werden.
     @Override
     public String suffix(){
-        return "ENTSCHLUSSELT";
+        return "ENTSCHLUESSELT";
     }
 
     //TODO detailiertes Exceptionhandling?

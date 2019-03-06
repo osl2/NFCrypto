@@ -26,6 +26,7 @@ import static org.powermock.api.mockito.PowerMockito.when;
 @PowerMockIgnore({"javax.crypto.*" })
 public class AESKeyTest {
     private final String TEST_STRING = "HALLO WELT";
+    private final String TEST_STRING_64 = "ABC";
     private final String TEST_KEY_DATA = "NUxBRHVMK1BKY0o0M0RkeA==";
 
     @Before
@@ -59,7 +60,7 @@ public class AESKeyTest {
 
     @Test
     public void suffix() {
-        Key key = new VigenereKey();
+        Key key = new AESKey();
         assertEquals(14, key.suffix().length());
     }
 
@@ -74,6 +75,18 @@ public class AESKeyTest {
         Key key1 = new AESKey();
         Key key2 = new AESKey();
         key1.decrypt(key2.encrypt(TEST_STRING));
+    }
+
+    @Test(expected = KeyFormatException.class)
+    public void encryptError() {
+        Key key = new AESKey(TEST_STRING_64);
+        key.encrypt(TEST_STRING);
+    }
+
+    @Test(expected = KeyFormatException.class)
+    public void decryptError() {
+        Key key = new AESKey(TEST_STRING_64);
+        key.decrypt(TEST_STRING);
     }
 
     @Test(expected = KeyFormatException.class)
