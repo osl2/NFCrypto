@@ -1,6 +1,5 @@
 package edu.kit.nfcrypto.data;
 
-
 import java.io.Serializable;
 
 public class Message implements Serializable {

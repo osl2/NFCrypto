@@ -533,6 +533,16 @@ public class ModeTest {
         Key key = Mode.createKey("VIG", keyData);
     }
 
+    //##############################################################################################
+    //Hier werden Exceptions getestet
+    //##############################################################################################
+
+
+    @Test
+    public void toModeNull() {
+        assertEquals(null, Mode.toMode("TEST"));
+    }
+
 
     //##############################################################################################
     //Hier werden die Randfälle getestet

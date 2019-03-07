@@ -57,8 +57,9 @@ public enum Mode implements Serializable {
             case AES:
                 return 3;
 
+            default:
+                return -1;
         }
-        return -1;
     }
 
     /**
@@ -79,10 +80,7 @@ public enum Mode implements Serializable {
 
             case "AES":
                 return AES;
-
-
         }
         return null;
-
     }
 }
