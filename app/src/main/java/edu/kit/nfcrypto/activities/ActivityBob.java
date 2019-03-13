@@ -25,7 +25,6 @@ import edu.kit.nfcrypto.keys.Key;
 import static edu.kit.nfcrypto.data.Mode.PLA;
 
 
-
 public class ActivityBob extends ActivityBase {
     private enum MessageState {  //Typ der Karte, die gelesen werden soll ; NULL = nichts ausgewählt
         MES, KEY, NULL
@@ -40,7 +39,9 @@ public class ActivityBob extends ActivityBase {
 
     private Bob bob;
     private String text; //Text auf der NFC karte
-    private Mode mode; //Mode auf der NFC Karte
+    private Mode modeNFCMES;
+    private Mode modeNFCKEY;//Mode auf der NFC Karte
+    private Mode modeLastKey = null;
     private String keyString;
     private Key key;
 
@@ -70,7 +71,15 @@ public class ActivityBob extends ActivityBase {
         final FloatingActionButton decryptButton = findViewById(R.id.activity_bob_button_decrypt);
         decryptButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                transfer();
+                if (keyString != null && text != null && !(
+                        (modeNFCKEY == modeNFCMES | modeLastKey == modeNFCMES)
+                                && modeNFCMES != null)) {
+                    Toast.makeText(getApplicationContext(),
+                            "Nachricht und Schlüssel passen nicht zusammen!",
+                            Toast.LENGTH_LONG).show();
+                } else if (keyString != null && !keyString.equals("") && !keyString.equals(" ")) {
+                    transfer();
+                }
             }
         });
 
@@ -79,11 +88,21 @@ public class ActivityBob extends ActivityBase {
             public void onClick(View v) {
                 key = User.getInstance().getLastKey();
                 if (key != null) {
-                    setMode(key.getMode().toString());
+                    modeLastKey = key.getMode();
+                    modeNFCKEY = null;
                     keyString = key.getKeyDataString();
 
                     if (keyString != null && text != null) {
-                        Toast.makeText(getApplicationContext(), "Du kannst auf Enschlüsseln drücken!", Toast.LENGTH_LONG).show();
+                        if (modeLastKey == modeNFCMES) {
+                            Toast.makeText(getApplicationContext(),
+                                    "Du kannst auf Enschlüsseln drücken!",
+                                    Toast.LENGTH_LONG).show();
+                        } else {
+                            key = null;
+                            Toast.makeText(getApplicationContext(),
+                                    "Die Nachricht und Schlüssel passen nicht zusammen!",
+                                    Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
             }
@@ -94,20 +113,21 @@ public class ActivityBob extends ActivityBase {
         final Switch switchKey = findViewById(R.id.activity_bob_switchKey);
         switchMessage.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {
+                if (isChecked) {
                     switchKey.setChecked(false);
                     message = MessageState.MES;
-                } else if(!switchMessage.isChecked()) {
+                } else if (!switchMessage.isChecked()) {
                     message = MessageState.NULL;
                 }
             }
         });
         switchKey.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {
+                if (isChecked) {
                     switchMessage.setChecked(false);
                     message = MessageState.KEY;
-                } else if(!switchKey.isChecked()) {
+                    key = null;
+                } else if (!switchKey.isChecked()) {
                     message = MessageState.NULL;
                 }
             }
@@ -153,7 +173,8 @@ public class ActivityBob extends ActivityBase {
                     mNdefExchangeFilters, null);
 
         } else {
-            Toast.makeText(getApplicationContext(), "Es wurde kein NFC-Adapter gefunden", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Es wurde kein NFC-Adapter gefunden",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -168,6 +189,7 @@ public class ActivityBob extends ActivityBase {
     @Override
     protected void onNewIntent(Intent intent) {
 
+        key = null;
         //liest Nachrichtenkarte
         super.onNewIntent(intent);
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())) {
@@ -193,35 +215,49 @@ public class ActivityBob extends ActivityBase {
 
 
                 String[] resultSplit = User.splitInput(result);
-                // Toast.makeText(getApplicationContext(), "Tag Contains " + result, Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getApplicationContext(), "Tag Contains " + result, Toast
+                // .LENGTH_SHORT).show();
 
 
                 //Abfrage des Präfixes auf der Karte
                 if (message == MessageState.KEY) {
                     if (resultSplit[0].equals("KEY")) {
-                        setMode(resultSplit[1]);
+
                         key = null;
+                        modeLastKey = null;
+                        modeNFCKEY = Mode.toMode(resultSplit[1]);
                         keyString = resultSplit[2];
-                        Toast.makeText(getApplicationContext(),"Du hast eine Schlüsselkarte eingelesen!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),
+                                "Du hast eine Schlüsselkarte eingelesen!",
+                                Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Das ist keine Schlüsselkarte.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Das ist keine Schlüsselkarte.",
+                                Toast.LENGTH_LONG).show();
                     }
                 } else if (message == MessageState.MES) {
                     if (resultSplit[0].equals("MES")) {
-                        setMode(resultSplit[1]);
+                        modeNFCMES = Mode.toMode(resultSplit[1]);
                         text = resultSplit[2];
                         setTextViewInput(text);
-                        Toast.makeText(getApplicationContext(),"Du hast eine Nachrichtenkarte eingelesen!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),
+                                "Du hast eine Nachrichtenkarte eingelesen!",
+                                Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Das ist keine Nachrichtenkarte.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Das ist keine Nachrichtenkarte.",
+                                Toast.LENGTH_LONG).show();
                     }
 
                 } else if (message == MessageState.NULL) {
-                    Toast.makeText(getApplicationContext(), "Bitte wähle zuerst ob du eine Nachricht oder einen Schlüssel einlesen möchtest.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),
+                            "Bitte wähle zuerst ob du eine Nachricht oder einen Schlüssel "
+                                    + "einlesen möchtest.",
+                            Toast.LENGTH_LONG).show();
                 }
 
-                if (keyString != null && text != null) {
-                    Toast.makeText(getApplicationContext(), "Du kannst nun auf Enschlüsseln drücken!", Toast.LENGTH_LONG).show();
+                if (keyString != null && text != null && (modeNFCKEY == modeNFCMES
+                        | modeLastKey == modeNFCMES) && modeNFCMES != null) {
+                    Toast.makeText(getApplicationContext(),
+                            "Du kannst nun auf Enschlüsseln drücken!", Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -231,33 +267,21 @@ public class ActivityBob extends ActivityBase {
 
     //Hilfsfunktion, überträgt die Daten zu Bob
     private void transfer() {
-        if (text != null && mode != null) {
-            if (mode == PLA && keyString == null) {
+        if (text != null && modeNFCMES != null) {
+            if (keyString != null && !keyString.equals("") && !keyString.equals(" ")) {
+          /*  if (modeNFCMES == PLA && keyString == null) {
                 bob.bobPreview(text, PLA, null, this); //text, mode muss von NFC kommen
-            } else if (keyString != null && mode != PLA) {
-                bob.bobPreview(text, mode, keyString, this);
+            } else if (keyString != null && modeNFCMES != PLA) { */
+                bob.bobPreview(text, modeNFCMES, keyString, this);
             }
+            // }
         } else {
-            Toast.makeText(getApplicationContext(), "Du musst zuerst einen Schlüssel und eine Nachtichtenkarte einlesen oder auswählen", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),
+                    "Du musst zuerst einen Schlüssel und eine Nachtichtenkarte einlesen oder "
+                            + "auswählen",
+                    Toast.LENGTH_LONG).show();
         }
     }
 
-
-    /**
-     * Wandelt Strings in Modi um.
-     *
-     * @param string String der zu Mode umgewandelt werden soll (wird dann gleich in Bob gesetzt.
-     */
-    public void setMode(String string) {
-
-        //Wenn Schlüssel und Nachrichtenkarte nicht zusammen passen
-        if (mode != null && !string.equals(mode.toString())) {
-            Toast.makeText(getApplicationContext(), "Diese Karten gehören nicht zusammen", Toast.LENGTH_LONG).show();
-        } else {
-            this.mode = Mode.toMode(string);
-
-        }
-
-    }
 
 }

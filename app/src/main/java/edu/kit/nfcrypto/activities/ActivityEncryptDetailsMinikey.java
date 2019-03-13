@@ -18,7 +18,8 @@ import static edu.kit.nfcrypto.data.Mode.VIG;
 
 public class ActivityEncryptDetailsMinikey extends ActivityBase {
 
-    private String inputtext; //Relevante Dinge werden zum zurückgeben an Activity Alice zwischengespeichert
+    private String inputtext;
+    //Relevante Dinge werden zum zurückgeben an Activity Alice zwischengespeichert
     private String minikey;
     private final Mode spinner = VIG;
     private Key key;
@@ -32,9 +33,7 @@ public class ActivityEncryptDetailsMinikey extends ActivityBase {
 
         //Wir von ActivityAlice zum zwischenspeichern mit dem Intent übergeben
         inputtext = getIntent().getStringExtra("inputtext");
-        if (getIntent().getSerializableExtra("key") != null) {
-            key = (Key) getIntent().getSerializableExtra("key");
-        }
+
 
         //Setzt die Farbe der Toolbar
         try {
@@ -49,7 +48,7 @@ public class ActivityEncryptDetailsMinikey extends ActivityBase {
         //InputFilter um nur bestimmte Buchstaben zuzulassen
         InputFilter filter = new InputFilter() {
             public CharSequence filter(CharSequence source, int start, int end,
-                                       Spanned dest, int dstart, int dend) {
+                    Spanned dest, int dstart, int dend) {
                 String sourceString = source.toString();
                 sourceString = sourceString.toUpperCase();
                 sourceString = sourceString.replaceAll(FORBIDDEN_CHARS, "");
@@ -64,22 +63,39 @@ public class ActivityEncryptDetailsMinikey extends ActivityBase {
 
             @Override
             public void onClick(View v) {
-                minikey = inputKey.getText().toString();
-                if (minikey != null & !minikey.equals("")) {
-                    key = new VigenereKey(minikey);
+
+                if (inputKey.getText().toString().length() != VigenereKey.getKeylength()
+                        && key == null) {
+                    Toast.makeText(getApplicationContext(),
+                            "Der Minikeyschlüssel muss genau " + VigenereKey.getKeylength()
+                                    + " lang sein", Toast.LENGTH_LONG).show();
                 } else {
-                    key = new VigenereKey();
+
+                    if (inputKey.getText().toString().length() == VigenereKey.getKeylength()) {
+                        minikey = inputKey.getText().toString();
+                        if (minikey != null & !minikey.equals("")) {
+                            key = new VigenereKey(minikey);
+                        } else {
+                            key = new VigenereKey();
+                        }
+                        Intent i = new Intent(ActivityEncryptDetailsMinikey.this,
+                                ActivityAlice.class);
+                        i.putExtra("inputtext", inputtext);
+                        i.putExtra("key", key);
+                        i.putExtra("spinner", spinner);
+                        startActivity(i);
+                        ActivityEncryptDetailsMinikey.this.finish();
+                    }else{
+                        Toast.makeText(getApplicationContext(),
+                                "Der Minikeyschlüssel muss genau " + VigenereKey.getKeylength()
+                                        + " lang sein", Toast.LENGTH_LONG).show();
+                    }
                 }
-                Intent i = new Intent(ActivityEncryptDetailsMinikey.this, ActivityAlice.class);
-                i.putExtra("inputtext", inputtext);
-                i.putExtra("key", key);
-                i.putExtra("spinner", spinner);
-                startActivity(i);
-                ActivityEncryptDetailsMinikey.this.finish();
             }
         });
 
-        final TextView generatedKey = findViewById(R.id.activity_encrypt_details_minikey_generatedKey);
+        final TextView generatedKey = findViewById(
+                R.id.activity_encrypt_details_minikey_generatedKey);
 
         //letzten Schlüssel verwenden
         final Button buttonLastKey = findViewById(R.id.activity_encrypt_details_minikey_lastKey);
@@ -94,10 +110,14 @@ public class ActivityEncryptDetailsMinikey extends ActivityBase {
                         setTextView(minikey);
 
                     } else {
-                        Toast.makeText(getApplicationContext(), "Der letzte Schlüssel war kein Minikeyschlüssel!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),
+                                "Der letzte Schlüssel war kein Minikeyschlüssel!",
+                                Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Du hast keinen letzten Schlüssel. Erstelle einen neuen.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),
+                            "Du hast keinen letzten Schlüssel. Erstelle einen neuen.",
+                            Toast.LENGTH_LONG).show();
                 }
             }
         });

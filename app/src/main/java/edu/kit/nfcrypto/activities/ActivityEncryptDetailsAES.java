@@ -48,13 +48,14 @@ public class ActivityEncryptDetailsAES extends ActivityBase {
 
             @Override
             public void onClick(View v) {
-                if (aes != null) {
+                if (aes != null && key == null) {
                     key = new AESKey(aes);
                 }
                 Intent i = new Intent(ActivityEncryptDetailsAES.this, ActivityAlice.class);
                 i.putExtra("inputtext", inputtext);
                 i.putExtra("key", key);
                 i.putExtra("spinner", spinner);
+
                 startActivity(i);
                 ActivityEncryptDetailsAES.this.finish();
             }

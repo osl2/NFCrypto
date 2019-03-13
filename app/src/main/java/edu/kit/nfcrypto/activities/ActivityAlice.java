@@ -178,11 +178,7 @@ public class ActivityAlice extends ActivityBase {
             inputText.setText(messageString);
         }
 
-        //Falls die Activity einen Key erhält, soll dieser genutz werden
-        if (getIntent().getSerializableExtra("key")!=null) {
-            key =(Key)getIntent().getSerializableExtra("key");
 
-        }
 
         //Falls vorher eine Encrypt Details aufgerufen wurde.
         if(getIntent().getSerializableExtra("spinner")!= null){
@@ -190,7 +186,13 @@ public class ActivityAlice extends ActivityBase {
             modeSpinner.setSelection(spinner.toInt());
             mode = spinner;
         }
+        //Falls die Activity einen Key erhält, soll dieser genutz werden
+        if (getIntent().getSerializableExtra("key")!=null) {
 
+            key =(Key)getIntent().getSerializableExtra("key");
+
+
+        }
 
         //InputFilter um nur bestimmte Buchstaben zuzulassen
         InputFilter filter = new InputFilter() {
@@ -232,6 +234,7 @@ public class ActivityAlice extends ActivityBase {
     public void setTextView(String encrypted) {
         final TextView textView = findViewById(R.id.activity_alice_text_encrypted);
         textView.setText(encrypted);
+
 
     }
 }

@@ -18,7 +18,7 @@ import static edu.kit.nfcrypto.data.Mode.AES;
 public class AESKey extends Key {
     private final SecretKeySpec keyData;
     private final byte[] iv = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-    final transient private IvParameterSpec ivspec = new IvParameterSpec(iv); //transient wird benötigt, da sonst Probleme mit Serializable von Key
+  //  final transient private IvParameterSpec ivspec = new IvParameterSpec(iv);//transient wird benötigt, da sonst Probleme mit Serializable von Key
 
     public AESKey() {
         super(AES);
@@ -61,6 +61,7 @@ public class AESKey extends Key {
         try {
             // Chiffre erstellen und initialisieren
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding"); // nur "AES" ist aufgrund des Verfahrens unsicher
+            IvParameterSpec ivspec = new IvParameterSpec(iv);
             cipher.init(Cipher.ENCRYPT_MODE, keyData, ivspec);
 
             // Text in byte[] umwandeln und verschlüsseln
@@ -78,6 +79,7 @@ public class AESKey extends Key {
         try {
             // Chiffre erstellen und initialisieren
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+            IvParameterSpec ivspec = new IvParameterSpec(iv);
             cipher.init(Cipher.DECRYPT_MODE, keyData, ivspec);
 
             // encryptedText in byte[] umwandeln und entschlüsseln

@@ -1,5 +1,7 @@
 package edu.kit.nfcrypto;
 
+import android.widget.Toast;
+
 import java.io.Serializable;
 
 import edu.kit.nfcrypto.activities.ActivityAlice;
@@ -42,7 +44,6 @@ public class Alice implements Serializable {
         }
         User.getInstance().setLastKey(key);
         currentMessage = new Message(text, key.encrypt(text), mode);
-
         activity.setTextView(currentMessage.getEncryptedText()); //Sollte den TextView in AliceActivity umsetzen
     }
 

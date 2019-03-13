@@ -21,6 +21,7 @@ public class Bob {
     public void bobPreview(String text, Mode mode, String keyString, ActivityBob activity) {
         switch (mode) {
             case PLA:
+
                 key = new PlainKey();
                 break;
             case CES:
