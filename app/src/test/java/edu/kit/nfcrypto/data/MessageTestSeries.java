@@ -13,7 +13,7 @@ import java.util.Collection;
 import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
-public class MessageTest {
+public class MessageTestSeries {
     private Message message;
 
     @Parameters
