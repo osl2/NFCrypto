@@ -38,6 +38,9 @@ public class AESKey extends Key {
     public AESKey(String keyDataString) {
         super(AES);
         // KeyDataString decodieren
+        if(keyDataString == null) {
+            throw new KeyFormatException("KeyData is null.");
+        }
         byte[] keyDataByte = new byte[0];
         try {
             keyDataByte = Base64.decode(keyDataString, Base64.DEFAULT);
