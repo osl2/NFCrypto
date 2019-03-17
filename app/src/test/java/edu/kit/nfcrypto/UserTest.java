@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.internal.matchers.Null;
 import org.mockito.junit.MockitoJUnitRunner;
 import java.util.ArrayList;
 
@@ -49,6 +50,9 @@ public class UserTest {
     }
 
     @Test
+    public void getInstanceNull() {assertFalse(User.getInstance().equals(null));}
+
+    @Test
     public void permissionNone() {
         boolean[] permissionArray = new boolean[]{false,false,false,false};
         //setPermission
@@ -85,6 +89,9 @@ public class UserTest {
         assertEquals(permissionPair, user.getPermissionArray(context));
         //addPermission
         assertFalse(user.addPermission(Mode.PLA));
+        assertFalse(user.addPermission(Mode.CES));
+        assertFalse(user.addPermission(Mode.VIG));
+        assertFalse(user.addPermission(Mode.AES));
     }
 
     @Mock
