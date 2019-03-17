@@ -7,14 +7,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import edu.kit.nfcrypto.R;
+import edu.kit.nfcrypto.keys.CesarKey;
 
 
 public class ActivityCryptotoolsCesar extends ActivityBase {
-    private String inputtext; //Speichert die relevanten Variablen zwiscehn um sie an Eve zurüchzugeben.
+    private String inputtext;
+    //Speichert die relevanten Variablen zwiscehn um sie an Eve zurüchzugeben.
     private String help;
-    private int cesar;
+    private int cesar = -1;
     private final int spinner = 1; //Spinner muss auf CES gesetzt werden
 
     @Override
@@ -54,19 +57,36 @@ public class ActivityCryptotoolsCesar extends ActivityBase {
             }
         });
 
+//"Anwenden" Knopf
+        final Button bruteforceButton = findViewById(R.id.activity_cryptotools_caesar_buttonbf);
+        bruteforceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    //Alles relevante wird an ActivityAlice zurück gegeben und ActivityEve starten.
+                    Intent i = new Intent(ActivityCryptotoolsCesar.this, ActivityEve.class);
+                    i.putExtra("inputtext", inputtext);
+                    i.putExtra("spinner", spinner);
+                    i.putExtra("help", help);
+                    startActivity(i);
+
+            }
+        });
         //"Anwenden" Knopf
         final Button applyButton = findViewById(R.id.activity_cryptotools_caesar_button);
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //Alles relevante wird an ActivityAlice zurück gegeben und ActivityEve starten.
-                Intent i = new Intent(ActivityCryptotoolsCesar.this, ActivityEve.class);
-                i.putExtra("inputtext", inputtext);
-                i.putExtra("cesar", cesar);
-                i.putExtra("spinner", spinner);
-                i.putExtra("help", help);
-                startActivity(i);
+                if (cesar != -1) {
+                    //Alles relevante wird an ActivityAlice zurück gegeben und ActivityEve starten.
+                    Intent i = new Intent(ActivityCryptotoolsCesar.this, ActivityEve.class);
+                    i.putExtra("inputtext", inputtext);
+                    i.putExtra("key", new CesarKey("" + cesar));
+                    i.putExtra("spinner", spinner);
+                    i.putExtra("help", help);
+                    startActivity(i);
+                }else{
+                    Toast.makeText(getApplicationContext(),"Dafür musst du erst ein Buchstaben auswählen!",Toast.LENGTH_LONG).show();
+                }
             }
         });
 

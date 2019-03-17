@@ -26,9 +26,12 @@ import edu.kit.nfcrypto.cryptotools.Cryptotool;
 import edu.kit.nfcrypto.cryptotools.CryptotoolCesar;
 import edu.kit.nfcrypto.cryptotools.CryptotoolMinikey;
 import edu.kit.nfcrypto.data.Mode;
+import edu.kit.nfcrypto.keys.Key;
 
+import static edu.kit.nfcrypto.data.Mode.AES;
 import static edu.kit.nfcrypto.data.Mode.CES;
 import static edu.kit.nfcrypto.data.Mode.PLA;
+import static edu.kit.nfcrypto.data.Mode.toMode;
 
 public class ActivityEve extends ActivityBase {
     private NfcAdapter mNfcAdapter;
@@ -36,9 +39,9 @@ public class ActivityEve extends ActivityBase {
     private PendingIntent mNfcPendingIntent;
 
     private String help;
-            // Verschlüsselter "ENTSCHLUESSELT" String, der zur Hilfe beim Knacken genutzt werden
-            // soll.
-    private int cesar = -1; //Cesar wert für nicht gesetzt
+    // Verschlüsselter "ENTSCHLUESSELT" String, der zur Hilfe beim Knacken genutzt werden
+    // soll.
+    private Key key;
     private Cryptotool crypto; //zuverwendendes Cryptotool
     private ArrayList<String> arrayPermissionString; //Permissions
     private ArrayList<Mode> arrayPermissionMode;
@@ -56,6 +59,7 @@ public class ActivityEve extends ActivityBase {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eve);
 
+        key = null;
         //Setzt die Farbe der Toolbar
         try {
             getToolbar().setBackgroundColor(this.getResources().getColor(R.color.colorEve));
@@ -122,74 +126,75 @@ public class ActivityEve extends ActivityBase {
             setTextViewInput(text);
 
         }
-        if (getIntent().getStringExtra("help") != null) {
-            help = getIntent().getStringExtra("help");
 
-        }
-
-        if (getIntent().getIntExtra("cesar", cesar) != -1) {
-            cesar = getIntent().getIntExtra("cesar", cesar);
-        }
 
         if (getIntent().getIntExtra("spinner", spinner) != -1) {
             spinner = getIntent().getIntExtra("spinner", spinner);
             modeSpinner.setSelection(spinner);
         }
+        if (getIntent().getSerializableExtra("key") != null) {
+            key = (Key) getIntent().getSerializableExtra("key");
+        }
+
+        if (getIntent().getStringExtra("help") != null) {
+            help = getIntent().getStringExtra("help");
+            if (text != null & spinner != -1 && key == null) {
+                //Stellung des Spinners wird ausgelesen, kann/sollte noch ggf. ausgelagert
+                // werden, Toasts sind dann schwerer
+                switch (spinner) {
+
+                    //Plaintext
+                    default:
+                        break;
+
+                    //Cesar
+                    case 1:
+                        crypto = new CryptotoolCesar();
+                        decrypted = crypto.crack(text, help);
+                        break;
+
+                    //Minikey
+                    case 2: //Knacken automatisch
+                        crypto = new CryptotoolMinikey();
+                        decrypted = crypto.crack(text, help);
+                        break;
+
+                }
+                key = null;
+            } else  if (key == null){
+                Toast.makeText(getApplicationContext(),
+                        "Du brauchst zuerst eine Nachrichtenkarte.", Toast.LENGTH_LONG).show();
+            }
+
+        }
+
 
         //Knopf der die Varschlüsselung triggert
 
         final FloatingActionButton buttonDecrypt = findViewById(R.id.activity_eve_button_decrypt);
         buttonDecrypt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                decrypted = "";
-
-                //Überptüft ob alles gesetzt wurde
-                if (text != null & help != null & spinner != -1) {
-
-                    //Stellung des Spinners wird ausgelesen, kann/sollte noch ggf. ausgelagert
-                    // werden, Toasts sind dann schwerer
-                    switch (spinner) {
-
-                        //Plaintext
-                        case 0:
-                            decrypted = text;
-                            Toast.makeText(getApplicationContext(),
-                                    "Klartext ist nicht verschlüsselt", Toast.LENGTH_LONG).show();
-                            break;
-
-                        //Cesar
-                        case 1:
-                            if (cesar != -1) { //ActivityCryptotoolsCesar hat eine Zahl ausgewählt
-                                crypto = new CryptotoolCesar(cesar);
-                                decrypted = ((CryptotoolCesar) crypto).decrypt(text);
-                            } else { //Knacken von Cesar automatisiert
-                                crypto = new CryptotoolCesar();
-                                decrypted = crypto.crack(text, help);
-                            }
-                            break;
-
-                        //Minikey
-                        case 2: //Knacken automatisch
-                            crypto = new CryptotoolMinikey();
-                            decrypted = crypto.crack(text, help);
-                            break;
-
-                        //AES
-                        case 3:
-                            Toast.makeText(getApplicationContext(),
-                                    "Wenn du extrem reich bist, könntest du jetzt mit dem Bau "
-                                            + "eines Supercomputers anfangen. In etwas mehr als "
-                                            + "80 Jahren kannst du dann die Verschlüsselung "
-                                            + "knacken.",
-                                    Toast.LENGTH_LONG).show();
-                            decrypted = "nicht möglich";
-                            break;
+                if (text != null & (key != null || (help != null & decrypted != null))) {
+                    if (key != null) {
+                        setTextViewDecrypted(key.decrypt(text));
+                    } else {
+                        setTextViewDecrypted(decrypted);
                     }
-                    setTextViewDecrypted(decrypted);
-
                 } else {
-                    Toast.makeText(getApplicationContext(),
-                            "Du brauchst zuerst eine Nachrichtenkarte.", Toast.LENGTH_LONG).show();
+                    if (text == null) {
+                        Toast.makeText(getApplicationContext(),
+                                "Du brauchst zuerst eine Nachrichtenkarte.",
+                                Toast.LENGTH_LONG).show();
+                    } else if (modeSelected == PLA) {
+                        Toast.makeText(getApplicationContext(),
+                                "Klartext ist nicht verschlüsselt",
+                                Toast.LENGTH_LONG).show();
+                        setTextViewDecrypted(text);
+                    } else {
+                        Toast.makeText(getApplicationContext(),
+                                "Bitte klicke vorher auf den Schraubenschlüssel",
+                                Toast.LENGTH_LONG).show();
+                    }
                 }
 
             }
@@ -210,48 +215,41 @@ public class ActivityEve extends ActivityBase {
             public void onClick(View v) {
                 Class destination;
                 Intent i;
-                /*if (modeSelected == CES) {
-                    destination = ActivityCryptotoolsCesar.class;
-                    i = new Intent(ActivityEve.this, destination);
-                    i.putExtra("inputtext", text);
-                    i.putExtra("spinner", modeSelected.toInt());
-                    i.putExtra("help", help);
-                    ActivityEve.this.startActivity(i);
-                } else if (modeSelected == PLA) {
-                    ActivityEve.this.startActivity(ActivityEve.this, ActivityCryptotoolsPlain.class);
-
+                if (text != null) {
+                    switch (modeSelected) {
+                        case PLA:
+                            destination = ActivityCryptotoolsPlain.class;
+                            i = new Intent(ActivityEve.this, destination);
+                            ActivityEve.this.startActivity(i);
+                            break;
+                        case CES:
+                            destination = ActivityCryptotoolsCesar.class;
+                            i = new Intent(ActivityEve.this, destination);
+                            i.putExtra("inputtext", text);
+                            i.putExtra("spinner", modeSelected.toInt());
+                            i.putExtra("help", help);
+                            ActivityEve.this.startActivity(i);
+                            break;
+                        case VIG:
+                            destination = ActivityCryptotoolsMinikey.class;
+                            i = new Intent(ActivityEve.this, destination);
+                            i.putExtra("inputtext", text);
+                            i.putExtra("spinner", modeSelected.toInt());
+                            i.putExtra("help", help);
+                            ActivityEve.this.startActivity(i);
+                            break;
+                        case AES:
+                            destination = ActivityCryptotoolsAES.class;
+                            i = new Intent(ActivityEve.this, destination);
+                            ActivityEve.this.startActivity(i);
+                            break;
+                        default:
+                            Toast.makeText(getApplicationContext(),
+                                    "Kein Cryptotool ausgewählt!", Toast.LENGTH_LONG).show();
+                    }
                 } else {
                     Toast.makeText(getApplicationContext(),
-                            "Man kann nur Cesar händisch entschlüsseln", Toast.LENGTH_LONG).show();
-                }*/
-
-                switch (modeSelected) {
-                    case PLA:
-                        destination = ActivityCryptotoolsPlain.class;
-                        i = new Intent(ActivityEve.this, destination);
-                        ActivityEve.this.startActivity(i);
-                        break;
-                    case CES:
-                        destination = ActivityCryptotoolsCesar.class;
-                        i = new Intent(ActivityEve.this, destination);
-                        i.putExtra("inputtext", text);
-                        i.putExtra("spinner", modeSelected.toInt());
-                        i.putExtra("help", help);
-                        ActivityEve.this.startActivity(i);
-                        break;
-                    case VIG:
-                        destination = ActivityCryptotoolsMinikey.class;
-                        i = new Intent(ActivityEve.this, destination);
-                        //TODO putExtra hinzufügen, sodass Brute-Force startet
-                        ActivityEve.this.startActivity(i);
-                        break;
-                    case AES:
-                        destination = ActivityCryptotoolsAES.class;
-                        i = new Intent(ActivityEve.this, destination);
-                        ActivityEve.this.startActivity(i);
-                        break;
-                    default: Toast.makeText(getApplicationContext(),
-                            "Kein Cryptotool ausgewählt!", Toast.LENGTH_LONG).show();
+                            "Du brauchst zuerst eine Nachrichtenkarte.", Toast.LENGTH_LONG).show();
                 }
 
             }
