@@ -107,7 +107,7 @@
     <string name="cryptotools_minikey_info">Du willst versuchen den Text mit der Minikey-Verschlüsselung zu knacken?
         Dafür steht dir ein sogenanntes Brute-Force-Verfahren zur Verfügung, das alle Möglichkeiten ausprobiert und dir die Lösung anzeigt.</string>
     <string name="cryptotools_minikey_title">Minikey Entschlüsselungstool</string>
-    <string name="cryptotools_minikey_decrypt">Brute-Force starten</string>
+    <string name="cryptotools_minikey_decrypt">Brute-Force verwenden</string>
 
     <!-- activity_cryptotools_plain -->
     <string name="cryptotools_plain_info">Ein Klartext ist eine unverschlüsselte Nachricht.\n\n
