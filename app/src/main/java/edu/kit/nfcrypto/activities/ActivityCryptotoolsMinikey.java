@@ -38,6 +38,7 @@ public class ActivityCryptotoolsMinikey extends ActivityBase {
                 i.putExtra("spinner", spinner);
                 i.putExtra("help", help);
                 startActivity(i);
+                finish();
 
             }
         });

@@ -57,7 +57,7 @@ public class ActivityCryptotoolsCesar extends ActivityBase {
             }
         });
 
-//"Anwenden" Knopf
+        //"Bruteforce" Knopf
         final Button bruteforceButton = findViewById(R.id.activity_cryptotools_caesar_buttonbf);
         bruteforceButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +68,7 @@ public class ActivityCryptotoolsCesar extends ActivityBase {
                     i.putExtra("spinner", spinner);
                     i.putExtra("help", help);
                     startActivity(i);
+                    finish();
 
             }
         });
@@ -84,8 +85,9 @@ public class ActivityCryptotoolsCesar extends ActivityBase {
                     i.putExtra("spinner", spinner);
                     i.putExtra("help", help);
                     startActivity(i);
+                    finish();
                 }else{
-                    Toast.makeText(getApplicationContext(),"Dafür musst du erst ein Buchstaben auswählen!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Dafür musst du erst einen Buchstaben auswählen!",Toast.LENGTH_LONG).show();
                 }
             }
         });
