@@ -78,7 +78,7 @@ public class ActivityBob extends ActivityBase {
                     Toast.makeText(getApplicationContext(),
                             "Nachricht und Schlüssel passen nicht zusammen!",
                             Toast.LENGTH_LONG).show();
-                } else if (keyString != null && !keyString.equals("") && !keyString.equals(" ")) {
+                } else if (modeNFCKEY == PLA || keyString != null && !keyString.equals("") && !keyString.equals(" ")) {
                     transfer();
                 }
             }
@@ -269,7 +269,7 @@ public class ActivityBob extends ActivityBase {
     //Hilfsfunktion, überträgt die Daten zu Bob
     private void transfer() {
         if (text != null && modeNFCMES != null) {
-            if (keyString != null && !keyString.equals("") && !keyString.equals(" ")) {
+            if (modeNFCKEY == PLA || keyString != null && !keyString.equals("") && !keyString.equals(" ")) {
           /*  if (modeNFCMES == PLA && keyString == null) {
                 bob.bobPreview(text, PLA, null, this); //text, mode muss von NFC kommen
             } else if (keyString != null && modeNFCMES != PLA) { */
