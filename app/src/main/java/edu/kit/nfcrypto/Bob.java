@@ -3,6 +3,7 @@ package edu.kit.nfcrypto;
 import edu.kit.nfcrypto.activities.ActivityBob;
 import edu.kit.nfcrypto.data.Message;
 import edu.kit.nfcrypto.data.Mode;
+import edu.kit.nfcrypto.exceptions.WrongKeyException;
 import edu.kit.nfcrypto.keys.AESKey;
 import edu.kit.nfcrypto.keys.CesarKey;
 import edu.kit.nfcrypto.keys.Key;
@@ -18,7 +19,7 @@ public class Bob {
      * @param text der Eingelesen wird
      * @param mode wie Cesar etc.
      */
-    public void bobPreview(String text, Mode mode, String keyString, ActivityBob activity) {
+    public void bobPreview(String text, Mode mode, String keyString, ActivityBob activity) throws WrongKeyException {
         switch (mode) {
             case PLA:
 
@@ -34,6 +35,7 @@ public class Bob {
                 key = new AESKey(keyString);
                 break;
         }
+
         currentMessage = new Message(key.decrypt(text), text, mode);
 
         activity.setTextViewDecrypted(currentMessage.getPlaintext()); //Sollte den TextView in BobActivity umsetzen

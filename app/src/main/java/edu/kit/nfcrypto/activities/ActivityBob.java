@@ -20,6 +20,7 @@ import edu.kit.nfcrypto.Bob;
 import edu.kit.nfcrypto.R;
 import edu.kit.nfcrypto.User;
 import edu.kit.nfcrypto.data.Mode;
+import edu.kit.nfcrypto.exceptions.WrongKeyException;
 import edu.kit.nfcrypto.keys.Key;
 
 import static edu.kit.nfcrypto.data.Mode.PLA;
@@ -272,12 +273,17 @@ public class ActivityBob extends ActivityBase {
           /*  if (modeNFCMES == PLA && keyString == null) {
                 bob.bobPreview(text, PLA, null, this); //text, mode muss von NFC kommen
             } else if (keyString != null && modeNFCMES != PLA) { */
-                bob.bobPreview(text, modeNFCMES, keyString, this);
+                try {
+                    bob.bobPreview(text, modeNFCMES, keyString, this);
+                } catch (WrongKeyException e)
+                {
+                    Toast.makeText(getApplicationContext(), "Dieser Schlüssel passt nicht.", Toast.LENGTH_LONG).show();
+                }
             }
             // }
         } else {
             Toast.makeText(getApplicationContext(),
-                    "Du musst zuerst einen Schlüssel und eine Nachtichtenkarte einlesen oder "
+                    "Du musst zuerst einen Schlüssel und eine Nachrichtenkarte einlesen oder "
                             + "auswählen",
                     Toast.LENGTH_LONG).show();
         }
