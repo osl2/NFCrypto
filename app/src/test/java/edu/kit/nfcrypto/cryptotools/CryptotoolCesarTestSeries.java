@@ -23,6 +23,8 @@ public class CryptotoolCesarTestSeries {
                 {"! ? () ; , : . ", "! ? () ; , : . ", "0", TEST_HELP},
                 {"", "", "1", "FOUTDIMVFTTFMU"},
                 {"ZABCDEFGHIJKLMNOPQRSTUVWXY", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "1", "FOUTDIMVFTTFMU"},
+                {"HALLO BOB WIE GEHT ES DIR", "MFQQT GTG BNJ LJMY JX INW", "5", "JSYXHMQZJXXJQY"},  //Entwurf
+                {"IBMMP CPC XJF HFIU FT EJS", "MFQQT GTG BNJ LJMY JX INW", "4", "IRXWGLPYIWWIPX"}   //Entwurf
         });
     }
 

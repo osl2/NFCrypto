@@ -28,8 +28,8 @@ import static org.powermock.api.mockito.PowerMockito.when;
 @PowerMockIgnore({"javax.crypto.*" })
 @PrepareForTest(Base64.class)
 public class AESKeyTestSeries {
-    Key keyRandom;
-    Key keyRead;
+    private Key keyRandom;
+    private Key keyRead;
 
     @Parameterized.Parameters
     public static Collection<String[]> data(){

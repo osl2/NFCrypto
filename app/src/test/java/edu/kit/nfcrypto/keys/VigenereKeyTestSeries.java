@@ -14,15 +14,16 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class VigenereKeyTestSeries {
-    Key keyRead;
-    Key keyRandom;
+    private Key keyRead;
+    private Key keyRandom;
 
     @Parameters
     public static Collection<String[]> data(){
         return Arrays.asList(new String[][] {
                 {"ABCDEZ",  "HALLO WELT",   "HBNOS WFNW"},
                 {"ABCDEZ",  "HALLO!!",      "HBNOS!!"},
-                {"ABCDEZ",  "ZZZZZZZZZZ",   "ZABCDYZABC"}
+                {"ABCDEZ",  "ZZZZZZZZZZ",   "ZABCDYZABC"},
+                {"ABCDEZ",  "! ? , : . ; ( ) ", "! ? , : . ; ( ) "}
         });
     }
 

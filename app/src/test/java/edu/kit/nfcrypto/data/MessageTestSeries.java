@@ -19,7 +19,10 @@ public class MessageTestSeries {
     @Parameters
     public static Collection<String[]> data(){
         return Arrays.asList(new String[][] {
-                {"HALLO WELT",  "HALLO WELT",   "PLA", "MESPLAHALLO WELT"}
+                {"HALLO WELT",  "HALLO WELT",   "PLA", "MESPLAHALLO WELT"},
+                {"HALLO BOB WIE GEHT ES DIR",    "MFQQT GTG BNJ LJMY JX INW", "CES", "MESCESMFQQT GTG BNJ LJMY JX INW"},
+                {"HALLO WELT",   "HBNOS WFNW", "VIG", "MESVIGHBNOS WFNW"},
+                {"HALLO BOB", "NUxBRHVMK1BKY0o0M0RkeA==", "AES", "MESAESNUxBRHVMK1BKY0o0M0RkeA=="}
         });
     }
 

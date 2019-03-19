@@ -12,13 +12,15 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class PlainKeyTestSeries {
-    Key key;
+    private Key key;
 
     @Parameterized.Parameters
     public static Collection<String[]> data(){
         return Arrays.asList(new String[][] {
                 {"ABCDEFGHIJKLMNOPQRSTUVWXYZ",   "ABCDEFGHIJKLMNOPQRSTUVWXYZ"},
-                {"",""}
+                {"",""},
+                {"HALLO BOB WIE GEHT ES DIR", "HALLO BOB WIE GEHT ES DIR"},
+                {"! ? , : . ; ( ) ", "! ? , : . ; ( ) "}
         });
     }
 

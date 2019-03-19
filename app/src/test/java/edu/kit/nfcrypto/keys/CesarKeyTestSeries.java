@@ -15,8 +15,8 @@ import static org.junit.Assert.*;
 @RunWith(Parameterized.class)
 public class CesarKeyTestSeries {
 
-    Key keyRead;
-    Key keyRandom;
+    private Key keyRead;
+    private Key keyRandom;
 
     @Parameters
     public static Collection<String[]> data(){
@@ -29,8 +29,8 @@ public class CesarKeyTestSeries {
                 {"25",  "ABCDEFGHIJKLMNOPQRSTUVWXYZ",   "ZABCDEFGHIJKLMNOPQRSTUVWXY"},  //Z
                 {"1",   "ABCDEFGHIJKLMNOPQRSTUVWXYZ",   "BCDEFGHIJKLMNOPQRSTUVWXYZA"},  //B
                 {"1",   "",                             ""},                            //NULL
-                {"9",   "! ? , : . ; ( ) ",             "! ? , : . ; ( ) "}             //Sonderzeichen
-
+                {"9",   "! ? , : . ; ( ) ",             "! ? , : . ; ( ) "},            //Sonderzeichen
+                {"5",   "HALLO BOB WIE GEHT ES DIR",    "MFQQT GTG BNJ LJMY JX INW"}    //Entwurf
         });
     }
 
