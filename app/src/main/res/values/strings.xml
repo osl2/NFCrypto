@@ -81,9 +81,9 @@
     <string name="eve_info_info">Was ist zu tun?</string>
     <string name="eve_info_text">Lies zuerst eine Nachrichtenkarte ein.</string>
     <string name="eve_info_spinner">Wähle anschließend eine Verschlüsselungsart.</string>
-    <string name="eve_info_lock">Drücke diesen Button, um die Nachricht automatisch zu entschlüsseln.
-        Dabei wird ein Verfahren gestartet, das automatisch versucht die Nachricht zu entschlüsseln.</string>
-    <string name="eve_info_wrench">Drücke auf diesen Button um selbst Einstellungen für den Schlüssel vorzunehmen.</string>
+    <string name="eve_info_lock">Drücke nun diesen Button, um die Nachricht mit den gewählten Schlüsseleinstellungen zu entschlüsseln.</string>
+    <string name="eve_info_wrench">Drücke auf diesen Button um Einstellungen für den Schlüssel vorzunehmen.</string>
+    <string name="eve_info_wrench2">Für manche Verschlüsselungen gibt es ein Brute-Force-Verfahren, das automatisch versucht die Nachricht zu entschlüsseln.</string>
 
     <!-- activity_bob_info -->
     <string name="bob_info_info">Was ist zu tun?</string>
@@ -149,8 +149,8 @@
     <string name="code_unlock">Freischalten</string>
 
     <!-- Passwörter für Lehrermodul -->
-    <string name="pwces">PWces</string>
-    <string name="pwvig">PWvig</string>
-    <string name="pwaes">PWaes</string>
+    <string name="pwces">AlterRoemer</string>
+    <string name="pwvig">winzig</string>
+    <string name="pwaes">Ende</string>
 
 </resources>
